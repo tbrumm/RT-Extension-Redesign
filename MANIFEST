@@ -1,0 +1,8 @@
+Changes
+Makefile.PL
+MANIFEST
+html/Callbacks/Redesign/Elements/Header/Head
+html/Elements/Login
+html/NoAuth/css/redesign.css
+lib/RT/Extension/Redesign.pm
+static/css/redesign.css

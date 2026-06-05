@@ -552,3 +552,39 @@ div.history-container {
 
 #sorting .titlebox-title .left::before { content: "\F5DC"; } /* sort-alpha-down */
 #columns .titlebox-title .left::before { content: "\F58C"; } /* layout-three-columns */
+
+
+/* ================================================================
+   Dark Mode Adjustments
+   ================================================================ */
+
+[data-bs-theme=dark] {
+    /* Shadows need more contrast against dark backgrounds */
+    --rd-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --rd-shadow-md: 0 4px 18px rgba(0, 0, 0, 0.55);
+}
+
+/* Nav icons: brighten those that are too dark on dark backgrounds */
+[data-bs-theme=dark] #li-assets   > a.nav-link::before { color: #A1887F; } /* brown → light brown */
+[data-bs-theme=dark] #li-tools    > a.nav-link::before { color: #90A4AE; } /* dark gray → slate blue */
+[data-bs-theme=dark] #li-projects > a.nav-link::before { color: #CE93D8; } /* purple → light purple */
+
+/* Section header icons: more visible in dark mode */
+[data-bs-theme=dark] .titlebox-title .left::before {
+    opacity: 0.85;
+}
+
+/* Nav active + hover: use consistent primary */
+[data-bs-theme=dark] #main-navigation .navbar .nav-item > a.nav-link.active {
+    color: var(--bs-primary) !important;
+}
+
+/* Login page: right panel form adjustments in dark mode */
+[data-bs-theme=dark] .rd-login-card .rd-btn-submit {
+    background: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+[data-bs-theme=dark] .rd-login-card .rd-btn-submit:hover {
+    filter: brightness(1.15);
+}
