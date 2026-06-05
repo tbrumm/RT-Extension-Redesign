@@ -115,3 +115,126 @@ table.collection-as-table > tbody > tr:hover td {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--bs-border-color); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--bs-secondary-color); }
+
+
+/* ================================================================
+   Step 3: Ticket List & Ticket Detail
+   ================================================================ */
+
+/* ── Ticket list table header ────────────────────────────────── */
+
+table.ticket-list th.collection-as-table {
+    background-color: var(--bs-tertiary-bg);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+
+/* Filter buttons: only visible on column hover */
+table.ticket-list .search-filter {
+    opacity: 0;
+    transition: opacity 0.15s;
+    padding: 0 0.2rem;
+    background: transparent !important;
+    border: 1px solid var(--bs-border-color) !important;
+    color: var(--bs-secondary-color) !important;
+    box-shadow: none !important;
+}
+
+table.ticket-list th:hover .search-filter {
+    opacity: 1;
+}
+
+/* Row cells: vertically centered, slightly compact */
+table.ticket-list tr.list-item td.collection-as-table {
+    vertical-align: middle;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+/* Cursor on rows */
+table.ticket-list tr.list-item {
+    cursor: pointer;
+}
+
+/* Subject link: primary color, no underline until hover */
+table.ticket-list .value a {
+    font-weight: 500;
+    color: var(--bs-primary);
+    text-decoration: none;
+}
+
+table.ticket-list .value a:hover {
+    text-decoration: underline;
+}
+
+/* ── Priority color coding ───────────────────────────────────── */
+
+.ticket-info-priority-low,
+.Priority.ticket-info-priority-low {
+    color: var(--bs-secondary-color);
+    font-size: 0.85rem;
+}
+
+.ticket-info-priority-medium,
+.Priority.ticket-info-priority-medium {
+    color: #FB8C00;
+    font-weight: 600;
+}
+
+.ticket-info-priority-high,
+.Priority.ticket-info-priority-high {
+    color: #E53935;
+    font-weight: 700;
+}
+
+/* ── Ticket detail: section header icons ─────────────────────── */
+
+.ticket-info-basics    .titlebox-title .left::before,
+.ticket-info-people    .titlebox-title .left::before,
+.ticket-info-dates     .titlebox-title .left::before,
+.ticket-info-links     .titlebox-title .left::before,
+.ticket-info-attachments .titlebox-title .left::before,
+.ticket-info-times     .titlebox-title .left::before,
+.ticket-info-reminders .titlebox-title .left::before,
+.ticket-info-description .titlebox-title .left::before,
+.ticket-info-history   .titlebox-title .left::before,
+.ticket-history        .titlebox-title .left::before,
+.ticket-info-cfs       .titlebox-title .left::before,
+.ticket-info-requestor .titlebox-title .left::before,
+.ticket-assets         .titlebox-title .left::before {
+    font-family: "bootstrap-icons" !important;
+    font-style: normal;
+    font-weight: normal;
+    vertical-align: -0.1em;
+    margin-right: 0.4em;
+    opacity: 0.7;
+}
+
+.ticket-info-basics     .titlebox-title .left::before { content: "\F431"; } /* info-circle */
+.ticket-info-people     .titlebox-title .left::before { content: "\F4CF"; } /* people */
+.ticket-info-dates      .titlebox-title .left::before { content: "\F1F3"; } /* calendar */
+.ticket-info-links      .titlebox-title .left::before { content: "\F470"; } /* link */
+.ticket-info-attachments .titlebox-title .left::before { content: "\F4CD"; } /* paperclip */
+.ticket-info-times      .titlebox-title .left::before { content: "\F293"; } /* clock */
+.ticket-info-reminders  .titlebox-title .left::before { content: "\F18A"; } /* bell */
+.ticket-info-description .titlebox-title .left::before { content: "\F37B"; } /* card-text */
+.ticket-info-history    .titlebox-title .left::before,
+.ticket-history         .titlebox-title .left::before { content: "\F297"; } /* clock-history */
+.ticket-info-cfs        .titlebox-title .left::before { content: "\F227"; } /* sliders */
+.ticket-info-requestor  .titlebox-title .left::before { content: "\F4D8"; } /* person */
+.ticket-assets          .titlebox-title .left::before { content: "\F6E6"; } /* pc-display */
+
+/* ── Ticket detail: field label styling ──────────────────────── */
+
+.rt-label > span.rt-label {
+    font-size: 0.77rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+}
