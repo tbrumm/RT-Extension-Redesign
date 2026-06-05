@@ -238,3 +238,157 @@ table.ticket-list .value a:hover {
     letter-spacing: 0.04em;
     font-weight: 600;
 }
+
+
+/* ================================================================
+   Step 4: Dashboard, Homepage Portlets, Forms, Feedback
+   ================================================================ */
+
+/* ── Homepage portlet icons ──────────────────────────────────── */
+
+/* Shared base for portlet header pseudo-elements */
+.myrt         .titlebox-title .left::before,
+.quick-create .titlebox-title .left::before,
+.ticket-overview .titlebox-title .left::before,
+.reminders    .titlebox-title .left::before {
+    font-family: "bootstrap-icons" !important;
+    font-style: normal;
+    font-weight: normal;
+    vertical-align: -0.1em;
+    margin-right: 0.4em;
+    opacity: 0.7;
+}
+
+.myrt         .titlebox-title .left::before { content: "\F2A0"; } /* list-task */
+.quick-create .titlebox-title .left::before { content: "\F4FE"; } /* plus-circle-fill */
+.ticket-overview .titlebox-title .left::before { content: "\F17B"; } /* bar-chart-fill */
+.reminders    .titlebox-title .left::before { content: "\F18A"; } /* bell */
+
+/* Dashboards portlet: no myrt/quick-create wrapper — target by content
+   The Dashboards box sits directly in .ticket-overview area        */
+.ticket-overview ~ .titlebox .titlebox-title .left::before,
+.ticket-overview + .titlebox .titlebox-title .left::before {
+    font-family: "bootstrap-icons" !important;
+    font-style: normal;
+    font-weight: normal;
+    content: "\F119"; /* grid */
+    vertical-align: -0.1em;
+    margin-right: 0.4em;
+    opacity: 0.7;
+}
+
+/* Homepage: give portlet cards a slightly more prominent top border */
+.myrt .titlebox.card,
+.quick-create .titlebox.card,
+.ticket-overview .titlebox.card {
+    border-top: 2px solid var(--bs-border-color);
+}
+
+/* ── Action results banner (after ticket save/update) ─────────── */
+
+div.results .titlebox.card {
+    border: none !important;
+    border-left: 4px solid #2E7D32 !important;
+    border-radius: 0 var(--rd-radius) var(--rd-radius) 0 !important;
+    background-color: #F1F8E9 !important;
+    box-shadow: none !important;
+}
+
+[data-bs-theme=dark] div.results .titlebox.card {
+    background-color: rgba(46, 125, 50, 0.15) !important;
+}
+
+div.results .titlebox-title {
+    display: none;
+}
+
+div.results .titlebox-content {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+}
+
+div.results .action-results {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0.6em 1em !important;
+}
+
+div.results .action-results li {
+    color: #1B5E20 !important;
+    font-weight: 600;
+    padding: 0.15em 0;
+}
+
+div.results .action-results li::before {
+    font-family: "bootstrap-icons" !important;
+    content: "\F26B"; /* check-circle-fill */
+    color: #2E7D32 !important;
+    margin-right: 0.45em;
+    font-style: normal;
+    vertical-align: -0.1em;
+}
+
+[data-bs-theme=dark] div.results .action-results li {
+    color: #A5D6A7 !important;
+}
+
+/* ── Error messages (after failed actions) ───────────────────── */
+
+div.results .titlebox.card.error {
+    border-left-color: #C62828 !important;
+    background-color: #FFEBEE !important;
+}
+
+[data-bs-theme=dark] div.results .titlebox.card.error {
+    background-color: rgba(198, 40, 40, 0.15) !important;
+}
+
+/* ── User avatars ────────────────────────────────────────────── */
+
+.rt-user-avatar {
+    font-weight: 700 !important;
+    font-size: 0.7rem !important;
+    width: 1.8rem;
+    height: 1.8rem;
+    line-height: 1.8rem !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ── Ticket update/reply form (message box wrapper) ──────────── */
+
+.messagebox {
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--rd-radius);
+    padding: 0.75rem;
+    background-color: var(--bs-body-bg);
+}
+
+/* ── Quick-create form: make queue selector less tall ─────────── */
+
+.quick-create .select-queue {
+    max-width: 280px;
+}
+
+/* ── Form submit button bar: sticky at bottom of create form ─── */
+
+.create-wide,
+.create-medium,
+.create-narrow {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bs-body-bg);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--bs-border-color);
+    margin-bottom: 1rem;
+}
+
+/* ── Quickbar: tighten up user area ──────────────────────────── */
+
+div#quickbar .rt-user-avatar {
+    vertical-align: middle;
+}
