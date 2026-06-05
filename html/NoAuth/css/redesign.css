@@ -61,7 +61,7 @@
     box-shadow: var(--rd-shadow-md);
     border-color: var(--bs-border-color);
     padding: 0.3rem 0;
-    overflow: hidden;
+    /* overflow must stay visible so nested submenus can render outside */
 }
 
 #main-navigation .navbar .dropdown-menu .dropdown-item:hover,
@@ -344,18 +344,13 @@ div.results .titlebox.card.error {
     background-color: rgba(198, 40, 40, 0.15) !important;
 }
 
-/* ── User avatars ────────────────────────────────────────────── */
+/* ── User avatars: only in ticket lists and detail, not quickbar ── */
 
-.rt-user-avatar {
-    font-weight: 700 !important;
-    font-size: 0.7rem !important;
-    width: 1.8rem;
-    height: 1.8rem;
-    line-height: 1.8rem !important;
+.ticket-list .rt-user-avatar,
+.ticket-info-people .rt-user-avatar,
+.ticket-info-requestor .rt-user-avatar {
+    font-weight: 700;
     border-radius: 50% !important;
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
 }
 
 /* ── Ticket update/reply form (message box wrapper) ──────────── */
