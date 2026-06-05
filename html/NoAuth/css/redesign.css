@@ -588,3 +588,124 @@ div.history-container {
 [data-bs-theme=dark] .rd-login-card .rd-btn-submit:hover {
     filter: brightness(1.15);
 }
+
+
+/* ================================================================
+   Step 6: Reply/Comment Form, Alerts, Polish
+   ================================================================ */
+
+/* ── Reply/Respond vs. Comment (private) visual distinction ──── */
+
+/* Reply to requestor: blue left border */
+.messagebox-container.action-response {
+    border-left: 3px solid var(--bs-primary);
+    padding-left: 0.6rem;
+    margin-top: 0.5rem;
+}
+
+/* Internal comment: amber left border */
+.messagebox-container.action-private {
+    border-left: 3px solid #FB8C00;
+    padding-left: 0.6rem;
+    margin-top: 0.5rem;
+}
+
+/* Dark mode: replace the hard-coded light colours in ticket-form.css */
+[data-bs-theme=dark] .messagebox-container.action-response textarea.messagebox {
+    background-color: rgba(84, 124, 204, 0.08) !important;
+}
+
+[data-bs-theme=dark] .messagebox-container.action-private textarea.messagebox {
+    background-color: rgba(251, 140, 0, 0.08) !important;
+}
+
+/* ── Alert / notification banners ────────────────────────────── */
+
+.alert {
+    border-radius: var(--rd-radius);
+}
+
+.alert-warning {
+    border-left: 4px solid #FB8C00;
+}
+
+.alert-danger {
+    border-left: 4px solid #E53935;
+}
+
+.alert-info {
+    border-left: 4px solid var(--bs-primary);
+}
+
+.alert-success {
+    border-left: 4px solid #2E7D32;
+}
+
+/* ── System warnings banner ──────────────────────────────────── */
+
+.system-warnings .alert {
+    margin-bottom: 0.75rem;
+}
+
+/* ── Attachment upload area ──────────────────────────────────── */
+
+.dropzone {
+    border-radius: var(--rd-radius) !important;
+    border-color: var(--bs-border-color) !important;
+}
+
+/* ── Inline edit icons: only visible on row hover ────────────── */
+
+.collection-as-table .edit-icon {
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+.collection-as-table td:hover .edit-icon {
+    opacity: 0.6;
+}
+
+/* ── Subject field in header: slightly larger ────────────────── */
+
+div#header h1 {
+    font-size: 1.25em;
+}
+
+/* ── More about requestor panel ──────────────────────────────── */
+
+.ticket-info-requestor .titlebox.card {
+    border-left: 3px solid var(--bs-secondary-color);
+}
+
+/* ── Dependency status: keep readable in dark mode ───────────── */
+
+[data-bs-theme=dark] .dependency-status {
+    color: var(--bs-body-color) !important;
+}
+
+/* ── Ticket inactive (deleted/rejected): keep strikethrough ─── */
+
+.ticket-inactive a {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* ── SelfService table: same clean look as main portal ───────── */
+
+#comp-SelfService table.collection-as-table th {
+    background-color: var(--bs-tertiary-bg);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+#comp-SelfService .titlebox-title .left::before {
+    font-family: "bootstrap-icons" !important;
+    font-style: normal;
+    font-weight: normal;
+    content: "\F52A"; /* search */
+    vertical-align: -0.1em;
+    margin-right: 0.4em;
+    opacity: 0.7;
+}
