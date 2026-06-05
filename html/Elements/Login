@@ -1,0 +1,249 @@
+% $m->callback( %ARGS, CallbackName => 'Header' );
+<& /Elements/Header, Title => loc('Login'), ShowBar => 0, ShowTitle => 0, RichText => 0 &>
+
+<style>
+/* ── RT-Extension-Redesign: Login ─────────────────────────── */
+
+/* Reset body padding injected by layout.css */
+#body.login-body {
+    padding: 0;
+}
+
+/* Hide the hr.clear that Footer outputs before closing #body */
+#body.login-body > hr.clear {
+    display: none;
+}
+
+.rd-login-outer {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ── Brand panel (left) ─────────────────────────── */
+
+.rd-login-brand {
+    flex: 0 0 42%;
+    background: linear-gradient(150deg, #1B2C5B 0%, #2D4A8F 55%, #1e3875 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.rd-login-brand::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+}
+
+.rd-login-brand::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+}
+
+.rd-brand-monogram {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #fff;
+    background: rgba(255,255,255,0.12);
+    width: 80px;
+    height: 80px;
+    border-radius: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.04em;
+    border: 1px solid rgba(255,255,255,0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.rd-brand-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 1;
+}
+
+.rd-brand-instance {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    margin-bottom: 0.8rem;
+    position: relative;
+    z-index: 1;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.rd-brand-sub {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.65);
+    text-align: center;
+    max-width: 260px;
+    line-height: 1.6;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Form panel (right) ─────────────────────────── */
+
+.rd-login-form {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bs-body-bg);
+    padding: 2rem;
+}
+
+.rd-login-card {
+    width: 100%;
+    max-width: 400px;
+}
+
+.rd-login-card h2.rd-form-title {
+    font-size: 1.55rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: var(--bs-body-color);
+    letter-spacing: -0.02em;
+}
+
+.rd-login-card p.rd-form-sub {
+    font-size: 0.88rem;
+    color: var(--bs-secondary-color, #6c757d);
+    margin-bottom: 1.8rem;
+}
+
+/* Hide the TitleBox decoration from ListActions error box */
+.rd-login-card .titlebox-title {
+    display: none;
+}
+.rd-login-card .titlebox.error .titlebox-title {
+    display: block;
+}
+
+/* Submit button */
+.rd-login-card .rd-btn-submit {
+    width: 100%;
+    padding: 0.65rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    background: #2D4A8F;
+    border-color: #2D4A8F;
+    color: #fff;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.rd-login-card .rd-btn-submit:hover {
+    background: #1B2C5B;
+    border-color: #1B2C5B;
+    box-shadow: 0 4px 12px rgba(45,74,143,0.35);
+}
+
+/* ── Mobile: hide brand panel ───────────────────── */
+
+@media (max-width: 680px) {
+    .rd-login-brand { display: none; }
+    .rd-login-outer { min-height: 100vh; }
+    .rd-login-form  { padding: 1.5rem 1rem; align-items: flex-start; padding-top: 3rem; }
+}
+</style>
+
+<div id="body" class="login-body">
+<div class="rd-login-outer">
+
+  <div class="rd-login-brand">
+    <div class="rd-brand-monogram">RT</div>
+    <h1 class="rd-brand-title">Request Tracker</h1>
+    <p class="rd-brand-instance"><% RT->Config->Get('rtname') %></p>
+    <p class="rd-brand-sub">Support-Anfragen organisiert verwalten und effizient bearbeiten.</p>
+  </div>
+
+  <div class="rd-login-form">
+    <div class="rd-login-card">
+
+      <h2 class="rd-form-title"><% loc('Sign in') %></h2>
+      <p class="rd-form-sub"><% loc('Please enter your credentials to continue.') %></p>
+
+      <& /Elements/ListActions,
+          title    => loc('Error'),
+          titlebox => { class => 'error', hideable => 0 },
+          actions  => $actions
+      &>
+
+      <& LoginRedirectWarning, %ARGS &>
+
+% $m->callback( %ARGS, CallbackName => 'BeforeForm' );
+
+% unless (RT->Config->Get('WebRemoteUserAuth') and !RT->Config->Get('WebFallbackToRTLogin')) {
+<form hx-boost="false" id="login" name="login" method="post" action="<% RT->Config->Get('WebPath') %>/NoAuth/Login.html">
+
+  <&| /Elements/LabeledValue, Label => loc("Username"), LabelFor => 'user', ReadOnly => 0 &>
+    <input class="form-control" type="text" name="user" value="<%$user%>" id="user" autocapitalize="off" />
+  </&>
+
+  <&| /Elements/LabeledValue, Label => loc("Password"), LabelFor => 'password', ReadOnly => 0 &>
+    <input class="form-control" type="password" name="pass" id="password" />
+  </&>
+
+  <input type="hidden" name="next" value="<% $next %>" />
+
+  <script type="text/javascript">
+  jQuery(function(){
+      if (window.location.hash) {
+          var form = jQuery("form[name=login]");
+          form.attr('action', form.attr('action') + '#' + window.location.hash.replace(/^#/, ''));
+      }
+  });
+  </script>
+
+  <div class="row mt-3">
+    <div class="col-12">
+      <input type="submit" class="btn rd-btn-submit" value="<&|/l&>Login</&>" />
+    </div>
+  </div>
+
+% $m->callback( %ARGS );
+</form>
+% }
+
+      <& /Elements/LoginHelp &>
+
+    </div>
+  </div>
+
+</div>
+</div>
+
+% $m->callback( %ARGS, CallbackName => 'AfterForm' );
+<& /Elements/Footer, Menu => 0 &>
+
+<%ARGS>
+$next    => ''
+$user    => ""
+$actions => undef
+</%ARGS>

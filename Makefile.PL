@@ -1,0 +1,10 @@
+use inc::Module::Install;
+RTx('RT-Extension-Redesign');
+license('gpl_2');
+author('Torsten Brumm');
+version_from('lib/RT/Extension/Redesign.pm');
+requires_rt('6.0.2');
+rt_too_new('7.0.0');
+auto_manifest();
+sign(0);
+WriteAll();
