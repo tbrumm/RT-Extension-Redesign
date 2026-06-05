@@ -389,3 +389,166 @@ form#CreateTicketInQueue .create-wide {
 div#quickbar .rt-user-avatar {
     vertical-align: middle;
 }
+
+
+/* ================================================================
+   Step 5: History, Pagination, Search Builder
+   ================================================================ */
+
+/* ── Ticket history container ────────────────────────────────── */
+
+div.history-container {
+    border-color: var(--bs-border-color) !important;
+    border-radius: 0 0 var(--rd-radius) var(--rd-radius);
+    overflow: hidden;
+}
+
+/* ── Individual transaction entries ──────────────────────────── */
+
+.history .transaction {
+    border-top-color: var(--bs-border-color) !important;
+}
+
+/* Metadata bar base */
+.history .transaction .metadata {
+    padding: 0.35rem 0.8rem;
+    background-color: var(--bs-tertiary-bg);
+}
+
+.history .transaction .metadata .date {
+    font-size: 0.78rem;
+    color: var(--bs-secondary-color);
+}
+
+.history .transaction .metadata .description {
+    font-weight: 500;
+    font-size: 0.88rem;
+}
+
+.history .transaction .metadata .time-taken {
+    font-size: 0.78rem;
+    color: var(--bs-secondary-color);
+}
+
+/* Actions: icon area top-right */
+.history .transaction .metadata .actions {
+    border-color: var(--bs-border-color) !important;
+}
+
+/* ── Message transactions (correspondence, comments) ─────────── */
+
+.history .transaction.message {
+    border-left: 3px solid var(--bs-primary) !important;
+}
+
+.history .transaction.message .metadata {
+    background-color: var(--bs-secondary-bg);
+    font-weight: 600;
+}
+
+/* ── Basic transactions (field changes, status updates) ──────── */
+
+.history .transaction.basics .metadata {
+    padding: 0.22rem 0.8rem;
+    background-color: transparent;
+}
+
+.history .transaction.basics .metadata .description {
+    font-weight: 400;
+    font-size: 0.83rem;
+    color: var(--bs-secondary-color);
+}
+
+/* ── Other transactions (outgoing mail, system) ──────────────── */
+
+.history .transaction.other .metadata {
+    background-color: transparent;
+}
+
+.history .transaction.other .metadata .description {
+    font-size: 0.83rem;
+    color: var(--bs-secondary-color);
+}
+
+/* ── Message body ────────────────────────────────────────────── */
+
+.history .transaction .messagebody {
+    border-top-color: var(--bs-border-color) !important;
+    padding: 0.75rem 1rem 0.75rem 1.5rem;
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+/* Email headers table inside message */
+.history .transaction .content table {
+    font-size: 0.78rem;
+    width: auto;
+    margin-bottom: 0.25rem;
+}
+
+.history .transaction .content .message-header-key {
+    color: var(--bs-secondary-color);
+    font-weight: 600;
+    padding-right: 0.6rem;
+    white-space: nowrap;
+}
+
+/* Download attachment link */
+.history .transaction .downloadattachment {
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+}
+
+/* ── Reply/Comment/Forward action links ──────────────────────── */
+
+.reply-link, .comment-link, .forward-link {
+    font-size: 0.8rem;
+}
+
+
+/* ── Pagination ──────────────────────────────────────────────── */
+
+.pagination {
+    gap: 0.15rem;
+    flex-wrap: wrap;
+}
+
+.pagination .page-link {
+    border-radius: var(--rd-radius) !important;
+    border-color: var(--bs-border-color);
+    min-width: 2rem;
+    text-align: center;
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    font-weight: 600;
+}
+
+.pagination .page-item.disabled .page-link {
+    opacity: 0.4;
+}
+
+.pagination .page-link:hover:not(.active) {
+    background-color: var(--bs-secondary-bg);
+}
+
+
+/* ── Search Builder section icons ────────────────────────────── */
+
+/* Shared base for search builder pseudo-elements */
+#sorting .titlebox-title .left::before,
+#columns .titlebox-title .left::before {
+    font-family: "bootstrap-icons" !important;
+    font-style: normal;
+    font-weight: normal;
+    vertical-align: -0.1em;
+    margin-right: 0.4em;
+    opacity: 0.7;
+}
+
+#sorting .titlebox-title .left::before { content: "\F5DC"; } /* sort-alpha-down */
+#columns .titlebox-title .left::before { content: "\F58C"; } /* layout-three-columns */
