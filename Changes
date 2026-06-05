@@ -1,3 +1,10 @@
+0.02 2026-06-05
+  - Modern page templates: Admin portal, Tools, Reports, Search Simple
+  - Component CSS system: .sc, .ic, .mc, .rrt-*, .ss-* classes
+  - Counter animation JS for stat cards
+  - Version bump to bust browser CSS cache
+
 0.01 2026-06-05
   - Initial release
   - Redesigned login page with split-panel layout
+  - Global CSS: Navigation icons, TitleBox, Tables, History, Pagination
