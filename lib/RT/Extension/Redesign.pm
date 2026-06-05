@@ -5,8 +5,6 @@ our $VERSION = '0.01';
 use strict;
 use warnings;
 
-RT->AddStyleSheets('redesign.css');
-
 1;
 
 =head1 NAME
