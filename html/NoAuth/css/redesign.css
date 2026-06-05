@@ -31,14 +31,14 @@
     opacity: 0.75;
 }
 
-#li-home     > a.nav-link::before { content: "\F425"; }
-#li-search   > a.nav-link::before { content: "\F52A"; }
-#li-reports  > a.nav-link::before { content: "\F17B"; }
-#li-articles > a.nav-link::before { content: "\F4A3"; }
-#li-assets   > a.nav-link::before { content: "\F6E6"; }
-#li-projects > a.nav-link::before { content: "\F44C"; }
-#li-tools    > a.nav-link::before { content: "\F5DB"; }
-#li-admin    > a.nav-link::before { content: "\F3E3"; }
+#li-home     > a.nav-link::before { content: "\F425"; color: #2196F3; } /* house-fill */
+#li-search   > a.nav-link::before { content: "\F52A"; color: #00ACC1; } /* search */
+#li-reports  > a.nav-link::before { content: "\F17B"; color: #43A047; } /* bar-chart-fill */
+#li-articles > a.nav-link::before { content: "\F4A3"; color: #FB8C00; } /* file-text */
+#li-assets   > a.nav-link::before { content: "\F6E6"; color: #6D4C41; } /* pc-display */
+#li-projects > a.nav-link::before { content: "\F44C"; color: #8E24AA; } /* kanban-fill */
+#li-tools    > a.nav-link::before { content: "\F5DB"; color: #546E7A; } /* tools */
+#li-admin    > a.nav-link::before { content: "\F3E3"; color: #E53935; } /* gear-fill */
 
 /* Active: primary color text only, RT already sets font-weight:bold */
 #main-navigation .navbar .nav-item > a.nav-link.active {
