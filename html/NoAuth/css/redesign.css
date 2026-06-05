@@ -1,26 +1,19 @@
 /* ================================================================
    RT-Extension-Redesign — Global Styles
-   Step 2: Navigation, Header, Cards, Tables
    ================================================================ */
 
-/* 0. Design tokens ──────────────────────────────────────────── */
+/* 0. Shared values (no custom color palette — use BS vars) ──── */
 
 :root {
-    --rd-blue:        #2D4A8F;
-    --rd-blue-dark:   #1B2C5B;
-    --rd-blue-mid:    #3D5FA8;
-    --rd-blue-lt:     #547CCC;
-    --rd-blue-pale:   rgba(45, 74, 143, 0.07);
-    --rd-blue-pale-d: rgba(91, 142, 230, 0.12);
-    --rd-shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.08);
-    --rd-shadow-md:   0 4px 18px rgba(0, 0, 0, 0.11);
-    --rd-radius:      0.5rem;
+    --rd-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --rd-shadow-md: 0 4px 18px rgba(0, 0, 0, 0.11);
+    --rd-radius:    0.5rem;
 }
 
 
 /* 1. Navigation ─────────────────────────────────────────────── */
 
-/* Nav icons using Bootstrap Icons */
+/* Icons — neutral, inherit link color */
 #li-home     > a.nav-link::before,
 #li-search   > a.nav-link::before,
 #li-reports  > a.nav-link::before,
@@ -36,41 +29,36 @@
     line-height: 1;
     vertical-align: -0.12em;
     margin-right: 0.3em;
+    opacity: 0.75;
 }
 
-#li-home     > a.nav-link::before { content: "\F425"; color: #2196F3; } /* house-fill */
-#li-search   > a.nav-link::before { content: "\F52A"; color: #00ACC1; } /* search */
-#li-reports  > a.nav-link::before { content: "\F17B"; color: #43A047; } /* bar-chart-fill */
-#li-articles > a.nav-link::before { content: "\F4A3"; color: #FB8C00; } /* file-text */
-#li-assets   > a.nav-link::before { content: "\F6E6"; color: #6D4C41; } /* pc-display */
-#li-projects > a.nav-link::before { content: "\F44C"; color: #8E24AA; } /* kanban-fill */
-#li-tools    > a.nav-link::before { content: "\F5DB"; color: #546E7A; } /* tools */
-#li-admin    > a.nav-link::before { content: "\F3E3"; color: #E53935; } /* gear-fill */
+#li-home     > a.nav-link::before { content: "\F425"; } /* house-fill */
+#li-search   > a.nav-link::before { content: "\F52A"; } /* search */
+#li-reports  > a.nav-link::before { content: "\F17B"; } /* bar-chart-fill */
+#li-articles > a.nav-link::before { content: "\F4A3"; } /* file-text */
+#li-assets   > a.nav-link::before { content: "\F6E6"; } /* pc-display */
+#li-projects > a.nav-link::before { content: "\F44C"; } /* kanban-fill */
+#li-tools    > a.nav-link::before { content: "\F5DB"; } /* tools */
+#li-admin    > a.nav-link::before { content: "\F3E3"; } /* gear-fill */
 
-/* Active state: solid pill */
+/* Active: RT already sets font-weight:bold — just add a subtle
+   bottom-border indicator using the theme's own primary color    */
 #main-navigation .navbar .nav-item > a.nav-link.active {
-    background-color: var(--rd-blue) !important;
-    color: #fff !important;
-    border-radius: var(--rd-radius);
+    color: var(--bs-primary) !important;
+    border-bottom: 2px solid var(--bs-primary);
+    padding-bottom: calc(0.4rem - 2px);
+    border-radius: 0;
 }
 
+/* Icon on active item: full opacity, inherit primary color */
 #main-navigation .navbar .nav-item > a.nav-link.active::before {
-    color: rgba(255, 255, 255, 0.85) !important;
+    opacity: 1;
 }
 
-/* Hover state: subtle background */
+/* Hover: very light background using Bootstrap's secondary-bg */
 #main-navigation .navbar .nav-item > a.nav-link:not(.active):hover {
-    background-color: var(--rd-blue-pale);
-    border-radius: var(--rd-radius);
-}
-
-/* Dark mode adjustments */
-[data-bs-theme=dark] #main-navigation .navbar .nav-item > a.nav-link.active {
-    background-color: var(--rd-blue-mid) !important;
-}
-
-[data-bs-theme=dark] #main-navigation .navbar .nav-item > a.nav-link:not(.active):hover {
-    background-color: var(--rd-blue-pale-d);
+    background-color: var(--bs-secondary-bg);
+    border-radius: 0.35rem;
 }
 
 /* Dropdown panels */
@@ -84,30 +72,15 @@
 
 #main-navigation .navbar .dropdown-menu .dropdown-item:hover,
 #main-navigation .navbar .dropdown-menu .dropdown-item:focus {
-    background-color: var(--rd-blue-pale);
-}
-
-[data-bs-theme=dark] #main-navigation .navbar .dropdown-menu .dropdown-item:hover,
-[data-bs-theme=dark] #main-navigation .navbar .dropdown-menu .dropdown-item:focus {
-    background-color: var(--rd-blue-pale-d);
+    background-color: var(--bs-secondary-bg);
 }
 
 
 /* 2. Header area ────────────────────────────────────────────── */
 
-/* Accent line under page title matches our blue */
-div#header {
-    border-bottom-color: var(--rd-blue) !important;
-}
-
 div#header h1 {
     font-weight: 600;
     letter-spacing: -0.01em;
-}
-
-/* Quickbar: user/search top-right strip */
-div#quickbar {
-    border-bottom-color: var(--bs-border-color);
 }
 
 
@@ -120,97 +93,41 @@ div#quickbar {
 
 .titlebox-title {
     border-radius: var(--rd-radius) var(--rd-radius) 0 0;
-    font-weight: 600;
 }
 
-/* Left-aligned title text: slightly bolder */
 .titlebox-title .left {
     font-weight: 600;
-}
-
-/* Slight accent on left border for prominent cards */
-.ticket-info-basics,
-.ticket-info-people,
-.ticket-info-dates {
-    border-left: 3px solid var(--rd-blue) !important;
-    border-radius: 0 var(--rd-radius) var(--rd-radius) 0 !important;
 }
 
 
 /* 4. Ticket tables ──────────────────────────────────────────── */
 
 table.collection-as-table > tbody > tr:hover td {
-    background-color: rgba(45, 74, 143, 0.05) !important;
+    background-color: var(--bs-secondary-bg) !important;
     transition: background-color 0.1s ease;
 }
 
-[data-bs-theme=dark] table.collection-as-table > tbody > tr:hover td {
-    background-color: rgba(91, 142, 230, 0.08) !important;
-}
 
-/* Subtle left color bar by ticket status */
-table.collection-as-table > tbody > tr[class*="new"] td:first-child {
-    border-left: 3px solid #2196F3;
-}
-table.collection-as-table > tbody > tr[class*="open"] td:first-child {
-    border-left: 3px solid #43A047;
-}
-table.collection-as-table > tbody > tr[class*="stalled"] td:first-child {
-    border-left: 3px solid #FB8C00;
-}
-table.collection-as-table > tbody > tr[class*="resolved"] td:first-child,
-table.collection-as-table > tbody > tr[class*="rejected"] td:first-child {
-    border-left: 3px solid #9ca3af;
+/* 5. Buttons — keep Bootstrap primary, just align border-radius  */
+
+.btn {
+    border-radius: 0.4rem;
 }
 
 
-/* 5. Buttons ────────────────────────────────────────────────── */
+/* 6. Scrollbar (Webkit) ─────────────────────────────────────── */
 
-.btn-primary {
-    --bs-btn-bg:           var(--rd-blue);
-    --bs-btn-border-color: var(--rd-blue);
-    --bs-btn-hover-bg:     var(--rd-blue-dark);
-    --bs-btn-hover-border-color: var(--rd-blue-dark);
-    --bs-btn-active-bg:    var(--rd-blue-dark);
-    --bs-btn-focus-shadow-rgb: 45, 74, 143;
-}
-
-
-/* 6. Footer ─────────────────────────────────────────────────── */
-
-[data-bs-theme=light] div#footer {
-    background-color: #1e2d4a;
-}
-
-[data-bs-theme=light] div#footer p,
-[data-bs-theme=light] div#footer a {
-    color: rgba(255, 255, 255, 0.7) !important;
-}
-
-
-/* 7. Search results page — status badges ────────────────────── */
-
-/* If RT renders status as text in a cell, add a subtle badge-like style */
-.ticket-status-new     { color: #2196F3; font-weight: 600; }
-.ticket-status-open    { color: #43A047; font-weight: 600; }
-.ticket-status-stalled { color: #FB8C00; font-weight: 600; }
-.ticket-status-resolved,
-.ticket-status-rejected { color: #9ca3af; font-weight: 500; }
-
-
-/* 8. Scrollbar (Webkit) — subtle styling ────────────────────── */
-
-[data-bs-theme=light] ::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 6px;
     height: 6px;
 }
-[data-bs-theme=light] ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: transparent;
 }
-[data-bs-theme=light] ::-webkit-scrollbar-thumb {
-    background: rgba(45, 74, 143, 0.25);
+::-webkit-scrollbar-thumb {
+    background: var(--bs-border-color);
     border-radius: 3px;
 }
-[data-bs-theme=light] ::-webkit-scrollbar-thumb:hover {
-    background: rgba(45, 74, 143, 0.45);
+::-webkit-scrollbar-thumb:hover {
+    background: var(--bs-secondary-color);
 }
