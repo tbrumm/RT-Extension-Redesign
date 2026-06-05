@@ -1,0 +1,266 @@
+<%once>
+# Per-process cache - survives across requests in the same fcgid worker.
+# Avoids running 6 queries on every admin page load; stale after 10 min.
+my (%_stats, $_stats_expires);
+my $_CACHE_TTL = 600;
+</%once>
+<%init>
+my (
+    $queues_total, $queues_active,
+    $cfs_total,    $cfs_active,
+    $groups_count,
+    $users_privileged, $users_unprivileged, $users_disabled,
+    $tickets_new, $tickets_active, $tickets_resolved, $tickets_deleted,
+    $tickets_total, $users_total,
+);
+
+if ($_stats_expires && time() < $_stats_expires) {
+    # Cache hit
+    ($queues_total, $queues_active)       = @_stats{qw(qt qa)};
+    ($cfs_total,    $cfs_active)          = @_stats{qw(ct ca)};
+    $groups_count                         =  $_stats{g};
+    ($users_privileged, $users_unprivileged, $users_disabled)
+                                          = @_stats{qw(up uu ud)};
+    ($tickets_new, $tickets_active, $tickets_resolved, $tickets_deleted)
+                                          = @_stats{qw(tn ta tr td)};
+} else {
+    # Cache miss - run 6 consolidated queries
+    my $dbh = $RT::Handle->dbh;
+
+    # Queues: one pass, split by Disabled flag
+    my $q_rows = $dbh->selectall_arrayref(
+        "SELECT Disabled, COUNT(*) FROM Queues WHERE id > 0 GROUP BY Disabled"
+    );
+    my %qd; $qd{$_->[0]} = $_->[1] for @$q_rows;
+    $queues_active = $qd{0} // 0;
+    $queues_total  = ($qd{0} // 0) + ($qd{1} // 0);
+
+    # Custom Fields: one pass, split by Disabled flag
+    my $cf_rows = $dbh->selectall_arrayref(
+        "SELECT Disabled, COUNT(*) FROM CustomFields GROUP BY Disabled"
+    );
+    my %cfd; $cfd{$_->[0]} = $_->[1] for @$cf_rows;
+    $cfs_active = $cfd{0} // 0;
+    $cfs_total  = ($cfd{0} // 0) + ($cfd{1} // 0);
+
+    # Groups
+    ($groups_count) = $dbh->selectrow_array(
+        "SELECT COUNT(*) FROM Groups WHERE Domain = 'UserDefined'"
+    );
+
+    # Users priv + unpriv in one JOIN query, split by group id
+    my $u_rows = $dbh->selectall_arrayref(
+        "SELECT cgm.ImmediateParentId, COUNT(DISTINCT u.id)
+         FROM Users u
+         JOIN CachedGroupMembers cgm ON cgm.MemberId = u.id
+         JOIN Principals p ON p.id = u.id
+         WHERE cgm.ImmediateParentId IN (4, 5) AND p.Disabled = 0 AND u.id > 2
+         GROUP BY cgm.ImmediateParentId"
+    );
+    my %ug; $ug{$_->[0]} = $_->[1] for @$u_rows;
+    $users_privileged   = $ug{4} // 0;
+    $users_unprivileged = $ug{5} // 0;
+
+    # Disabled users
+    ($users_disabled) = $dbh->selectrow_array(
+        "SELECT COUNT(*) FROM Principals
+         WHERE Disabled = 1 AND PrincipalType = 'User' AND id > 2"
+    );
+
+    # Tickets by status
+    my $t_rows = $dbh->selectall_arrayref(
+        "SELECT Status, COUNT(*) FROM Tickets WHERE id > 0 GROUP BY Status"
+    );
+    my %by_status; $by_status{$_->[0]} = $_->[1] for @$t_rows;
+
+    my @done = qw(resolved rejected done ClosedByHousekeeping on_hold cancelled);
+    $tickets_new     = $by_status{new}     // 0;
+    $tickets_deleted = $by_status{deleted} // 0;
+    $tickets_resolved = 0;
+    $tickets_resolved += ($by_status{$_} // 0) for @done;
+    $tickets_active = 0;
+    for my $s (keys %by_status) {
+        next if $s eq 'new' || $s eq 'deleted' || grep { $_ eq $s } @done;
+        $tickets_active += $by_status{$s};
+    }
+
+    # Populate cache
+    %_stats = (
+        qt => $queues_total,      qa => $queues_active,
+        ct => $cfs_total,         ca => $cfs_active,
+        g  => $groups_count,
+        up => $users_privileged,  uu => $users_unprivileged, ud => $users_disabled,
+        tn => $tickets_new,       ta => $tickets_active,
+        tr => $tickets_resolved,  td => $tickets_deleted,
+    );
+    $_stats_expires = time() + $_CACHE_TTL;
+}
+
+$tickets_total = $tickets_new + $tickets_active + $tickets_resolved + $tickets_deleted;
+$users_total   = $users_privileged + $users_unprivileged;
+
+my %icon_map = (
+    'Users'        => ['people-fill',                '#2563eb'],
+    'Groups'       => ['diagram-3-fill',             '#7c3aed'],
+    'Queues'       => ['collection-fill',            '#0891b2'],
+    'CustomFields' => ['ui-checks-grid',             '#ea580c'],
+    'CustomRoles'  => ['person-badge-fill',          '#9333ea'],
+    'Scrips'       => ['lightning-charge-fill',      '#d97706'],
+    'Lifecycles'   => ['arrow-repeat',               '#059669'],
+    'PageLayouts'  => ['layout-text-window-sidebar', '#64748b'],
+    'Global'       => ['sliders',                    '#dc2626'],
+    'Articles'     => ['journal-richtext',           '#2563eb'],
+    'Asset'        => ['box-seam-fill',              '#16a34a'],
+    'Tools'        => ['tools',                      '#475569'],
+    'FormTools'    => ['file-earmark-text-fill',     '#0891b2'],
+    'Portfolios'   => ['briefcase-fill',             '#7c3aed'],
+);
+
+my $icon_for = sub {
+    my $path = shift // '';
+    for my $k (sort { length($b) <=> length($a) } keys %icon_map) {
+        return $icon_map{$k} if $path =~ /\b\Q$k\E\b/i;
+    }
+    return ['grid-fill', '#64748b'];
+};
+</%init>
+<& /Admin/Elements/Header, Title => loc('RT Administration'), BuildMainMenu => 1 &>
+<& /Elements/Tabs &>
+<%perl>
+my @menu_items = grep { defined $_->path && $_->path ne '' }
+                 Menu()->child('admin')->children;
+</%perl>
+<div class="rt-admin-db">
+
+  <!-- Ticket stats -->
+  <div class="row g-2 mb-3">
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--total">
+        <i class="bi bi-ticket-perforated-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $tickets_total %>">0</div>
+        <div class="sc__lbl"><% loc('Tickets total') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--new">
+        <i class="bi bi-inbox-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $tickets_new %>">0</div>
+        <div class="sc__lbl"><% loc('New') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--active">
+        <i class="bi bi-arrow-right-circle-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $tickets_active %>">0</div>
+        <div class="sc__lbl"><% loc('Active') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--resolved">
+        <i class="bi bi-check-circle-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $tickets_resolved %>">0</div>
+        <div class="sc__lbl"><% loc('Resolved') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--deleted">
+        <i class="bi bi-trash3-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $tickets_deleted %>">0</div>
+        <div class="sc__lbl"><% loc('Deleted') %></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Info cards -->
+  <div class="row g-2 mb-4">
+
+    <div class="col-md-6">
+      <div class="ic">
+        <div class="ic__hd"><i class="bi bi-people-fill me-2"></i><% loc('Users') %></div>
+        <div class="ic__bd">
+          <div class="ir">
+            <span class="ir__lbl"><% loc('Privileged') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--a" style="width:<% $users_total > 0 ? int(100*$users_privileged/$users_total) : 0 %>%"></span></span>
+            <span class="ir__val ir__val--a" data-counter="<% $users_privileged %>">0</span>
+          </div>
+          <div class="ir">
+            <span class="ir__lbl"><% loc('Unprivileged') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--b" style="width:<% $users_total > 0 ? int(100*$users_unprivileged/$users_total) : 0 %>%"></span></span>
+            <span class="ir__val" data-counter="<% $users_unprivileged %>">0</span>
+          </div>
+          <div class="ir">
+            <span class="ir__lbl ir__lbl--dim"><% loc('Disabled') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--c" style="width:<% ($users_total+$users_disabled) > 0 ? int(100*$users_disabled/($users_total+$users_disabled)) : 0 %>%"></span></span>
+            <span class="ir__val ir__val--dim" data-counter="<% $users_disabled %>">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="ic">
+        <div class="ic__hd"><i class="bi bi-gear-fill me-2"></i><% loc('Configuration') %></div>
+        <div class="ic__bd">
+          <div class="ir">
+            <span class="ir__lbl"><% loc('Queues') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--a" style="width:<% $queues_total > 0 ? int(100*$queues_active/$queues_total) : 0 %>%"></span></span>
+            <span class="ir__val ir__val--a" data-counter="<% $queues_active %>">0</span>
+            <span class="ir__tot">/ <% $queues_total %></span>
+          </div>
+          <div class="ir">
+            <span class="ir__lbl"><% loc('Custom Fields') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--a" style="width:<% $cfs_total > 0 ? int(100*$cfs_active/$cfs_total) : 0 %>%"></span></span>
+            <span class="ir__val ir__val--a" data-counter="<% $cfs_active %>">0</span>
+            <span class="ir__tot">/ <% $cfs_total %></span>
+          </div>
+          <div class="ir">
+            <span class="ir__lbl"><% loc('Groups') %></span>
+            <span class="ir__bar"></span>
+            <span class="ir__val ir__val--a" data-counter="<% $groups_count %>">0</span>
+            <span class="ir__tot">&nbsp;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Admin menu -->
+  <div class="row g-2">
+% for my $item (@menu_items) {
+%   my $inf   = $icon_for->($item->path);
+%   my $icon  = $inf->[0];
+%   my $color = $inf->[1];
+    <div class="col-6 col-md-4 col-lg-3">
+      <a href="<% $item->path %>" class="mc">
+        <span class="mc__icon" style="background:<% $color %>18;color:<% $color %>">
+          <i class="bi bi-<% $icon %>"></i>
+        </span>
+        <span class="mc__bd">
+          <span class="mc__title"><% $item->title || '' %></span>
+          <span class="mc__desc"><% $item->description || '' %></span>
+        </span>
+      </a>
+    </div>
+% }
+  </div>
+
+</div>
+
+<style>
+.sc--total    { background: linear-gradient(135deg,#1e40af,#3b82f6); }
+.sc--new      { background: linear-gradient(135deg,#92400e,#f59e0b); }
+.sc--active   { background: linear-gradient(135deg,#155e75,#22d3ee); }
+.sc--resolved { background: linear-gradient(135deg,#14532d,#22c55e); }
+.sc--deleted  { background: linear-gradient(135deg,#374151,#9ca3af); }
+</style>
+
+<& /Redesign/JS &>
+
+% $m->callback( CallbackName => 'AfterRTPortal', ARGSRef => \%ARGS );

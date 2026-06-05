@@ -1,0 +1,221 @@
+<%once>
+my (%_gstats, $_gstats_expires);
+my $_GCACHE_TTL = 600;
+</%once>
+<%init>
+my (
+    $scrips_total, $scrips_global, $scrips_queue, $scrips_disabled,
+    $templates_total, $templates_global, $templates_queue,
+    $conditions_total, $actions_total,
+);
+
+if ($_gstats_expires && time() < $_gstats_expires) {
+    ($scrips_total, $scrips_global, $scrips_queue, $scrips_disabled)
+        = @_gstats{qw(st sg sq sd)};
+    ($templates_total, $templates_global, $templates_queue)
+        = @_gstats{qw(tt tg tq)};
+    ($conditions_total, $actions_total)
+        = @_gstats{qw(ct at)};
+} else {
+    my $dbh = $RT::Handle->dbh;
+
+    ($scrips_total)    = $dbh->selectrow_array("SELECT COUNT(*) FROM Scrips");
+    ($scrips_disabled) = $dbh->selectrow_array("SELECT COUNT(*) FROM Scrips WHERE Disabled = 1");
+    ($scrips_global)   = $dbh->selectrow_array(
+        "SELECT COUNT(DISTINCT Scrip) FROM ObjectScrips WHERE ObjectId = 0"
+    );
+    $scrips_queue = $scrips_total - $scrips_global;
+
+    ($templates_total)  = $dbh->selectrow_array("SELECT COUNT(*) FROM Templates");
+    ($templates_global) = $dbh->selectrow_array("SELECT COUNT(*) FROM Templates WHERE ObjectID = 0");
+    $templates_queue    = $templates_total - $templates_global;
+
+    ($conditions_total) = $dbh->selectrow_array("SELECT COUNT(*) FROM ScripConditions");
+    ($actions_total)    = $dbh->selectrow_array("SELECT COUNT(*) FROM ScripActions");
+
+    %_gstats = (
+        st => $scrips_total,    sg => $scrips_global,
+        sq => $scrips_queue,    sd => $scrips_disabled,
+        tt => $templates_total, tg => $templates_global, tq => $templates_queue,
+        ct => $conditions_total, at => $actions_total,
+    );
+    $_gstats_expires = time() + $_GCACHE_TTL;
+}
+
+my %icon_map = (
+    'Scrips'      => ['lightning-charge-fill',    '#d97706'],
+    'Conditions'  => ['funnel-fill',              '#0891b2'],
+    'Actions'     => ['play-circle-fill',         '#059669'],
+    'Templates'   => ['file-earmark-code-fill',   '#7c3aed'],
+    'CustomField' => ['ui-checks-grid',           '#ea580c'],
+    'Dashboard'   => ['bar-chart-fill',           '#2563eb'],
+    'MyRT'        => ['person-circle',            '#64748b'],
+    'UserRight'   => ['shield-fill',              '#dc2626'],
+    'GroupRight'  => ['people-fill',              '#9333ea'],
+    'SavedSearch' => ['search-heart-fill',        '#16a34a'],
+    'RightsHist'  => ['clock-history',            '#475569'],
+    'SelfService' => ['house-fill',               '#0891b2'],
+    'Topic'       => ['tags-fill',                '#f59e0b'],
+);
+
+my $icon_for = sub {
+    my $path = shift // '';
+    return ['lightning-charge-fill', '#d97706'] if $path =~ /Scrips/i;
+    return ['funnel-fill',           '#0891b2'] if $path =~ /Conditions/i;
+    return ['play-circle-fill',      '#059669'] if $path =~ /Actions/i;
+    return ['file-earmark-code-fill','#7c3aed'] if $path =~ /Template/i;
+    return ['ui-checks-grid',        '#ea580c'] if $path =~ /CustomField/i;
+    return ['bar-chart-fill',        '#2563eb'] if $path =~ /Dashboard/i;
+    return ['person-circle',         '#64748b'] if $path =~ /MyRT/i;
+    return ['shield-fill',           '#dc2626'] if $path =~ /UserRight/i;
+    return ['people-fill',           '#9333ea'] if $path =~ /GroupRight/i;
+    return ['search-heart-fill',     '#16a34a'] if $path =~ /SavedSearch/i;
+    return ['clock-history',         '#475569'] if $path =~ /RightsHist/i;
+    return ['house-fill',            '#0891b2'] if $path =~ /SelfService/i;
+    return ['tags-fill',             '#f59e0b'] if $path =~ /Topic/i;
+    return ['grid-fill',             '#64748b'];
+};
+</%init>
+<& /Admin/Elements/Header, Title => loc('Admin/Global configuration'), BuildMainMenu => 1 &>
+<& /Elements/Tabs &>
+<%perl>
+my @menu_items = grep { defined $_->path && $_->path ne '' }
+                 Menu()->child('admin')->child('global')->children;
+</%perl>
+<div class="rt-admin-db">
+
+  <!-- Scrip + Template stat cards -->
+  <div class="row g-2 mb-3">
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--scrips">
+        <i class="bi bi-lightning-charge-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $scrips_total %>">0</div>
+        <div class="sc__lbl"><% loc('Scrips total') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--global">
+        <i class="bi bi-globe sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $scrips_global %>">0</div>
+        <div class="sc__lbl"><% loc('Global Scrips') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--templates">
+        <i class="bi bi-file-earmark-code-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $templates_total %>">0</div>
+        <div class="sc__lbl"><% loc('Templates') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--conditions">
+        <i class="bi bi-funnel-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $conditions_total %>">0</div>
+        <div class="sc__lbl"><% loc('Conditions') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--actions">
+        <i class="bi bi-play-circle-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $actions_total %>">0</div>
+        <div class="sc__lbl"><% loc('Actions') %></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Info cards -->
+  <div class="row g-2 mb-4">
+
+    <div class="col-md-6">
+      <div class="ic">
+        <div class="ic__hd"><i class="bi bi-lightning-charge-fill me-2"></i><% loc('Scrips') %></div>
+        <div class="ic__bd">
+          <div class="ir">
+            <span class="ir__lbl"><% loc('Global') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--a" style="width:<% $scrips_total > 0 ? int(100*$scrips_global/$scrips_total) : 0 %>%"></span></span>
+            <span class="ir__val ir__val--a" data-counter="<% $scrips_global %>">0</span>
+            <span class="ir__tot">/ <% $scrips_total %></span>
+          </div>
+          <div class="ir">
+            <span class="ir__lbl"><% loc('Queue-specific') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--b" style="width:<% $scrips_total > 0 ? int(100*$scrips_queue/$scrips_total) : 0 %>%"></span></span>
+            <span class="ir__val" data-counter="<% $scrips_queue %>">0</span>
+            <span class="ir__tot">/ <% $scrips_total %></span>
+          </div>
+          <div class="ir">
+            <span class="ir__lbl ir__lbl--dim"><% loc('Disabled') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--c" style="width:<% $scrips_total > 0 ? int(100*$scrips_disabled/$scrips_total) : 0 %>%"></span></span>
+            <span class="ir__val ir__val--dim" data-counter="<% $scrips_disabled %>">0</span>
+            <span class="ir__tot">&nbsp;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="ic">
+        <div class="ic__hd"><i class="bi bi-file-earmark-code-fill me-2"></i><% loc('Templates') %></div>
+        <div class="ic__bd">
+          <div class="ir">
+            <span class="ir__lbl"><% loc('Global') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--a" style="width:<% $templates_total > 0 ? int(100*$templates_global/$templates_total) : 0 %>%"></span></span>
+            <span class="ir__val ir__val--a" data-counter="<% $templates_global %>">0</span>
+            <span class="ir__tot">/ <% $templates_total %></span>
+          </div>
+          <div class="ir">
+            <span class="ir__lbl"><% loc('Queue-specific') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--b" style="width:<% $templates_total > 0 ? int(100*$templates_queue/$templates_total) : 0 %>%"></span></span>
+            <span class="ir__val" data-counter="<% $templates_queue %>">0</span>
+            <span class="ir__tot">/ <% $templates_total %></span>
+          </div>
+          <div class="ir">
+            <span class="ir__lbl"><% loc('Conditions') %></span>
+            <span class="ir__bar"></span>
+            <span class="ir__val ir__val--a" data-counter="<% $conditions_total %>">0</span>
+            <span class="ir__tot">&nbsp;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Global admin menu -->
+  <div class="row g-2">
+% for my $item (@menu_items) {
+%   my $inf   = $icon_for->($item->path // '');
+%   my $icon  = $inf->[0];
+%   my $color = $inf->[1];
+    <div class="col-6 col-md-4 col-lg-3">
+      <a href="<% $item->path %>" class="mc">
+        <span class="mc__icon" style="background:<% $color %>18;color:<% $color %>">
+          <i class="bi bi-<% $icon %>"></i>
+        </span>
+        <span class="mc__bd">
+          <span class="mc__title"><% $item->title || '' %></span>
+          <span class="mc__desc"><% $item->description || '' %></span>
+        </span>
+      </a>
+    </div>
+% }
+  </div>
+
+</div>
+
+<style>
+.sc--scrips     { background: linear-gradient(135deg,#92400e,#f59e0b); }
+.sc--global     { background: linear-gradient(135deg,#1e40af,#3b82f6); }
+.sc--templates  { background: linear-gradient(135deg,#4c1d95,#a78bfa); }
+.sc--conditions { background: linear-gradient(135deg,#155e75,#22d3ee); }
+.sc--actions    { background: linear-gradient(135deg,#14532d,#22c55e); }
+</style>
+
+<& /Redesign/JS &>
+
+% $m->callback( CallbackName => 'AfterGlobalPortal', ARGSRef => \%ARGS );

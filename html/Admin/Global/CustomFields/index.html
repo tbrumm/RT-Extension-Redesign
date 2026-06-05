@@ -1,0 +1,187 @@
+<%once>
+my (%_cf_stats, $_cf_expires);
+my $_CFCACHE_TTL = 600;
+</%once>
+<%init>
+my ($cf_total, $cf_tickets, $cf_assets, $cf_users, $cf_articles, $cf_transactions);
+
+if ($_cf_expires && time() < $_cf_expires) {
+    ($cf_total, $cf_tickets, $cf_assets, $cf_users, $cf_articles, $cf_transactions)
+        = @_cf_stats{qw(to ti as us ar tr)};
+} else {
+    my $dbh = $RT::Handle->dbh;
+
+    my $rows = $dbh->selectall_arrayref(
+        "SELECT LookupType, COUNT(*) FROM CustomFields WHERE Disabled = 0 GROUP BY LookupType"
+    );
+    my %by_type; $by_type{$_->[0]} = $_->[1] for @$rows;
+
+    $cf_tickets      = $by_type{'RT::Queue-RT::Ticket'}                      // 0;
+    $cf_assets       = $by_type{'RT::Catalog-RT::Asset'}                     // 0;
+    $cf_users        = $by_type{'RT::User'}                                  // 0;
+    $cf_articles     = $by_type{'RT::Class-RT::Article'}                     // 0;
+    $cf_transactions = $by_type{'RT::Queue-RT::Ticket-RT::Transaction'}      // 0;
+    my $cf_groups    = $by_type{'RT::Group'}                                 // 0;
+
+    $cf_total = 0;
+    $cf_total += $_ for values %by_type;
+
+    %_cf_stats = (
+        to => $cf_total,  ti => $cf_tickets,  as => $cf_assets,
+        us => $cf_users,  ar => $cf_articles, tr => $cf_transactions,
+    );
+    $_cf_expires = time() + $_CFCACHE_TTL;
+}
+
+my $cf_other = $cf_total - $cf_tickets - $cf_assets;
+
+my @nav_items = (
+    { path => 'Users.html',
+      title => loc('Users'),
+      desc  => loc('Select custom fields for all users'),
+      icon  => 'people-fill',            color => '#2563eb' },
+    { path => 'Groups.html',
+      title => loc('Groups'),
+      desc  => loc('Select custom fields for all user groups'),
+      icon  => 'diagram-3-fill',         color => '#7c3aed' },
+    { path => 'Queues.html',
+      title => loc('Queues'),
+      desc  => loc('Select custom fields for all queues'),
+      icon  => 'collection-fill',        color => '#0891b2' },
+    { path => 'Queue-Tickets.html',
+      title => loc('Tickets'),
+      desc  => loc('Select custom fields for tickets in all queues'),
+      icon  => 'ticket-perforated-fill', color => '#059669' },
+    { path => 'Queue-Transactions.html',
+      title => loc('Ticket Transactions'),
+      desc  => loc('Select custom fields for transactions on tickets in all queues'),
+      icon  => 'arrow-left-right',       color => '#d97706' },
+    { path => 'Class-Article.html',
+      title => loc('Articles'),
+      desc  => loc('Select custom fields for articles in all classes'),
+      icon  => 'journal-richtext',       color => '#1d4ed8' },
+    { path => 'Catalog-Assets.html',
+      title => loc('Assets'),
+      desc  => loc('Select custom fields for assets in all catalogs'),
+      icon  => 'box-seam-fill',          color => '#16a34a' },
+);
+
+$m->callback( %ARGS, CallbackName => 'ModifyNavItems', nav_items => \@nav_items );
+</%init>
+<& /Admin/Elements/Header, Title => loc('Global custom field configuration'), BuildMainMenu => 1 &>
+<& /Elements/Tabs &>
+
+<div class="rt-admin-db">
+
+  <!-- Stat cards -->
+  <div class="row g-2 mb-3">
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--cf-total">
+        <i class="bi bi-ui-checks-grid sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $cf_total %>">0</div>
+        <div class="sc__lbl"><% loc('Custom Fields total') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--cf-tickets">
+        <i class="bi bi-ticket-perforated-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $cf_tickets %>">0</div>
+        <div class="sc__lbl"><% loc('Ticket Fields') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--cf-assets">
+        <i class="bi bi-box-seam-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $cf_assets %>">0</div>
+        <div class="sc__lbl"><% loc('Asset Fields') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--cf-other">
+        <i class="bi bi-grid-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $cf_other %>">0</div>
+        <div class="sc__lbl"><% loc('Other Fields') %></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Info card: breakdown by object type -->
+  <div class="row g-2 mb-4">
+    <div class="col-12">
+      <div class="ic">
+        <div class="ic__hd"><i class="bi bi-ui-checks-grid me-2"></i><% loc('Custom Fields by Object Type') %></div>
+        <div class="ic__bd">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="ir">
+                <span class="ir__lbl"><% loc('Tickets') %></span>
+                <span class="ir__bar"><span class="ir__fill ir__fill--a" style="width:<% $cf_total > 0 ? int(100*$cf_tickets/$cf_total) : 0 %>%"></span></span>
+                <span class="ir__val ir__val--a" data-counter="<% $cf_tickets %>">0</span>
+                <span class="ir__tot">/ <% $cf_total %></span>
+              </div>
+              <div class="ir">
+                <span class="ir__lbl"><% loc('Assets') %></span>
+                <span class="ir__bar"><span class="ir__fill ir__fill--b" style="width:<% $cf_total > 0 ? int(100*$cf_assets/$cf_total) : 0 %>%"></span></span>
+                <span class="ir__val" data-counter="<% $cf_assets %>">0</span>
+                <span class="ir__tot">/ <% $cf_total %></span>
+              </div>
+              <div class="ir">
+                <span class="ir__lbl"><% loc('Transactions') %></span>
+                <span class="ir__bar"><span class="ir__fill ir__fill--c" style="width:<% $cf_total > 0 ? int(100*$cf_transactions/$cf_total) : 0 %>%"></span></span>
+                <span class="ir__val ir__val--dim" data-counter="<% $cf_transactions %>">0</span>
+                <span class="ir__tot">/ <% $cf_total %></span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="ir">
+                <span class="ir__lbl"><% loc('Users') %></span>
+                <span class="ir__bar"><span class="ir__fill ir__fill--a" style="width:<% $cf_total > 0 ? int(100*$cf_users/$cf_total) : 0 %>%"></span></span>
+                <span class="ir__val ir__val--a" data-counter="<% $cf_users %>">0</span>
+                <span class="ir__tot">/ <% $cf_total %></span>
+              </div>
+              <div class="ir">
+                <span class="ir__lbl"><% loc('Articles') %></span>
+                <span class="ir__bar"><span class="ir__fill ir__fill--b" style="width:<% $cf_total > 0 ? int(100*$cf_articles/$cf_total) : 0 %>%"></span></span>
+                <span class="ir__val" data-counter="<% $cf_articles %>">0</span>
+                <span class="ir__tot">/ <% $cf_total %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="row g-2">
+% for my $item (@nav_items) {
+    <div class="col-6 col-md-4 col-lg-3">
+      <a href="<% $item->{path} %>" class="mc">
+        <span class="mc__icon" style="background:<% $item->{color} %>18;color:<% $item->{color} %>">
+          <i class="bi bi-<% $item->{icon} %>"></i>
+        </span>
+        <span class="mc__bd">
+          <span class="mc__title"><% $item->{title} %></span>
+          <span class="mc__desc"><% $item->{desc} %></span>
+        </span>
+      </a>
+    </div>
+% }
+  </div>
+
+</div>
+
+<style>
+.sc--cf-total   { background: linear-gradient(135deg,#ea580c,#fb923c); }
+.sc--cf-tickets { background: linear-gradient(135deg,#14532d,#22c55e); }
+.sc--cf-assets  { background: linear-gradient(135deg,#78350f,#f59e0b); }
+.sc--cf-other   { background: linear-gradient(135deg,#1e3a8a,#3b82f6); }
+</style>
+
+<& /Redesign/JS &>
+% $m->callback( CallbackName => 'AfterCFPortal', ARGSRef => \%ARGS );

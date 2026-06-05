@@ -4,5 +4,15 @@ MANIFEST
 html/Callbacks/Redesign/Elements/Header/Head
 html/Elements/Login
 html/NoAuth/css/redesign.css
+html/Redesign/JS
+html/Admin/index.html
+html/Admin/Articles/index.html
+html/Admin/Assets/index.html
+html/Admin/Global/index.html
+html/Admin/Global/CustomFields/index.html
+html/Admin/Tools/index.html
+html/Reports/index.html
+html/Search/Simple.html
+html/Tools/index.html
 lib/RT/Extension/Redesign.pm
 static/css/redesign.css

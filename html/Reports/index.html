@@ -1,0 +1,131 @@
+<%init>
+my $icon_for = sub {
+    my $path = shift // '';
+    # Section 1 — Dashboards
+    return ['columns-gap',           '#2563eb'] if $path =~ m{/Dashboards/\d+};
+    # Section 2 — Reports
+    return ['person-check-fill',     '#059669'] if $path =~ /ResolvedByOwner/i;
+    return ['calendar-check-fill',   '#0d9488'] if $path =~ /ResolvedByDates/i;
+    return ['calendar-plus-fill',    '#d97706'] if $path =~ /CreatedByDates/i;
+    return ['clock-history',         '#7c3aed'] if $path =~ /TimeWorked/i;
+    return ['stopwatch-fill',        '#9333ea'] if $path =~ /TimeSearch/i;
+    return ['bar-chart-line-fill',   '#059669'] if $path =~ m{/Reports/}i;
+    # Section 3 — Management
+    return ['sliders',               '#64748b'] if $path =~ /Prefs/i;
+    return ['funnel-fill',           '#0891b2'] if $path =~ /SavedSearch/i;
+    return ['grid-3x3-gap-fill',     '#6366f1'] if $path =~ m{Dashboards/index}i;
+    return ['plus-circle-fill',      '#16a34a'] if $path =~ /Create/i;
+    return ['list-task',             '#94a3b8'];
+};
+
+my $section_for = sub {
+    my $path = shift // '';
+    return 'dashboard'  if $path =~ m{/Dashboards/\d+};
+    return 'management' if $path =~ m{Prefs/|Dashboards/index|Dashboards/Modify|SavedSearch}i;
+    return 'report';
+};
+</%init>
+<& /Elements/Header, Title => loc('Reports and Dashboards'), BuildMainMenu => 1 &>
+<& /Elements/Tabs &>
+<%perl>
+my (@dashboards, @reports, @management);
+my $_reports_menu = Menu()->child('reports');
+if ($_reports_menu) {
+    for my $item ($_reports_menu->children) {
+        my @items_to_classify;
+        if (defined $item->path && $item->path ne '') {
+            push @items_to_classify, $item;
+        } else {
+            push @items_to_classify,
+                grep { defined $_->path && $_->path ne '' }
+                $item->children;
+        }
+        for my $i (@items_to_classify) {
+            my $s = $section_for->($i->path);
+            push @dashboards,  $i if $s eq 'dashboard';
+            push @reports,     $i if $s eq 'report';
+            push @management,  $i if $s eq 'management';
+        }
+    }
+}
+</%perl>
+<div class="rt-admin-db">
+
+% if (@dashboards) {
+  <h6 class="rrt-section-label"><% loc('Dashboards') %></h6>
+  <div class="row g-2 mb-4">
+%   for my $item (@dashboards) {
+%     my $inf   = $icon_for->($item->path);
+%     my $icon  = $inf->[0];
+%     my $color = $inf->[1];
+    <div class="col-6 col-md-4 col-lg-3">
+      <a href="<% $item->path %>" class="mc">
+        <span class="mc__icon" style="background:<% $color %>18;color:<% $color %>">
+          <i class="bi bi-<% $icon %>"></i>
+        </span>
+        <span class="mc__bd">
+          <span class="mc__title"><% $item->title || '' %></span>
+          <span class="mc__desc"><% $item->description || '' %></span>
+        </span>
+      </a>
+    </div>
+%   }
+  </div>
+% } else {
+  <div class="rrt-empty">
+    <i class="bi bi-columns-gap rrt-empty__icon"></i>
+    <p class="rrt-empty__msg"><% loc('No dashboards in your menu yet.') %></p>
+    <a href="/Prefs/DashboardsInMenu.html" class="btn btn-sm btn-primary">
+      <% loc('Configure Reports Menu') %>
+    </a>
+  </div>
+% }
+
+% if (@reports) {
+  <h6 class="rrt-section-label"><% loc('Reports') %></h6>
+  <div class="row g-2 mb-4">
+%   for my $item (@reports) {
+%     my $inf   = $icon_for->($item->path);
+%     my $icon  = $inf->[0];
+%     my $color = $inf->[1];
+    <div class="col-6 col-md-4 col-lg-3">
+      <a href="<% $item->path %>" class="mc">
+        <span class="mc__icon" style="background:<% $color %>18;color:<% $color %>">
+          <i class="bi bi-<% $icon %>"></i>
+        </span>
+        <span class="mc__bd">
+          <span class="mc__title"><% $item->title || '' %></span>
+          <span class="mc__desc"><% $item->description || '' %></span>
+        </span>
+      </a>
+    </div>
+%   }
+  </div>
+% }
+
+% if (@management) {
+  <h6 class="rrt-section-label"><% loc('Dashboard Management') %></h6>
+  <div class="row g-2">
+%   for my $item (@management) {
+%     my $inf   = $icon_for->($item->path);
+%     my $icon  = $inf->[0];
+%     my $color = $inf->[1];
+    <div class="col-6 col-md-4 col-lg-3">
+      <a href="<% $item->path %>" class="mc">
+        <span class="mc__icon" style="background:<% $color %>18;color:<% $color %>">
+          <i class="bi bi-<% $icon %>"></i>
+        </span>
+        <span class="mc__bd">
+          <span class="mc__title"><% $item->title || '' %></span>
+          <span class="mc__desc"><% $item->description || '' %></span>
+        </span>
+      </a>
+    </div>
+%   }
+  </div>
+% }
+
+</div>
+
+<& /Redesign/JS &>
+% $m->callback( CallbackName => 'AfterReportsPortal', ARGSRef => \%ARGS );

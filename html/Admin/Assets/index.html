@@ -1,0 +1,182 @@
+<%once>
+my (%_asset_stats, $_asset_expires);
+my $_ASSETCACHE_TTL = 600;
+</%once>
+<%init>
+my ($assets_total, $assets_allocated, $assets_inuse, $assets_other,
+    $catalogs_total, $catalogs_active);
+
+if ($_asset_expires && time() < $_asset_expires) {
+    ($assets_total, $assets_allocated, $assets_inuse, $assets_other)
+        = @_asset_stats{qw(at aa ai ao)};
+    ($catalogs_total, $catalogs_active)
+        = @_asset_stats{qw(ct ca)};
+} else {
+    my $dbh = $RT::Handle->dbh;
+
+    my $rows = $dbh->selectall_arrayref(
+        "SELECT Status, COUNT(*) FROM Assets GROUP BY Status"
+    );
+    my %by_status; $by_status{$_->[0]} = $_->[1] for @$rows;
+
+    $assets_allocated = $by_status{allocated} // 0;
+    $assets_inuse     = $by_status{'in-use'}  // 0;
+    $assets_other     = 0;
+    for my $s (keys %by_status) {
+        next if $s eq 'allocated' || $s eq 'in-use';
+        $assets_other += $by_status{$s};
+    }
+    $assets_total = $assets_allocated + $assets_inuse + $assets_other;
+
+    my $cat = $dbh->selectall_arrayref(
+        "SELECT Disabled, COUNT(*) FROM Catalogs GROUP BY Disabled"
+    );
+    my %catd; $catd{$_->[0]} = $_->[1] for @$cat;
+    $catalogs_active = $catd{0} // 0;
+    $catalogs_total  = ($catd{0} // 0) + ($catd{1} // 0);
+
+    %_asset_stats = (
+        at => $assets_total,     aa => $assets_allocated,
+        ai => $assets_inuse,     ao => $assets_other,
+        ct => $catalogs_total,   ca => $catalogs_active,
+    );
+    $_asset_expires = time() + $_ASSETCACHE_TTL;
+}
+
+my $catalogs_disabled = $catalogs_total - $catalogs_active;
+
+my $icon_for = sub {
+    my $path = shift // '';
+    return ['archive-fill',  '#d97706'] if $path =~ /Catalog/i;
+    return ['ui-checks-grid','#ea580c'] if $path =~ /CustomField|cfs/i;
+    return ['grid-fill',     '#64748b'];
+};
+</%init>
+<& /Elements/Header, Title => loc('Asset Administration'), BuildMainMenu => 1 &>
+<& /Elements/Tabs &>
+<%perl>
+my @menu_items = grep { defined $_->path && $_->path ne '' }
+                 Menu()->child('admin')->child('assets')->children;
+</%perl>
+<div class="rt-admin-db">
+
+  <!-- Stat cards -->
+  <div class="row g-2 mb-3">
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--assets">
+        <i class="bi bi-box-seam-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $assets_total %>">0</div>
+        <div class="sc__lbl"><% loc('Assets total') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--allocated">
+        <i class="bi bi-check2-circle sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $assets_allocated %>">0</div>
+        <div class="sc__lbl"><% loc('Allocated') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--inuse">
+        <i class="bi bi-play-circle-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $assets_inuse %>">0</div>
+        <div class="sc__lbl"><% loc('In Use') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--catalogs">
+        <i class="bi bi-archive-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $catalogs_total %>">0</div>
+        <div class="sc__lbl"><% loc('Catalogs total') %></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Info cards -->
+  <div class="row g-2 mb-4">
+
+    <div class="col-md-6">
+      <div class="ic">
+        <div class="ic__hd"><i class="bi bi-box-seam-fill me-2"></i><% loc('Assets') %></div>
+        <div class="ic__bd">
+          <div class="ir">
+            <span class="ir__lbl"><% loc('Allocated') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--a" style="width:<% $assets_total > 0 ? int(100*$assets_allocated/$assets_total) : 0 %>%"></span></span>
+            <span class="ir__val ir__val--a" data-counter="<% $assets_allocated %>">0</span>
+            <span class="ir__tot">/ <% $assets_total %></span>
+          </div>
+          <div class="ir">
+            <span class="ir__lbl"><% loc('In Use') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--b" style="width:<% $assets_total > 0 ? int(100*$assets_inuse/$assets_total) : 0 %>%"></span></span>
+            <span class="ir__val" data-counter="<% $assets_inuse %>">0</span>
+            <span class="ir__tot">/ <% $assets_total %></span>
+          </div>
+% if ($assets_other > 0) {
+          <div class="ir">
+            <span class="ir__lbl ir__lbl--dim"><% loc('Other') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--c" style="width:<% $assets_total > 0 ? int(100*$assets_other/$assets_total) : 0 %>%"></span></span>
+            <span class="ir__val ir__val--dim" data-counter="<% $assets_other %>">0</span>
+            <span class="ir__tot">&nbsp;</span>
+          </div>
+% }
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="ic">
+        <div class="ic__hd"><i class="bi bi-archive-fill me-2"></i><% loc('Catalogs') %></div>
+        <div class="ic__bd">
+          <div class="ir">
+            <span class="ir__lbl"><% loc('Active') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--a" style="width:<% $catalogs_total > 0 ? int(100*$catalogs_active/$catalogs_total) : 0 %>%"></span></span>
+            <span class="ir__val ir__val--a" data-counter="<% $catalogs_active %>">0</span>
+            <span class="ir__tot">/ <% $catalogs_total %></span>
+          </div>
+          <div class="ir">
+            <span class="ir__lbl ir__lbl--dim"><% loc('Disabled') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--c" style="width:<% $catalogs_total > 0 ? int(100*$catalogs_disabled/$catalogs_total) : 0 %>%"></span></span>
+            <span class="ir__val ir__val--dim" data-counter="<% $catalogs_disabled %>">0</span>
+            <span class="ir__tot">&nbsp;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Navigation -->
+  <div class="row g-2">
+% for my $item (@menu_items) {
+%   my $inf   = $icon_for->($item->path // '');
+%   my $icon  = $inf->[0];
+%   my $color = $inf->[1];
+    <div class="col-6 col-md-4 col-lg-3">
+      <a href="<% $item->path %>" class="mc">
+        <span class="mc__icon" style="background:<% $color %>18;color:<% $color %>">
+          <i class="bi bi-<% $icon %>"></i>
+        </span>
+        <span class="mc__bd">
+          <span class="mc__title"><% $item->title || '' %></span>
+          <span class="mc__desc"><% $item->description || '' %></span>
+        </span>
+      </a>
+    </div>
+% }
+  </div>
+
+</div>
+<style>
+.sc--assets    { background: linear-gradient(135deg,#7c2d12,#ea580c); }
+.sc--allocated { background: linear-gradient(135deg,#1e40af,#3b82f6); }
+.sc--inuse     { background: linear-gradient(135deg,#14532d,#22c55e); }
+.sc--catalogs  { background: linear-gradient(135deg,#78350f,#f59e0b); }
+</style>
+
+<& /Redesign/JS &>
+% $m->callback( CallbackName => 'AfterAssetsPortal', ARGSRef => \%ARGS );

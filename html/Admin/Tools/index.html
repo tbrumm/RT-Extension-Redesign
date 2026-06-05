@@ -1,0 +1,124 @@
+<%once>
+my (%_tool_stats, $_tool_expires);
+my $_TOOLCACHE_TTL = 600;
+</%once>
+<%init>
+my ($db_size_mb, $custom_roles, $scheduled_procs, $sys_errors);
+
+if ($_tool_expires && time() < $_tool_expires) {
+    ($db_size_mb, $custom_roles, $scheduled_procs, $sys_errors)
+        = @_tool_stats{qw(ds cr sp se)};
+} else {
+    my $dbh = $RT::Handle->dbh;
+
+    ($db_size_mb) = $dbh->selectrow_array(
+        "SELECT ROUND(SUM(data_length + index_length) / 1024 / 1024, 1)
+         FROM information_schema.tables WHERE table_schema = DATABASE()"
+    );
+    $db_size_mb //= 0;
+
+    ($custom_roles) = $dbh->selectrow_array("SELECT COUNT(*) FROM CustomRoles");
+
+    ($scheduled_procs) = $dbh->selectrow_array(
+        "SELECT COUNT(*) FROM Attributes WHERE Name = 'ScheduledProcess'"
+    );
+
+    ($sys_errors) = $dbh->selectrow_array(
+        "SELECT COUNT(*) FROM Transactions WHERE Type = 'SystemError'"
+    );
+
+    %_tool_stats = (
+        ds => $db_size_mb, cr => $custom_roles,
+        sp => $scheduled_procs, se => $sys_errors,
+    );
+    $_tool_expires = time() + $_TOOLCACHE_TTL;
+}
+
+my $icon_for = sub {
+    my $path = shift // '';
+    return ['gear-wide-connected',     '#2563eb'] if $path =~ /Configuration/i;
+    return ['palette-fill',            '#9333ea'] if $path =~ /Theme/i;
+    return ['search',                  '#059669'] if $path =~ /RightsInspector/i;
+    return ['database-x-fill',         '#dc2626'] if $path =~ /Shredder/i;
+    return ['key-fill',                '#d97706'] if $path =~ /GnuPG/i;
+    return ['link-45deg',              '#64748b'] if $path =~ /Shortener/i;
+    return ['clock-history',           '#0891b2'] if $path =~ /ScheduledProcess/i;
+    return ['code-square',             '#475569'] if $path =~ /Queries/i;
+    return ['grid-fill',               '#64748b'];
+};
+</%init>
+<& /Admin/Elements/Header, Title => loc('System Tools'), BuildMainMenu => 1 &>
+<& /Elements/Tabs &>
+<%perl>
+my @menu_items = grep { defined $_->path && $_->path ne '' }
+                 Menu()->child('admin')->child('tools')->children;
+</%perl>
+<div class="rt-admin-db">
+
+  <!-- Stat cards -->
+  <div class="row g-2 mb-4">
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--db">
+        <i class="bi bi-database-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% int($db_size_mb) %>">0</div>
+        <div class="sc__lbl"><% loc('Database Size (MB)') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--roles">
+        <i class="bi bi-person-badge-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $custom_roles %>">0</div>
+        <div class="sc__lbl"><% loc('Custom Roles') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--sched">
+        <i class="bi bi-clock-history sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $scheduled_procs %>">0</div>
+        <div class="sc__lbl"><% loc('Scheduled Processes') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--errors">
+        <i class="bi bi-exclamation-triangle-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $sys_errors %>">0</div>
+        <div class="sc__lbl"><% loc('Mail Errors') %></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Navigation -->
+  <div class="row g-2">
+% for my $item (@menu_items) {
+%   my $inf   = $icon_for->($item->path // '');
+%   my $icon  = $inf->[0];
+%   my $color = $inf->[1];
+    <div class="col-6 col-md-4 col-lg-3">
+      <a href="<% $item->path %>" class="mc">
+        <span class="mc__icon" style="background:<% $color %>18;color:<% $color %>">
+          <i class="bi bi-<% $icon %>"></i>
+        </span>
+        <span class="mc__bd">
+          <span class="mc__title"><% $item->title || '' %></span>
+          <span class="mc__desc"><% $item->description || '' %></span>
+        </span>
+      </a>
+    </div>
+% }
+  </div>
+
+</div>
+<style>
+.sc--db     { background: linear-gradient(135deg,#1e3a8a,#6366f1); }
+.sc--roles  { background: linear-gradient(135deg,#4c1d95,#a78bfa); }
+.sc--sched  { background: linear-gradient(135deg,#155e75,#22d3ee); }
+.sc--errors { background: linear-gradient(135deg,#7f1d1d,#ef4444); }
+</style>
+
+<& /Redesign/JS &>
+% $m->callback( CallbackName => 'AfterToolsPortal', ARGSRef => \%ARGS );

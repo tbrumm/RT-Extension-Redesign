@@ -1,0 +1,161 @@
+<%init>
+my $dbh = $RT::Handle->dbh;
+my $uid = $session{CurrentUser}->Id;
+
+my $done_sql = join ', ',
+    map { $dbh->quote($_) }
+    qw(resolved rejected done ClosedByHousekeeping on_hold cancelled deleted);
+
+my ($my_open) = $dbh->selectrow_array(
+    "SELECT COUNT(*) FROM Tickets
+     WHERE Owner = ? AND Status NOT IN ($done_sql) AND id > 0",
+    undef, $uid
+);
+
+my ($due_today) = $dbh->selectrow_array(
+    "SELECT COUNT(*) FROM Tickets
+     WHERE Owner = ? AND Status NOT IN ($done_sql)
+       AND Due IS NOT NULL AND Due != '1970-01-01 00:00:00'
+       AND DATE(Due) = CURDATE() AND id > 0",
+    undef, $uid
+);
+
+my ($sys_open) = $dbh->selectrow_array(
+    "SELECT COUNT(*) FROM Tickets
+     WHERE Status NOT IN ($done_sql) AND id > 0"
+);
+
+my ($new_today) = $dbh->selectrow_array(
+    "SELECT COUNT(*) FROM Tickets
+     WHERE Status NOT IN ($done_sql)
+       AND DATE(Created) = CURDATE() AND id > 0"
+);
+
+$my_open   //= 0;
+$due_today //= 0;
+$sys_open  //= 0;
+$new_today //= 0;
+
+my $icon_for = sub {
+    my $path = shift // '';
+    return ['sun-fill',             '#d97706'] if $path =~ /MyDay/i;
+    return ['calendar-week-fill',   '#2563eb'] if $path =~ /MyWeek/i;
+    return ['bell-fill',            '#9333ea'] if $path =~ /Reminder/i;
+    return ['person-lines-fill',    '#0d9488'] if $path =~ m{/Contacts}i;
+    return ['clipboard-check-fill', '#059669'] if $path =~ /Approv/i;
+    return ['search',               '#0891b2'] if $path =~ /Search|Preview/i;
+    return ['graph-up-arrow',       '#f97316'] if $path =~ /Activity/i;
+    return ['tools',                '#64748b'];
+};
+
+my $is_personal = sub {
+    my $path = shift // '';
+    return $path =~ m{MyDay|MyWeek|Reminder|/Contacts}i;
+};
+</%init>
+<& /Elements/Header, Title => loc('Tools'), BuildMainMenu => 1 &>
+<& /Elements/Tabs &>
+<%perl>
+my (@section1, @section2);
+my $_tools_menu = Menu()->child('tools');
+if ($_tools_menu) {
+    for my $item (grep { defined $_->path && $_->path ne '' } $_tools_menu->children) {
+        if ($is_personal->($item->path)) {
+            push @section1, $item;
+        } else {
+            push @section2, $item;
+        }
+    }
+}
+</%perl>
+<div class="rt-admin-db">
+
+  <div class="row g-2 mb-4">
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--my-open">
+        <i class="bi bi-ticket-perforated sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $my_open %>">0</div>
+        <div class="sc__lbl"><% loc('My Open Tickets') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--due-today">
+        <i class="bi bi-calendar-event-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $due_today %>">0</div>
+        <div class="sc__lbl"><% loc('Due Today') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--sys-open">
+        <i class="bi bi-inbox sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $sys_open %>">0</div>
+        <div class="sc__lbl"><% loc('System Open') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--new-today">
+        <i class="bi bi-plus-circle-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $new_today %>">0</div>
+        <div class="sc__lbl"><% loc('New Today') %></div>
+      </div>
+    </div>
+
+  </div>
+
+% if (@section1) {
+  <h6 class="rrt-section-label"><% loc('My Tools') %></h6>
+  <div class="row g-2 mb-4">
+%   for my $item (@section1) {
+%     my $inf   = $icon_for->($item->path // '');
+%     my $icon  = $inf->[0];
+%     my $color = $inf->[1];
+    <div class="col-6 col-md-4 col-lg-3">
+      <a href="<% $item->path %>" class="mc">
+        <span class="mc__icon" style="background:<% $color %>18;color:<% $color %>">
+          <i class="bi bi-<% $icon %>"></i>
+        </span>
+        <span class="mc__bd">
+          <span class="mc__title"><% $item->title || '' %></span>
+          <span class="mc__desc"><% $item->description || '' %></span>
+        </span>
+      </a>
+    </div>
+%   }
+  </div>
+% }
+% if (@section2) {
+  <h6 class="rrt-section-label"><% loc('Analysis & Reports') %></h6>
+  <div class="row g-2">
+%   for my $item (@section2) {
+%     my $inf   = $icon_for->($item->path // '');
+%     my $icon  = $inf->[0];
+%     my $color = $inf->[1];
+    <div class="col-6 col-md-4 col-lg-3">
+      <a href="<% $item->path %>" class="mc">
+        <span class="mc__icon" style="background:<% $color %>18;color:<% $color %>">
+          <i class="bi bi-<% $icon %>"></i>
+        </span>
+        <span class="mc__bd">
+          <span class="mc__title"><% $item->title || '' %></span>
+          <span class="mc__desc"><% $item->description || '' %></span>
+        </span>
+      </a>
+    </div>
+%   }
+  </div>
+% }
+
+</div>
+<style>
+.sc--my-open   { background: linear-gradient(135deg,#1e40af,#3b82f6); }
+.sc--due-today { background: linear-gradient(135deg,#92400e,#f59e0b); }
+.sc--sys-open  { background: linear-gradient(135deg,#155e75,#22d3ee); }
+.sc--new-today { background: linear-gradient(135deg,#14532d,#22c55e); }
+</style>
+
+<& /Redesign/JS &>
+% $m->callback( CallbackName => 'AfterToolsPortal', ARGSRef => \%ARGS );

@@ -1,0 +1,164 @@
+<%once>
+my (%_astats, $_astats_expires);
+my $_ACACHE_TTL = 600;
+</%once>
+<%init>
+my ($classes_total, $classes_active, $articles_total, $articles_active);
+
+if ($_astats_expires && time() < $_astats_expires) {
+    ($classes_total, $classes_active)   = @_astats{qw(ct ca)};
+    ($articles_total, $articles_active) = @_astats{qw(at aa)};
+} else {
+    my $dbh = $RT::Handle->dbh;
+
+    my $cl = $dbh->selectall_arrayref(
+        "SELECT Disabled, COUNT(*) FROM Classes GROUP BY Disabled"
+    );
+    my %cld; $cld{$_->[0]} = $_->[1] for @$cl;
+    $classes_active = $cld{0} // 0;
+    $classes_total  = ($cld{0} // 0) + ($cld{1} // 0);
+
+    my $ar = $dbh->selectall_arrayref(
+        "SELECT Disabled, COUNT(*) FROM Articles GROUP BY Disabled"
+    );
+    my %ard; $ard{$_->[0]} = $_->[1] for @$ar;
+    $articles_active = $ard{0} // 0;
+    $articles_total  = ($ard{0} // 0) + ($ard{1} // 0);
+
+    %_astats = (
+        ct => $classes_total,  ca => $classes_active,
+        at => $articles_total, aa => $articles_active,
+    );
+    $_astats_expires = time() + $_ACACHE_TTL;
+}
+
+my $classes_disabled  = $classes_total  - $classes_active;
+my $articles_disabled = $articles_total - $articles_active;
+
+my $icon_for = sub {
+    my $path = shift // '';
+    return ['collection-fill',   '#2563eb'] if $path =~ /Classes/i;
+    return ['ui-checks-grid',    '#ea580c'] if $path =~ /CustomField/i;
+    return ['grid-fill',         '#64748b'];
+};
+</%init>
+<& /Elements/Header, Title => loc('Article Administration'), BuildMainMenu => 1 &>
+<& /Elements/Tabs &>
+<%perl>
+my @menu_items = grep { defined $_->path && $_->path ne '' }
+                 Menu()->child('admin')->child('articles')->children;
+</%perl>
+<div class="rt-admin-db">
+
+  <!-- Stat cards -->
+  <div class="row g-2 mb-3">
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--articles">
+        <i class="bi bi-journal-richtext sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $articles_total %>">0</div>
+        <div class="sc__lbl"><% loc('Articles total') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--active">
+        <i class="bi bi-journal-check sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $articles_active %>">0</div>
+        <div class="sc__lbl"><% loc('Active') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--classes">
+        <i class="bi bi-collection-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $classes_total %>">0</div>
+        <div class="sc__lbl"><% loc('Classes total') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--classes-active">
+        <i class="bi bi-collection sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $classes_active %>">0</div>
+        <div class="sc__lbl"><% loc('Active Classes') %></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Info cards -->
+  <div class="row g-2 mb-4">
+
+    <div class="col-md-6">
+      <div class="ic">
+        <div class="ic__hd"><i class="bi bi-journal-richtext me-2"></i><% loc('Articles') %></div>
+        <div class="ic__bd">
+          <div class="ir">
+            <span class="ir__lbl"><% loc('Active') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--a" style="width:<% $articles_total > 0 ? int(100*$articles_active/$articles_total) : 0 %>%"></span></span>
+            <span class="ir__val ir__val--a" data-counter="<% $articles_active %>">0</span>
+            <span class="ir__tot">/ <% $articles_total %></span>
+          </div>
+          <div class="ir">
+            <span class="ir__lbl ir__lbl--dim"><% loc('Disabled') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--c" style="width:<% $articles_total > 0 ? int(100*$articles_disabled/$articles_total) : 0 %>%"></span></span>
+            <span class="ir__val ir__val--dim" data-counter="<% $articles_disabled %>">0</span>
+            <span class="ir__tot">&nbsp;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="ic">
+        <div class="ic__hd"><i class="bi bi-collection-fill me-2"></i><% loc('Classes') %></div>
+        <div class="ic__bd">
+          <div class="ir">
+            <span class="ir__lbl"><% loc('Active') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--a" style="width:<% $classes_total > 0 ? int(100*$classes_active/$classes_total) : 0 %>%"></span></span>
+            <span class="ir__val ir__val--a" data-counter="<% $classes_active %>">0</span>
+            <span class="ir__tot">/ <% $classes_total %></span>
+          </div>
+          <div class="ir">
+            <span class="ir__lbl ir__lbl--dim"><% loc('Disabled') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--c" style="width:<% $classes_total > 0 ? int(100*$classes_disabled/$classes_total) : 0 %>%"></span></span>
+            <span class="ir__val ir__val--dim" data-counter="<% $classes_disabled %>">0</span>
+            <span class="ir__tot">&nbsp;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Navigation -->
+  <div class="row g-2">
+% for my $item (@menu_items) {
+%   my $inf   = $icon_for->($item->path // '');
+%   my $icon  = $inf->[0];
+%   my $color = $inf->[1];
+    <div class="col-6 col-md-4 col-lg-3">
+      <a href="<% $item->path %>" class="mc">
+        <span class="mc__icon" style="background:<% $color %>18;color:<% $color %>">
+          <i class="bi bi-<% $icon %>"></i>
+        </span>
+        <span class="mc__bd">
+          <span class="mc__title"><% $item->title || '' %></span>
+          <span class="mc__desc"><% $item->description || '' %></span>
+        </span>
+      </a>
+    </div>
+% }
+  </div>
+
+</div>
+<style>
+.sc--articles       { background: linear-gradient(135deg,#1e3a8a,#3b82f6); }
+.sc--active         { background: linear-gradient(135deg,#14532d,#22c55e); }
+.sc--classes        { background: linear-gradient(135deg,#155e75,#22d3ee); }
+.sc--classes-active { background: linear-gradient(135deg,#0e4429,#4ade80); }
+</style>
+
+<& /Redesign/JS &>
+% $m->callback( CallbackName => 'AfterArticlesPortal', ARGSRef => \%ARGS );

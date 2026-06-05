@@ -1,0 +1,294 @@
+<& /Elements/Header, Title => $title &>
+<& /Elements/Tabs &>
+% $m->callback( %ARGS, CallbackName => 'PreForm' );
+<div id="SimpleSearchForm">
+<form action="Simple.html" method="get">
+
+<div class="ss-hero">
+  <h1 class="ss-hero__title"><&|/l&>Search for Tickets</&></h1>
+  <div class="input-group ss-hero__ig">
+    <input class="form-control ss-hero__input" type="text" name="q"
+           placeholder="<% loc('Keyword, id:, subject:, queue:, owner: ...') %>" autofocus />
+    <button class="btn btn-primary ss-hero__btn" type="submit">
+      <i class="bi bi-search me-1"></i><&|/l&>Search</&>
+    </button>
+  </div>
+  <p class="ss-hero__hint">
+% if ( $config->{'Enable'} && $config->{'Indexed'} ) {
+    <&|/l&>Any word not matching a keyword is searched for in the ticket transaction history.</&>
+% } else {
+    <&|/l&>Any word not matching a keyword is searched for in ticket subjects and descriptions.</&>
+% }
+  </p>
+</div>
+
+<div class="ss-help">
+  <h6 class="rrt-section-label"><&|/l&>Search Keywords</&></h6>
+  <div class="row g-3">
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="ss-kw">
+        <span class="ss-kw__key">id</span>
+        <p class="ss-kw__desc"><&|/l&>Enter a ticket id. Takes you directly to the ticket.</&></p>
+        <div class="ss-kw__ex"><code>12345</code><code>id:12345</code></div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="ss-kw">
+        <span class="ss-kw__key">subject:</span>
+        <p class="ss-kw__desc">
+          <&|/l_unsafe, '<strong>subject:</strong>' &>Enter [_1] followed by the search value.</&>
+          <&|/l&>If the search value contains spaces, enclose it in quotes.</&>
+        </p>
+        <div class="ss-kw__ex"><code>subject:avocado</code><code>subject:"ripe avocado"</code></div>
+      </div>
+    </div>
+
+% if ( $config->{'Enable'} ) {
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="ss-kw">
+        <span class="ss-kw__key">fulltext:</span>
+        <p class="ss-kw__desc">
+% if ( $config->{'Indexed'} ) {
+          <&|/l, $fulltext_keyword &>Search for any word in the ticket transaction history by typing <strong>[_1]<i>word</i></strong>.</&>
+% } else {
+          <&|/l, $fulltext_keyword &>Searching the full text of every ticket can take a long time, but if you need to do it, you can search for any word in full ticket history by typing <strong>[_1]<i>word</i></strong>.</&>
+% }
+        </p>
+        <div class="ss-kw__ex"><code>fulltext:coffee</code><code>fulltext:"need coffee"</code></div>
+      </div>
+    </div>
+% }
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="ss-kw">
+        <span class="ss-kw__key">queue:</span>
+        <p class="ss-kw__desc">
+          <&|/l&>Enter a queue name.</&>
+          <&|/l_unsafe, '<strong>queue:</strong>' &>If the queue name contains spaces, enter [_1] followed by the queue name in quotes.</&>
+        </p>
+        <div class="ss-kw__ex"><code>General</code><code>queue:"IT Support"</code></div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="ss-kw">
+        <span class="ss-kw__key">owner:</span>
+        <p class="ss-kw__desc"><&|/l&>Enter an RT username.</&></p>
+        <div class="ss-kw__ex"><code>jsmith</code><code>owner:jsmith</code></div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="ss-kw">
+        <span class="ss-kw__key">requestor:</span>
+        <p class="ss-kw__desc"><&|/l&>Enter an email address.</&></p>
+        <div class="ss-kw__ex"><code>jsmith@example.com</code><code>requestor:jsmith@example.com</code></div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="ss-kw">
+        <span class="ss-kw__key">status:</span>
+        <p class="ss-kw__desc">
+          <&|/l_unsafe, map { "<strong>$_</strong>" } qw(initial active inactive any) &>Add [_1], [_2], [_3], or [_4] to limit results to tickets with matching statuses.</&>
+        </p>
+        <div class="ss-kw__ex"><code>status:any</code><code>owner:jsmith active</code></div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="ss-kw">
+        <span class="ss-kw__key">cf.Name:</span>
+        <p class="ss-kw__desc">
+          <&|/l_unsafe, '<strong>cf.Name:</strong>' &>Enter [_1] followed by the search value.</&>
+          <&|/l&>If the custom field name or the search value have spaces, enclose them in quotes.</&>
+        </p>
+        <div class="ss-kw__ex"><code>cf.Color:blue</code><code>cf."Fav Color":"hunter green"</code></div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="ss-kw">
+        <span class="ss-kw__key">@domain</span>
+        <p class="ss-kw__desc"><&|/l&>To search for tickets with watchers who match a domain, enter the domain, including the @ symbol.</&></p>
+        <div class="ss-kw__ex"><code>@example.com</code><code>domain:@example.com</code></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="ss-footer">
+% if (RT->Config->Get('OnlySearchActiveTicketsInSimpleSearch', $session{'CurrentUser'})) {
+  <div class="ss-footer__row">
+    <span class="ss-footer__label"><&|/l&>Default Scope</&></span>
+    <span class="ss-footer__text"><&|/l&>Only tickets with these active statuses are searched:</&></span>
+    <div class="ss-footer__badges">
+%   for my $status (RT::Queue->ActiveStatusArray) {
+      <span class="ss-footer__badge"><% loc($status) %></span>
+%   }
+    </div>
+  </div>
+% }
+  <div class="ss-footer__row">
+    <span class="ss-footer__label"><&|/l&>Advanced</&></span>
+    <span class="ss-footer__text">
+%   my $link_start = '<a href="' . RT->Config->Get('WebPath') . '/Search/Build.html" class="ss-footer__qb-link">';
+%   my $link_end   = '</a>';
+      <&|/l_unsafe, $link_start, $link_end &>For the full power of RT's searches, use the [_1]Query Builder[_2].</&>
+    </span>
+  </div>
+</div>
+
+</form>
+% $m->callback( %ARGS, CallbackName => 'PostForm' );
+</div>
+
+<style>
+.ss-hero {
+  text-align: center;
+  padding: 2.5rem 1rem 2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--bs-border-color);
+}
+.ss-hero__title {
+  font-size: 1.4rem; font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+.ss-hero__ig { max-width: 580px; margin: 0 auto; flex-wrap: nowrap; }
+.ss-hero__input {
+  font-size: 1rem; padding: .6rem 1rem;
+  border-radius: .5rem 0 0 .5rem !important;
+}
+.ss-hero__btn {
+  padding: .6rem 1.4rem;
+  border-radius: 0 .5rem .5rem 0 !important;
+}
+.ss-hero__hint {
+  font-size: .82rem;
+  color: var(--bs-secondary-color, #6c757d);
+  margin-top: .85rem; margin-bottom: 0;
+}
+.ss-help { margin-bottom: 1.5rem; }
+.ss-kw {
+  border: 1px solid var(--bs-border-color);
+  border-radius: .6rem;
+  padding: .85rem 1rem;
+  background: var(--bs-card-bg, var(--bs-body-bg));
+  height: 100%;
+}
+.ss-kw__key {
+  display: inline-block;
+  background: var(--bs-primary, #0d6efd);
+  color: #fff;
+  font-family: monospace;
+  font-size: .78rem; font-weight: 700;
+  padding: .15rem .55rem;
+  border-radius: .35rem;
+  margin-bottom: .5rem;
+  letter-spacing: .02em;
+}
+.ss-kw__desc {
+  font-size: .81rem;
+  color: var(--bs-body-color);
+  margin-bottom: .55rem;
+  line-height: 1.45;
+}
+.ss-kw__ex { display: flex; flex-direction: column; gap: .2rem; }
+.ss-kw__ex code {
+  font-size: .74rem;
+  background: var(--bs-tertiary-bg, rgba(0,0,0,.05));
+  padding: .1rem .4rem;
+  border-radius: .25rem;
+  color: var(--bs-code-color, #d63384);
+  display: inline-block;
+}
+.ss-footer {
+  border: 1px solid var(--bs-border-color);
+  border-radius: .6rem;
+  padding: .85rem 1rem;
+  background: var(--bs-card-bg, var(--bs-body-bg));
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+.ss-footer__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .4rem;
+}
+.ss-footer__label {
+  font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--bs-primary, #0d6efd);
+  background: rgba(13,110,253,.1);
+  padding: .12rem .5rem;
+  border-radius: .3rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.ss-footer__text {
+  font-size: .81rem;
+  color: var(--bs-secondary-color, #6c757d);
+}
+.ss-footer__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem;
+  width: 100%;
+  margin-top: .2rem;
+}
+.ss-footer__badge {
+  font-size: .7rem;
+  background: var(--bs-tertiary-bg, rgba(0,0,0,.05));
+  border: 1px solid var(--bs-border-color);
+  color: var(--bs-body-color);
+  padding: .1rem .45rem;
+  border-radius: .3rem;
+  white-space: nowrap;
+}
+.ss-footer__qb-link {
+  font-weight: 600;
+  color: var(--bs-primary, #0d6efd);
+  text-decoration: underline;
+}
+</style>
+
+
+<%INIT>
+my $title = loc("Search for tickets");
+use RT::Search::Simple;
+
+my $config = RT->Config->Get('FullTextSearch') || {};
+my $fulltext_keyword = 'fulltext:';
+
+if ($q) {
+    my $tickets = RT::Tickets->new( $session{'CurrentUser'} );
+    $m->callback( %ARGS, query => \$q, CallbackName => 'ModifyQuery' );
+
+    if ($q =~ /^#?(\d+)$/) {
+        RT::Interface::Web::Redirect(RT->Config->Get('WebURL')."Ticket/Display.html?id=".$1);
+    }
+
+    my %args = (
+        Argument   => $q,
+        TicketsObj => $tickets,
+    );
+
+    $m->callback( %ARGS, CallbackName => 'SearchArgs', args => \%args);
+
+    my $search      = RT::Search::Simple->new(%args);
+    my $query       = $m->comp('/Elements/QueryString', %ARGS, Query => $search->QueryToSQL() );
+    my $result_path = RT->Config->Get('WebURL') . "Search/Results.html?$query";
+    RT::Interface::Web::Redirect( $result_path );
+    $m->abort();
+}
+</%INIT>
+
+<%ARGS>
+$q => undef
+</%ARGS>
