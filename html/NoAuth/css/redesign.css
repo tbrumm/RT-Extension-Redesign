@@ -373,16 +373,18 @@ div.results .titlebox.card.error {
     max-width: 280px;
 }
 
-/* ── Form submit button bar: sticky at bottom of create form ─── */
+/* ── Form submit button bar: sticky within the create form ──── */
+/* RT uses display:inline on create-wide — override to block so
+   position:sticky actually works. Only inside the create form,
+   not inside #topactions where RT controls it via media queries. */
 
-.create-wide,
-.create-medium,
-.create-narrow {
+form#CreateTicketInQueue .create-wide {
+    display: block;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 20;
     background: var(--bs-body-bg);
-    padding: 0.5rem 0;
+    padding: 0.5rem 0 0.5rem;
     border-bottom: 1px solid var(--bs-border-color);
     margin-bottom: 1rem;
 }
