@@ -2,7 +2,7 @@
    RT-Extension-Redesign — Global Styles
    ================================================================ */
 
-/* 0. Shared values (no custom color palette — use BS vars) ──── */
+/* 0. Shared values ──────────────────────────────────────────── */
 
 :root {
     --rd-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -13,7 +13,6 @@
 
 /* 1. Navigation ─────────────────────────────────────────────── */
 
-/* Icons — neutral, inherit link color */
 #li-home     > a.nav-link::before,
 #li-search   > a.nav-link::before,
 #li-reports  > a.nav-link::before,
@@ -32,30 +31,25 @@
     opacity: 0.75;
 }
 
-#li-home     > a.nav-link::before { content: "\F425"; } /* house-fill */
-#li-search   > a.nav-link::before { content: "\F52A"; } /* search */
-#li-reports  > a.nav-link::before { content: "\F17B"; } /* bar-chart-fill */
-#li-articles > a.nav-link::before { content: "\F4A3"; } /* file-text */
-#li-assets   > a.nav-link::before { content: "\F6E6"; } /* pc-display */
-#li-projects > a.nav-link::before { content: "\F44C"; } /* kanban-fill */
-#li-tools    > a.nav-link::before { content: "\F5DB"; } /* tools */
-#li-admin    > a.nav-link::before { content: "\F3E3"; } /* gear-fill */
+#li-home     > a.nav-link::before { content: "\F425"; }
+#li-search   > a.nav-link::before { content: "\F52A"; }
+#li-reports  > a.nav-link::before { content: "\F17B"; }
+#li-articles > a.nav-link::before { content: "\F4A3"; }
+#li-assets   > a.nav-link::before { content: "\F6E6"; }
+#li-projects > a.nav-link::before { content: "\F44C"; }
+#li-tools    > a.nav-link::before { content: "\F5DB"; }
+#li-admin    > a.nav-link::before { content: "\F3E3"; }
 
-/* Active: RT already sets font-weight:bold — just add a subtle
-   bottom-border indicator using the theme's own primary color    */
+/* Active: primary color text only, RT already sets font-weight:bold */
 #main-navigation .navbar .nav-item > a.nav-link.active {
     color: var(--bs-primary) !important;
-    border-bottom: 2px solid var(--bs-primary);
-    padding-bottom: calc(0.4rem - 2px);
-    border-radius: 0;
 }
 
-/* Icon on active item: full opacity, inherit primary color */
 #main-navigation .navbar .nav-item > a.nav-link.active::before {
     opacity: 1;
 }
 
-/* Hover: very light background using Bootstrap's secondary-bg */
+/* Hover: subtle background */
 #main-navigation .navbar .nav-item > a.nav-link:not(.active):hover {
     background-color: var(--bs-secondary-bg);
     border-radius: 0.35rem;
@@ -84,7 +78,7 @@ div#header h1 {
 }
 
 
-/* 3. TitleBox — the main card/panel component ───────────────── */
+/* 3. TitleBox ───────────────────────────────────────────────── */
 
 .titlebox.card {
     border-radius: var(--rd-radius);
@@ -100,7 +94,7 @@ div#header h1 {
 }
 
 
-/* 4. Ticket tables ──────────────────────────────────────────── */
+/* 4. Tables ─────────────────────────────────────────────────── */
 
 table.collection-as-table > tbody > tr:hover td {
     background-color: var(--bs-secondary-bg) !important;
@@ -108,26 +102,16 @@ table.collection-as-table > tbody > tr:hover td {
 }
 
 
-/* 5. Buttons — keep Bootstrap primary, just align border-radius  */
+/* 5. Buttons ────────────────────────────────────────────────── */
 
 .btn {
     border-radius: 0.4rem;
 }
 
 
-/* 6. Scrollbar (Webkit) ─────────────────────────────────────── */
+/* 6. Scrollbar ──────────────────────────────────────────────── */
 
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-}
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-::-webkit-scrollbar-thumb {
-    background: var(--bs-border-color);
-    border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: var(--bs-secondary-color);
-}
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bs-border-color); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--bs-secondary-color); }
