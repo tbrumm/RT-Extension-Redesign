@@ -1,5 +1,6 @@
 % $m->callback( %ARGS, CallbackName => 'Header' );
 <& /Elements/Header, Title => loc('Login'), ShowBar => 0, ShowTitle => 0, RichText => 0 &>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <style>
 /* ── RT-Extension-Redesign: Login ─────────────────────────── */
@@ -23,7 +24,7 @@ html:has(#body.login-body) hr.clear { display: none; }
     overflow: hidden;
 }
 
-/* ── Right panel: login form (dark gradient) ────────────────────── */
+/* ── Left panel: brand + form ─────────────────────────── */
 
 .rd-login-brand {
     flex: 0 0 25%;
@@ -97,7 +98,7 @@ html:has(#body.login-body) hr.clear { display: none; }
     z-index: 1;
 }
 
-/* ── Form card inside right panel ───────────────────────────────── */
+/* ── Form card inside left panel ─────────────────────────── */
 
 .rd-login-card {
     width: 100%;
@@ -244,6 +245,51 @@ html:has(#body.login-body) hr.clear { display: none; }
     line-height: 1.35;
 }
 
+/* ── Stats widget ───────────────────────────────────────────────── */
+
+.rd-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.55rem;
+    margin-top: 1.4rem;
+    width: 100%;
+    max-width: 560px;
+}
+
+.rd-stat-card {
+    background: var(--bs-tertiary-bg, rgba(0,0,0,0.04));
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.6rem;
+    padding: 0.6rem 0.4rem 0.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+}
+
+.rd-stat-card i {
+    font-size: 1.05rem;
+    line-height: 1;
+}
+
+.rd-stat-num {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--bs-body-color);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.rd-stat-lbl {
+    font-size: 0.62rem;
+    color: var(--bs-secondary-color, #6c757d);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    margin-top: 0.1rem;
+}
+
 .rd-login-right-inner {
     width: 100%;
 }
@@ -271,6 +317,49 @@ html:has(#body.login-body) hr.clear { display: none; }
       <h1 class="rd-brand-title">Request Tracker</h1>
       <p class="rd-brand-instance"><% RT->Config->Get('rtname') %></p>
       <p class="rd-brand-sub">Support-Anfragen organisiert verwalten und effizient bearbeiten.</p>
+
+      <div class="rd-stats-grid">
+        <div class="rd-stat-card">
+          <i class="bi bi-person-check" style="color:#2D4A8F"></i>
+          <span class="rd-stat-num"><% $priv_count %></span>
+          <span class="rd-stat-lbl">Priv. User</span>
+        </div>
+        <div class="rd-stat-card">
+          <i class="bi bi-person" style="color:#6c757d"></i>
+          <span class="rd-stat-num"><% $unpriv_count %></span>
+          <span class="rd-stat-lbl">Unpriv. User</span>
+        </div>
+        <div class="rd-stat-card">
+          <i class="bi bi-people" style="color:#6610f2"></i>
+          <span class="rd-stat-num"><% $grp_count %></span>
+          <span class="rd-stat-lbl">Gruppen</span>
+        </div>
+        <div class="rd-stat-card">
+          <i class="bi bi-inbox" style="color:#0d6efd"></i>
+          <span class="rd-stat-num"><% $q_count %></span>
+          <span class="rd-stat-lbl">Queues</span>
+        </div>
+        <div class="rd-stat-card">
+          <i class="bi bi-ticket-perforated" style="color:#fd7e14"></i>
+          <span class="rd-stat-num"><% $t_count %></span>
+          <span class="rd-stat-lbl">Tickets</span>
+        </div>
+        <div class="rd-stat-card">
+          <i class="bi bi-arrow-left-right" style="color:#20c997"></i>
+          <span class="rd-stat-num"><% $txn_count %></span>
+          <span class="rd-stat-lbl">Transaktionen</span>
+        </div>
+        <div class="rd-stat-card">
+          <i class="bi bi-box-seam" style="color:#198754"></i>
+          <span class="rd-stat-num"><% $asset_count %></span>
+          <span class="rd-stat-lbl">Assets</span>
+        </div>
+        <div class="rd-stat-card">
+          <i class="bi bi-journal-text" style="color:#dc3545"></i>
+          <span class="rd-stat-num"><% $article_count %></span>
+          <span class="rd-stat-lbl">Artikel</span>
+        </div>
+      </div>
     </div>
 
     <div class="rd-login-right-inner">
@@ -337,6 +426,34 @@ html:has(#body.login-body) hr.clear { display: none; }
 <& /Elements/Footer, Menu => 0 &>
 
 </div>
+
+<%init>
+my $su = RT->SystemUser;
+
+my $pu = RT::Users->new($su); $pu->LimitToPrivileged;
+my $priv_count = $pu->Count;
+
+my $uu = RT::Users->new($su); $uu->LimitToUnprivileged;
+my $unpriv_count = $uu->Count;
+
+my $grp = RT::Groups->new($su); $grp->LimitToUserDefinedGroups;
+my $grp_count = $grp->Count;
+
+my $q = RT::Queues->new($su); $q->UnLimit;
+my $q_count = $q->Count;
+
+my $t = RT::Tickets->new($su); $t->UnLimit;
+my $t_count = $t->Count;
+
+my $txn = RT::Transactions->new($su); $txn->UnLimit;
+my $txn_count = $txn->Count;
+
+my $asset_count = 0;
+eval { my $a = RT::Assets->new($su); $a->UnLimit; $asset_count = $a->Count; };
+
+my $article_count = 0;
+eval { my $art = RT::Articles->new($su); $art->UnLimit; $article_count = $art->Count; };
+</%init>
 
 <%ARGS>
 $next    => ''
