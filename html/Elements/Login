@@ -16,7 +16,7 @@
 /* ── Right panel: login form (dark gradient) ────────────────────── */
 
 .rd-login-brand {
-    flex: 0 0 35%;
+    flex: 0 0 25%;
     background: linear-gradient(150deg, #1E3875 0%, #2D4A8F 45%, #3254A0 100%);
     display: flex;
     flex-direction: column;
