@@ -9,17 +9,27 @@ body:has(#body.login-body) { overflow: hidden; height: 100vh; margin: 0; padding
 
 html:has(#body.login-body) hr.clear { display: none; }
 
+html:has(#body.login-body) #footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--bs-body-bg);
+    border-top: 1px solid var(--bs-border-color);
+    padding: 0.4rem 1rem;
+    font-size: 0.78rem;
+}
+
 #body.login-body {
     padding: 0;
-    display: flex;
-    flex-direction: column;
     height: 100vh;
     overflow: hidden;
 }
 
 .rd-login-outer {
-    flex: 1;
     display: flex;
+    height: calc(100vh - 2.2rem);
     overflow: hidden;
 }
 
@@ -332,11 +342,10 @@ html:has(#body.login-body) hr.clear { display: none; }
   </div>
 
 </div>
+</div>
 
 % $m->callback( %ARGS, CallbackName => 'AfterForm' );
 <& /Elements/Footer, Menu => 0 &>
-
-</div>
 
 <%ARGS>
 $next    => ''
