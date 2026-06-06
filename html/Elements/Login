@@ -4,31 +4,24 @@
 <style>
 /* ── RT-Extension-Redesign: Login ─────────────────────────── */
 
-/* Reset body padding injected by layout.css */
-#body.login-body {
-    padding: 0;
-}
-
-/* Hide the hr.clear that Footer outputs before closing #body */
-#body.login-body > hr.clear {
-    display: none;
-}
+#body.login-body { padding: 0; }
+#body.login-body > hr.clear { display: none; }
 
 .rd-login-outer {
     display: flex;
     min-height: 100vh;
 }
 
-/* ── Brand panel (left) ─────────────────────────── */
+/* ── Right panel: login form (dark gradient) ────────────────────── */
 
 .rd-login-brand {
-    flex: 0 0 42%;
-    background: linear-gradient(150deg, #1B2C5B 0%, #2D4A8F 55%, #1e3875 100%);
+    flex: 0 0 45%;
+    background: linear-gradient(150deg, #1E3875 0%, #2D4A8F 45%, #3254A0 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 3rem 2.5rem;
+    padding: 3rem 3rem;
     position: relative;
     overflow: hidden;
 }
@@ -36,23 +29,21 @@
 .rd-login-brand::before {
     content: '';
     position: absolute;
-    top: -100px;
-    right: -100px;
-    width: 360px;
-    height: 360px;
+    top: -120px; right: -120px;
+    width: 380px; height: 380px;
     border-radius: 50%;
     background: rgba(255,255,255,0.05);
+    pointer-events: none;
 }
 
 .rd-login-brand::after {
     content: '';
     position: absolute;
-    bottom: -80px;
-    left: -80px;
-    width: 280px;
-    height: 280px;
+    bottom: -100px; left: -100px;
+    width: 300px; height: 300px;
     border-radius: 50%;
     background: rgba(255,255,255,0.04);
+    pointer-events: none;
 }
 
 .rd-brand-monogram {
@@ -60,13 +51,12 @@
     font-weight: 900;
     color: #fff;
     background: rgba(255,255,255,0.12);
-    width: 80px;
-    height: 80px;
+    width: 80px; height: 80px;
     border-radius: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     letter-spacing: -0.04em;
     border: 1px solid rgba(255,255,255,0.2);
     position: relative;
@@ -74,116 +64,212 @@
 }
 
 .rd-brand-title {
-    font-size: 1.75rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: #fff;
     text-align: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     letter-spacing: -0.02em;
     position: relative;
     z-index: 1;
 }
 
 .rd-brand-instance {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: rgba(255,255,255,0.5);
     text-align: center;
-    margin-bottom: 0.8rem;
-    position: relative;
-    z-index: 1;
+    margin-bottom: 2rem;
     font-weight: 500;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-}
-
-.rd-brand-sub {
-    font-size: 0.92rem;
-    color: rgba(255,255,255,0.65);
-    text-align: center;
-    max-width: 260px;
-    line-height: 1.6;
-    margin: 0;
     position: relative;
     z-index: 1;
 }
 
-/* ── Form panel (right) ─────────────────────────── */
-
-.rd-login-form {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--bs-body-bg);
-    padding: 2rem;
-}
+/* ── Form card inside right panel ───────────────────────────────── */
 
 .rd-login-card {
     width: 100%;
-    max-width: 400px;
+    max-width: 360px;
+    position: relative;
+    z-index: 1;
 }
 
 .rd-login-card h2.rd-form-title {
-    font-size: 1.55rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 0.3rem;
-    color: var(--bs-body-color);
-    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 0.2rem;
+    letter-spacing: -0.01em;
 }
 
 .rd-login-card p.rd-form-sub {
-    font-size: 0.88rem;
-    color: var(--bs-secondary-color, #6c757d);
-    margin-bottom: 1.8rem;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1.4rem;
 }
 
-/* Hide the TitleBox decoration from ListActions error box */
-.rd-login-card .titlebox-title {
-    display: none;
-}
-.rd-login-card .titlebox.error .titlebox-title {
-    display: block;
+/* Labels */
+.rd-login-card label,
+.rd-login-card .labeled-value > label {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.82rem;
+    font-weight: 500;
 }
 
-/* Submit button */
+/* Inputs */
+.rd-login-card .form-control {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.18);
+    color: #fff;
+    border-radius: 0.5rem;
+    transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.rd-login-card .form-control:focus {
+    background: rgba(255,255,255,0.14);
+    border-color: rgba(255,255,255,0.45);
+    box-shadow: 0 0 0 0.2rem rgba(255,255,255,0.1);
+    color: #fff;
+    outline: none;
+}
+
+.rd-login-card .form-control::placeholder {
+    color: rgba(255,255,255,0.35);
+}
+
+/* Browser autofill override */
+.rd-login-card .form-control:-webkit-autofill,
+.rd-login-card .form-control:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px #2a4590 inset !important;
+    -webkit-text-fill-color: #fff !important;
+    caret-color: #fff;
+}
+
+/* Submit button: white on dark */
 .rd-login-card .rd-btn-submit {
     width: 100%;
     padding: 0.65rem 1.5rem;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     border-radius: 0.5rem;
-    background: #2D4A8F;
-    border-color: #2D4A8F;
-    color: #fff;
-    transition: background 0.15s ease, box-shadow 0.15s ease;
+    background: #fff;
+    border-color: #fff;
+    color: #1E3875;
+    transition: background 0.15s, box-shadow 0.15s;
 }
 
 .rd-login-card .rd-btn-submit:hover {
-    background: #1B2C5B;
-    border-color: #1B2C5B;
-    box-shadow: 0 4px 12px rgba(45,74,143,0.35);
+    background: rgba(255,255,255,0.88);
+    border-color: rgba(255,255,255,0.88);
+    color: #1E3875;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
 }
 
-/* ── Mobile: hide brand panel ───────────────────── */
+/* Error/action messages */
+.rd-login-card .titlebox-title { display: none; }
+.rd-login-card .titlebox.error .titlebox-title { display: block; }
+.rd-login-card .titlebox {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+}
 
-@media (max-width: 680px) {
-    .rd-login-brand { display: none; }
-    .rd-login-outer { min-height: 100vh; }
-    .rd-login-form  { padding: 1.5rem 1rem; align-items: flex-start; padding-top: 3rem; }
+/* LoginHelp / forgot password */
+.rd-login-card a,
+.rd-login-card .login-help {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.82rem;
+}
+.rd-login-card a:hover { color: #fff; }
+
+/* ── Left panel: brand header + plugin content ──────────────────── */
+
+.rd-login-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--bs-body-bg);
+    padding: 2.5rem 3rem;
+    overflow-y: auto;
+}
+
+.rd-left-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.rd-left-brand .rd-brand-monogram {
+    background: transparent;
+    border-color: var(--bs-border-color);
+    margin-bottom: 1rem;
+}
+
+.rd-left-brand .rd-brand-title {
+    color: var(--bs-body-color);
+    font-size: 1.3rem;
+}
+
+.rd-left-brand .rd-brand-instance {
+    color: var(--bs-secondary-color, #6c757d);
+    margin-bottom: 0.4rem;
+}
+
+.rd-left-brand .rd-brand-sub {
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: var(--bs-body-color);
+    text-align: center;
+    max-width: 480px;
+    margin: 0.5rem 0 0;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+}
+
+.rd-login-right-inner {
+    width: 100%;
+}
+
+/* ── Mobile: stack vertically ────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .rd-login-outer   { flex-direction: column; }
+    .rd-login-brand   { flex: none; padding: 2rem 1.5rem; }
+    .rd-login-right   { padding: 1.5rem 1rem; }
 }
 </style>
 
 <div id="body" class="login-body">
 <div class="rd-login-outer">
 
-  <div class="rd-login-brand">
-    <div class="rd-brand-monogram">RT</div>
-    <h1 class="rd-brand-title">Request Tracker</h1>
-    <p class="rd-brand-instance"><% RT->Config->Get('rtname') %></p>
-    <p class="rd-brand-sub">Support-Anfragen organisiert verwalten und effizient bearbeiten.</p>
+  <!-- Left: brand header + plugin content -->
+  <div class="rd-login-right">
+
+    <div class="rd-left-brand">
+      <div class="rd-brand-monogram">
+        <img src="<% RT->Config->Get('WebPath') %>/static/images/request-tracker-small-logo.svg"
+             alt="RT" style="width:48px;height:48px;">
+      </div>
+      <h1 class="rd-brand-title">Request Tracker</h1>
+      <p class="rd-brand-instance"><% RT->Config->Get('rtname') %></p>
+      <p class="rd-brand-sub">Support-Anfragen organisiert verwalten und effizient bearbeiten.</p>
+    </div>
+
+    <div class="rd-login-right-inner">
+% $m->callback( %ARGS, CallbackName => 'BeforeForm' );
+    </div>
   </div>
 
-  <div class="rd-login-form">
+  <!-- Right: login form only -->
+  <div class="rd-login-brand">
+
     <div class="rd-login-card">
 
       <h2 class="rd-form-title"><% loc('Sign in') %></h2>
@@ -196,8 +282,6 @@
       &>
 
       <& LoginRedirectWarning, %ARGS &>
-
-% $m->callback( %ARGS, CallbackName => 'BeforeForm' );
 
 % unless (RT->Config->Get('WebRemoteUserAuth') and !RT->Config->Get('WebFallbackToRTLogin')) {
 <form hx-boost="false" id="login" name="login" method="post" action="<% RT->Config->Get('WebPath') %>/NoAuth/Login.html">
