@@ -343,6 +343,44 @@ html:has(#body.login-body) hr.clear { display: none; }
     width: 100%;
 }
 
+/* ── RT promo (shown when no BeforeForm callbacks exist) ─────────── */
+
+.rd-promo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    width: 100%;
+    max-width: 560px;
+}
+
+.rd-promo-card {
+    background: var(--bs-tertiary-bg, rgba(0,0,0,0.04));
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.65rem;
+    padding: 1rem;
+}
+
+.rd-promo-card i {
+    font-size: 1.4rem;
+    display: block;
+    margin-bottom: 0.45rem;
+}
+
+.rd-promo-card h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--bs-body-color);
+    margin: 0 0 0.25rem;
+}
+
+.rd-promo-card p {
+    font-size: 0.76rem;
+    color: var(--bs-secondary-color, #6c757d);
+    margin: 0;
+    line-height: 1.5;
+}
+
 /* ── Mobile: stack vertically ────────────────────────────────────── */
 
 @media (max-width: 768px) {
@@ -360,7 +398,43 @@ html:has(#body.login-body) hr.clear { display: none; }
   <div class="rd-login-content-wrap">
 
     <div class="rd-login-right-inner">
+% if ($has_before_form) {
 % $m->callback( %ARGS, CallbackName => 'BeforeForm' );
+% } else {
+      <h3 class="rd-stats-section-title" style="margin-bottom:0.75rem">Request Tracker 6</h3>
+      <div class="rd-promo-grid">
+        <div class="rd-promo-card">
+          <i class="bi bi-ticket-perforated" style="color:#0d6efd"></i>
+          <h4>Ticket-Management</h4>
+          <p>Anfragen strukturiert erfassen, priorisieren und l&uuml;ckenlos verfolgen &mdash; nichts geht verloren.</p>
+        </div>
+        <div class="rd-promo-card">
+          <i class="bi bi-people" style="color:#6610f2"></i>
+          <h4>Team-Collaboration</h4>
+          <p>Queues, Gruppen und Rollen f&uuml;r effiziente Zusammenarbeit &uuml;ber alle Abteilungen hinweg.</p>
+        </div>
+        <div class="rd-promo-card">
+          <i class="bi bi-graph-up-arrow" style="color:#20c997"></i>
+          <h4>Reporting &amp; Analytics</h4>
+          <p>Dashboards und Berichte f&uuml;r fundierte Entscheidungen und kontinuierliche Verbesserung.</p>
+        </div>
+        <div class="rd-promo-card">
+          <i class="bi bi-shield-check" style="color:#198754"></i>
+          <h4>SLA-Management</h4>
+          <p>Antwort- und L&ouml;sungszeiten &uuml;berwachen und Eskalationen rechtzeitig erkennen.</p>
+        </div>
+        <div class="rd-promo-card">
+          <i class="bi bi-box-seam" style="color:#fd7e14"></i>
+          <h4>Asset-Management</h4>
+          <p>Hardware, Software und andere Assets direkt mit Tickets und Nutzern verkn&uuml;pfen.</p>
+        </div>
+        <div class="rd-promo-card">
+          <i class="bi bi-journal-text" style="color:#dc3545"></i>
+          <h4>Wissensdatenbank</h4>
+          <p>L&ouml;sungen als Artikel dokumentieren und f&uuml;r das gesamte Team zug&auml;nglich machen.</p>
+        </div>
+      </div>
+% }
     </div>
 
     <div class="rd-stats-section">
@@ -525,6 +599,21 @@ my $fmt = sub {
     my $s = reverse sprintf('%d', int($_[0]));
     $s =~ s/(\d{3})(?=\d)/$1./g;
     return scalar reverse $s;
+};
+
+# Detect whether any plugin/local callback has a BeforeForm for the login page
+my $has_before_form = 0;
+eval {
+    my $comp_root = $m->interp->comp_root;
+    my @roots = ref($comp_root) eq 'ARRAY'
+        ? (map { ref($_) ? $_->[1] : $_ } @$comp_root)
+        : ($comp_root);
+    for my $root (@roots) {
+        $has_before_form = 1 if
+            glob("$root/Callbacks/*/Elements/Login/BeforeForm") ||
+            glob("$root/Callbacks/Elements/Login/BeforeForm");
+        last if $has_before_form;
+    }
 };
 </%init>
 
