@@ -238,6 +238,9 @@ html:has(#body.login-body) hr.clear { display: none; }
 .rd-stats-section {
     width: 100%;
     margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .rd-stats-section-title {
