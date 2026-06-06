@@ -32,10 +32,31 @@ html:has(#body.login-body) hr.clear { display: none; }
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 3rem 3rem;
+    justify-content: flex-start;
+    padding: 2rem 2rem;
     position: relative;
     overflow-y: auto;
+    color: #fff;
+}
+
+.rd-brand-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.rd-login-card-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 .rd-login-brand::before {
@@ -373,17 +394,20 @@ html:has(#body.login-body) hr.clear { display: none; }
     </div>
   </div>
 
-  <!-- Right: brand + login form -->
+  <!-- Right: brand top + login form centered -->
   <div class="rd-login-brand">
 
-    <div class="rd-brand-monogram">
-      <img src="<% RT->Config->Get('WebPath') %>/static/images/request-tracker-small-logo.svg"
-           alt="RT" style="width:48px;height:48px;">
+    <div class="rd-brand-top">
+      <div class="rd-brand-monogram">
+        <img src="<% RT->Config->Get('WebPath') %>/static/images/request-tracker-small-logo.svg"
+             alt="RT" style="width:48px;height:48px;">
+      </div>
+      <h1 class="rd-brand-title">Request Tracker</h1>
+      <p class="rd-brand-instance"><% RT->Config->Get('rtname') %></p>
+      <p class="rd-brand-sub">Support-Anfragen organisiert verwalten und effizient bearbeiten.</p>
     </div>
-    <h1 class="rd-brand-title">Request Tracker</h1>
-    <p class="rd-brand-instance"><% RT->Config->Get('rtname') %></p>
-    <p class="rd-brand-sub">Support-Anfragen organisiert verwalten und effizient bearbeiten.</p>
 
+    <div class="rd-login-card-wrap">
     <div class="rd-login-card">
 
       <h2 class="rd-form-title"><% loc('Sign in') %></h2>
@@ -431,6 +455,7 @@ html:has(#body.login-body) hr.clear { display: none; }
 
       <& /Elements/LoginHelp &>
 
+    </div>
     </div>
   </div>
 
