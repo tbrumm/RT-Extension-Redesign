@@ -402,47 +402,47 @@ html:has(#body.login-body) hr.clear { display: none; }
 % $m->callback( %ARGS, CallbackName => 'BeforeForm' );
       </div>
       <div id="rd-promo-output" style="display:none;text-align:center">
-        <h3 class="rd-stats-section-title" style="margin-bottom:0.75rem">Warum Request Tracker?</h3>
+        <h3 class="rd-stats-section-title" style="margin-bottom:0.75rem"><% loc('Why Request Tracker?') %></h3>
         <div class="rd-promo-grid">
           <div class="rd-promo-card">
             <i class="bi bi-currency-euro" style="color:#0d6efd"></i>
-            <h4>Kostenlos &amp; Open Source</h4>
-            <p>RT ist Open Source &mdash; keine Lizenzkosten, keine Pro-Kopf-Geb&uuml;hren. Im Vergleich zu kommerziellen Systemen entstehen ausschlie&szlig;lich Infrastruktur- und Betriebskosten.</p>
+            <h4><% loc('Free & Open Source') %></h4>
+            <p><&|/l&>RT is open source — no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply.<&/&></p>
           </div>
           <div class="rd-promo-card">
             <i class="bi bi-puzzle" style="color:#6610f2"></i>
-            <h4>Unbegrenzt erweiterbar</h4>
-            <p>Offene Architektur mit hunderten verf&uuml;gbarer Erweiterungen. Andere Systeme begrenzen Anpassungen auf vordefinierte Konfigurationsoptionen.</p>
+            <h4><% loc('Unlimited Extensibility') %></h4>
+            <p><&|/l&>Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options.<&/&></p>
           </div>
           <div class="rd-promo-card">
             <i class="bi bi-cpu" style="color:#2D4A8F"></i>
-            <h4>KI &mdash; sicher &amp; intern</h4>
-            <p>KI-Funktionen laufen vollst&auml;ndig firmenintern. Firmendaten werden <strong>nicht</strong> f&uuml;r das Training externer KI-Modelle verwendet &mdash; anders als bei vielen Cloud-Systemen.</p>
+            <h4><% loc('AI - Secure & Internal') %></h4>
+            <p><&|/l&>AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models — unlike many cloud systems.<&/&></p>
           </div>
           <div class="rd-promo-card">
             <i class="bi bi-database-lock" style="color:#198754"></i>
-            <h4>Datensouver&auml;nit&auml;t</h4>
-            <p>Volle Kontrolle &uuml;ber alle Daten und die Infrastruktur. Keine Abh&auml;ngigkeit von externen Clouds oder unklaren Datenverarbeitungsrichtlinien.</p>
+            <h4><% loc('Data Sovereignty') %></h4>
+            <p><&|/l&>Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies.<&/&></p>
           </div>
           <div class="rd-promo-card">
             <i class="bi bi-diagram-3" style="color:#20c997"></i>
-            <h4>Flexible Workflows</h4>
-            <p>Beliebige Lifecycles, SLAs und Automatisierungen ohne Aufpreis. Prozesse passen sich dem Unternehmen an &mdash; nicht umgekehrt.</p>
+            <h4><% loc('Flexible Workflows') %></h4>
+            <p><&|/l&>Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company — not the other way around.<&/&></p>
           </div>
           <div class="rd-promo-card">
             <i class="bi bi-unlock" style="color:#fd7e14"></i>
-            <h4>Kein Vendor Lock-in</h4>
-            <p>Open Source, offene Standards, eigene Infrastruktur. Kein Abh&auml;ngigkeitsrisiko durch erzwungene Upgrades oder Preiserh&ouml;hungen.</p>
+            <h4><% loc('No Vendor Lock-in') %></h4>
+            <p><&|/l&>Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases.<&/&></p>
           </div>
           <div class="rd-promo-card">
             <i class="bi bi-sliders" style="color:#0dcaf0"></i>
-            <h4>Custom Fields ohne Limits</h4>
-            <p>Unbegrenzte Custom Fields jedes Typs &mdash; kostenlos und ohne Einschr&auml;nkungen. Andere Systeme limitieren die Anzahl oder verlangen Aufpreise f&uuml;r erweiterte Feldtypen.</p>
+            <h4><% loc('Custom Fields Without Limits') %></h4>
+            <p><&|/l&>Unlimited custom fields of any type — free and without restrictions. Other systems limit the number or charge extra for advanced field types.<&/&></p>
           </div>
           <div class="rd-promo-card">
             <i class="bi bi-envelope-at" style="color:#6f42c1"></i>
-            <h4>E-Mail-native &amp; mehrsprachig</h4>
-            <p>RT wurde von Grund auf f&uuml;r E-Mail gebaut &mdash; Threading, Reply-Handling und Ticket-Erstellung direkt aus dem Postfach. Dazu vollst&auml;ndige I18N-Unterst&uuml;tzung f&uuml;r internationale Teams in beliebig vielen Sprachen.</p>
+            <h4><% loc('Email-Native & Multilingual') %></h4>
+            <p><&|/l&>RT was built from the ground up for email — threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages.<&/&></p>
           </div>
         </div>
       </div>
@@ -459,49 +459,56 @@ html:has(#body.login-body) hr.clear { display: none; }
     </div>
 
     <div class="rd-stats-section">
-      <h3 class="rd-stats-section-title">System Informationen</h3>
-      <p class="rd-stats-headline">Seit 1999 ist Request Tracker Marktf&uuml;hrer f&uuml;r offene Ticket- und Workflow-Systeme. Diese Installation hat bereits <strong><% $fmt->($t_count) %> Tickets</strong> mit <strong><% $fmt->($txn_count) %> Transaktionen</strong> verarbeitet &mdash; und verwaltet <strong><% $fmt->($asset_count) %> Assets</strong> sowie <strong><% $fmt->($article_count) %> Artikel</strong> f&uuml;r <strong><% $fmt->($priv_count + $unpriv_count) %> Benutzer</strong> in <strong><% $fmt->($q_count) %> Queues</strong>.</p>
+      <h3 class="rd-stats-section-title"><% loc('System Information') %></h3>
+      <p class="rd-stats-headline"><% loc('Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed [_1] tickets with [_2] transactions — and manages [_3] assets and [_4] articles for [_5] users in [_6] queues.',
+          '<strong>'.$fmt->($t_count).'</strong>',
+          '<strong>'.$fmt->($txn_count).'</strong>',
+          '<strong>'.$fmt->($asset_count).'</strong>',
+          '<strong>'.$fmt->($article_count).'</strong>',
+          '<strong>'.$fmt->($priv_count + $unpriv_count).'</strong>',
+          '<strong>'.$fmt->($q_count).'</strong>'
+      ) |n %></p>
 
       <div class="rd-stats-grid">
         <div class="rd-stat-card">
           <i class="bi bi-person-check" style="color:#2D4A8F"></i>
           <span class="rd-stat-num"><% $fmt->($priv_count) %></span>
-          <span class="rd-stat-lbl">Priv. User</span>
+          <span class="rd-stat-lbl"><% loc('Priv. Users') %></span>
         </div>
         <div class="rd-stat-card">
           <i class="bi bi-person" style="color:#6c757d"></i>
           <span class="rd-stat-num"><% $fmt->($unpriv_count) %></span>
-          <span class="rd-stat-lbl">Unpriv. User</span>
+          <span class="rd-stat-lbl"><% loc('Unpriv. Users') %></span>
         </div>
         <div class="rd-stat-card">
           <i class="bi bi-people" style="color:#6610f2"></i>
           <span class="rd-stat-num"><% $fmt->($grp_count) %></span>
-          <span class="rd-stat-lbl">Gruppen</span>
+          <span class="rd-stat-lbl"><% loc('Groups') %></span>
         </div>
         <div class="rd-stat-card">
           <i class="bi bi-inbox" style="color:#0d6efd"></i>
           <span class="rd-stat-num"><% $fmt->($q_count) %></span>
-          <span class="rd-stat-lbl">Queues</span>
+          <span class="rd-stat-lbl"><% loc('Queues') %></span>
         </div>
         <div class="rd-stat-card">
           <i class="bi bi-ticket-perforated" style="color:#fd7e14"></i>
           <span class="rd-stat-num"><% $fmt->($t_count) %></span>
-          <span class="rd-stat-lbl">Tickets</span>
+          <span class="rd-stat-lbl"><% loc('Tickets') %></span>
         </div>
         <div class="rd-stat-card">
           <i class="bi bi-arrow-left-right" style="color:#20c997"></i>
           <span class="rd-stat-num"><% $fmt->($txn_count) %></span>
-          <span class="rd-stat-lbl">Transaktionen</span>
+          <span class="rd-stat-lbl"><% loc('Transactions') %></span>
         </div>
         <div class="rd-stat-card">
           <i class="bi bi-box-seam" style="color:#198754"></i>
           <span class="rd-stat-num"><% $fmt->($asset_count) %></span>
-          <span class="rd-stat-lbl">Assets</span>
+          <span class="rd-stat-lbl"><% loc('Assets') %></span>
         </div>
         <div class="rd-stat-card">
           <i class="bi bi-journal-text" style="color:#dc3545"></i>
           <span class="rd-stat-num"><% $fmt->($article_count) %></span>
-          <span class="rd-stat-lbl">Artikel</span>
+          <span class="rd-stat-lbl"><% loc('Articles') %></span>
         </div>
       </div>
     </div>
@@ -519,7 +526,7 @@ html:has(#body.login-body) hr.clear { display: none; }
       </div>
       <h1 class="rd-brand-title">Request Tracker</h1>
       <p class="rd-brand-instance"><% RT->Config->Get('rtname') %></p>
-      <p class="rd-brand-sub">Support-Anfragen organisiert verwalten und effizient bearbeiten.</p>
+      <p class="rd-brand-sub"><% loc('Support requests organized, managed and processed efficiently.') %></p>
     </div>
 
     <div class="rd-login-card-wrap">

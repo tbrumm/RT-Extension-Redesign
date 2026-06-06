@@ -1,0 +1,91 @@
+# German translations for RT-Extension-RedesignedRT
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Support-Anfragen organisiert verwalten und effizient bearbeiten."
+
+msgid "System Information"
+msgstr "System Informationen"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed [_1] tickets with [_2] transactions — and manages [_3] assets and [_4] articles for [_5] users in [_6] queues."
+msgstr "Seit 1999 ist Request Tracker Marktführer für offene Ticket- und Workflow-Systeme. Diese Installation hat bereits [_1] Tickets mit [_2] Transaktionen verarbeitet — und verwaltet [_3] Assets sowie [_4] Artikel für [_5] Benutzer in [_6] Queues."
+
+msgid "Why Request Tracker?"
+msgstr "Warum Request Tracker?"
+
+msgid "Free & Open Source"
+msgstr "Kostenlos & Open Source"
+
+msgid "RT is open source — no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT ist Open Source — keine Lizenzkosten, keine Pro-Kopf-Gebühren. Im Vergleich zu kommerziellen Systemen entstehen ausschließlich Infrastruktur- und Betriebskosten."
+
+msgid "Unlimited Extensibility"
+msgstr "Unbegrenzt erweiterbar"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Offene Architektur mit hunderten verfügbarer Erweiterungen. Andere Systeme begrenzen Anpassungen auf vordefinierte Konfigurationsoptionen."
+
+msgid "AI - Secure & Internal"
+msgstr "KI — sicher & intern"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models — unlike many cloud systems."
+msgstr "KI-Funktionen laufen vollständig firmenintern. Firmendaten werden <strong>NICHT</strong> für das Training externer KI-Modelle verwendet — anders als bei vielen Cloud-Systemen."
+
+msgid "Data Sovereignty"
+msgstr "Datensouveränität"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "Volle Kontrolle über alle Daten und die Infrastruktur. Keine Abhängigkeit von externen Clouds oder unklaren Datenverarbeitungsrichtlinien."
+
+msgid "Flexible Workflows"
+msgstr "Flexible Workflows"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company — not the other way around."
+msgstr "Beliebige Lifecycles, SLAs und Automatisierungen ohne Aufpreis. Prozesse passen sich dem Unternehmen an — nicht umgekehrt."
+
+msgid "No Vendor Lock-in"
+msgstr "Kein Vendor Lock-in"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "Open Source, offene Standards, eigene Infrastruktur. Kein Abhängigkeitsrisiko durch erzwungene Upgrades oder Preiserhöhungen."
+
+msgid "Custom Fields Without Limits"
+msgstr "Custom Fields ohne Limits"
+
+msgid "Unlimited custom fields of any type — free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Unbegrenzte Custom Fields jedes Typs — kostenlos und ohne Einschränkungen. Andere Systeme limitieren die Anzahl oder verlangen Aufpreise für erweiterte Feldtypen."
+
+msgid "Email-Native & Multilingual"
+msgstr "E-Mail-native & mehrsprachig"
+
+msgid "RT was built from the ground up for email — threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT wurde von Grund auf für E-Mail gebaut — Threading, Reply-Handling und Ticket-Erstellung direkt aus dem Postfach. Vollständige I18N-Unterstützung für internationale Teams in beliebig vielen Sprachen."
+
+msgid "Priv. Users"
+msgstr "Priv. Benutzer"
+
+msgid "Unpriv. Users"
+msgstr "Unpriv. Benutzer"
+
+msgid "Groups"
+msgstr "Gruppen"
+
+msgid "Queues"
+msgstr "Queues"
+
+msgid "Tickets"
+msgstr "Tickets"
+
+msgid "Transactions"
+msgstr "Transaktionen"
+
+msgid "Assets"
+msgstr "Assets"
+
+msgid "Articles"
+msgstr "Artikel"
