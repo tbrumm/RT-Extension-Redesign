@@ -5,7 +5,7 @@
 /* ── RT-Extension-Redesign: Login ─────────────────────────── */
 
 html:has(#body.login-body),
-body:has(#body.login-body) { overflow: hidden; height: 100vh; margin: 0; padding: 0; }
+body:has(#body.login-body) { overflow: hidden; height: 100vh; margin: 0; padding: 0; background: var(--bs-body-bg); }
 
 html:has(#body.login-body) hr.clear { display: none; }
 
