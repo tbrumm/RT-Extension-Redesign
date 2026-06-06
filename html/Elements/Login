@@ -406,8 +406,8 @@ html:has(#body.login-body) hr.clear { display: none; }
         <div class="rd-promo-grid">
           <div class="rd-promo-card">
             <i class="bi bi-currency-euro" style="color:#0d6efd"></i>
-            <h4>Faire Kosten</h4>
-            <p>Keine Pro-Kopf-Lizenzgeb&uuml;hren. Im Vergleich zu anderen Systemen sinken die Kosten nicht mit der Nutzerzahl &mdash; sie bleiben planbar.</p>
+            <h4>Kostenlos &amp; Open Source</h4>
+            <p>RT ist Open Source &mdash; keine Lizenzkosten, keine Pro-Kopf-Geb&uuml;hren. Im Vergleich zu kommerziellen Systemen entstehen ausschlie&szlig;lich Infrastruktur- und Betriebskosten.</p>
           </div>
           <div class="rd-promo-card">
             <i class="bi bi-puzzle" style="color:#6610f2"></i>
