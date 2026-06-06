@@ -7,6 +7,8 @@
 html:has(#body.login-body),
 body:has(#body.login-body) { overflow: hidden; height: 100%; }
 
+html:has(#body.login-body) #footer { display: none; }
+
 #body.login-body { padding: 0; }
 #body.login-body > hr.clear { display: none; }
 
