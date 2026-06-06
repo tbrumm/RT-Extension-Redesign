@@ -9,7 +9,8 @@
 
 .rd-login-outer {
     display: flex;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* ── Right panel: login form (dark gradient) ────────────────────── */
@@ -23,7 +24,7 @@
     justify-content: center;
     padding: 3rem 3rem;
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .rd-login-brand::before {
@@ -240,9 +241,9 @@
 /* ── Mobile: stack vertically ────────────────────────────────────── */
 
 @media (max-width: 768px) {
-    .rd-login-outer   { flex-direction: column; }
-    .rd-login-brand   { flex: none; padding: 2rem 1.5rem; }
-    .rd-login-right   { padding: 1.5rem 1rem; }
+    .rd-login-outer  { flex-direction: column; height: auto; overflow: visible; min-height: 100vh; }
+    .rd-login-brand  { flex: none; overflow-y: visible; padding: 2rem 1.5rem; }
+    .rd-login-right  { padding: 1.5rem 1rem; }
 }
 </style>
 
