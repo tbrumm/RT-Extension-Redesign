@@ -224,18 +224,29 @@ html:has(#body.login-body) hr.clear { display: none; }
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    justify-content: flex-start;
     background: var(--bs-body-bg);
     padding: 2.5rem 3rem;
     overflow-y: auto;
 }
 
-.rd-left-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 2rem;
+.rd-login-right-inner {
+    width: 100%;
+}
+
+.rd-stats-section {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.rd-stats-section-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--bs-secondary-color, #6c757d);
+    margin-bottom: 0.75rem;
 }
 
 /* Brand on dark right panel */
@@ -337,11 +348,15 @@ html:has(#body.login-body) hr.clear { display: none; }
 <div id="body" class="login-body">
 <div class="rd-login-outer">
 
-  <!-- Left: brand header + plugin content -->
+  <!-- Left: plugin content, then stats section -->
   <div class="rd-login-right">
 
-    <div class="rd-left-brand">
+    <div class="rd-login-right-inner">
+% $m->callback( %ARGS, CallbackName => 'BeforeForm' );
+    </div>
 
+    <div class="rd-stats-section">
+      <h3 class="rd-stats-section-title">System Informationen</h3>
       <p class="rd-stats-headline">Dieses System hat bislang <strong><% $fmt->($t_count) %> Tickets</strong> mit <strong><% $fmt->($txn_count) %> Transaktionen</strong> bearbeitet &mdash; und verwaltet <strong><% $fmt->($asset_count) %> Assets</strong> sowie <strong><% $fmt->($article_count) %> Artikel</strong> f&uuml;r <strong><% $fmt->($priv_count + $unpriv_count) %> Benutzer</strong> in <strong><% $fmt->($q_count) %> Queues</strong>.</p>
 
       <div class="rd-stats-grid">
@@ -388,9 +403,6 @@ html:has(#body.login-body) hr.clear { display: none; }
       </div>
     </div>
 
-    <div class="rd-login-right-inner">
-% $m->callback( %ARGS, CallbackName => 'BeforeForm' );
-    </div>
   </div>
 
   <!-- Right: brand top + login form centered -->
