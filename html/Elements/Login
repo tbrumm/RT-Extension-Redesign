@@ -219,6 +219,19 @@ html:has(#body.login-body) hr.clear { display: none; }
 }
 
 /* Brand on dark right panel */
+.rd-login-brand .rd-brand-monogram img {
+    filter: brightness(0) invert(1);
+}
+
+.rd-login-brand .rd-brand-title {
+    color: #fff;
+}
+
+.rd-login-brand .rd-brand-instance {
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 0.3rem;
+}
+
 .rd-brand-sub {
     font-size: 0.88rem;
     color: rgba(255,255,255,0.6);
@@ -227,10 +240,6 @@ html:has(#body.login-body) hr.clear { display: none; }
     margin-bottom: 1.8rem;
     position: relative;
     z-index: 1;
-}
-
-.rd-brand-instance {
-    margin-bottom: 0.3rem;
 }
 
 /* ── Stats headline + widget ────────────────────────────────────── */
