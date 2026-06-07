@@ -12,8 +12,14 @@ msgstr "Support-Anfragen organisiert verwalten und effizient bearbeiten."
 msgid "System Information"
 msgstr "System Informationen"
 
-msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed [_1] tickets with [_2] transactions — and manages [_3] assets and [_4] articles for [_5] users in [_6] queues."
-msgstr "Seit 1999 ist Request Tracker Marktführer für offene Ticket- und Workflow-Systeme. Diese Installation hat bereits [_1] Tickets mit [_2] Transaktionen verarbeitet — und verwaltet [_3] Assets sowie [_4] Artikel für [_5] Benutzer in [_6] Queues."
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "Seit 1999 ist Request Tracker Marktführer für offene Ticket- und Workflow-Systeme. Diese Installation hat bereits %1 Tickets mit %2 Transaktionen verarbeitet &mdash; und verwaltet %3 Assets sowie %4 Artikel für %5 Benutzer in %6 Queues."
+
+msgid "Sign in"
+msgstr "Anmeldung"
+
+msgid "Please enter your credentials to continue."
+msgstr "Bitte gib deine Zugangsdaten ein, um fortzufahren."
 
 msgid "Why Request Tracker?"
 msgstr "Warum Request Tracker?"
