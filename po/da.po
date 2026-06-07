@@ -1,0 +1,97 @@
+# Danish translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Supporthenvendelser organiseret, håndteret og behandlet effektivt."
+
+msgid "System Information"
+msgstr "Systemoplysninger"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "Siden 1999 har Request Tracker været markedsleder inden for åbne ticket- og workflowsystemer. Denne installation har allerede behandlet %1 tickets med %2 transaktioner &mdash; og administrerer %3 aktiver og %4 artikler for %5 brugere i %6 køer."
+
+msgid "Sign in"
+msgstr "Log ind"
+
+msgid "Please enter your credentials to continue."
+msgstr "Indtast dine loginoplysninger for at fortsætte."
+
+msgid "Why Request Tracker?"
+msgstr "Hvorfor Request Tracker?"
+
+msgid "Free & Open Source"
+msgstr "Gratis & Open Source"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT er open source &mdash; ingen licensomkostninger, ingen brugergebyrer. Sammenlignet med kommercielle systemer gælder kun infrastruktur- og driftsomkostninger."
+
+msgid "Unlimited Extensibility"
+msgstr "Ubegrænset Udvidelsesmulighed"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Åben arkitektur med hundredvis af tilgængelige udvidelser. Andre systemer begrænser tilpasninger til foruddefinerede konfigurationsindstillinger."
+
+msgid "AI - Secure & Internal"
+msgstr "AI — Sikker & Intern"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "AI-funktioner kører udelukkende inden for virksomheden. Virksomhedsdata bruges <strong>IKKE</strong> til træning af eksterne AI-modeller &mdash; i modsætning til mange cloud-systemer."
+
+msgid "Data Sovereignty"
+msgstr "Datasuverænitet"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "Fuld kontrol over alle data og infrastruktur. Ingen afhængighed af eksterne clouds eller uklare databehandlingspolitikker."
+
+msgid "Flexible Workflows"
+msgstr "Fleksible Arbejdsgange"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "Vilkårlige livscyklusser, SLA'er og automatiseringer uden ekstra omkostninger. Processer tilpasser sig virksomheden &mdash; ikke omvendt."
+
+msgid "No Vendor Lock-in"
+msgstr "Ingen Leverandørafhængighed"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "Open source, åbne standarder, egen infrastruktur. Ingen afhængighedsrisiko fra tvungne opgraderinger eller prisstigninger."
+
+msgid "Custom Fields Without Limits"
+msgstr "Tilpassede Felter Uden Grænser"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Ubegrænsede tilpassede felter af enhver type &mdash; gratis og uden begrænsninger. Andre systemer begrænser antallet eller opkræver ekstra for avancerede felttyper."
+
+msgid "Email-Native & Multilingual"
+msgstr "E-mail-Nativt & Flersproget"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT blev bygget fra grunden til e-mail &mdash; trådhåndtering, svarhåndtering og oprettelse af tickets direkte fra postkassen. Fuld I18N-understøttelse til internationale teams i et vilkårligt antal sprog."
+
+msgid "Priv. Users"
+msgstr "Priv. Brugere"
+
+msgid "Unpriv. Users"
+msgstr "Ikke-priv. Brugere"
+
+msgid "Groups"
+msgstr "Grupper"
+
+msgid "Queues"
+msgstr "Køer"
+
+msgid "Tickets"
+msgstr "Tickets"
+
+msgid "Transactions"
+msgstr "Transaktioner"
+
+msgid "Assets"
+msgstr "Aktiver"
+
+msgid "Articles"
+msgstr "Artikler"

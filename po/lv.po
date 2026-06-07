@@ -1,0 +1,97 @@
+# Latvian translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lv\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Atbalsta pieprasījumi organizēti, pārvaldīti un efektīvi apstrādāti."
+
+msgid "System Information"
+msgstr "Sistēmas Informācija"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "Kopš 1999. gada Request Tracker ir tirgus līderis atvērto biļešu pārvaldības un darbplūsmas sistēmu jomā. Šī instalācija jau ir apstrādājusi %1 biļetes ar %2 darījumiem &mdash; un pārvalda %3 aktīvus un %4 rakstus %5 lietotājiem %6 rindās."
+
+msgid "Sign in"
+msgstr "Pieteikties"
+
+msgid "Please enter your credentials to continue."
+msgstr "Lūdzu, ievadiet savus pieteikšanās datus, lai turpinātu."
+
+msgid "Why Request Tracker?"
+msgstr "Kāpēc Request Tracker?"
+
+msgid "Free & Open Source"
+msgstr "Bezmaksas & Atvērtā Koda"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT ir atvērtā koda programmatūra &mdash; bez licencēšanas izmaksām, bez maksas par lietotāju. Salīdzinot ar komerciālajām sistēmām, attiecas tikai infrastruktūras un darbības izmaksas."
+
+msgid "Unlimited Extensibility"
+msgstr "Neierobežota Paplašināmība"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Atvērta arhitektūra ar simtiem pieejamo paplašinājumu. Citas sistēmas ierobežo pielāgošanu ar iepriekš definētām konfigurācijas opcijām."
+
+msgid "AI - Secure & Internal"
+msgstr "MI — Drošs & Iekšējs"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "MI funkcijas darbojas pilnīgi uzņēmuma ietvaros. Uzņēmuma dati <strong>NETIEK</strong> izmantoti ārējo MI modeļu apmācībai &mdash; atšķirībā no daudzām mākoņdatošanas sistēmām."
+
+msgid "Data Sovereignty"
+msgstr "Datu Suverenitāte"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "Pilnīga kontrole pār visiem datiem un infrastruktūru. Nav atkarības no ārējiem mākoņiem vai neskaidrām datu apstrādes politikām."
+
+msgid "Flexible Workflows"
+msgstr "Elastīgas Darbplūsmas"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "Patvaļīgi dzīves cikli, SLA un automatizācija bez papildu izmaksām. Procesi pielāgojas uzņēmumam &mdash; nevis otrādi."
+
+msgid "No Vendor Lock-in"
+msgstr "Nav Piegādātāja Atkarības"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "Atvērtais kods, atvērtie standarti, pašu infrastruktūra. Nav atkarības riska no piespiedu jauninājumiem vai cenu pieauguma."
+
+msgid "Custom Fields Without Limits"
+msgstr "Pielāgoti Lauki Bez Ierobežojumiem"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Neierobežoti pielāgoti lauki jebkura veida &mdash; bez maksas un bez ierobežojumiem. Citas sistēmas ierobežo skaitu vai iekasē papildu maksu par uzlabotiem lauku veidiem."
+
+msgid "Email-Native & Multilingual"
+msgstr "E-pasta Natīvs & Daudzvalodu"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT tika veidots no paša sākuma e-pastam &mdash; pavedienu pārvaldība, atbilžu apstrāde un biļešu izveide tieši no pastkastītes. Pilns I18N atbalsts starptautiskajām komandām jebkurā valodu skaitā."
+
+msgid "Priv. Users"
+msgstr "Priv. Lietotāji"
+
+msgid "Unpriv. Users"
+msgstr "Nepriv. Lietotāji"
+
+msgid "Groups"
+msgstr "Grupas"
+
+msgid "Queues"
+msgstr "Rindas"
+
+msgid "Tickets"
+msgstr "Biļetes"
+
+msgid "Transactions"
+msgstr "Darījumi"
+
+msgid "Assets"
+msgstr "Aktīvi"
+
+msgid "Articles"
+msgstr "Raksti"

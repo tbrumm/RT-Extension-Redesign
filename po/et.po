@@ -1,0 +1,97 @@
+# Estonian translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: et\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Tugipäringud organiseeritud, hallatud ja tõhusalt töödeldud."
+
+msgid "System Information"
+msgstr "Süsteemi Teave"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "Alates 1999. aastast on Request Tracker avatud piletihalduse ja töövoosüsteemide turuliider. See paigaldus on juba töödelnud %1 piletit %2 tehinguga &mdash; ja haldab %3 vara ning %4 artiklit %5 kasutajale %6 järjekorras."
+
+msgid "Sign in"
+msgstr "Logi sisse"
+
+msgid "Please enter your credentials to continue."
+msgstr "Palun sisestage jätkamiseks oma sisselogimisandmed."
+
+msgid "Why Request Tracker?"
+msgstr "Miks Request Tracker?"
+
+msgid "Free & Open Source"
+msgstr "Tasuta & Avatud Lähtekood"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT on avatud lähtekoodiga &mdash; ilma litsentsitasudeta, ilma kasutajapõhiste tasudeta. Võrreldes kaubanduslike süsteemidega kehtivad ainult infrastruktuuri ja tegevuskulud."
+
+msgid "Unlimited Extensibility"
+msgstr "Piiramatu Laiendatavus"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Avatud arhitektuur sajandite saadavalolevate laiendustega. Teised süsteemid piiravad kohandamist eelmääratud konfiguratsioonivalikutega."
+
+msgid "AI - Secure & Internal"
+msgstr "TI — Turvaline & Sisemine"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "TI funktsioonid töötavad täielikult ettevõtte sees. Ettevõtte andmeid <strong>EI</strong> kasutata väliste TI mudelite treenimiseks &mdash; erinevalt paljudest pilvesüsteemidest."
+
+msgid "Data Sovereignty"
+msgstr "Andmesuveräänsus"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "Täielik kontroll kõigi andmete ja infrastruktuuri üle. Ei sõltu välistest pilvedest ega ebaselgetest andmetöötluspoliitikastest."
+
+msgid "Flexible Workflows"
+msgstr "Paindlikud Töövood"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "Suvaliselt elutsüklid, SLA-d ja automatiseerimine ilma lisatasudeta. Protsessid kohanduvad ettevõttega &mdash; mitte vastupidi."
+
+msgid "No Vendor Lock-in"
+msgstr "Tarnijasõltuvust Pole"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "Avatud lähtekood, avatud standardid, oma infrastruktuur. Ei sõltu sunniviisilisest uuendamisest ega hinnatõusust."
+
+msgid "Custom Fields Without Limits"
+msgstr "Kohandatud Väljad Ilma Piiranguteta"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Piiramatu arv kohandatud välju igat tüüpi &mdash; tasuta ja ilma piiranguteta. Teised süsteemid piiravad arvu või küsivad täiendavate väljatuupide eest lisatasu."
+
+msgid "Email-Native & Multilingual"
+msgstr "E-posti Natiivne & Mitmekeelne"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT ehitati nullist e-posti jaoks &mdash; lõimede haldamine, vastuste töötlemine ja piletite loomine otse postkastist. Täielik I18N tugi rahvusvahelistele meeskondadele suvalises keeltes."
+
+msgid "Priv. Users"
+msgstr "Priv. Kasutajad"
+
+msgid "Unpriv. Users"
+msgstr "Mittepriv. Kasutajad"
+
+msgid "Groups"
+msgstr "Grupid"
+
+msgid "Queues"
+msgstr "Järjekorrad"
+
+msgid "Tickets"
+msgstr "Piletid"
+
+msgid "Transactions"
+msgstr "Tehingud"
+
+msgid "Assets"
+msgstr "Varad"
+
+msgid "Articles"
+msgstr "Artiklid"

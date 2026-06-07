@@ -1,0 +1,97 @@
+# Basque translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: eu\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Laguntza-eskaerak antolatuta, kudeatuta eta modu eraginkorrean prozesatuta."
+
+msgid "System Information"
+msgstr "Sistemaren Informazioa"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "1999tik, Request Tracker ticket eta lan-fluxu sistema irekien merkatuko buruzagia da. Instalazio honek dagoeneko %1 ticket prozesatu ditu %2 transakziorekin &mdash; eta %3 aktibo eta %4 artikulu kudeatzen ditu %5 erabiltzailentzat %6 iletan."
+
+msgid "Sign in"
+msgstr "Hasi saioa"
+
+msgid "Please enter your credentials to continue."
+msgstr "Sartu zure kredentzialak jarraitzeko."
+
+msgid "Why Request Tracker?"
+msgstr "Zergatik Request Tracker?"
+
+msgid "Free & Open Source"
+msgstr "Doakoa & Kode Irekia"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT kode irekikoa da &mdash; lizentzia kosturik gabe, erabiltzaileko tarifik gabe. Sistema komertzialekin alderatuta, azpiegitura eta eragiketa kostuak bakarrik aplikatzen dira."
+
+msgid "Unlimited Extensibility"
+msgstr "Mugagabeko Hedagarritasuna"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Arkitektura irekia ehunka hedagarri eskuragarrirekin. Beste sistemek pertsonalizazioak aurrez definitutako konfigurazio aukeretara mugatzen dituzte."
+
+msgid "AI - Secure & Internal"
+msgstr "AA — Segurua & Barnekoa"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "AA funtzioak guztiz enpresaren barruan exekutatzen dira. Enpresaren datuak <strong>EZ</strong> dira erabiltzen kanpoko AA ereduak entrenatzeko &mdash; hainbat hodei sistemaren aldean."
+
+msgid "Data Sovereignty"
+msgstr "Datuen Subiranotasuna"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "Datu eta azpiegitura guztien kontrol osoa. Kanpoko hodeietan edo datu-prozesatze politika ilunetan menpekotasunik gabe."
+
+msgid "Flexible Workflows"
+msgstr "Lan-fluxu Malguak"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "Edozein bizi-ziklo, SLA eta automatizazio kostu gehigarririk gabe. Prozesuak enpresara egokitzen dira &mdash; ez alderantziz."
+
+msgid "No Vendor Lock-in"
+msgstr "Hornitzailearekiko Menpekotasunik Ez"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "Kode irekia, estandar irekiak, norberaren azpiegitura. Derrigorrezko eguneratzeetatik edo prezioen igoeratik menpekotasun-arriskurik ez."
+
+msgid "Custom Fields Without Limits"
+msgstr "Eremu Pertsonalizatuak Mugarik Gabe"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Edozein motatako eremu pertsonalizatu mugagabeak &mdash; doan eta murrizketarik gabe. Beste sistemek kopurua mugatzen dute edo gehigarri kobratzen dute eremu-mota aurreratuentzat."
+
+msgid "Email-Native & Multilingual"
+msgstr "Email-Natibo & Eleaniztuna"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT hutsetik eraikia izan zen posta elektronikorako &mdash; hariari kudeaketa, erantzunen tratamendua eta ticketen sorkuntza zuzenean postontziaren bidez. I18N laguntza osoa nazioarteko taldeentzat edozein hizkuntza-kopurutan."
+
+msgid "Priv. Users"
+msgstr "Erabiltzaile Pribileg."
+
+msgid "Unpriv. Users"
+msgstr "Erabiltzaile Ez-Pribileg."
+
+msgid "Groups"
+msgstr "Taldeak"
+
+msgid "Queues"
+msgstr "Ilarak"
+
+msgid "Tickets"
+msgstr "Ticketak"
+
+msgid "Transactions"
+msgstr "Transakzioak"
+
+msgid "Assets"
+msgstr "Aktiboak"
+
+msgid "Articles"
+msgstr "Artikuluak"

@@ -1,0 +1,97 @@
+# Bulgarian translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Заявките за поддръжка организирани, управлявани и обработвани ефективно."
+
+msgid "System Information"
+msgstr "Системна Информация"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "От 1999 г. Request Tracker е лидер на пазара за отворени системи за заявки и работни процеси. Тази инсталация вече е обработила %1 заявки с %2 транзакции &mdash; и управлява %3 актива и %4 статии за %5 потребители в %6 опашки."
+
+msgid "Sign in"
+msgstr "Влезте"
+
+msgid "Please enter your credentials to continue."
+msgstr "Моля, въведете вашите идентификационни данни, за да продължите."
+
+msgid "Why Request Tracker?"
+msgstr "Защо Request Tracker?"
+
+msgid "Free & Open Source"
+msgstr "Безплатен & с Отворен Код"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT е с отворен код &mdash; без лицензионни разходи, без такси за потребител. В сравнение с търговските системи се прилагат само инфраструктурни и оперативни разходи."
+
+msgid "Unlimited Extensibility"
+msgstr "Неограничена Разширяемост"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Отворена архитектура със стотици налични разширения. Другите системи ограничават персонализациите до предварително дефинирани опции за конфигурация."
+
+msgid "AI - Secure & Internal"
+msgstr "ИИ — Сигурен & Вътрешен"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "Функциите на ИИ работят изцяло в рамките на компанията. Фирмените данни <strong>НЕ</strong> се използват за обучение на външни модели на ИИ &mdash; за разлика от много облачни системи."
+
+msgid "Data Sovereignty"
+msgstr "Суверенитет на Данните"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "Пълен контрол върху всички данни и инфраструктура. Без зависимост от външни облаци или неясни политики за обработка на данни."
+
+msgid "Flexible Workflows"
+msgstr "Гъвкави Работни Процеси"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "Произволни жизнени цикли, SLA и автоматизации без допълнителни разходи. Процесите се адаптират към компанията &mdash; а не обратното."
+
+msgid "No Vendor Lock-in"
+msgstr "Без Зависимост от Доставчик"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "Отворен код, отворени стандарти, собствена инфраструктура. Без риск от зависимост поради принудителни надстройки или увеличения на цените."
+
+msgid "Custom Fields Without Limits"
+msgstr "Персонализирани Полета Без Ограничения"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Неограничен брой персонализирани полета от всякакъв тип &mdash; безплатно и без ограничения. Другите системи ограничават броя или начисляват допълнително за разширени типове полета."
+
+msgid "Email-Native & Multilingual"
+msgstr "Нативен Email & Многоезичен"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT е изграден от нулата за имейл &mdash; управление на нишки, обработка на отговори и създаване на заявки директно от пощенската кутия. Пълна поддръжка на I18N за международни екипи на произволен брой езици."
+
+msgid "Priv. Users"
+msgstr "Прив. Потребители"
+
+msgid "Unpriv. Users"
+msgstr "Неприв. Потребители"
+
+msgid "Groups"
+msgstr "Групи"
+
+msgid "Queues"
+msgstr "Опашки"
+
+msgid "Tickets"
+msgstr "Заявки"
+
+msgid "Transactions"
+msgstr "Транзакции"
+
+msgid "Assets"
+msgstr "Активи"
+
+msgid "Articles"
+msgstr "Статии"

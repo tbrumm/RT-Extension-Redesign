@@ -1,0 +1,97 @@
+# Arabic translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "طلبات الدعم منظمة وُتدار وتُعالج بكفاءة."
+
+msgid "System Information"
+msgstr "معلومات النظام"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "منذ عام 1999، يُعدّ Request Tracker رائداً في سوق أنظمة التذاكر المفتوحة وإدارة سير العمل. معالجة هذه النسخة لـ %1 تذكرة مع %2 معاملة حتى الآن &mdash; وتدير %3 أصلاً و%4 مقالاً لـ %5 مستخدم في %6 طوابير."
+
+msgid "Sign in"
+msgstr "تسجيل الدخول"
+
+msgid "Please enter your credentials to continue."
+msgstr "يرجى إدخال بيانات اعتمادك للمتابعة."
+
+msgid "Why Request Tracker?"
+msgstr "لماذا Request Tracker؟"
+
+msgid "Free & Open Source"
+msgstr "مجاني & مفتوح المصدر"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT مفتوح المصدر &mdash; بدون تكاليف ترخيص، بدون رسوم لكل مستخدم. مقارنةً بالأنظمة التجارية، تنطبق تكاليف البنية التحتية والتشغيل فقط."
+
+msgid "Unlimited Extensibility"
+msgstr "قابلية توسع غير محدودة"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "بنية معمارية مفتوحة مع مئات الإضافات المتاحة. الأنظمة الأخرى تحدّ التخصيصات بخيارات إعداد محددة مسبقاً."
+
+msgid "AI - Secure & Internal"
+msgstr "الذكاء الاصطناعي — آمن & داخلي"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "وظائف الذكاء الاصطناعي تعمل بالكامل داخل الشركة. بيانات الشركة <strong>لا تُستخدم</strong> لتدريب نماذج الذكاء الاصطناعي الخارجية &mdash; على عكس كثير من الأنظمة السحابية."
+
+msgid "Data Sovereignty"
+msgstr "سيادة البيانات"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "تحكم كامل في جميع البيانات والبنية التحتية. بدون اعتماد على السحابة الخارجية أو سياسات معالجة البيانات غير الواضحة."
+
+msgid "Flexible Workflows"
+msgstr "سير عمل مرن"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "دورات حياة واتفاقيات مستوى الخدمة وأتمتة اعتباطية بدون تكاليف إضافية. العمليات تتكيف مع الشركة &mdash; وليس العكس."
+
+msgid "No Vendor Lock-in"
+msgstr "بدون تقييد بمورد معين"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "مفتوح المصدر، معايير مفتوحة، بنية تحتية خاصة. بدون مخاطر التبعية من التحديثات الإجبارية أو زيادات الأسعار."
+
+msgid "Custom Fields Without Limits"
+msgstr "حقول مخصصة بلا حدود"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "حقول مخصصة غير محدودة من أي نوع &mdash; مجانية وبدون قيود. الأنظمة الأخرى تحدّ العدد أو تفرض رسوماً إضافية على أنواع الحقول المتقدمة."
+
+msgid "Email-Native & Multilingual"
+msgstr "أصلي للبريد الإلكتروني & متعدد اللغات"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "بُني RT من الأساس للبريد الإلكتروني &mdash; إدارة المحادثات، ومعالجة الردود، وإنشاء التذاكر مباشرة من صندوق البريد. دعم I18N كامل للفرق الدولية بأي عدد من اللغات."
+
+msgid "Priv. Users"
+msgstr "مستخدمون مميزون"
+
+msgid "Unpriv. Users"
+msgstr "مستخدمون عاديون"
+
+msgid "Groups"
+msgstr "المجموعات"
+
+msgid "Queues"
+msgstr "طوابير الانتظار"
+
+msgid "Tickets"
+msgstr "التذاكر"
+
+msgid "Transactions"
+msgstr "المعاملات"
+
+msgid "Assets"
+msgstr "الأصول"
+
+msgid "Articles"
+msgstr "المقالات"

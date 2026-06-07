@@ -1,0 +1,97 @@
+# Italian translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Richieste di supporto organizzate, gestite ed elaborate in modo efficiente."
+
+msgid "System Information"
+msgstr "Informazioni di Sistema"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "Dal 1999, Request Tracker è il leader di mercato per i sistemi aperti di ticketing e gestione dei flussi di lavoro. Questa installazione ha già elaborato %1 ticket con %2 transazioni &mdash; e gestisce %3 asset e %4 articoli per %5 utenti in %6 code."
+
+msgid "Sign in"
+msgstr "Accedi"
+
+msgid "Please enter your credentials to continue."
+msgstr "Inserisci le tue credenziali per continuare."
+
+msgid "Why Request Tracker?"
+msgstr "Perché Request Tracker?"
+
+msgid "Free & Open Source"
+msgstr "Gratuito & Open Source"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT è open source &mdash; nessun costo di licenza, nessuna tariffa per utente. Rispetto ai sistemi commerciali, si applicano solo i costi di infrastruttura e operativi."
+
+msgid "Unlimited Extensibility"
+msgstr "Estensibilità Illimitata"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Architettura aperta con centinaia di estensioni disponibili. Altri sistemi limitano le personalizzazioni a opzioni di configurazione predefinite."
+
+msgid "AI - Secure & Internal"
+msgstr "IA — Sicura & Interna"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "Le funzioni IA vengono eseguite interamente all'interno dell'azienda. I dati aziendali <strong>NON</strong> vengono utilizzati per addestrare modelli IA esterni &mdash; a differenza di molti sistemi cloud."
+
+msgid "Data Sovereignty"
+msgstr "Sovranità dei Dati"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "Pieno controllo su tutti i dati e l'infrastruttura. Nessuna dipendenza da cloud esterni o politiche di elaborazione dati poco chiare."
+
+msgid "Flexible Workflows"
+msgstr "Flussi di Lavoro Flessibili"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "Cicli di vita, SLA e automazioni arbitrari senza costi aggiuntivi. I processi si adattano all'azienda &mdash; non viceversa."
+
+msgid "No Vendor Lock-in"
+msgstr "Nessun Vendor Lock-in"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "Open source, standard aperti, infrastruttura propria. Nessun rischio di dipendenza da aggiornamenti forzati o aumenti di prezzo."
+
+msgid "Custom Fields Without Limits"
+msgstr "Campi Personalizzati Senza Limiti"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Campi personalizzati illimitati di qualsiasi tipo &mdash; gratuiti e senza restrizioni. Altri sistemi limitano il numero o applicano costi extra per i tipi di campi avanzati."
+
+msgid "Email-Native & Multilingual"
+msgstr "Nativo Email & Multilingue"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT è stato costruito da zero per la posta elettronica &mdash; gestione dei thread, delle risposte e creazione di ticket direttamente dalla casella di posta. Pieno supporto I18N per team internazionali in qualsiasi numero di lingue."
+
+msgid "Priv. Users"
+msgstr "Utenti Priv."
+
+msgid "Unpriv. Users"
+msgstr "Utenti Non Priv."
+
+msgid "Groups"
+msgstr "Gruppi"
+
+msgid "Queues"
+msgstr "Code"
+
+msgid "Tickets"
+msgstr "Ticket"
+
+msgid "Transactions"
+msgstr "Transazioni"
+
+msgid "Assets"
+msgstr "Asset"
+
+msgid "Articles"
+msgstr "Articoli"

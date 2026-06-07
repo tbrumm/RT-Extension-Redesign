@@ -1,0 +1,97 @@
+# Catalan translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ca\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Sol·licituds de suport organitzades, gestionades i processades eficientment."
+
+msgid "System Information"
+msgstr "Informació del Sistema"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "Des de 1999, Request Tracker és el líder del mercat en sistemes oberts de gestió de peticions i fluxos de treball. Aquesta instal·lació ja ha processat %1 peticions amb %2 transaccions &mdash; i gestiona %3 actius i %4 articles per a %5 usuaris en %6 cues."
+
+msgid "Sign in"
+msgstr "Iniciar sessió"
+
+msgid "Please enter your credentials to continue."
+msgstr "Si us plau, introduïu les vostres credencials per continuar."
+
+msgid "Why Request Tracker?"
+msgstr "Per què Request Tracker?"
+
+msgid "Free & Open Source"
+msgstr "Gratuït & Codi Obert"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT és de codi obert &mdash; sense costos de llicència, sense tarifes per usuari. En comparació amb els sistemes comercials, només s'apliquen els costos d'infraestructura i operació."
+
+msgid "Unlimited Extensibility"
+msgstr "Extensibilitat Il·limitada"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Arquitectura oberta amb centenars d'extensions disponibles. Altres sistemes limiten les personalitzacions a opcions de configuració predefinides."
+
+msgid "AI - Secure & Internal"
+msgstr "IA — Segura & Interna"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "Les funcions d'IA s'executen completament dins de l'empresa. Les dades corporatives <strong>NO</strong> s'utilitzen per entrenar models d'IA externs &mdash; a diferència de molts sistemes al núvol."
+
+msgid "Data Sovereignty"
+msgstr "Sobirania de les Dades"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "Control total sobre totes les dades i la infraestructura. Sense dependència de núvols externs o polítiques de processament de dades poc clares."
+
+msgid "Flexible Workflows"
+msgstr "Fluxos de Treball Flexibles"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "Cicles de vida, SLA i automatitzacions arbitraris sense cost addicional. Els processos s'adapten a l'empresa &mdash; no al revés."
+
+msgid "No Vendor Lock-in"
+msgstr "Sense Dependència del Proveïdor"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "Codi obert, estàndards oberts, infraestructura pròpia. Sense risc de dependència per actualitzacions forçades o augments de preus."
+
+msgid "Custom Fields Without Limits"
+msgstr "Camps Personalitzats Sense Límits"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Camps personalitzats il·limitats de qualsevol tipus &mdash; gratuïts i sense restriccions. Altres sistemes limiten el nombre o cobren extra pels tipus de camps avançats."
+
+msgid "Email-Native & Multilingual"
+msgstr "Natiu en Email & Multilingüe"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT va ser construït des de zero per al correu electrònic &mdash; gestió de fils, tractament de respostes i creació de peticions directament des de la bústia. Suport I18N complet per a equips internacionals en qualsevol nombre d'idiomes."
+
+msgid "Priv. Users"
+msgstr "Usuaris Priv."
+
+msgid "Unpriv. Users"
+msgstr "Usuaris No Priv."
+
+msgid "Groups"
+msgstr "Grups"
+
+msgid "Queues"
+msgstr "Cues"
+
+msgid "Tickets"
+msgstr "Peticions"
+
+msgid "Transactions"
+msgstr "Transaccions"
+
+msgid "Assets"
+msgstr "Actius"
+
+msgid "Articles"
+msgstr "Articles"

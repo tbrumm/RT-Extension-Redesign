@@ -1,0 +1,97 @@
+# British English translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_GB\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Support requests organised, managed and processed efficiently."
+
+msgid "System Information"
+msgstr ""
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr ""
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Please enter your credentials to continue."
+msgstr ""
+
+msgid "Why Request Tracker?"
+msgstr ""
+
+msgid "Free & Open Source"
+msgstr ""
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr ""
+
+msgid "Unlimited Extensibility"
+msgstr ""
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Open architecture with hundreds of available extensions. Other systems limit customisations to predefined configuration options."
+
+msgid "AI - Secure & Internal"
+msgstr ""
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr ""
+
+msgid "Data Sovereignty"
+msgstr ""
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr ""
+
+msgid "Flexible Workflows"
+msgstr ""
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr ""
+
+msgid "No Vendor Lock-in"
+msgstr ""
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr ""
+
+msgid "Custom Fields Without Limits"
+msgstr ""
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr ""
+
+msgid "Email-Native & Multilingual"
+msgstr ""
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr ""
+
+msgid "Priv. Users"
+msgstr ""
+
+msgid "Unpriv. Users"
+msgstr ""
+
+msgid "Groups"
+msgstr ""
+
+msgid "Queues"
+msgstr ""
+
+msgid "Tickets"
+msgstr ""
+
+msgid "Transactions"
+msgstr ""
+
+msgid "Assets"
+msgstr ""
+
+msgid "Articles"
+msgstr ""

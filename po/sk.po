@@ -1,0 +1,97 @@
+# Slovak translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sk\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Požiadavky na podporu organizované, spravované a spracovávané efektívne."
+
+msgid "System Information"
+msgstr "Informácie o Systéme"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "Od roku 1999 je Request Tracker lídrom trhu v oblasti otvorených systémov pre správu ticketov a pracovných postupov. Táto inštalácia už spracovala %1 ticketov s %2 transakciami &mdash; a spravuje %3 aktív a %4 článkov pre %5 používateľov v %6 frontoch."
+
+msgid "Sign in"
+msgstr "Prihlásiť sa"
+
+msgid "Please enter your credentials to continue."
+msgstr "Zadajte svoje prihlasovacie údaje pre pokračovanie."
+
+msgid "Why Request Tracker?"
+msgstr "Prečo Request Tracker?"
+
+msgid "Free & Open Source"
+msgstr "Zadarmo & Open Source"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT je open source &mdash; žiadne licenčné náklady, žiadne poplatky za používateľa. V porovnaní s komerčnými systémami platia iba náklady na infraštruktúru a prevádzku."
+
+msgid "Unlimited Extensibility"
+msgstr "Neobmedzená Rozšíriteľnosť"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Otvorená architektúra so stovkami dostupných rozšírení. Iné systémy obmedzujú prispôsobenia na preddefinované možnosti konfigurácie."
+
+msgid "AI - Secure & Internal"
+msgstr "AI — Bezpečná & Interná"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "Funkcie AI fungujú výhradne v rámci spoločnosti. Firemné dáta <strong>NIE SÚ</strong> používané na trénovanie externých modelov AI &mdash; na rozdiel od mnohých cloudových systémov."
+
+msgid "Data Sovereignty"
+msgstr "Dátová Suverenita"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "Plná kontrola nad všetkými dátami a infraštruktúrou. Žiadna závislosť od externých cloudov alebo nejasných zásad spracovania dát."
+
+msgid "Flexible Workflows"
+msgstr "Flexibilné Pracovné Postupy"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "Ľubovoľné životné cykly, SLA a automatizácie bez ďalších nákladov. Procesy sa prispôsobujú spoločnosti &mdash; nie naopak."
+
+msgid "No Vendor Lock-in"
+msgstr "Žiadna Závislosť od Dodávateľa"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "Open source, otvorené štandardy, vlastná infraštruktúra. Žiadne riziko závislosti z nútených aktualizácií alebo zdraženia."
+
+msgid "Custom Fields Without Limits"
+msgstr "Vlastné Polia Bez Obmedzení"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Neobmedzený počet vlastných polí akéhokoľvek typu &mdash; zadarmo a bez obmedzení. Iné systémy obmedzujú ich počet alebo účtujú príplatok za pokročilé typy polí."
+
+msgid "Email-Native & Multilingual"
+msgstr "Natívny pre Email & Viacjazyčný"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT bol postavený od základov pre e-mail &mdash; správa vlákien, spracovanie odpovedí a vytváranie ticketov priamo z poštovej schránky. Plná podpora I18N pre medzinárodné tímy v ľubovoľnom počte jazykov."
+
+msgid "Priv. Users"
+msgstr "Priv. Používatelia"
+
+msgid "Unpriv. Users"
+msgstr "Nepriv. Používatelia"
+
+msgid "Groups"
+msgstr "Skupiny"
+
+msgid "Queues"
+msgstr "Fronty"
+
+msgid "Tickets"
+msgstr "Tickety"
+
+msgid "Transactions"
+msgstr "Transakcie"
+
+msgid "Assets"
+msgstr "Aktíva"
+
+msgid "Articles"
+msgstr "Články"

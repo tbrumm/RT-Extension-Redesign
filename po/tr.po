@@ -1,0 +1,97 @@
+# Turkish translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Destek talepleri organize edilmiş, yönetilmiş ve verimli şekilde işlenmiş."
+
+msgid "System Information"
+msgstr "Sistem Bilgileri"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "1999'dan bu yana Request Tracker, açık kaynaklı talep ve iş akışı sistemlerinde pazar lideridir. Bu kurulum %1 talep ile %2 işlemi zaten işledi &mdash; ve %6 kuyruktaki %5 kullanıcı için %3 varlık ve %4 makaleyi yönetiyor."
+
+msgid "Sign in"
+msgstr "Giriş Yap"
+
+msgid "Please enter your credentials to continue."
+msgstr "Devam etmek için kimlik bilgilerinizi girin."
+
+msgid "Why Request Tracker?"
+msgstr "Neden Request Tracker?"
+
+msgid "Free & Open Source"
+msgstr "Ücretsiz & Açık Kaynak"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT açık kaynaklıdır &mdash; lisans maliyeti yok, kullanıcı başına ücret yok. Ticari sistemlerle karşılaştırıldığında yalnızca altyapı ve işletme maliyetleri geçerlidir."
+
+msgid "Unlimited Extensibility"
+msgstr "Sınırsız Genişletilebilirlik"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Yüzlerce kullanılabilir uzantıya sahip açık mimari. Diğer sistemler özelleştirmeleri önceden tanımlanmış yapılandırma seçenekleriyle sınırlar."
+
+msgid "AI - Secure & Internal"
+msgstr "YZ — Güvenli & Dahili"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "YZ işlevleri tamamen şirket içinde çalışır. Şirket verileri harici YZ modellerini eğitmek için <strong>KULLANILMAZ</strong> &mdash; birçok bulut sisteminin aksine."
+
+msgid "Data Sovereignty"
+msgstr "Veri Egemenliği"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "Tüm veriler ve altyapı üzerinde tam kontrol. Harici bulutlara veya belirsiz veri işleme politikalarına bağımlılık yok."
+
+msgid "Flexible Workflows"
+msgstr "Esnek İş Akışları"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "Ek maliyet olmaksızın isteğe bağlı yaşam döngüleri, SLA'lar ve otomasyon. Süreçler şirkete uyum sağlar &mdash; tersi değil."
+
+msgid "No Vendor Lock-in"
+msgstr "Satıcı Bağımlılığı Yok"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "Açık kaynak, açık standartlar, kendi altyapısı. Zorla yükseltmelerden veya fiyat artışlarından bağımlılık riski yok."
+
+msgid "Custom Fields Without Limits"
+msgstr "Sınırsız Özel Alanlar"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Her türden sınırsız özel alan &mdash; ücretsiz ve kısıtlama olmaksızın. Diğer sistemler sayıyı sınırlar veya gelişmiş alan türleri için ek ücret alır."
+
+msgid "Email-Native & Multilingual"
+msgstr "E-posta Yerleşik & Çok Dilli"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT, e-posta için sıfırdan oluşturulmuştur &mdash; konu dizisi yönetimi, yanıt işleme ve talep oluşturma doğrudan posta kutusundan. İstenen sayıda dilde uluslararası ekipler için tam I18N desteği."
+
+msgid "Priv. Users"
+msgstr "Özel Kullanıcılar"
+
+msgid "Unpriv. Users"
+msgstr "Genel Kullanıcılar"
+
+msgid "Groups"
+msgstr "Gruplar"
+
+msgid "Queues"
+msgstr "Kuyruklar"
+
+msgid "Tickets"
+msgstr "Talepler"
+
+msgid "Transactions"
+msgstr "İşlemler"
+
+msgid "Assets"
+msgstr "Varlıklar"
+
+msgid "Articles"
+msgstr "Makaleler"

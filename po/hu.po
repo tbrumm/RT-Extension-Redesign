@@ -1,0 +1,97 @@
+# Hungarian translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Támogatási kérések szervezve, kezelve és hatékonyan feldolgozva."
+
+msgid "System Information"
+msgstr "Rendszerinformáció"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "1999 óta a Request Tracker a piacvezető a nyílt jegykezelő és munkafolyamat-rendszerek terén. Ez a telepítés már %1 jegyet dolgozott fel %2 tranzakcióval &mdash; és %3 vagyontárgyat és %4 cikket kezel %5 felhasználó számára %6 sorban."
+
+msgid "Sign in"
+msgstr "Bejelentkezés"
+
+msgid "Please enter your credentials to continue."
+msgstr "Kérjük, adja meg hitelesítő adatait a folytatáshoz."
+
+msgid "Why Request Tracker?"
+msgstr "Miért a Request Tracker?"
+
+msgid "Free & Open Source"
+msgstr "Ingyenes & Nyílt Forráskódú"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "Az RT nyílt forráskódú &mdash; nincsenek licencköltségek, nincsenek felhasználónkénti díjak. A kereskedelmi rendszerekhez képest csak az infrastruktúra és az üzemeltetési költségek vonatkoznak."
+
+msgid "Unlimited Extensibility"
+msgstr "Korlátlan Bővíthetőség"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Nyílt architektúra több száz elérhető bővítménnyel. Más rendszerek az előre meghatározott konfigurációs lehetőségekre korlátozzák a testreszabást."
+
+msgid "AI - Secure & Internal"
+msgstr "MI — Biztonságos & Belső"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "A mesterséges intelligencia funkciók teljes egészében a vállalaton belül működnek. A vállalati adatokat <strong>NEM</strong> használják külső MI-modellek tanítására &mdash; ellentétben számos felhőalapú rendszerrel."
+
+msgid "Data Sovereignty"
+msgstr "Adatszuverenitás"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "Teljes ellenőrzés minden adat és infrastruktúra felett. Nincs függőség külső felhőktől vagy nem egyértelmű adatfeldolgozási irányelvektől."
+
+msgid "Flexible Workflows"
+msgstr "Rugalmas Munkafolyamatok"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "Tetszőleges életciklusok, SLA-k és automatizálások extra költség nélkül. A folyamatok alkalmazkodnak a vállalathoz &mdash; nem fordítva."
+
+msgid "No Vendor Lock-in"
+msgstr "Nincs Szállítói Kötöttség"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "Nyílt forráskód, nyílt szabványok, saját infrastruktúra. Nincs függőségi kockázat kényszerített frissítésekből vagy áremelésekből."
+
+msgid "Custom Fields Without Limits"
+msgstr "Egyéni Mezők Korlátok Nélkül"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Korlátlan számú egyéni mező bármilyen típusban &mdash; ingyenesen és korlátozások nélkül. Más rendszerek korlátozzák a számát, vagy extra díjat számítanak fel a fejlett mezőtípusokért."
+
+msgid "Email-Native & Multilingual"
+msgstr "E-mail-Natív & Többnyelvű"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "Az RT az alapoktól fogva e-mailre lett tervezve &mdash; szálkezelés, válaszfeldolgozás és jegylétrehozás közvetlenül a postaládából. Teljes I18N támogatás a nemzetközi csapatok számára tetszőleges számú nyelven."
+
+msgid "Priv. Users"
+msgstr "Priv. Felhasználók"
+
+msgid "Unpriv. Users"
+msgstr "Nem-priv. Felhasználók"
+
+msgid "Groups"
+msgstr "Csoportok"
+
+msgid "Queues"
+msgstr "Sorok"
+
+msgid "Tickets"
+msgstr "Jegyek"
+
+msgid "Transactions"
+msgstr "Tranzakciók"
+
+msgid "Assets"
+msgstr "Vagyontárgyak"
+
+msgid "Articles"
+msgstr "Cikkek"

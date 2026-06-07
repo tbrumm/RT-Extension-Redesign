@@ -1,0 +1,97 @@
+# Icelandic translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: is\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Þjónustubeiðnir skipulagðar, stjórnaðar og afgreiddar á skilvirkan hátt."
+
+msgid "System Information"
+msgstr "Kerfisupplýsingar"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "Síðan 1999 hefur Request Tracker verið leiðandi á markaðnum fyrir opin málaskrár- og verkflæðiskerfi. Þessi uppsetning hefur þegar afgreitt %1 mál með %2 færslum &mdash; og stjórnar %3 eignum og %4 greinum fyrir %5 notendur í %6 biðröðum."
+
+msgid "Sign in"
+msgstr "Skrá inn"
+
+msgid "Please enter your credentials to continue."
+msgstr "Sláðu inn innskráningarupplýsingar þínar til að halda áfram."
+
+msgid "Why Request Tracker?"
+msgstr "Af hverju Request Tracker?"
+
+msgid "Free & Open Source"
+msgstr "Ókeypis & Open Source"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT er opinn hugbúnaður &mdash; engin leyfisgjöld, engin gjöld á notanda. Samanborið við viðskiptaleg kerfi gilda aðeins innviða- og rekstrarkostnaður."
+
+msgid "Unlimited Extensibility"
+msgstr "Ótakmörkuð Stækkunarhæfni"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Opin högun með hundruðum tiltækra viðbóta. Önnur kerfi takmarka sérsnið við fyrirfram skilgreinda stillingsmöguleika."
+
+msgid "AI - Secure & Internal"
+msgstr "AI — Öruggt & Innanhúss"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "AI-aðgerðir keyra alfarið innan fyrirtækisins. Gögn fyrirtækisins eru <strong>EKKI</strong> notuð til að þjálfa ytri AI-líkön &mdash; ólíkt mörgum skýjakerfi."
+
+msgid "Data Sovereignty"
+msgstr "Gagnafullveldi"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "Full stjórn yfir öllum gögnum og innviðum. Engin háð ytri skýjum eða óskýrum stefnum um gagnavinnslu."
+
+msgid "Flexible Workflows"
+msgstr "Sveigjanleg Verkflæði"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "Handahófskennd líftímaskeið, SLA og sjálfvirkni án aukakostnaðar. Ferlar aðlagast fyrirtækinu &mdash; ekki öfugt."
+
+msgid "No Vendor Lock-in"
+msgstr "Engin Birgðaháð"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "Opinn hugbúnaður, opnar staðlar, eigin innviðar. Engin háðarská vegna nauðungaruppfærslu eða verðhækkana."
+
+msgid "Custom Fields Without Limits"
+msgstr "Sérsniðnir Reitir Án Takmarkana"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Ótakmarkaðir sérsniðnir reitir af hvaða tegund sem er &mdash; ókeypis og án takmarkana. Önnur kerfi takmarka fjöldann eða rukka aukalega fyrir háþróaðar reitategundir."
+
+msgid "Email-Native & Multilingual"
+msgstr "Tölvupóstfætt & Fjöltyngt"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT var byggt frá grunni fyrir tölvupóst &mdash; þráðastjórnun, svörun og stofnun mála beint úr pósthólfinu. Fullur I18N stuðningur fyrir alþjóðleg teymi á hvaða fjölda tungumála sem er."
+
+msgid "Priv. Users"
+msgstr "Priv. Notendur"
+
+msgid "Unpriv. Users"
+msgstr "Ópriv. Notendur"
+
+msgid "Groups"
+msgstr "Hópar"
+
+msgid "Queues"
+msgstr "Biðraðir"
+
+msgid "Tickets"
+msgstr "Mál"
+
+msgid "Transactions"
+msgstr "Færslur"
+
+msgid "Assets"
+msgstr "Eignir"
+
+msgid "Articles"
+msgstr "Greinar"

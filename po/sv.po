@@ -1,0 +1,97 @@
+# Swedish translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Supportärenden organiserade, hanterade och behandlade effektivt."
+
+msgid "System Information"
+msgstr "Systeminformation"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "Sedan 1999 har Request Tracker varit marknadsledande inom öppna ticket- och arbetsflödessystem. Den här installationen har redan behandlat %1 ärenden med %2 transaktioner &mdash; och hanterar %3 tillgångar och %4 artiklar för %5 användare i %6 köer."
+
+msgid "Sign in"
+msgstr "Logga in"
+
+msgid "Please enter your credentials to continue."
+msgstr "Ange dina inloggningsuppgifter för att fortsätta."
+
+msgid "Why Request Tracker?"
+msgstr "Varför Request Tracker?"
+
+msgid "Free & Open Source"
+msgstr "Gratis & Open Source"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT är open source &mdash; inga licensavgifter, inga avgifter per användare. Jämfört med kommersiella system gäller bara infrastruktur- och driftskostnader."
+
+msgid "Unlimited Extensibility"
+msgstr "Obegränsad Utbyggbarhet"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Öppen arkitektur med hundratals tillgängliga tillägg. Andra system begränsar anpassningar till fördefinierade konfigurationsalternativ."
+
+msgid "AI - Secure & Internal"
+msgstr "AI — Säker & Intern"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "AI-funktioner körs helt inom företaget. Företagsdata används <strong>INTE</strong> för träning av externa AI-modeller &mdash; till skillnad från många molnsystem."
+
+msgid "Data Sovereignty"
+msgstr "Datasuveränitet"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "Full kontroll över all data och infrastruktur. Inget beroende av externa moln eller oklara datapolicyer."
+
+msgid "Flexible Workflows"
+msgstr "Flexibla Arbetsflöden"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "Godtyckliga livscykler, SLA:er och automationer utan extra kostnad. Processerna anpassar sig till företaget &mdash; inte tvärtom."
+
+msgid "No Vendor Lock-in"
+msgstr "Inget Leverantörsberoende"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "Open source, öppna standarder, egen infrastruktur. Ingen risk för beroende av tvingade uppgraderingar eller prisökningar."
+
+msgid "Custom Fields Without Limits"
+msgstr "Anpassade Fält Utan Begränsningar"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Obegränsade anpassade fält av alla typer &mdash; gratis och utan restriktioner. Andra system begränsar antalet eller tar extra betalt för avancerade fälttyper."
+
+msgid "Email-Native & Multilingual"
+msgstr "E-postnativt & Flerspråkigt"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT byggdes från grunden för e-post &mdash; trådhantering, svarshantering och ärendecreation direkt från inkorgen. Fullt I18N-stöd för internationella team i valfritt antal språk."
+
+msgid "Priv. Users"
+msgstr "Priv. Användare"
+
+msgid "Unpriv. Users"
+msgstr "Icke-priv. Användare"
+
+msgid "Groups"
+msgstr "Grupper"
+
+msgid "Queues"
+msgstr "Köer"
+
+msgid "Tickets"
+msgstr "Ärenden"
+
+msgid "Transactions"
+msgstr "Transaktioner"
+
+msgid "Assets"
+msgstr "Tillgångar"
+
+msgid "Articles"
+msgstr "Artiklar"

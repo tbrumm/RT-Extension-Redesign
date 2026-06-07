@@ -1,0 +1,97 @@
+# Japanese translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "サポートリクエストを整理・管理し、効率的に処理します。"
+
+msgid "System Information"
+msgstr "システム情報"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "1999年以来、Request Trackerはオープンなチケット管理およびワークフローシステムの市場リーダーです。このインストールはすでに%1件のチケットを%2件のトランザクションで処理済みです &mdash; さらに%6つのキューで%5人のユーザーのために%3件の資産と%4件の記事を管理しています。"
+
+msgid "Sign in"
+msgstr "サインイン"
+
+msgid "Please enter your credentials to continue."
+msgstr "続けるには認証情報を入力してください。"
+
+msgid "Why Request Tracker?"
+msgstr "なぜ Request Tracker なのか？"
+
+msgid "Free & Open Source"
+msgstr "無料 & オープンソース"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RTはオープンソースです &mdash; ライセンス費用なし、ユーザーごとの料金なし。商用システムと比べ、インフラコストと運用コストのみが発生します。"
+
+msgid "Unlimited Extensibility"
+msgstr "無制限の拡張性"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "数百の利用可能な拡張機能を備えたオープンアーキテクチャ。他のシステムはカスタマイズを事前定義された設定オプションに制限します。"
+
+msgid "AI - Secure & Internal"
+msgstr "AI — 安全 & 社内運用"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "AI機能は完全に社内で動作します。会社のデータは外部のAIモデルのトレーニングに<strong>使用されません</strong> &mdash; 多くのクラウドシステムとは異なります。"
+
+msgid "Data Sovereignty"
+msgstr "データ主権"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "すべてのデータとインフラに対する完全な制御。外部クラウドや不明確なデータ処理ポリシーへの依存なし。"
+
+msgid "Flexible Workflows"
+msgstr "柔軟なワークフロー"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "追加費用なしで任意のライフサイクル、SLA、自動化が設定可能。プロセスが企業に適応します &mdash; その逆ではありません。"
+
+msgid "No Vendor Lock-in"
+msgstr "ベンダーロックインなし"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "オープンソース、オープンスタンダード、自社インフラ。強制アップグレードや価格上昇による依存リスクなし。"
+
+msgid "Custom Fields Without Limits"
+msgstr "制限のないカスタムフィールド"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "あらゆる種類のカスタムフィールドが無制限 &mdash; 無料で制限なし。他のシステムは数を制限したり、高度なフィールドタイプに追加料金を請求します。"
+
+msgid "Email-Native & Multilingual"
+msgstr "メールネイティブ & 多言語対応"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RTはメールのために一から構築されました &mdash; スレッド管理、返信処理、メールボックスから直接チケット作成が可能。任意の数の言語で国際チームへの完全なI18Nサポート。"
+
+msgid "Priv. Users"
+msgstr "特権ユーザー"
+
+msgid "Unpriv. Users"
+msgstr "非特権ユーザー"
+
+msgid "Groups"
+msgstr "グループ"
+
+msgid "Queues"
+msgstr "キュー"
+
+msgid "Tickets"
+msgstr "チケット"
+
+msgid "Transactions"
+msgstr "トランザクション"
+
+msgid "Assets"
+msgstr "資産"
+
+msgid "Articles"
+msgstr "記事"

@@ -1,0 +1,97 @@
+# Persian/Farsi translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "درخواست‌های پشتیبانی به‌طور منظم سازمان‌دهی، مدیریت و پردازش می‌شوند."
+
+msgid "System Information"
+msgstr "اطلاعات سیستم"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "از سال ۱۹۹۹، Request Tracker پیشرو بازار در سیستم‌های باز مدیریت تیکت و گردش کار بوده است. این نصب تاکنون %1 تیکت با %2 تراکنش پردازش کرده &mdash; و %3 دارایی و %4 مقاله را برای %5 کاربر در %6 صف مدیریت می‌کند."
+
+msgid "Sign in"
+msgstr "ورود"
+
+msgid "Please enter your credentials to continue."
+msgstr "لطفاً اطلاعات ورود خود را برای ادامه وارد کنید."
+
+msgid "Why Request Tracker?"
+msgstr "چرا Request Tracker؟"
+
+msgid "Free & Open Source"
+msgstr "رایگان & متن‌باز"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT متن‌باز است &mdash; بدون هزینه مجوز، بدون هزینه به‌ازای هر کاربر. در مقایسه با سیستم‌های تجاری، تنها هزینه‌های زیرساخت و عملیاتی اعمال می‌شود."
+
+msgid "Unlimited Extensibility"
+msgstr "قابلیت توسعه نامحدود"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "معماری باز با صدها افزونه در دسترس. سیستم‌های دیگر سفارشی‌سازی را به گزینه‌های پیکربندی از پیش تعریف‌شده محدود می‌کنند."
+
+msgid "AI - Secure & Internal"
+msgstr "هوش مصنوعی — امن & داخلی"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "عملکردهای هوش مصنوعی کاملاً در داخل شرکت اجرا می‌شوند. داده‌های شرکت برای آموزش مدل‌های هوش مصنوعی خارجی <strong>استفاده نمی‌شود</strong> &mdash; برخلاف بسیاری از سیستم‌های ابری."
+
+msgid "Data Sovereignty"
+msgstr "حاکمیت داده"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "کنترل کامل بر تمام داده‌ها و زیرساخت. عدم وابستگی به ابرهای خارجی یا سیاست‌های پردازش داده نامشخص."
+
+msgid "Flexible Workflows"
+msgstr "گردش کار انعطاف‌پذیر"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "چرخه‌های عمر، SLA و خودکارسازی دلخواه بدون هزینه اضافی. فرآیندها با شرکت سازگار می‌شوند &mdash; نه برعکس."
+
+msgid "No Vendor Lock-in"
+msgstr "بدون وابستگی به فروشنده"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "متن‌باز، استانداردهای باز، زیرساخت خود. بدون خطر وابستگی به ارتقاهای اجباری یا افزایش قیمت."
+
+msgid "Custom Fields Without Limits"
+msgstr "فیلدهای سفارشی بدون محدودیت"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "فیلدهای سفارشی نامحدود از هر نوع &mdash; رایگان و بدون محدودیت. سیستم‌های دیگر تعداد را محدود می‌کنند یا برای انواع فیلد پیشرفته هزینه اضافی دریافت می‌کنند."
+
+msgid "Email-Native & Multilingual"
+msgstr "بومی ایمیل & چندزبانه"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT از ابتدا برای ایمیل ساخته شده است &mdash; مدیریت رشته‌ها، پردازش پاسخ‌ها و ایجاد تیکت مستقیماً از صندوق پستی. پشتیبانی کامل I18N برای تیم‌های بین‌المللی به هر تعداد زبان."
+
+msgid "Priv. Users"
+msgstr "کاربران مجاز"
+
+msgid "Unpriv. Users"
+msgstr "کاربران عمومی"
+
+msgid "Groups"
+msgstr "گروه‌ها"
+
+msgid "Queues"
+msgstr "صف‌ها"
+
+msgid "Tickets"
+msgstr "تیکت‌ها"
+
+msgid "Transactions"
+msgstr "تراکنش‌ها"
+
+msgid "Assets"
+msgstr "دارایی‌ها"
+
+msgid "Articles"
+msgstr "مقالات"

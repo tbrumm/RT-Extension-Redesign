@@ -1,0 +1,97 @@
+# Greek translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Αιτήματα υποστήριξης οργανωμένα, διαχειριζόμενα και επεξεργαζόμενα αποδοτικά."
+
+msgid "System Information"
+msgstr "Πληροφορίες Συστήματος"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "Από το 1999, το Request Tracker είναι ο ηγέτης της αγοράς στα ανοιχτά συστήματα διαχείρισης αιτημάτων και ροών εργασίας. Αυτή η εγκατάσταση έχει ήδη επεξεργαστεί %1 αιτήματα με %2 συναλλαγές &mdash; και διαχειρίζεται %3 περιουσιακά στοιχεία και %4 άρθρα για %5 χρήστες σε %6 ουρές."
+
+msgid "Sign in"
+msgstr "Σύνδεση"
+
+msgid "Please enter your credentials to continue."
+msgstr "Παρακαλώ εισάγετε τα διαπιστευτήριά σας για να συνεχίσετε."
+
+msgid "Why Request Tracker?"
+msgstr "Γιατί το Request Tracker;"
+
+msgid "Free & Open Source"
+msgstr "Δωρεάν & Ανοιχτού Κώδικα"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "Το RT είναι ανοιχτού κώδικα &mdash; χωρίς κόστος αδειοδότησης, χωρίς χρεώσεις ανά χρήστη. Σε σχέση με τα εμπορικά συστήματα, ισχύουν μόνο τα κόστη υποδομής και λειτουργίας."
+
+msgid "Unlimited Extensibility"
+msgstr "Απεριόριστη Επεκτασιμότητα"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Ανοιχτή αρχιτεκτονική με εκατοντάδες διαθέσιμες επεκτάσεις. Άλλα συστήματα περιορίζουν τις προσαρμογές σε προκαθορισμένες επιλογές διαμόρφωσης."
+
+msgid "AI - Secure & Internal"
+msgstr "ΤΝ — Ασφαλής & Εσωτερική"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "Οι λειτουργίες ΤΝ εκτελούνται εξ ολοκλήρου εντός της εταιρείας. Τα εταιρικά δεδομένα <strong>ΔΕΝ</strong> χρησιμοποιούνται για την εκπαίδευση εξωτερικών μοντέλων ΤΝ &mdash; σε αντίθεση με πολλά συστήματα cloud."
+
+msgid "Data Sovereignty"
+msgstr "Κυριαρχία Δεδομένων"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "Πλήρης έλεγχος όλων των δεδομένων και της υποδομής. Χωρίς εξάρτηση από εξωτερικά νέφη ή ασαφείς πολιτικές επεξεργασίας δεδομένων."
+
+msgid "Flexible Workflows"
+msgstr "Ευέλικτες Ροές Εργασίας"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "Αυθαίρετοι κύκλοι ζωής, SLA και αυτοματισμοί χωρίς επιπλέον κόστος. Οι διαδικασίες προσαρμόζονται στην εταιρεία &mdash; όχι αντίστροφα."
+
+msgid "No Vendor Lock-in"
+msgstr "Χωρίς Δέσμευση Προμηθευτή"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "Ανοιχτός κώδικας, ανοιχτά πρότυπα, δική σας υποδομή. Χωρίς κίνδυνο εξάρτησης από αναγκαστικές αναβαθμίσεις ή αυξήσεις τιμών."
+
+msgid "Custom Fields Without Limits"
+msgstr "Προσαρμοσμένα Πεδία Χωρίς Όρια"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Απεριόριστα προσαρμοσμένα πεδία οποιουδήποτε τύπου &mdash; δωρεάν και χωρίς περιορισμούς. Άλλα συστήματα περιορίζουν τον αριθμό ή χρεώνουν επιπλέον για προηγμένους τύπους πεδίων."
+
+msgid "Email-Native & Multilingual"
+msgstr "Εγγενές Email & Πολύγλωσσο"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "Το RT κατασκευάστηκε εξαρχής για το email &mdash; διαχείριση νημάτων, χειρισμός απαντήσεων και δημιουργία αιτημάτων απευθείας από τη γραμματοθυρίδα. Πλήρης υποστήριξη I18N για διεθνείς ομάδες σε οποιοδήποτε αριθμό γλωσσών."
+
+msgid "Priv. Users"
+msgstr "Χρήστες Priv."
+
+msgid "Unpriv. Users"
+msgstr "Χρήστες Μη-Priv."
+
+msgid "Groups"
+msgstr "Ομάδες"
+
+msgid "Queues"
+msgstr "Ουρές"
+
+msgid "Tickets"
+msgstr "Αιτήματα"
+
+msgid "Transactions"
+msgstr "Συναλλαγές"
+
+msgid "Assets"
+msgstr "Περιουσιακά Στοιχεία"
+
+msgid "Articles"
+msgstr "Άρθρα"

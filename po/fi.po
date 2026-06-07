@@ -1,0 +1,97 @@
+# Finnish translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Tukipyynnöt organisoitu, hallittu ja käsitelty tehokkaasti."
+
+msgid "System Information"
+msgstr "Järjestelmätiedot"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "Vuodesta 1999 lähtien Request Tracker on ollut markkinajohtaja avoimissa tiketti- ja työnkulkujärjestelmissä. Tämä asennus on jo käsitellyt %1 tikettiä %2 transaktiolla &mdash; ja hallinnoi %3 omaisuuserää ja %4 artikkelia %5 käyttäjälle %6 jonossa."
+
+msgid "Sign in"
+msgstr "Kirjaudu sisään"
+
+msgid "Please enter your credentials to continue."
+msgstr "Anna tunnuksesi jatkaaksesi."
+
+msgid "Why Request Tracker?"
+msgstr "Miksi Request Tracker?"
+
+msgid "Free & Open Source"
+msgstr "Ilmainen & Open Source"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT on avoimen lähdekoodin ohjelmisto &mdash; ei lisensointikustannuksia, ei käyttäjäkohtaisia maksuja. Kaupallisiin järjestelmiin verrattuna ainoastaan infrastruktuuri- ja käyttökustannukset ovat voimassa."
+
+msgid "Unlimited Extensibility"
+msgstr "Rajoittamaton Laajennettavuus"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Avoin arkkitehtuuri satojen saatavilla olevien laajennusten kanssa. Muut järjestelmät rajoittavat mukautukset ennalta määriteltyihin asetuksiin."
+
+msgid "AI - Secure & Internal"
+msgstr "Tekoäly — Turvallinen & Sisäinen"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "Tekoälytoiminnot toimivat kokonaan yrityksen sisällä. Yrityksen tietoja <strong>EI</strong> käytetä ulkoisten tekoälymallien kouluttamiseen &mdash; toisin kuin monissa pilvipalveluissa."
+
+msgid "Data Sovereignty"
+msgstr "Datasuvereniteetti"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "Täysi hallinta kaikesta datasta ja infrastruktuurista. Ei riippuvuutta ulkoisista pilvistä tai epäselvistä tietojenkäsittelykäytännöistä."
+
+msgid "Flexible Workflows"
+msgstr "Joustavat Työnkulut"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "Vapaavalintaiset elinkaaret, SLA:t ja automaatiot ilman lisäkustannuksia. Prosessit sopeutuvat yritykseen &mdash; ei toisin päin."
+
+msgid "No Vendor Lock-in"
+msgstr "Ei Toimittajariippuvuutta"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "Avoin lähdekoodi, avoimet standardit, oma infrastruktuuri. Ei riippuvuusriskiä pakotetuista päivityksistä tai hinnankorotuksista."
+
+msgid "Custom Fields Without Limits"
+msgstr "Mukautetut Kentät Ilman Rajoituksia"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Rajoittamaton määrä mukautettuja kenttiä kaikentyyppisinä &mdash; ilmaiseksi ja ilman rajoituksia. Muut järjestelmät rajoittavat määrää tai veloittavat lisää edistyneistä kenttätyypeistä."
+
+msgid "Email-Native & Multilingual"
+msgstr "Sähköpostinatiivi & Monikielinen"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT rakennettiin alusta alkaen sähköpostia varten &mdash; viestiketjujen hallinta, vastausten käsittely ja tikettien luonti suoraan postilaatikosta. Täysi I18N-tuki kansainvälisille tiimeille missä tahansa kielessä."
+
+msgid "Priv. Users"
+msgstr "Priv. Käyttäjät"
+
+msgid "Unpriv. Users"
+msgstr "Ei-priv. Käyttäjät"
+
+msgid "Groups"
+msgstr "Ryhmät"
+
+msgid "Queues"
+msgstr "Jonot"
+
+msgid "Tickets"
+msgstr "Tiketit"
+
+msgid "Transactions"
+msgstr "Tapahtumat"
+
+msgid "Assets"
+msgstr "Omaisuuserät"
+
+msgid "Articles"
+msgstr "Artikkelit"

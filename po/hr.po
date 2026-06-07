@@ -1,0 +1,97 @@
+# Croatian translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hr\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Zahtjevi za podršku organizirani, upravljani i obrađeni učinkovito."
+
+msgid "System Information"
+msgstr "Informacije o Sustavu"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "Od 1999. godine Request Tracker je lider na tržištu otvorenih sustava za upravljanje zahtjevima i radnim procesima. Ova instalacija već je obradila %1 zahtjeva s %2 transakcija &mdash; i upravlja s %3 imovine i %4 članaka za %5 korisnika u %6 redovima čekanja."
+
+msgid "Sign in"
+msgstr "Prijava"
+
+msgid "Please enter your credentials to continue."
+msgstr "Unesite svoje podatke za prijavu za nastavak."
+
+msgid "Why Request Tracker?"
+msgstr "Zašto Request Tracker?"
+
+msgid "Free & Open Source"
+msgstr "Besplatan & Open Source"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT je open source &mdash; bez troškova licenciranja, bez naknada po korisniku. U usporedbi s komercijalnim sustavima, primjenjuju se samo troškovi infrastrukture i rada."
+
+msgid "Unlimited Extensibility"
+msgstr "Neograničena Proširivost"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Otvorena arhitektura s stotinama dostupnih proširenja. Drugi sustavi ograničavaju prilagodbe na unaprijed definirane mogućnosti konfiguracije."
+
+msgid "AI - Secure & Internal"
+msgstr "AI — Siguran & Interni"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "AI funkcije rade isključivo unutar tvrtke. Podaci tvrtke <strong>NE</strong> koriste se za obuku vanjskih AI modela &mdash; za razliku od mnogih cloud sustava."
+
+msgid "Data Sovereignty"
+msgstr "Suverenost Podataka"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "Potpuna kontrola nad svim podacima i infrastrukturom. Bez ovisnosti o vanjskim oblacima ili nejasnim pravilima obrade podataka."
+
+msgid "Flexible Workflows"
+msgstr "Fleksibilni Radni Procesi"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "Proizvoljni životni ciklusi, SLA-ovi i automatizacije bez dodatnih troškova. Procesi se prilagođavaju tvrtki &mdash; a ne obrnuto."
+
+msgid "No Vendor Lock-in"
+msgstr "Bez Ovisnosti o Dobavljaču"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "Open source, otvoreni standardi, vlastita infrastruktura. Bez rizika ovisnosti od prisilnih nadogradnji ili povećanja cijena."
+
+msgid "Custom Fields Without Limits"
+msgstr "Prilagođena Polja Bez Ograničenja"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Neograničen broj prilagođenih polja bilo koje vrste &mdash; besplatno i bez ograničenja. Drugi sustavi ograničavaju broj ili naplaćuju dodatno za napredne vrste polja."
+
+msgid "Email-Native & Multilingual"
+msgstr "Nativno Email & Višejezično"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT je izgrađen od temelja za e-poštu &mdash; upravljanje nitima, obrada odgovora i kreiranje zahtjeva izravno iz sandučića. Potpuna I18N podrška za međunarodne timove na bilo kojem broju jezika."
+
+msgid "Priv. Users"
+msgstr "Priv. Korisnici"
+
+msgid "Unpriv. Users"
+msgstr "Nepriv. Korisnici"
+
+msgid "Groups"
+msgstr "Grupe"
+
+msgid "Queues"
+msgstr "Redovi Čekanja"
+
+msgid "Tickets"
+msgstr "Zahtjevi"
+
+msgid "Transactions"
+msgstr "Transakcije"
+
+msgid "Assets"
+msgstr "Imovina"
+
+msgid "Articles"
+msgstr "Članci"

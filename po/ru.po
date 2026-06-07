@@ -1,0 +1,97 @@
+# Russian translations for RT-Extension-Redesign
+# Copyright (C) 2026 Torsten Brumm
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+
+msgid "Support requests organized, managed and processed efficiently."
+msgstr "Заявки в службу поддержки организованы, управляются и обрабатываются эффективно."
+
+msgid "System Information"
+msgstr "Информация о Системе"
+
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "С 1999 года Request Tracker является лидером рынка среди открытых систем управления заявками и рабочими процессами. Данная установка уже обработала %1 заявок с %2 транзакциями &mdash; и управляет %3 активами и %4 статьями для %5 пользователей в %6 очередях."
+
+msgid "Sign in"
+msgstr "Войти"
+
+msgid "Please enter your credentials to continue."
+msgstr "Пожалуйста, введите ваши учётные данные для продолжения."
+
+msgid "Why Request Tracker?"
+msgstr "Почему Request Tracker?"
+
+msgid "Free & Open Source"
+msgstr "Бесплатный & Open Source"
+
+msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT является программным обеспечением с открытым исходным кодом &mdash; без лицензионных затрат, без платы за пользователя. По сравнению с коммерческими системами применяются только инфраструктурные и эксплуатационные расходы."
+
+msgid "Unlimited Extensibility"
+msgstr "Неограниченная Расширяемость"
+
+msgid "Open architecture with hundreds of available extensions. Other systems limit customizations to predefined configuration options."
+msgstr "Открытая архитектура с сотнями доступных расширений. Другие системы ограничивают настройки заранее заданными параметрами конфигурации."
+
+msgid "AI - Secure & Internal"
+msgstr "ИИ — Безопасный & Внутренний"
+
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgstr "Функции ИИ работают исключительно внутри компании. Корпоративные данные <strong>НЕ</strong> используются для обучения внешних моделей ИИ &mdash; в отличие от многих облачных систем."
+
+msgid "Data Sovereignty"
+msgstr "Суверенитет Данных"
+
+msgid "Full control over all data and infrastructure. No dependency on external clouds or unclear data processing policies."
+msgstr "Полный контроль над всеми данными и инфраструктурой. Никакой зависимости от внешних облаков или непрозрачных политик обработки данных."
+
+msgid "Flexible Workflows"
+msgstr "Гибкие Рабочие Процессы"
+
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgstr "Произвольные жизненные циклы, SLA и автоматизации без дополнительных затрат. Процессы адаптируются к компании &mdash; а не наоборот."
+
+msgid "No Vendor Lock-in"
+msgstr "Никакой Привязки к Поставщику"
+
+msgid "Open source, open standards, own infrastructure. No dependency risk from forced upgrades or price increases."
+msgstr "Открытый исходный код, открытые стандарты, собственная инфраструктура. Никакого риска зависимости от принудительных обновлений или повышения цен."
+
+msgid "Custom Fields Without Limits"
+msgstr "Пользовательские Поля Без Ограничений"
+
+msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Неограниченное количество пользовательских полей любого типа &mdash; бесплатно и без ограничений. Другие системы ограничивают их количество или берут доплату за расширенные типы полей."
+
+msgid "Email-Native & Multilingual"
+msgstr "Нативная Email & Многоязычная"
+
+msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT был разработан с нуля для работы с электронной почтой &mdash; управление тредами, обработка ответов и создание заявок непосредственно из почтового ящика. Полная поддержка I18N для международных команд на любом количестве языков."
+
+msgid "Priv. Users"
+msgstr "Привил. Пользователи"
+
+msgid "Unpriv. Users"
+msgstr "Непривил. Пользователи"
+
+msgid "Groups"
+msgstr "Группы"
+
+msgid "Queues"
+msgstr "Очереди"
+
+msgid "Tickets"
+msgstr "Заявки"
+
+msgid "Transactions"
+msgstr "Транзакции"
+
+msgid "Assets"
+msgstr "Активы"
+
+msgid "Articles"
+msgstr "Статьи"
