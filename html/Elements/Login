@@ -460,7 +460,7 @@ html:has(#body.login-body) hr.clear { display: none; }
 
     <div class="rd-stats-section">
       <h3 class="rd-stats-section-title"><% loc('System Information') %></h3>
-      <p class="rd-stats-headline"><% loc('Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed [_1] tickets with [_2] transactions &mdash; and manages [_3] assets and [_4] articles for [_5] users in [_6] queues.',
+      <p class="rd-stats-headline"><% loc('Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues.',
           '<strong>'.$fmt->($t_count).'</strong>',
           '<strong>'.$fmt->($txn_count).'</strong>',
           '<strong>'.$fmt->($asset_count).'</strong>',
