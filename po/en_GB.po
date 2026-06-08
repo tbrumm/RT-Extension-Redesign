@@ -12,7 +12,7 @@ msgstr "Support requests organised, managed and processed efficiently."
 msgid "System Information"
 msgstr ""
 
-msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions - and manages %3 assets and %4 articles for %5 users in %6 queues."
 msgstr ""
 
 msgid "Sign in"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Free & Open Source"
 msgstr ""
 
-msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgid "RT is open source - no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
 msgstr ""
 
 msgid "Unlimited Extensibility"
@@ -39,7 +39,7 @@ msgstr "Open architecture with hundreds of available extensions. Other systems l
 msgid "AI - Secure & Internal"
 msgstr ""
 
-msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models - unlike many cloud systems."
 msgstr ""
 
 msgid "Data Sovereignty"
@@ -51,7 +51,7 @@ msgstr ""
 msgid "Flexible Workflows"
 msgstr ""
 
-msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company - not the other way around."
 msgstr ""
 
 msgid "No Vendor Lock-in"
@@ -63,13 +63,13 @@ msgstr ""
 msgid "Custom Fields Without Limits"
 msgstr ""
 
-msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgid "Unlimited custom fields of any type - free and without restrictions. Other systems limit the number or charge extra for advanced field types."
 msgstr ""
 
 msgid "Email-Native & Multilingual"
 msgstr ""
 
-msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgid "RT was built from the ground up for email - threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
 msgstr ""
 
 msgid "Priv. Users"

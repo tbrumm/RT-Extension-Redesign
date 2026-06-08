@@ -12,8 +12,8 @@ msgstr "Permintaan dukungan terorganisir, dikelola, dan diproses secara efisien.
 msgid "System Information"
 msgstr "Informasi Sistem"
 
-msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
-msgstr "Sejak 1999, Request Tracker telah menjadi pemimpin pasar untuk sistem tiket terbuka dan alur kerja. Instalasi ini telah memproses %1 tiket dengan %2 transaksi &mdash; dan mengelola %3 aset dan %4 artikel untuk %5 pengguna dalam %6 antrean."
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions - and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "Sejak 1999, Request Tracker telah menjadi pemimpin pasar untuk sistem tiket terbuka dan alur kerja. Instalasi ini telah memproses %1 tiket dengan %2 transaksi - dan mengelola %3 aset dan %4 artikel untuk %5 pengguna dalam %6 antrean."
 
 msgid "Sign in"
 msgstr "Masuk"
@@ -27,8 +27,8 @@ msgstr "Mengapa Request Tracker?"
 msgid "Free & Open Source"
 msgstr "Gratis & Sumber Terbuka"
 
-msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
-msgstr "RT adalah perangkat lunak sumber terbuka &mdash; tanpa biaya lisensi, tanpa biaya per pengguna. Dibandingkan sistem komersial, hanya biaya infrastruktur dan operasional yang berlaku."
+msgid "RT is open source - no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT adalah perangkat lunak sumber terbuka - tanpa biaya lisensi, tanpa biaya per pengguna. Dibandingkan sistem komersial, hanya biaya infrastruktur dan operasional yang berlaku."
 
 msgid "Unlimited Extensibility"
 msgstr "Kemampuan Perluasan Tak Terbatas"
@@ -37,10 +37,10 @@ msgid "Open architecture with hundreds of available extensions. Other systems li
 msgstr "Arsitektur terbuka dengan ratusan ekstensi yang tersedia. Sistem lain membatasi penyesuaian pada opsi konfigurasi yang telah ditetapkan."
 
 msgid "AI - Secure & Internal"
-msgstr "AI — Aman & Internal"
+msgstr "AI - Aman & Internal"
 
-msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
-msgstr "Fungsi AI berjalan sepenuhnya di dalam perusahaan. Data perusahaan <strong>TIDAK</strong> digunakan untuk melatih model AI eksternal &mdash; tidak seperti banyak sistem cloud."
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models - unlike many cloud systems."
+msgstr "Fungsi AI berjalan sepenuhnya di dalam perusahaan. Data perusahaan <strong>TIDAK</strong> digunakan untuk melatih model AI eksternal - tidak seperti banyak sistem cloud."
 
 msgid "Data Sovereignty"
 msgstr "Kedaulatan Data"
@@ -51,8 +51,8 @@ msgstr "Kendali penuh atas semua data dan infrastruktur. Tidak ada ketergantunga
 msgid "Flexible Workflows"
 msgstr "Alur Kerja Fleksibel"
 
-msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
-msgstr "Siklus hidup, SLA, dan otomatisasi yang sewenang-wenang tanpa biaya tambahan. Proses beradaptasi dengan perusahaan &mdash; bukan sebaliknya."
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company - not the other way around."
+msgstr "Siklus hidup, SLA, dan otomatisasi yang sewenang-wenang tanpa biaya tambahan. Proses beradaptasi dengan perusahaan - bukan sebaliknya."
 
 msgid "No Vendor Lock-in"
 msgstr "Tanpa Ketergantungan Vendor"
@@ -63,14 +63,14 @@ msgstr "Sumber terbuka, standar terbuka, infrastruktur sendiri. Tidak ada risiko
 msgid "Custom Fields Without Limits"
 msgstr "Bidang Kustom Tanpa Batas"
 
-msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
-msgstr "Bidang kustom tak terbatas dari jenis apa pun &mdash; gratis dan tanpa batasan. Sistem lain membatasi jumlahnya atau mengenakan biaya tambahan untuk tipe bidang tingkat lanjut."
+msgid "Unlimited custom fields of any type - free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Bidang kustom tak terbatas dari jenis apa pun - gratis dan tanpa batasan. Sistem lain membatasi jumlahnya atau mengenakan biaya tambahan untuk tipe bidang tingkat lanjut."
 
 msgid "Email-Native & Multilingual"
 msgstr "Asli Email & Multibahasa"
 
-msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
-msgstr "RT dibangun dari awal untuk email &mdash; manajemen utas, penanganan balasan, dan pembuatan tiket langsung dari kotak surat. Dukungan I18N penuh untuk tim internasional dalam jumlah bahasa berapa pun."
+msgid "RT was built from the ground up for email - threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT dibangun dari awal untuk email - manajemen utas, penanganan balasan, dan pembuatan tiket langsung dari kotak surat. Dukungan I18N penuh untuk tim internasional dalam jumlah bahasa berapa pun."
 
 msgid "Priv. Users"
 msgstr "Pengguna Priv."

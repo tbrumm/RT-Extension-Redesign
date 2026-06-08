@@ -12,8 +12,8 @@ msgstr "支持请求有序组织、管理并高效处理。"
 msgid "System Information"
 msgstr "系统信息"
 
-msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
-msgstr "自1999年以来，Request Tracker一直是开放式工单和工作流系统的市场领导者。此安装已处理%1个工单，涉及%2笔事务 &mdash; 并在%6个队列中为%5个用户管理%3项资产和%4篇文章。"
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions - and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "自1999年以来，Request Tracker一直是开放式工单和工作流系统的市场领导者。此安装已处理%1个工单，涉及%2笔事务 - 并在%6个队列中为%5个用户管理%3项资产和%4篇文章。"
 
 msgid "Sign in"
 msgstr "登录"
@@ -27,8 +27,8 @@ msgstr "为什么选择 Request Tracker？"
 msgid "Free & Open Source"
 msgstr "免费 & 开源"
 
-msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
-msgstr "RT是开源软件 &mdash; 无许可证费用，无按用户收费。与商业系统相比，仅需承担基础设施和运营成本。"
+msgid "RT is open source - no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT是开源软件 - 无许可证费用，无按用户收费。与商业系统相比，仅需承担基础设施和运营成本。"
 
 msgid "Unlimited Extensibility"
 msgstr "无限可扩展性"
@@ -37,10 +37,10 @@ msgid "Open architecture with hundreds of available extensions. Other systems li
 msgstr "开放架构，拥有数百个可用扩展。其他系统将自定义限制在预定义的配置选项内。"
 
 msgid "AI - Secure & Internal"
-msgstr "人工智能 — 安全 & 内部运行"
+msgstr "人工智能 - 安全 & 内部运行"
 
-msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
-msgstr "人工智能功能完全在公司内部运行。公司数据<strong>不会</strong>用于训练外部人工智能模型 &mdash; 这与许多云系统不同。"
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models - unlike many cloud systems."
+msgstr "人工智能功能完全在公司内部运行。公司数据<strong>不会</strong>用于训练外部人工智能模型 - 这与许多云系统不同。"
 
 msgid "Data Sovereignty"
 msgstr "数据主权"
@@ -51,8 +51,8 @@ msgstr "对所有数据和基础设施拥有完全控制权。不依赖外部云
 msgid "Flexible Workflows"
 msgstr "灵活的工作流程"
 
-msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
-msgstr "无需额外费用即可配置任意生命周期、SLA和自动化。流程适应企业需求 &mdash; 而不是相反。"
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company - not the other way around."
+msgstr "无需额外费用即可配置任意生命周期、SLA和自动化。流程适应企业需求 - 而不是相反。"
 
 msgid "No Vendor Lock-in"
 msgstr "无供应商锁定"
@@ -63,14 +63,14 @@ msgstr "开源、开放标准、自有基础设施。不存在因强制升级或
 msgid "Custom Fields Without Limits"
 msgstr "无限制自定义字段"
 
-msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
-msgstr "任意类型的自定义字段无限制 &mdash; 免费且无约束。其他系统会限制数量或对高级字段类型额外收费。"
+msgid "Unlimited custom fields of any type - free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "任意类型的自定义字段无限制 - 免费且无约束。其他系统会限制数量或对高级字段类型额外收费。"
 
 msgid "Email-Native & Multilingual"
 msgstr "原生电子邮件 & 多语言"
 
-msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
-msgstr "RT从零开始为电子邮件而构建 &mdash; 邮件线程管理、回复处理及直接从邮箱创建工单。为国际团队提供任意语言数量的完整I18N支持。"
+msgid "RT was built from the ground up for email - threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT从零开始为电子邮件而构建 - 邮件线程管理、回复处理及直接从邮箱创建工单。为国际团队提供任意语言数量的完整I18N支持。"
 
 msgid "Priv. Users"
 msgstr "特权用户"

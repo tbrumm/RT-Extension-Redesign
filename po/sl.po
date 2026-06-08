@@ -12,8 +12,8 @@ msgstr "Zahteve za podporo organizirane, upravljane in učinkovito obdelane."
 msgid "System Information"
 msgstr "Informacije o Sistemu"
 
-msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
-msgstr "Od leta 1999 je Request Tracker vodilni na trgu odprtih sistemov za upravljanje zahtevkov in delovnih procesov. Ta namestitev je že obdelala %1 zahtevkov z %2 transakcijami &mdash; in upravlja %3 sredstev in %4 člankov za %5 uporabnikov v %6 vrstah."
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions - and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "Od leta 1999 je Request Tracker vodilni na trgu odprtih sistemov za upravljanje zahtevkov in delovnih procesov. Ta namestitev je že obdelala %1 zahtevkov z %2 transakcijami - in upravlja %3 sredstev in %4 člankov za %5 uporabnikov v %6 vrstah."
 
 msgid "Sign in"
 msgstr "Prijava"
@@ -27,8 +27,8 @@ msgstr "Zakaj Request Tracker?"
 msgid "Free & Open Source"
 msgstr "Brezplačen & Odprtokoden"
 
-msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
-msgstr "RT je odprtokodna programska oprema &mdash; brez stroškov licenciranja, brez pristojbin na uporabnika. V primerjavi s komercialnimi sistemi se upoštevajo le stroški infrastrukture in obratovanja."
+msgid "RT is open source - no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT je odprtokodna programska oprema - brez stroškov licenciranja, brez pristojbin na uporabnika. V primerjavi s komercialnimi sistemi se upoštevajo le stroški infrastrukture in obratovanja."
 
 msgid "Unlimited Extensibility"
 msgstr "Neomejena Razširljivost"
@@ -37,10 +37,10 @@ msgid "Open architecture with hundreds of available extensions. Other systems li
 msgstr "Odprta arhitektura s stotinami razpoložljivih razširitev. Drugi sistemi omejujejo prilagoditve na vnaprej določene možnosti konfiguracije."
 
 msgid "AI - Secure & Internal"
-msgstr "UI — Varen & Notranji"
+msgstr "UI - Varen & Notranji"
 
-msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
-msgstr "Funkcije umetne inteligence delujejo izključno znotraj podjetja. Podatki podjetja se <strong>NE</strong> uporabljajo za usposabljanje zunanjih modelov umetne inteligence &mdash; za razliko od številnih sistemov v oblaku."
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models - unlike many cloud systems."
+msgstr "Funkcije umetne inteligence delujejo izključno znotraj podjetja. Podatki podjetja se <strong>NE</strong> uporabljajo za usposabljanje zunanjih modelov umetne inteligence - za razliko od številnih sistemov v oblaku."
 
 msgid "Data Sovereignty"
 msgstr "Suverenost Podatkov"
@@ -51,8 +51,8 @@ msgstr "Popoln nadzor nad vsemi podatki in infrastrukturo. Brez odvisnosti od zu
 msgid "Flexible Workflows"
 msgstr "Prilagodljivi Delovni Tokovi"
 
-msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
-msgstr "Poljubni življenjski cikli, SLA-ji in avtomatizacije brez dodatnih stroškov. Procesi se prilagodijo podjetju &mdash; ne obratno."
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company - not the other way around."
+msgstr "Poljubni življenjski cikli, SLA-ji in avtomatizacije brez dodatnih stroškov. Procesi se prilagodijo podjetju - ne obratno."
 
 msgid "No Vendor Lock-in"
 msgstr "Brez Odvisnosti od Dobavitelja"
@@ -63,14 +63,14 @@ msgstr "Odprtokodna, odprti standardi, lastna infrastruktura. Brez tveganja odvi
 msgid "Custom Fields Without Limits"
 msgstr "Prilagojena Polja Brez Omejitev"
 
-msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
-msgstr "Neomejeno prilagojenih polj katere koli vrste &mdash; brezplačno in brez omejitev. Drugi sistemi omejujejo število ali zaračunajo dodatno za napredne vrste polj."
+msgid "Unlimited custom fields of any type - free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Neomejeno prilagojenih polj katere koli vrste - brezplačno in brez omejitev. Drugi sistemi omejujejo število ali zaračunajo dodatno za napredne vrste polj."
 
 msgid "Email-Native & Multilingual"
 msgstr "Nativno Email & Večjezično"
 
-msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
-msgstr "RT je bil zgrajen od tal za e-pošto &mdash; upravljanje niti, obdelava odgovorov in ustvarjanje zahtevkov neposredno iz nabiralnika. Polna podpora I18N za mednarodne ekipe v katerem koli številu jezikov."
+msgid "RT was built from the ground up for email - threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT je bil zgrajen od tal za e-pošto - upravljanje niti, obdelava odgovorov in ustvarjanje zahtevkov neposredno iz nabiralnika. Polna podpora I18N za mednarodne ekipe v katerem koli številu jezikov."
 
 msgid "Priv. Users"
 msgstr "Priv. Uporabniki"

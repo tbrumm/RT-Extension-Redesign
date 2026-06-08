@@ -12,8 +12,8 @@ msgstr "Supporthenvendelser organisert, administrert og behandlet effektivt."
 msgid "System Information"
 msgstr "Systeminformasjon"
 
-msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
-msgstr "Siden 1999 har Request Tracker vært markedsleder for åpne ticket- og arbeidsflytssystemer. Denne installasjonen har allerede behandlet %1 saker med %2 transaksjoner &mdash; og administrerer %3 eiendeler og %4 artikler for %5 brukere i %6 køer."
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions - and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "Siden 1999 har Request Tracker vært markedsleder for åpne ticket- og arbeidsflytssystemer. Denne installasjonen har allerede behandlet %1 saker med %2 transaksjoner - og administrerer %3 eiendeler og %4 artikler for %5 brukere i %6 køer."
 
 msgid "Sign in"
 msgstr "Logg inn"
@@ -27,8 +27,8 @@ msgstr "Hvorfor Request Tracker?"
 msgid "Free & Open Source"
 msgstr "Gratis & Open Source"
 
-msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
-msgstr "RT er open source &mdash; ingen lisenskostnader, ingen gebyrer per bruker. Sammenlignet med kommersielle systemer gjelder kun infrastruktur- og driftskostnader."
+msgid "RT is open source - no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT er open source - ingen lisenskostnader, ingen gebyrer per bruker. Sammenlignet med kommersielle systemer gjelder kun infrastruktur- og driftskostnader."
 
 msgid "Unlimited Extensibility"
 msgstr "Ubegrenset Utvidbarhet"
@@ -37,10 +37,10 @@ msgid "Open architecture with hundreds of available extensions. Other systems li
 msgstr "Åpen arkitektur med hundrevis av tilgjengelige utvidelser. Andre systemer begrenser tilpasninger til forhåndsdefinerte konfigurasjonsalternativer."
 
 msgid "AI - Secure & Internal"
-msgstr "AI — Sikker & Intern"
+msgstr "AI - Sikker & Intern"
 
-msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
-msgstr "AI-funksjoner kjører helt innenfor bedriften. Bedriftsdata brukes <strong>IKKE</strong> til opplæring av eksterne AI-modeller &mdash; i motsetning til mange skysystemer."
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models - unlike many cloud systems."
+msgstr "AI-funksjoner kjører helt innenfor bedriften. Bedriftsdata brukes <strong>IKKE</strong> til opplæring av eksterne AI-modeller - i motsetning til mange skysystemer."
 
 msgid "Data Sovereignty"
 msgstr "Datasuverenitet"
@@ -51,8 +51,8 @@ msgstr "Full kontroll over alle data og infrastruktur. Ingen avhengighet av ekst
 msgid "Flexible Workflows"
 msgstr "Fleksible Arbeidsflyter"
 
-msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
-msgstr "Vilkårlige livssykluser, SLA-er og automatiseringer uten ekstra kostnad. Prosessene tilpasser seg bedriften &mdash; ikke omvendt."
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company - not the other way around."
+msgstr "Vilkårlige livssykluser, SLA-er og automatiseringer uten ekstra kostnad. Prosessene tilpasser seg bedriften - ikke omvendt."
 
 msgid "No Vendor Lock-in"
 msgstr "Ingen Leverandøravhengighet"
@@ -63,14 +63,14 @@ msgstr "Open source, åpne standarder, egen infrastruktur. Ingen avhengighetsris
 msgid "Custom Fields Without Limits"
 msgstr "Egendefinerte Felt Uten Grenser"
 
-msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
-msgstr "Ubegrenset med egendefinerte felt av alle typer &mdash; gratis og uten begrensninger. Andre systemer begrenser antallet eller tar ekstra betalt for avanserte felttyper."
+msgid "Unlimited custom fields of any type - free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Ubegrenset med egendefinerte felt av alle typer - gratis og uten begrensninger. Andre systemer begrenser antallet eller tar ekstra betalt for avanserte felttyper."
 
 msgid "Email-Native & Multilingual"
 msgstr "E-postnativt & Flerspråklig"
 
-msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
-msgstr "RT ble bygd fra bunnen av for e-post &mdash; trådbehandling, svarhåndtering og oppretting av saker direkte fra innboksen. Full I18N-støtte for internasjonale team på et vilkårlig antall språk."
+msgid "RT was built from the ground up for email - threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT ble bygd fra bunnen av for e-post - trådbehandling, svarhåndtering og oppretting av saker direkte fra innboksen. Full I18N-støtte for internasjonale team på et vilkårlig antall språk."
 
 msgid "Priv. Users"
 msgstr "Priv. Brukere"

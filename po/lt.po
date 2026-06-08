@@ -12,8 +12,8 @@ msgstr "Palaikymo užklausos organizuotos, valdomos ir efektyviai apdorojamos."
 msgid "System Information"
 msgstr "Sistemos Informacija"
 
-msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
-msgstr "Nuo 1999 m. Request Tracker yra rinkos lyderis tarp atvirų bilietų valdymo ir darbo eigos sistemų. Ši instaliacija jau apdorojo %1 bilietų su %2 operacijomis &mdash; ir tvarko %3 turtą bei %4 straipsnius %5 vartotojams %6 eilėse."
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions - and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "Nuo 1999 m. Request Tracker yra rinkos lyderis tarp atvirų bilietų valdymo ir darbo eigos sistemų. Ši instaliacija jau apdorojo %1 bilietų su %2 operacijomis - ir tvarko %3 turtą bei %4 straipsnius %5 vartotojams %6 eilėse."
 
 msgid "Sign in"
 msgstr "Prisijungti"
@@ -27,8 +27,8 @@ msgstr "Kodėl Request Tracker?"
 msgid "Free & Open Source"
 msgstr "Nemokama & Atvirojo Kodo"
 
-msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
-msgstr "RT yra atvirojo kodo &mdash; jokių licencijavimo išlaidų, jokių mokesčių už vartotoją. Palyginti su komercinėmis sistemomis, taikomi tik infrastruktūros ir eksploatavimo kaštai."
+msgid "RT is open source - no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT yra atvirojo kodo - jokių licencijavimo išlaidų, jokių mokesčių už vartotoją. Palyginti su komercinėmis sistemomis, taikomi tik infrastruktūros ir eksploatavimo kaštai."
 
 msgid "Unlimited Extensibility"
 msgstr "Neribota Išplečiamumas"
@@ -37,10 +37,10 @@ msgid "Open architecture with hundreds of available extensions. Other systems li
 msgstr "Atvira architektūra su šimtais prieinamų plėtinių. Kitos sistemos apriboja pritaikymą iš anksto apibrėžtomis konfigūracijos parinktimis."
 
 msgid "AI - Secure & Internal"
-msgstr "DI — Saugus & Vidinis"
+msgstr "DI - Saugus & Vidinis"
 
-msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
-msgstr "DI funkcijos veikia išskirtinai įmonės viduje. Įmonės duomenys <strong>NENAUDOJAMI</strong> išorinių DI modelių mokymui &mdash; skirtingai nei daugelyje debesų kompiuterijos sistemų."
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models - unlike many cloud systems."
+msgstr "DI funkcijos veikia išskirtinai įmonės viduje. Įmonės duomenys <strong>NENAUDOJAMI</strong> išorinių DI modelių mokymui - skirtingai nei daugelyje debesų kompiuterijos sistemų."
 
 msgid "Data Sovereignty"
 msgstr "Duomenų Suverenumas"
@@ -51,8 +51,8 @@ msgstr "Visapusiška visų duomenų ir infrastruktūros kontrolė. Jokios prikla
 msgid "Flexible Workflows"
 msgstr "Lankstūs Darbo Procesai"
 
-msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
-msgstr "Savavališki gyvavimo ciklai, SLA ir automatizacijos be papildomų išlaidų. Procesai prisitaiko prie įmonės &mdash; o ne atvirkščiai."
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company - not the other way around."
+msgstr "Savavališki gyvavimo ciklai, SLA ir automatizacijos be papildomų išlaidų. Procesai prisitaiko prie įmonės - o ne atvirkščiai."
 
 msgid "No Vendor Lock-in"
 msgstr "Jokios Priklausomybės nuo Tiekėjo"
@@ -63,14 +63,14 @@ msgstr "Atvirasis kodas, atviri standartai, nuosava infrastruktūra. Jokios prik
 msgid "Custom Fields Without Limits"
 msgstr "Pasirinktiniai Laukai Be Apribojimų"
 
-msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
-msgstr "Neriboti pasirinktiniai laukai bet kokio tipo &mdash; nemokamai ir be apribojimų. Kitos sistemos riboja skaičių arba imasi papildomo mokesčio už išplėstinius laukų tipus."
+msgid "Unlimited custom fields of any type - free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Neriboti pasirinktiniai laukai bet kokio tipo - nemokamai ir be apribojimų. Kitos sistemos riboja skaičių arba imasi papildomo mokesčio už išplėstinius laukų tipus."
 
 msgid "Email-Native & Multilingual"
 msgstr "El. Pašto Natyvus & Daugiakalbis"
 
-msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
-msgstr "RT buvo sukurtas nuo pradžių el. paštui &mdash; gijų valdymas, atsakymų tvarkymas ir bilietų kūrimas tiesiogiai iš pašto dėžutės. Visapusiška I18N palaikymas tarptautinėms komandoms bet kokiu kalbų skaičiumi."
+msgid "RT was built from the ground up for email - threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT buvo sukurtas nuo pradžių el. paštui - gijų valdymas, atsakymų tvarkymas ir bilietų kūrimas tiesiogiai iš pašto dėžutės. Visapusiška I18N palaikymas tarptautinėms komandoms bet kokiu kalbų skaičiumi."
 
 msgid "Priv. Users"
 msgstr "Priv. Vartotojai"

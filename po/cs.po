@@ -12,8 +12,8 @@ msgstr "Požadavky na podporu organizované, spravované a zpracovávané efekti
 msgid "System Information"
 msgstr "Informace o Systému"
 
-msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions &mdash; and manages %3 assets and %4 articles for %5 users in %6 queues."
-msgstr "Od roku 1999 je Request Tracker lídrem trhu v oblasti otevřených systémů pro správu ticketů a pracovních postupů. Tato instalace již zpracovala %1 ticketů s %2 transakcemi &mdash; a spravuje %3 aktiv a %4 článků pro %5 uživatelů ve %6 frontách."
+msgid "Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed %1 tickets with %2 transactions - and manages %3 assets and %4 articles for %5 users in %6 queues."
+msgstr "Od roku 1999 je Request Tracker lídrem trhu v oblasti otevřených systémů pro správu ticketů a pracovních postupů. Tato instalace již zpracovala %1 ticketů s %2 transakcemi - a spravuje %3 aktiv a %4 článků pro %5 uživatelů ve %6 frontách."
 
 msgid "Sign in"
 msgstr "Přihlásit se"
@@ -27,8 +27,8 @@ msgstr "Proč Request Tracker?"
 msgid "Free & Open Source"
 msgstr "Zdarma & Open Source"
 
-msgid "RT is open source &mdash; no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
-msgstr "RT je open source &mdash; žádné licenční náklady, žádné poplatky za uživatele. Ve srovnání s komerčními systémy platí pouze náklady na infrastrukturu a provoz."
+msgid "RT is open source - no licensing costs, no per-user fees. Compared to commercial systems, only infrastructure and operating costs apply."
+msgstr "RT je open source - žádné licenční náklady, žádné poplatky za uživatele. Ve srovnání s komerčními systémy platí pouze náklady na infrastrukturu a provoz."
 
 msgid "Unlimited Extensibility"
 msgstr "Neomezená Rozšiřitelnost"
@@ -37,10 +37,10 @@ msgid "Open architecture with hundreds of available extensions. Other systems li
 msgstr "Otevřená architektura se stovkami dostupných rozšíření. Jiné systémy omezují přizpůsobení na předdefinované možnosti konfigurace."
 
 msgid "AI - Secure & Internal"
-msgstr "AI — Bezpečná & Interní"
+msgstr "AI - Bezpečná & Interní"
 
-msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models &mdash; unlike many cloud systems."
-msgstr "Funkce AI fungují výhradně v rámci společnosti. Firemní data <strong>NEJSOU</strong> používána k trénování externích modelů AI &mdash; na rozdíl od mnoha cloudových systémů."
+msgid "AI functions run entirely within the company. Company data is <strong>NOT</strong> used for training external AI models - unlike many cloud systems."
+msgstr "Funkce AI fungují výhradně v rámci společnosti. Firemní data <strong>NEJSOU</strong> používána k trénování externích modelů AI - na rozdíl od mnoha cloudových systémů."
 
 msgid "Data Sovereignty"
 msgstr "Datová Suverenita"
@@ -51,8 +51,8 @@ msgstr "Plná kontrola nad všemi daty a infrastrukturou. Žádná závislost na
 msgid "Flexible Workflows"
 msgstr "Flexibilní Pracovní Postupy"
 
-msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company &mdash; not the other way around."
-msgstr "Libovolné životní cykly, SLA a automatizace bez dalších nákladů. Procesy se přizpůsobují společnosti &mdash; ne naopak."
+msgid "Arbitrary lifecycles, SLAs and automations at no extra cost. Processes adapt to the company - not the other way around."
+msgstr "Libovolné životní cykly, SLA a automatizace bez dalších nákladů. Procesy se přizpůsobují společnosti - ne naopak."
 
 msgid "No Vendor Lock-in"
 msgstr "Žádná Závislost na Dodavateli"
@@ -63,14 +63,14 @@ msgstr "Open source, otevřené standardy, vlastní infrastruktura. Žádné riz
 msgid "Custom Fields Without Limits"
 msgstr "Vlastní Pole Bez Omezení"
 
-msgid "Unlimited custom fields of any type &mdash; free and without restrictions. Other systems limit the number or charge extra for advanced field types."
-msgstr "Neomezený počet vlastních polí libovolného typu &mdash; zdarma a bez omezení. Jiné systémy omezují jejich počet nebo účtují příplatek za pokročilé typy polí."
+msgid "Unlimited custom fields of any type - free and without restrictions. Other systems limit the number or charge extra for advanced field types."
+msgstr "Neomezený počet vlastních polí libovolného typu - zdarma a bez omezení. Jiné systémy omezují jejich počet nebo účtují příplatek za pokročilé typy polí."
 
 msgid "Email-Native & Multilingual"
 msgstr "Nativní pro Email & Vícejazyčný"
 
-msgid "RT was built from the ground up for email &mdash; threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
-msgstr "RT byl postaven od základů pro e-mail &mdash; správa vláken, zpracování odpovědí a vytváření ticketů přímo z poštovní schránky. Plná podpora I18N pro mezinárodní týmy v libovolném počtu jazyků."
+msgid "RT was built from the ground up for email - threading, reply handling and ticket creation directly from the mailbox. Full I18N support for international teams in any number of languages."
+msgstr "RT byl postaven od základů pro e-mail - správa vláken, zpracování odpovědí a vytváření ticketů přímo z poštovní schránky. Plná podpora I18N pro mezinárodní týmy v libovolném počtu jazyků."
 
 msgid "Priv. Users"
 msgstr "Priv. Uživatelé"
