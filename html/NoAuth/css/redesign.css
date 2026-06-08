@@ -373,7 +373,7 @@ div.results .titlebox.card.error {
    position:sticky actually works. Only inside the create form,
    not inside #topactions where RT controls it via media queries. */
 
-form#CreateTicketInQueue .create-wide {
+#body form#CreateTicketInQueue .create-wide {
     display: block;
     position: sticky;
     top: 0;
