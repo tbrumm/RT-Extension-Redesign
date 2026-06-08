@@ -77,6 +77,25 @@ div#header h1 {
     letter-spacing: -0.01em;
 }
 
+/* Topactions: make search input transparent so it blends with the navbar */
+#topactions input.form-control,
+#topactions input[type="search"] {
+    background-color: transparent;
+    border-color: rgba(var(--bs-body-color-rgb), 0.25);
+    color: var(--bs-body-color);
+}
+#topactions input.form-control::placeholder,
+#topactions input[type="search"]::placeholder {
+    color: rgba(var(--bs-body-color-rgb), 0.5);
+}
+#topactions input.form-control:focus,
+#topactions input[type="search"]:focus {
+    background-color: var(--bs-secondary-bg);
+    border-color: rgba(var(--bs-body-color-rgb), 0.4);
+    box-shadow: none;
+    outline: none;
+}
+
 
 /* 3. TitleBox ───────────────────────────────────────────────── */
 
