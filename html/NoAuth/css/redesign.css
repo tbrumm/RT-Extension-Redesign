@@ -79,21 +79,30 @@ div#header h1 {
 
 /* Topactions: make search input transparent so it blends with the navbar */
 #topactions input.form-control,
-#topactions input[type="search"] {
-    background-color: transparent;
-    border-color: rgba(var(--bs-body-color-rgb), 0.25);
-    color: var(--bs-body-color);
+#topactions input[type="search"],
+#topactions .form-control {
+    background-color: transparent !important;
+    border-color: rgba(var(--bs-body-color-rgb), 0.25) !important;
+    color: var(--bs-body-color) !important;
+    box-shadow: none !important;
 }
 #topactions input.form-control::placeholder,
 #topactions input[type="search"]::placeholder {
-    color: rgba(var(--bs-body-color-rgb), 0.5);
+    color: rgba(var(--bs-body-color-rgb), 0.5) !important;
 }
 #topactions input.form-control:focus,
 #topactions input[type="search"]:focus {
-    background-color: var(--bs-secondary-bg);
-    border-color: rgba(var(--bs-body-color-rgb), 0.4);
-    box-shadow: none;
-    outline: none;
+    background-color: var(--bs-secondary-bg) !important;
+    border-color: rgba(var(--bs-body-color-rgb), 0.4) !important;
+    box-shadow: none !important;
+}
+#topactions form {
+    background-color: transparent !important;
+}
+#topactions .create-wide,
+#topactions .create-medium,
+#topactions .create-narrow {
+    background-color: transparent !important;
 }
 
 
