@@ -134,191 +134,191 @@ msgstr "می‌خواهید دوباره وارد شوید؟"
 
 
 msgid "Admin/Global configuration"
-msgstr ""
+msgstr "مدیر/پیکربندی عمومی"
 
 msgid "Active Classes"
-msgstr ""
+msgstr "کلاس‌های فعال"
 
 msgid "Active Queues"
-msgstr ""
+msgstr "صف‌های فعال"
 
 msgid "Analysis & Reports"
-msgstr ""
+msgstr "تجزیه‌وتحلیل و گزارش‌ها"
 
 msgid "Any word not matching a keyword is searched for in the ticket transaction history."
-msgstr ""
+msgstr "هر کلمه‌ای که با کلیدواژه‌ای مطابقت ندارد، در تاریخچه تراکنش‌های درخواست جستجو می‌شود."
 
 msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
-msgstr ""
+msgstr "هر کلمه‌ای که با کلیدواژه‌ای مطابقت ندارد، در موضوعات و توضیحات درخواست‌ها جستجو می‌شود."
 
 msgid "Article Administration"
-msgstr ""
+msgstr "مدیریت مقالات"
 
 msgid "Articles total"
-msgstr ""
+msgstr "مجموع مقالات"
 
 msgid "Asset Administration"
-msgstr ""
+msgstr "مدیریت دارایی‌ها"
 
 msgid "Asset Fields"
-msgstr ""
+msgstr "فیلدهای دارایی"
 
 msgid "Assets total"
-msgstr ""
+msgstr "مجموع دارایی‌ها"
 
 msgid "Banner Settings"
-msgstr ""
+msgstr "تنظیمات بنر"
 
 msgid "Banner active"
-msgstr ""
+msgstr "بنر فعال"
 
 msgid "Banner will be automatically deactivated on %1"
-msgstr ""
+msgstr "بنر به‌طور خودکار در %1 غیرفعال می‌شود"
 
 msgid "Catalogs total"
-msgstr ""
+msgstr "مجموع کاتالوگ‌ها"
 
 msgid "Classes total"
-msgstr ""
+msgstr "مجموع کلاس‌ها"
 
 msgid "Configure Reports Menu"
-msgstr ""
+msgstr "پیکربندی منوی گزارش‌ها"
 
 msgid "Custom Fields"
-msgstr ""
+msgstr "فیلدهای سفارشی"
 
 msgid "Custom Fields by Object Type"
-msgstr ""
+msgstr "فیلدهای سفارشی بر اساس نوع شی"
 
 msgid "Custom Fields total"
-msgstr ""
+msgstr "مجموع فیلدهای سفارشی"
 
 msgid "Database Size (MB)"
-msgstr ""
+msgstr "اندازه پایگاه داده (MB)"
 
 msgid "Displayed in the banner header bar (HTML allowed)"
-msgstr ""
+msgstr "در نوار عنوان بنر نشان داده می‌شود (HTML مجاز)"
 
 msgid "Due Today"
-msgstr ""
+msgstr "سررسید امروز"
 
 msgid "Enable or disable the maintenance banner on the login page"
-msgstr ""
+msgstr "فعال یا غیرفعال کردن بنر نگهداری در صفحه ورود"
 
 msgid "English Content"
-msgstr ""
+msgstr "محتوای انگلیسی"
 
 msgid "Expired - banner was automatically deactivated"
-msgstr ""
+msgstr "منقضی شده – بنر به‌طور خودکار غیرفعال شد"
 
 msgid "German Content"
-msgstr ""
+msgstr "محتوای آلمانی"
 
 msgid "Global Scrips"
-msgstr ""
+msgstr "اسکریپت‌های عمومی"
 
 msgid "Global custom field configuration"
-msgstr ""
+msgstr "پیکربندی عمومی فیلدهای سفارشی"
 
 msgid "HTML allowed"
-msgstr ""
+msgstr "HTML مجاز"
 
 msgid "Headline"
-msgstr ""
+msgstr "عنوان"
 
 msgid "If the custom field name or the search value have spaces, enclose them in quotes."
-msgstr ""
+msgstr "اگر نام فیلد سفارشی یا مقدار جستجو دارای فاصله است، آن‌ها را در گیومه قرار دهید."
 
 msgid "If the search value contains spaces, enclose it in quotes."
-msgstr ""
+msgstr "اگر مقدار جستجو دارای فاصله است، آن را در گیومه قرار دهید."
 
 msgid "In Use"
-msgstr ""
+msgstr "در حال استفاده"
 
 msgid "Keyword, id:, subject:, queue:, owner: ..."
-msgstr ""
+msgstr "کلیدواژه, id:, subject:, queue:, owner: ..."
 
 msgid "Login Banner"
-msgstr ""
+msgstr "بنر ورود"
 
 msgid "Mail Errors"
-msgstr ""
+msgstr "خطاهای پست الکترونیک"
 
 msgid "My Open Tickets"
-msgstr ""
+msgstr "درخواست‌های باز من"
 
 msgid "My Tools"
-msgstr ""
+msgstr "ابزارهای من"
 
 msgid "New Today"
-msgstr ""
+msgstr "جدید امروز"
 
 msgid "No dashboards in your menu yet."
-msgstr ""
+msgstr "هنوز هیچ داشبوردی در منوی شما وجود ندارد."
 
 msgid "Only tickets with these active statuses are searched:"
-msgstr ""
+msgstr "فقط درخواست‌هایی با این وضعیت‌های فعال جستجو می‌شوند:"
 
 msgid "Other Fields"
-msgstr ""
+msgstr "سایر فیلدها"
 
 msgid "Queue-specific"
-msgstr ""
+msgstr "مخصوص صف"
 
 msgid "Reports and Dashboards"
-msgstr ""
+msgstr "گزارش‌ها و داشبوردها"
 
 msgid "RT Administration"
-msgstr ""
+msgstr "مدیریت RT"
 
 msgid "RT Internals"
-msgstr ""
+msgstr "اجزای داخلی RT"
 
 msgid "Scheduled Processes"
-msgstr ""
+msgstr "فرآیندهای برنامه‌ریزی‌شده"
 
 msgid "Scrips total"
-msgstr ""
+msgstr "مجموع اسکریپت‌ها"
 
 msgid "Select custom fields for all queues"
-msgstr ""
+msgstr "انتخاب فیلدهای سفارشی برای همه صف‌ها"
 
 msgid "Select custom fields for all user groups"
-msgstr ""
+msgstr "انتخاب فیلدهای سفارشی برای همه گروه‌های کاربری"
 
 msgid "Select custom fields for all users"
-msgstr ""
+msgstr "انتخاب فیلدهای سفارشی برای همه کاربران"
 
 msgid "Select custom fields for articles in all classes"
-msgstr ""
+msgstr "انتخاب فیلدهای سفارشی برای مقالات در همه کلاس‌ها"
 
 msgid "Select custom fields for assets in all catalogs"
-msgstr ""
+msgstr "انتخاب فیلدهای سفارشی برای دارایی‌ها در همه کاتالوگ‌ها"
 
 msgid "Select custom fields for tickets in all queues"
-msgstr ""
+msgstr "انتخاب فیلدهای سفارشی برای درخواست‌ها در همه صف‌ها"
 
 msgid "Select custom fields for transactions on tickets in all queues"
-msgstr ""
+msgstr "انتخاب فیلدهای سفارشی برای تراکنش‌های درخواست در همه صف‌ها"
 
 msgid "Show banner until (leave empty for no expiry)"
-msgstr ""
+msgstr "نمایش بنر تا (برای بدون انقضا خالی بگذارید)"
 
 msgid "System Open"
-msgstr ""
+msgstr "سیستم باز"
 
 msgid "System Tools"
-msgstr ""
+msgstr "ابزارهای سیستم"
 
 msgid "Ticket Fields"
-msgstr ""
+msgstr "فیلدهای درخواست"
 
 msgid "Ticket Transactions"
-msgstr ""
+msgstr "تراکنش‌های درخواست"
 
 msgid "Tickets total"
-msgstr ""
+msgstr "مجموع درخواست‌ها"
 
 msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
-msgstr ""
+msgstr "برای جستجوی درخواست‌هایی با ناظرانی که با دامنه مطابقت دارند، دامنه را همراه با نماد @ وارد کنید."
 

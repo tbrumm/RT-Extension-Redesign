@@ -134,191 +134,191 @@ msgstr "Viltu skrá þig inn aftur?"
 
 
 msgid "Admin/Global configuration"
-msgstr ""
+msgstr "Stjórnandi/Almenn uppsetning"
 
 msgid "Active Classes"
-msgstr ""
+msgstr "Virkar flokkar"
 
 msgid "Active Queues"
-msgstr ""
+msgstr "Virkar biðraðir"
 
 msgid "Analysis & Reports"
-msgstr ""
+msgstr "Greining og skýrslur"
 
 msgid "Any word not matching a keyword is searched for in the ticket transaction history."
-msgstr ""
+msgstr "Sérhvert orð sem passar ekki við leitarorð er leitað í færslusögu miðans."
 
 msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
-msgstr ""
+msgstr "Sérhvert orð sem passar ekki við leitarorð er leitað í efnislínum og lýsingum mála."
 
 msgid "Article Administration"
-msgstr ""
+msgstr "Umsjón greina"
 
 msgid "Articles total"
-msgstr ""
+msgstr "Greinar samtals"
 
 msgid "Asset Administration"
-msgstr ""
+msgstr "Umsjón eigna"
 
 msgid "Asset Fields"
-msgstr ""
+msgstr "Eignasvæði"
 
 msgid "Assets total"
-msgstr ""
+msgstr "Eignir samtals"
 
 msgid "Banner Settings"
-msgstr ""
+msgstr "Stillingar borða"
 
 msgid "Banner active"
-msgstr ""
+msgstr "Borð virkt"
 
 msgid "Banner will be automatically deactivated on %1"
-msgstr ""
+msgstr "Borðið verður sjálfkrafa gert óvirkt þann %1"
 
 msgid "Catalogs total"
-msgstr ""
+msgstr "Vörulýsingar samtals"
 
 msgid "Classes total"
-msgstr ""
+msgstr "Flokkar samtals"
 
 msgid "Configure Reports Menu"
-msgstr ""
+msgstr "Stilla skýrsluvalmynd"
 
 msgid "Custom Fields"
-msgstr ""
+msgstr "Sérsniðnir reitir"
 
 msgid "Custom Fields by Object Type"
-msgstr ""
+msgstr "Sérsniðnir reitir eftir gerð hlutar"
 
 msgid "Custom Fields total"
-msgstr ""
+msgstr "Sérsniðnir reitir samtals"
 
 msgid "Database Size (MB)"
-msgstr ""
+msgstr "Stærð gagnagrunns (MB)"
 
 msgid "Displayed in the banner header bar (HTML allowed)"
-msgstr ""
+msgstr "Sýnt í haustrein borðsins (HTML leyfilegt)"
 
 msgid "Due Today"
-msgstr ""
+msgstr "Gjalddagi í dag"
 
 msgid "Enable or disable the maintenance banner on the login page"
-msgstr ""
+msgstr "Virkja eða gera óvirkt viðhaldsborð á innskráningarsíðu"
 
 msgid "English Content"
-msgstr ""
+msgstr "Enska efni"
 
 msgid "Expired - banner was automatically deactivated"
-msgstr ""
+msgstr "Útrunnið – borðið var sjálfkrafa gert óvirkt"
 
 msgid "German Content"
-msgstr ""
+msgstr "Þýska efni"
 
 msgid "Global Scrips"
-msgstr ""
+msgstr "Altækar skriptur"
 
 msgid "Global custom field configuration"
-msgstr ""
+msgstr "Altæk uppsetning sérsniðinna reita"
 
 msgid "HTML allowed"
-msgstr ""
+msgstr "HTML leyfilegt"
 
 msgid "Headline"
-msgstr ""
+msgstr "Fyrirsögn"
 
 msgid "If the custom field name or the search value have spaces, enclose them in quotes."
-msgstr ""
+msgstr "Ef nafn sérsniðins reits eða leitargildi inniheldur bil, settu það í gæsalappir."
 
 msgid "If the search value contains spaces, enclose it in quotes."
-msgstr ""
+msgstr "Ef leitargildið inniheldur bil, settu það í gæsalappir."
 
 msgid "In Use"
-msgstr ""
+msgstr "Í notkun"
 
 msgid "Keyword, id:, subject:, queue:, owner: ..."
-msgstr ""
+msgstr "Leitarorð, id:, subject:, queue:, owner: ..."
 
 msgid "Login Banner"
-msgstr ""
+msgstr "Innskráningarborð"
 
 msgid "Mail Errors"
-msgstr ""
+msgstr "Tölvupóstvillur"
 
 msgid "My Open Tickets"
-msgstr ""
+msgstr "Mín opin mál"
 
 msgid "My Tools"
-msgstr ""
+msgstr "Mín verkfæri"
 
 msgid "New Today"
-msgstr ""
+msgstr "Ný í dag"
 
 msgid "No dashboards in your menu yet."
-msgstr ""
+msgstr "Engar mælaborðar í valmyndinni þinni ennþá."
 
 msgid "Only tickets with these active statuses are searched:"
-msgstr ""
+msgstr "Aðeins mál með þessa virku stöður eru leitað:"
 
 msgid "Other Fields"
-msgstr ""
+msgstr "Aðrir reitir"
 
 msgid "Queue-specific"
-msgstr ""
+msgstr "Biðraðarsértækt"
 
 msgid "Reports and Dashboards"
-msgstr ""
+msgstr "Skýrslur og mælaborðar"
 
 msgid "RT Administration"
-msgstr ""
+msgstr "RT stjórnun"
 
 msgid "RT Internals"
-msgstr ""
+msgstr "RT innri hlutir"
 
 msgid "Scheduled Processes"
-msgstr ""
+msgstr "Áætluð ferli"
 
 msgid "Scrips total"
-msgstr ""
+msgstr "Skriptur samtals"
 
 msgid "Select custom fields for all queues"
-msgstr ""
+msgstr "Veldu sérsniðna reiti fyrir allar biðraðir"
 
 msgid "Select custom fields for all user groups"
-msgstr ""
+msgstr "Veldu sérsniðna reiti fyrir allar notendahópar"
 
 msgid "Select custom fields for all users"
-msgstr ""
+msgstr "Veldu sérsniðna reiti fyrir alla notendur"
 
 msgid "Select custom fields for articles in all classes"
-msgstr ""
+msgstr "Veldu sérsniðna reiti fyrir greinar í öllum flokkum"
 
 msgid "Select custom fields for assets in all catalogs"
-msgstr ""
+msgstr "Veldu sérsniðna reiti fyrir eignir í öllum vörulýsingum"
 
 msgid "Select custom fields for tickets in all queues"
-msgstr ""
+msgstr "Veldu sérsniðna reiti fyrir mál í öllum biðröðum"
 
 msgid "Select custom fields for transactions on tickets in all queues"
-msgstr ""
+msgstr "Veldu sérsniðna reiti fyrir færslur á málum í öllum biðröðum"
 
 msgid "Show banner until (leave empty for no expiry)"
-msgstr ""
+msgstr "Sýna borð til (skildu eftir autt fyrir engan gildistíma)"
 
 msgid "System Open"
-msgstr ""
+msgstr "Kerfi opið"
 
 msgid "System Tools"
-msgstr ""
+msgstr "Kerfisverkfæri"
 
 msgid "Ticket Fields"
-msgstr ""
+msgstr "Málsreitir"
 
 msgid "Ticket Transactions"
-msgstr ""
+msgstr "Málsfærslur"
 
 msgid "Tickets total"
-msgstr ""
+msgstr "Mál samtals"
 
 msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
-msgstr ""
+msgstr "Til að leita að málum með fylgjendur sem passa við lén, sláðu inn lénið með @-tákni."
 

@@ -134,191 +134,191 @@ msgstr "Berriro hasi nahi duzu saioa?"
 
 
 msgid "Admin/Global configuration"
-msgstr ""
+msgstr "Admin/Konfigurazio globala"
 
 msgid "Active Classes"
-msgstr ""
+msgstr "Klase aktiboak"
 
 msgid "Active Queues"
-msgstr ""
+msgstr "Ilara aktiboak"
 
 msgid "Analysis & Reports"
-msgstr ""
+msgstr "Analisia eta txostenak"
 
 msgid "Any word not matching a keyword is searched for in the ticket transaction history."
-msgstr ""
+msgstr "Gako-hitz batekin bat ez datorren edozein hitz txartelaren transakzio-historiako bilatzen da."
 
 msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
-msgstr ""
+msgstr "Gako-hitz batekin bat ez datorren edozein hitz txartelen gai eta deskribazioetan bilatzen da."
 
 msgid "Article Administration"
-msgstr ""
+msgstr "Artikuluen administrazioa"
 
 msgid "Articles total"
-msgstr ""
+msgstr "Artikulu guztira"
 
 msgid "Asset Administration"
-msgstr ""
+msgstr "Baliabideen administrazioa"
 
 msgid "Asset Fields"
-msgstr ""
+msgstr "Baliabide-eremuak"
 
 msgid "Assets total"
-msgstr ""
+msgstr "Baliabide guztira"
 
 msgid "Banner Settings"
-msgstr ""
+msgstr "Banneraren ezarpenak"
 
 msgid "Banner active"
-msgstr ""
+msgstr "Bannerra aktibo"
 
 msgid "Banner will be automatically deactivated on %1"
-msgstr ""
+msgstr "Bannerra automatikoki desaktivatuko da %1"
 
 msgid "Catalogs total"
-msgstr ""
+msgstr "Katalogo guztira"
 
 msgid "Classes total"
-msgstr ""
+msgstr "Klase guztira"
 
 msgid "Configure Reports Menu"
-msgstr ""
+msgstr "Txostenen menua konfiguratu"
 
 msgid "Custom Fields"
-msgstr ""
+msgstr "Eremu pertsonalizatuak"
 
 msgid "Custom Fields by Object Type"
-msgstr ""
+msgstr "Eremu pertsonalizatuak objektu motaren arabera"
 
 msgid "Custom Fields total"
-msgstr ""
+msgstr "Eremu pertsonalizatu guztira"
 
 msgid "Database Size (MB)"
-msgstr ""
+msgstr "Datu-basearen tamaina (MB)"
 
 msgid "Displayed in the banner header bar (HTML allowed)"
-msgstr ""
+msgstr "Banneraren goiburuko barran bistaratzen da (HTML onartua)"
 
 msgid "Due Today"
-msgstr ""
+msgstr "Gaur epemuga"
 
 msgid "Enable or disable the maintenance banner on the login page"
-msgstr ""
+msgstr "Mantentze-lanen bannerra gaitu edo desgaitu saioa hasteko orrian"
 
 msgid "English Content"
-msgstr ""
+msgstr "Ingelesezko edukia"
 
 msgid "Expired - banner was automatically deactivated"
-msgstr ""
+msgstr "Iraungitua – bannerra automatikoki desaktibatu da"
 
 msgid "German Content"
-msgstr ""
+msgstr "Alemanerazko edukia"
 
 msgid "Global Scrips"
-msgstr ""
+msgstr "Script globalak"
 
 msgid "Global custom field configuration"
-msgstr ""
+msgstr "Eremu pertsonalizatuen konfigurazio globala"
 
 msgid "HTML allowed"
-msgstr ""
+msgstr "HTML onartua"
 
 msgid "Headline"
-msgstr ""
+msgstr "Izenburua"
 
 msgid "If the custom field name or the search value have spaces, enclose them in quotes."
-msgstr ""
+msgstr "Eremu pertsonalizatuaren izena edo bilaketa-balioak zuriuneak baditu, jarri komatxo artean."
 
 msgid "If the search value contains spaces, enclose it in quotes."
-msgstr ""
+msgstr "Bilaketa-balioak zuriuneak baditu, jarri komatxo artean."
 
 msgid "In Use"
-msgstr ""
+msgstr "Erabiltzen"
 
 msgid "Keyword, id:, subject:, queue:, owner: ..."
-msgstr ""
+msgstr "Gako-hitza, id:, subject:, queue:, owner: ..."
 
 msgid "Login Banner"
-msgstr ""
+msgstr "Saioa hasteko bannerra"
 
 msgid "Mail Errors"
-msgstr ""
+msgstr "Posta-akatsak"
 
 msgid "My Open Tickets"
-msgstr ""
+msgstr "Nire txartel irekiak"
 
 msgid "My Tools"
-msgstr ""
+msgstr "Nire tresnak"
 
 msgid "New Today"
-msgstr ""
+msgstr "Gaur berriak"
 
 msgid "No dashboards in your menu yet."
-msgstr ""
+msgstr "Oraindik ez dago aginte-mahaiak menuan."
 
 msgid "Only tickets with these active statuses are searched:"
-msgstr ""
+msgstr "Estado aktibo hauek dituzten txartelak bakarrik bilatzen dira:"
 
 msgid "Other Fields"
-msgstr ""
+msgstr "Beste eremu batzuk"
 
 msgid "Queue-specific"
-msgstr ""
+msgstr "Ilararen araberakoa"
 
 msgid "Reports and Dashboards"
-msgstr ""
+msgstr "Txostenak eta aginte-mahaiak"
 
 msgid "RT Administration"
-msgstr ""
+msgstr "RT administrazioa"
 
 msgid "RT Internals"
-msgstr ""
+msgstr "RT barnekoak"
 
 msgid "Scheduled Processes"
-msgstr ""
+msgstr "Programatutako prozesuak"
 
 msgid "Scrips total"
-msgstr ""
+msgstr "Script guztira"
 
 msgid "Select custom fields for all queues"
-msgstr ""
+msgstr "Hautatu eremu pertsonalizatuak ilara guztietarako"
 
 msgid "Select custom fields for all user groups"
-msgstr ""
+msgstr "Hautatu eremu pertsonalizatuak erabiltzaile-talde guztietarako"
 
 msgid "Select custom fields for all users"
-msgstr ""
+msgstr "Hautatu eremu pertsonalizatuak erabiltzaile guztietarako"
 
 msgid "Select custom fields for articles in all classes"
-msgstr ""
+msgstr "Hautatu eremu pertsonalizatuak klase guztietako artikuluetarako"
 
 msgid "Select custom fields for assets in all catalogs"
-msgstr ""
+msgstr "Hautatu eremu pertsonalizatuak katalogo guztietako baliabideetarako"
 
 msgid "Select custom fields for tickets in all queues"
-msgstr ""
+msgstr "Hautatu eremu pertsonalizatuak ilara guztietako txarteletarako"
 
 msgid "Select custom fields for transactions on tickets in all queues"
-msgstr ""
+msgstr "Hautatu eremu pertsonalizatuak ilara guztietako txartel-transakzioetarako"
 
 msgid "Show banner until (leave empty for no expiry)"
-msgstr ""
+msgstr "Erakutsi bannerra arte (utzi hutsik iraungitze-data gabe)"
 
 msgid "System Open"
-msgstr ""
+msgstr "Sistema irekita"
 
 msgid "System Tools"
-msgstr ""
+msgstr "Sistemaren tresnak"
 
 msgid "Ticket Fields"
-msgstr ""
+msgstr "Txartel-eremuak"
 
 msgid "Ticket Transactions"
-msgstr ""
+msgstr "Txartel-transakzioak"
 
 msgid "Tickets total"
-msgstr ""
+msgstr "Txartel guztira"
 
 msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
-msgstr ""
+msgstr "Domeinu batekin bat datozen begiraleen txartelak bilatzeko, sartu domeinua @ ikurra barne."
 

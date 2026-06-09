@@ -134,191 +134,191 @@ msgstr "Norite prisijungti iš naujo?"
 
 
 msgid "Admin/Global configuration"
-msgstr ""
+msgstr "Administratorius/Bendra konfigūracija"
 
 msgid "Active Classes"
-msgstr ""
+msgstr "Aktyvios klasės"
 
 msgid "Active Queues"
-msgstr ""
+msgstr "Aktyvios eilės"
 
 msgid "Analysis & Reports"
-msgstr ""
+msgstr "Analizė ir ataskaitos"
 
 msgid "Any word not matching a keyword is searched for in the ticket transaction history."
-msgstr ""
+msgstr "Kiekvienas žodis, neatitinkantis raktažodžio, ieškomas bilieto operacijų istorijoje."
 
 msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
-msgstr ""
+msgstr "Kiekvienas žodis, neatitinkantis raktažodžio, ieškomas bilietų tematikoje ir aprašymuose."
 
 msgid "Article Administration"
-msgstr ""
+msgstr "Straipsnių administravimas"
 
 msgid "Articles total"
-msgstr ""
+msgstr "Straipsnių iš viso"
 
 msgid "Asset Administration"
-msgstr ""
+msgstr "Turto administravimas"
 
 msgid "Asset Fields"
-msgstr ""
+msgstr "Turto laukai"
 
 msgid "Assets total"
-msgstr ""
+msgstr "Turto iš viso"
 
 msgid "Banner Settings"
-msgstr ""
+msgstr "Reklamjuostės nustatymai"
 
 msgid "Banner active"
-msgstr ""
+msgstr "Reklamjuostė aktyvi"
 
 msgid "Banner will be automatically deactivated on %1"
-msgstr ""
+msgstr "Reklamjuostė bus automatiškai išjungta %1"
 
 msgid "Catalogs total"
-msgstr ""
+msgstr "Katalogų iš viso"
 
 msgid "Classes total"
-msgstr ""
+msgstr "Klasių iš viso"
 
 msgid "Configure Reports Menu"
-msgstr ""
+msgstr "Konfigūruoti ataskaitų meniu"
 
 msgid "Custom Fields"
-msgstr ""
+msgstr "Pasirinktiniai laukai"
 
 msgid "Custom Fields by Object Type"
-msgstr ""
+msgstr "Pasirinktiniai laukai pagal objekto tipą"
 
 msgid "Custom Fields total"
-msgstr ""
+msgstr "Pasirinktinių laukų iš viso"
 
 msgid "Database Size (MB)"
-msgstr ""
+msgstr "Duomenų bazės dydis (MB)"
 
 msgid "Displayed in the banner header bar (HTML allowed)"
-msgstr ""
+msgstr "Rodoma reklamjuostės antraštės juostoje (HTML leidžiamas)"
 
 msgid "Due Today"
-msgstr ""
+msgstr "Terminas šiandien"
 
 msgid "Enable or disable the maintenance banner on the login page"
-msgstr ""
+msgstr "Įgalinti arba išjungti priežiūros reklamjuostę prisijungimo puslapyje"
 
 msgid "English Content"
-msgstr ""
+msgstr "Angliškas turinys"
 
 msgid "Expired - banner was automatically deactivated"
-msgstr ""
+msgstr "Pasibaigęs galiojimas – reklamjuostė buvo automatiškai išjungta"
 
 msgid "German Content"
-msgstr ""
+msgstr "Vokiškas turinys"
 
 msgid "Global Scrips"
-msgstr ""
+msgstr "Globalūs skriptai"
 
 msgid "Global custom field configuration"
-msgstr ""
+msgstr "Globali pasirinktinių laukų konfigūracija"
 
 msgid "HTML allowed"
-msgstr ""
+msgstr "HTML leidžiamas"
 
 msgid "Headline"
-msgstr ""
+msgstr "Antraštė"
 
 msgid "If the custom field name or the search value have spaces, enclose them in quotes."
-msgstr ""
+msgstr "Jei pasirinktinio lauko pavadinimas arba paieškos vertė turi tarpų, įdėkite juos į kabutes."
 
 msgid "If the search value contains spaces, enclose it in quotes."
-msgstr ""
+msgstr "Jei paieškos vertė turi tarpų, įdėkite ją į kabutes."
 
 msgid "In Use"
-msgstr ""
+msgstr "Naudojama"
 
 msgid "Keyword, id:, subject:, queue:, owner: ..."
-msgstr ""
+msgstr "Raktažodis, id:, subject:, queue:, owner: ..."
 
 msgid "Login Banner"
-msgstr ""
+msgstr "Prisijungimo reklamjuostė"
 
 msgid "Mail Errors"
-msgstr ""
+msgstr "El. pašto klaidos"
 
 msgid "My Open Tickets"
-msgstr ""
+msgstr "Mano atidaryti bilietai"
 
 msgid "My Tools"
-msgstr ""
+msgstr "Mano įrankiai"
 
 msgid "New Today"
-msgstr ""
+msgstr "Šiandien naujų"
 
 msgid "No dashboards in your menu yet."
-msgstr ""
+msgstr "Jūsų meniu dar nėra informacijos suvestinių."
 
 msgid "Only tickets with these active statuses are searched:"
-msgstr ""
+msgstr "Ieškomi tik bilietai su šiomis aktyviomis būsenomis:"
 
 msgid "Other Fields"
-msgstr ""
+msgstr "Kiti laukai"
 
 msgid "Queue-specific"
-msgstr ""
+msgstr "Eilei specifiškas"
 
 msgid "Reports and Dashboards"
-msgstr ""
+msgstr "Ataskaitos ir informacijos suvestinės"
 
 msgid "RT Administration"
-msgstr ""
+msgstr "RT administravimas"
 
 msgid "RT Internals"
-msgstr ""
+msgstr "RT vidiniai elementai"
 
 msgid "Scheduled Processes"
-msgstr ""
+msgstr "Suplanuoti procesai"
 
 msgid "Scrips total"
-msgstr ""
+msgstr "Skriptų iš viso"
 
 msgid "Select custom fields for all queues"
-msgstr ""
+msgstr "Pasirinkti pasirinktiniai laukai visoms eilėms"
 
 msgid "Select custom fields for all user groups"
-msgstr ""
+msgstr "Pasirinkti pasirinktiniai laukai visoms naudotojų grupėms"
 
 msgid "Select custom fields for all users"
-msgstr ""
+msgstr "Pasirinkti pasirinktiniai laukai visiems naudotojams"
 
 msgid "Select custom fields for articles in all classes"
-msgstr ""
+msgstr "Pasirinkti pasirinktiniai laukai straipsniams visose klasėse"
 
 msgid "Select custom fields for assets in all catalogs"
-msgstr ""
+msgstr "Pasirinkti pasirinktiniai laukai turtui visuose kataloguose"
 
 msgid "Select custom fields for tickets in all queues"
-msgstr ""
+msgstr "Pasirinkti pasirinktiniai laukai bilietams visose eilėse"
 
 msgid "Select custom fields for transactions on tickets in all queues"
-msgstr ""
+msgstr "Pasirinkti pasirinktiniai laukai bilieto operacijoms visose eilėse"
 
 msgid "Show banner until (leave empty for no expiry)"
-msgstr ""
+msgstr "Rodyti reklamjuostę iki (palikite tuščią, jei nėra galiojimo pabaigos)"
 
 msgid "System Open"
-msgstr ""
+msgstr "Sistema atidaryta"
 
 msgid "System Tools"
-msgstr ""
+msgstr "Sistemos įrankiai"
 
 msgid "Ticket Fields"
-msgstr ""
+msgstr "Bilieto laukai"
 
 msgid "Ticket Transactions"
-msgstr ""
+msgstr "Bilieto operacijos"
 
 msgid "Tickets total"
-msgstr ""
+msgstr "Bilietų iš viso"
 
 msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
-msgstr ""
+msgstr "Norėdami ieškoti bilietų su stebėtojais, atitinkančiais domeną, įveskite domeną kartu su @ simboliu."
 

@@ -134,191 +134,191 @@ msgstr "Želite li se ponovno prijaviti?"
 
 
 msgid "Admin/Global configuration"
-msgstr ""
+msgstr "Admin/Globalna konfiguracija"
 
 msgid "Active Classes"
-msgstr ""
+msgstr "Aktivne klase"
 
 msgid "Active Queues"
-msgstr ""
+msgstr "Aktivni redovi"
 
 msgid "Analysis & Reports"
-msgstr ""
+msgstr "Analiza i izvještaji"
 
 msgid "Any word not matching a keyword is searched for in the ticket transaction history."
-msgstr ""
+msgstr "Svaka riječ koja ne odgovara ključnoj riječi pretražuje se u povijesti transakcija zahtjeva."
 
 msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
-msgstr ""
+msgstr "Svaka riječ koja ne odgovara ključnoj riječi pretražuje se u temama i opisima zahtjeva."
 
 msgid "Article Administration"
-msgstr ""
+msgstr "Administracija članaka"
 
 msgid "Articles total"
-msgstr ""
+msgstr "Ukupno članaka"
 
 msgid "Asset Administration"
-msgstr ""
+msgstr "Administracija imovine"
 
 msgid "Asset Fields"
-msgstr ""
+msgstr "Polja imovine"
 
 msgid "Assets total"
-msgstr ""
+msgstr "Ukupno imovine"
 
 msgid "Banner Settings"
-msgstr ""
+msgstr "Postavke bannera"
 
 msgid "Banner active"
-msgstr ""
+msgstr "Banner aktivan"
 
 msgid "Banner will be automatically deactivated on %1"
-msgstr ""
+msgstr "Banner će biti automatski deaktiviran %1"
 
 msgid "Catalogs total"
-msgstr ""
+msgstr "Ukupno kataloga"
 
 msgid "Classes total"
-msgstr ""
+msgstr "Ukupno klasa"
 
 msgid "Configure Reports Menu"
-msgstr ""
+msgstr "Konfiguracija izbornika izvještaja"
 
 msgid "Custom Fields"
-msgstr ""
+msgstr "Prilagođena polja"
 
 msgid "Custom Fields by Object Type"
-msgstr ""
+msgstr "Prilagođena polja prema vrsti objekta"
 
 msgid "Custom Fields total"
-msgstr ""
+msgstr "Ukupno prilagođenih polja"
 
 msgid "Database Size (MB)"
-msgstr ""
+msgstr "Veličina baze podataka (MB)"
 
 msgid "Displayed in the banner header bar (HTML allowed)"
-msgstr ""
+msgstr "Prikazuje se u traci zaglavlja bannera (HTML dopušten)"
 
 msgid "Due Today"
-msgstr ""
+msgstr "Dospijeva danas"
 
 msgid "Enable or disable the maintenance banner on the login page"
-msgstr ""
+msgstr "Omogući ili onemogući banner održavanja na stranici za prijavu"
 
 msgid "English Content"
-msgstr ""
+msgstr "Engleski sadržaj"
 
 msgid "Expired - banner was automatically deactivated"
-msgstr ""
+msgstr "Isteklo – banner je automatski deaktiviran"
 
 msgid "German Content"
-msgstr ""
+msgstr "Njemački sadržaj"
 
 msgid "Global Scrips"
-msgstr ""
+msgstr "Globalne skripte"
 
 msgid "Global custom field configuration"
-msgstr ""
+msgstr "Globalna konfiguracija prilagođenih polja"
 
 msgid "HTML allowed"
-msgstr ""
+msgstr "HTML dopušten"
 
 msgid "Headline"
-msgstr ""
+msgstr "Naslov"
 
 msgid "If the custom field name or the search value have spaces, enclose them in quotes."
-msgstr ""
+msgstr "Ako naziv prilagođenog polja ili vrijednost pretrage sadrži razmake, stavite ih u navodnike."
 
 msgid "If the search value contains spaces, enclose it in quotes."
-msgstr ""
+msgstr "Ako vrijednost pretrage sadrži razmake, stavite je u navodnike."
 
 msgid "In Use"
-msgstr ""
+msgstr "U upotrebi"
 
 msgid "Keyword, id:, subject:, queue:, owner: ..."
-msgstr ""
+msgstr "Ključna riječ, id:, subject:, queue:, owner: ..."
 
 msgid "Login Banner"
-msgstr ""
+msgstr "Banner za prijavu"
 
 msgid "Mail Errors"
-msgstr ""
+msgstr "Pogreške e-pošte"
 
 msgid "My Open Tickets"
-msgstr ""
+msgstr "Moji otvoreni zahtjevi"
 
 msgid "My Tools"
-msgstr ""
+msgstr "Moji alati"
 
 msgid "New Today"
-msgstr ""
+msgstr "Novi danas"
 
 msgid "No dashboards in your menu yet."
-msgstr ""
+msgstr "Još nema nadzornih ploča u vašem izborniku."
 
 msgid "Only tickets with these active statuses are searched:"
-msgstr ""
+msgstr "Pretražuju se samo zahtjevi s ovim aktivnim statusima:"
 
 msgid "Other Fields"
-msgstr ""
+msgstr "Ostala polja"
 
 msgid "Queue-specific"
-msgstr ""
+msgstr "Specifično za red"
 
 msgid "Reports and Dashboards"
-msgstr ""
+msgstr "Izvještaji i nadzorne ploče"
 
 msgid "RT Administration"
-msgstr ""
+msgstr "RT administracija"
 
 msgid "RT Internals"
-msgstr ""
+msgstr "RT internals"
 
 msgid "Scheduled Processes"
-msgstr ""
+msgstr "Zakazani procesi"
 
 msgid "Scrips total"
-msgstr ""
+msgstr "Ukupno skripti"
 
 msgid "Select custom fields for all queues"
-msgstr ""
+msgstr "Odaberi prilagođena polja za sve redove"
 
 msgid "Select custom fields for all user groups"
-msgstr ""
+msgstr "Odaberi prilagođena polja za sve korisničke grupe"
 
 msgid "Select custom fields for all users"
-msgstr ""
+msgstr "Odaberi prilagođena polja za sve korisnike"
 
 msgid "Select custom fields for articles in all classes"
-msgstr ""
+msgstr "Odaberi prilagođena polja za članke u svim klasama"
 
 msgid "Select custom fields for assets in all catalogs"
-msgstr ""
+msgstr "Odaberi prilagođena polja za imovinu u svim katalozima"
 
 msgid "Select custom fields for tickets in all queues"
-msgstr ""
+msgstr "Odaberi prilagođena polja za zahtjeve u svim redovima"
 
 msgid "Select custom fields for transactions on tickets in all queues"
-msgstr ""
+msgstr "Odaberi prilagođena polja za transakcije zahtjeva u svim redovima"
 
 msgid "Show banner until (leave empty for no expiry)"
-msgstr ""
+msgstr "Prikaži banner do (ostavi prazno za bez isteka)"
 
 msgid "System Open"
-msgstr ""
+msgstr "Sustav otvoren"
 
 msgid "System Tools"
-msgstr ""
+msgstr "Sistemski alati"
 
 msgid "Ticket Fields"
-msgstr ""
+msgstr "Polja zahtjeva"
 
 msgid "Ticket Transactions"
-msgstr ""
+msgstr "Transakcije zahtjeva"
 
 msgid "Tickets total"
-msgstr ""
+msgstr "Ukupno zahtjeva"
 
 msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
-msgstr ""
+msgstr "Za pretragu zahtjeva s promatračima koji odgovaraju domeni, unesite domenu uključujući simbol @."
 

@@ -134,191 +134,191 @@ msgstr "Tekrar giriş yapmak ister misiniz?"
 
 
 msgid "Admin/Global configuration"
-msgstr ""
+msgstr "Admin/Genel yapılandırma"
 
 msgid "Active Classes"
-msgstr ""
+msgstr "Aktif sınıflar"
 
 msgid "Active Queues"
-msgstr ""
+msgstr "Aktif kuyruklar"
 
 msgid "Analysis & Reports"
-msgstr ""
+msgstr "Analiz ve raporlar"
 
 msgid "Any word not matching a keyword is searched for in the ticket transaction history."
-msgstr ""
+msgstr "Bir anahtar kelimeyle eşleşmeyen herhangi bir kelime, biletin işlem geçmişinde aranır."
 
 msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
-msgstr ""
+msgstr "Bir anahtar kelimeyle eşleşmeyen herhangi bir kelime, biletlerin konularında ve açıklamalarında aranır."
 
 msgid "Article Administration"
-msgstr ""
+msgstr "Makale yönetimi"
 
 msgid "Articles total"
-msgstr ""
+msgstr "Toplam makale"
 
 msgid "Asset Administration"
-msgstr ""
+msgstr "Varlık yönetimi"
 
 msgid "Asset Fields"
-msgstr ""
+msgstr "Varlık alanları"
 
 msgid "Assets total"
-msgstr ""
+msgstr "Toplam varlık"
 
 msgid "Banner Settings"
-msgstr ""
+msgstr "Pankart ayarları"
 
 msgid "Banner active"
-msgstr ""
+msgstr "Pankart aktif"
 
 msgid "Banner will be automatically deactivated on %1"
-msgstr ""
+msgstr "Pankart %1 tarihinde otomatik olarak devre dışı bırakılacak"
 
 msgid "Catalogs total"
-msgstr ""
+msgstr "Toplam katalog"
 
 msgid "Classes total"
-msgstr ""
+msgstr "Toplam sınıf"
 
 msgid "Configure Reports Menu"
-msgstr ""
+msgstr "Rapor menüsünü yapılandır"
 
 msgid "Custom Fields"
-msgstr ""
+msgstr "Özel alanlar"
 
 msgid "Custom Fields by Object Type"
-msgstr ""
+msgstr "Nesne türüne göre özel alanlar"
 
 msgid "Custom Fields total"
-msgstr ""
+msgstr "Toplam özel alan"
 
 msgid "Database Size (MB)"
-msgstr ""
+msgstr "Veritabanı boyutu (MB)"
 
 msgid "Displayed in the banner header bar (HTML allowed)"
-msgstr ""
+msgstr "Pankart başlık çubuğunda görüntülenir (HTML izin verilir)"
 
 msgid "Due Today"
-msgstr ""
+msgstr "Bugün son tarih"
 
 msgid "Enable or disable the maintenance banner on the login page"
-msgstr ""
+msgstr "Giriş sayfasındaki bakım pankartını etkinleştirin veya devre dışı bırakın"
 
 msgid "English Content"
-msgstr ""
+msgstr "İngilizce içerik"
 
 msgid "Expired - banner was automatically deactivated"
-msgstr ""
+msgstr "Süresi doldu – pankart otomatik olarak devre dışı bırakıldı"
 
 msgid "German Content"
-msgstr ""
+msgstr "Almanca içerik"
 
 msgid "Global Scrips"
-msgstr ""
+msgstr "Genel betikler"
 
 msgid "Global custom field configuration"
-msgstr ""
+msgstr "Özel alanların genel yapılandırması"
 
 msgid "HTML allowed"
-msgstr ""
+msgstr "HTML izin verilir"
 
 msgid "Headline"
-msgstr ""
+msgstr "Başlık"
 
 msgid "If the custom field name or the search value have spaces, enclose them in quotes."
-msgstr ""
+msgstr "Özel alan adı veya arama değeri boşluk içeriyorsa, bunları tırnak içine alın."
 
 msgid "If the search value contains spaces, enclose it in quotes."
-msgstr ""
+msgstr "Arama değeri boşluk içeriyorsa, tırnak içine alın."
 
 msgid "In Use"
-msgstr ""
+msgstr "Kullanımda"
 
 msgid "Keyword, id:, subject:, queue:, owner: ..."
-msgstr ""
+msgstr "Anahtar kelime, id:, subject:, queue:, owner: ..."
 
 msgid "Login Banner"
-msgstr ""
+msgstr "Giriş pankartı"
 
 msgid "Mail Errors"
-msgstr ""
+msgstr "E-posta hataları"
 
 msgid "My Open Tickets"
-msgstr ""
+msgstr "Açık biletlerim"
 
 msgid "My Tools"
-msgstr ""
+msgstr "Araçlarım"
 
 msgid "New Today"
-msgstr ""
+msgstr "Bugün yeni"
 
 msgid "No dashboards in your menu yet."
-msgstr ""
+msgstr "Menünüzde henüz pano yok."
 
 msgid "Only tickets with these active statuses are searched:"
-msgstr ""
+msgstr "Yalnızca bu aktif durumlara sahip biletler aranır:"
 
 msgid "Other Fields"
-msgstr ""
+msgstr "Diğer alanlar"
 
 msgid "Queue-specific"
-msgstr ""
+msgstr "Kuyruk özelinde"
 
 msgid "Reports and Dashboards"
-msgstr ""
+msgstr "Raporlar ve panolar"
 
 msgid "RT Administration"
-msgstr ""
+msgstr "RT yönetimi"
 
 msgid "RT Internals"
-msgstr ""
+msgstr "RT dahililer"
 
 msgid "Scheduled Processes"
-msgstr ""
+msgstr "Zamanlanmış süreçler"
 
 msgid "Scrips total"
-msgstr ""
+msgstr "Toplam betik"
 
 msgid "Select custom fields for all queues"
-msgstr ""
+msgstr "Tüm kuyruklar için özel alanları seçin"
 
 msgid "Select custom fields for all user groups"
-msgstr ""
+msgstr "Tüm kullanıcı grupları için özel alanları seçin"
 
 msgid "Select custom fields for all users"
-msgstr ""
+msgstr "Tüm kullanıcılar için özel alanları seçin"
 
 msgid "Select custom fields for articles in all classes"
-msgstr ""
+msgstr "Tüm sınıflardaki makaleler için özel alanları seçin"
 
 msgid "Select custom fields for assets in all catalogs"
-msgstr ""
+msgstr "Tüm kataloglardaki varlıklar için özel alanları seçin"
 
 msgid "Select custom fields for tickets in all queues"
-msgstr ""
+msgstr "Tüm kuyruklardaki biletler için özel alanları seçin"
 
 msgid "Select custom fields for transactions on tickets in all queues"
-msgstr ""
+msgstr "Tüm kuyruklardaki bilet işlemleri için özel alanları seçin"
 
 msgid "Show banner until (leave empty for no expiry)"
-msgstr ""
+msgstr "Pankartı şu tarihe kadar göster (son kullanma tarihi olmadan boş bırakın)"
 
 msgid "System Open"
-msgstr ""
+msgstr "Sistem açık"
 
 msgid "System Tools"
-msgstr ""
+msgstr "Sistem araçları"
 
 msgid "Ticket Fields"
-msgstr ""
+msgstr "Bilet alanları"
 
 msgid "Ticket Transactions"
-msgstr ""
+msgstr "Bilet işlemleri"
 
 msgid "Tickets total"
-msgstr ""
+msgstr "Toplam bilet"
 
 msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
-msgstr ""
+msgstr "Bir etki alanıyla eşleşen izleyicilere sahip biletleri aramak için @ sembolü dahil etki alanını girin."
 

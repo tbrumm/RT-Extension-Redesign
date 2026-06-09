@@ -134,191 +134,191 @@ msgstr "Voleu tornar a iniciar la sessió?"
 
 
 msgid "Admin/Global configuration"
-msgstr ""
+msgstr "Admin/Configuració global"
 
 msgid "Active Classes"
-msgstr ""
+msgstr "Classes actives"
 
 msgid "Active Queues"
-msgstr ""
+msgstr "Cues actives"
 
 msgid "Analysis & Reports"
-msgstr ""
+msgstr "Anàlisi i informes"
 
 msgid "Any word not matching a keyword is searched for in the ticket transaction history."
-msgstr ""
+msgstr "Qualsevol paraula que no coincideixi amb una paraula clau es cerca a l'historial de transaccions del tiquet."
 
 msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
-msgstr ""
+msgstr "Qualsevol paraula que no coincideixi amb una paraula clau es cerca als assumptes i descripcions dels tiquets."
 
 msgid "Article Administration"
-msgstr ""
+msgstr "Administració d'articles"
 
 msgid "Articles total"
-msgstr ""
+msgstr "Total d'articles"
 
 msgid "Asset Administration"
-msgstr ""
+msgstr "Administració d'actius"
 
 msgid "Asset Fields"
-msgstr ""
+msgstr "Camps d'actius"
 
 msgid "Assets total"
-msgstr ""
+msgstr "Total d'actius"
 
 msgid "Banner Settings"
-msgstr ""
+msgstr "Configuració del bàner"
 
 msgid "Banner active"
-msgstr ""
+msgstr "Bàner actiu"
 
 msgid "Banner will be automatically deactivated on %1"
-msgstr ""
+msgstr "El bàner es desactivarà automàticament el %1"
 
 msgid "Catalogs total"
-msgstr ""
+msgstr "Total de catàlegs"
 
 msgid "Classes total"
-msgstr ""
+msgstr "Total de classes"
 
 msgid "Configure Reports Menu"
-msgstr ""
+msgstr "Configurar el menú d'informes"
 
 msgid "Custom Fields"
-msgstr ""
+msgstr "Camps personalitzats"
 
 msgid "Custom Fields by Object Type"
-msgstr ""
+msgstr "Camps personalitzats per tipus d'objecte"
 
 msgid "Custom Fields total"
-msgstr ""
+msgstr "Total de camps personalitzats"
 
 msgid "Database Size (MB)"
-msgstr ""
+msgstr "Mida de la base de dades (MB)"
 
 msgid "Displayed in the banner header bar (HTML allowed)"
-msgstr ""
+msgstr "Es mostra a la barra de capçalera del bàner (HTML permès)"
 
 msgid "Due Today"
-msgstr ""
+msgstr "Venciment avui"
 
 msgid "Enable or disable the maintenance banner on the login page"
-msgstr ""
+msgstr "Activar o desactivar el bàner de manteniment a la pàgina d'inici de sessió"
 
 msgid "English Content"
-msgstr ""
+msgstr "Contingut en anglès"
 
 msgid "Expired - banner was automatically deactivated"
-msgstr ""
+msgstr "Caducat – el bàner s'ha desactivat automàticament"
 
 msgid "German Content"
-msgstr ""
+msgstr "Contingut en alemany"
 
 msgid "Global Scrips"
-msgstr ""
+msgstr "Scripts globals"
 
 msgid "Global custom field configuration"
-msgstr ""
+msgstr "Configuració global de camps personalitzats"
 
 msgid "HTML allowed"
-msgstr ""
+msgstr "HTML permès"
 
 msgid "Headline"
-msgstr ""
+msgstr "Títol"
 
 msgid "If the custom field name or the search value have spaces, enclose them in quotes."
-msgstr ""
+msgstr "Si el nom del camp personalitzat o el valor de cerca té espais, poseu-los entre cometes."
 
 msgid "If the search value contains spaces, enclose it in quotes."
-msgstr ""
+msgstr "Si el valor de cerca conté espais, poseu-lo entre cometes."
 
 msgid "In Use"
-msgstr ""
+msgstr "En ús"
 
 msgid "Keyword, id:, subject:, queue:, owner: ..."
-msgstr ""
+msgstr "Paraula clau, id:, subject:, queue:, owner: ..."
 
 msgid "Login Banner"
-msgstr ""
+msgstr "Bàner d'inici de sessió"
 
 msgid "Mail Errors"
-msgstr ""
+msgstr "Errors de correu"
 
 msgid "My Open Tickets"
-msgstr ""
+msgstr "Les meves incidències obertes"
 
 msgid "My Tools"
-msgstr ""
+msgstr "Les meves eines"
 
 msgid "New Today"
-msgstr ""
+msgstr "Nous avui"
 
 msgid "No dashboards in your menu yet."
-msgstr ""
+msgstr "Encara no hi ha taulers al vostre menú."
 
 msgid "Only tickets with these active statuses are searched:"
-msgstr ""
+msgstr "Només es cerquen incidències amb aquests estats actius:"
 
 msgid "Other Fields"
-msgstr ""
+msgstr "Altres camps"
 
 msgid "Queue-specific"
-msgstr ""
+msgstr "Específic de la cua"
 
 msgid "Reports and Dashboards"
-msgstr ""
+msgstr "Informes i taulers"
 
 msgid "RT Administration"
-msgstr ""
+msgstr "Administració de RT"
 
 msgid "RT Internals"
-msgstr ""
+msgstr "Interns de RT"
 
 msgid "Scheduled Processes"
-msgstr ""
+msgstr "Processos programats"
 
 msgid "Scrips total"
-msgstr ""
+msgstr "Total de scripts"
 
 msgid "Select custom fields for all queues"
-msgstr ""
+msgstr "Seleccioneu camps personalitzats per a totes les cues"
 
 msgid "Select custom fields for all user groups"
-msgstr ""
+msgstr "Seleccioneu camps personalitzats per a tots els grups d'usuaris"
 
 msgid "Select custom fields for all users"
-msgstr ""
+msgstr "Seleccioneu camps personalitzats per a tots els usuaris"
 
 msgid "Select custom fields for articles in all classes"
-msgstr ""
+msgstr "Seleccioneu camps personalitzats per a articles de totes les classes"
 
 msgid "Select custom fields for assets in all catalogs"
-msgstr ""
+msgstr "Seleccioneu camps personalitzats per a actius de tots els catàlegs"
 
 msgid "Select custom fields for tickets in all queues"
-msgstr ""
+msgstr "Seleccioneu camps personalitzats per a incidències de totes les cues"
 
 msgid "Select custom fields for transactions on tickets in all queues"
-msgstr ""
+msgstr "Seleccioneu camps personalitzats per a transaccions en incidències de totes les cues"
 
 msgid "Show banner until (leave empty for no expiry)"
-msgstr ""
+msgstr "Mostra el bàner fins a (deixeu buit per a sense venciment)"
 
 msgid "System Open"
-msgstr ""
+msgstr "Sistema obert"
 
 msgid "System Tools"
-msgstr ""
+msgstr "Eines del sistema"
 
 msgid "Ticket Fields"
-msgstr ""
+msgstr "Camps de la incidència"
 
 msgid "Ticket Transactions"
-msgstr ""
+msgstr "Transaccions de la incidència"
 
 msgid "Tickets total"
-msgstr ""
+msgstr "Total d'incidències"
 
 msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
-msgstr ""
+msgstr "Per cercar incidències amb observadors que coincideixin amb un domini, introduïu el domini inclòs el símbol @."
 

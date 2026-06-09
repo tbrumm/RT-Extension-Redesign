@@ -134,191 +134,191 @@ msgstr "Искате ли да влезете отново?"
 
 
 msgid "Admin/Global configuration"
-msgstr ""
+msgstr "Администратор/Глобална конфигурация"
 
 msgid "Active Classes"
-msgstr ""
+msgstr "Активни класове"
 
 msgid "Active Queues"
-msgstr ""
+msgstr "Активни опашки"
 
 msgid "Analysis & Reports"
-msgstr ""
+msgstr "Анализ и отчети"
 
 msgid "Any word not matching a keyword is searched for in the ticket transaction history."
-msgstr ""
+msgstr "Всяка дума, която не съответства на ключова дума, се търси в историята на транзакциите на тикета."
 
 msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
-msgstr ""
+msgstr "Всяка дума, която не съответства на ключова дума, се търси в темите и описанията на тикетите."
 
 msgid "Article Administration"
-msgstr ""
+msgstr "Администрация на статии"
 
 msgid "Articles total"
-msgstr ""
+msgstr "Статии общо"
 
 msgid "Asset Administration"
-msgstr ""
+msgstr "Администрация на активи"
 
 msgid "Asset Fields"
-msgstr ""
+msgstr "Полета на активи"
 
 msgid "Assets total"
-msgstr ""
+msgstr "Активи общо"
 
 msgid "Banner Settings"
-msgstr ""
+msgstr "Настройки на банера"
 
 msgid "Banner active"
-msgstr ""
+msgstr "Банерът е активен"
 
 msgid "Banner will be automatically deactivated on %1"
-msgstr ""
+msgstr "Банерът ще бъде автоматично деактивиран на %1"
 
 msgid "Catalogs total"
-msgstr ""
+msgstr "Каталози общо"
 
 msgid "Classes total"
-msgstr ""
+msgstr "Класове общо"
 
 msgid "Configure Reports Menu"
-msgstr ""
+msgstr "Конфигуриране на менюто за отчети"
 
 msgid "Custom Fields"
-msgstr ""
+msgstr "Персонализирани полета"
 
 msgid "Custom Fields by Object Type"
-msgstr ""
+msgstr "Персонализирани полета по тип обект"
 
 msgid "Custom Fields total"
-msgstr ""
+msgstr "Персонализирани полета общо"
 
 msgid "Database Size (MB)"
-msgstr ""
+msgstr "Размер на базата данни (MB)"
 
 msgid "Displayed in the banner header bar (HTML allowed)"
-msgstr ""
+msgstr "Показва се в лентата на заглавката на банера (HTML разрешен)"
 
 msgid "Due Today"
-msgstr ""
+msgstr "Дължими днес"
 
 msgid "Enable or disable the maintenance banner on the login page"
-msgstr ""
+msgstr "Активиране или деактивиране на банера за поддръжка на страницата за вход"
 
 msgid "English Content"
-msgstr ""
+msgstr "Английско съдържание"
 
 msgid "Expired - banner was automatically deactivated"
-msgstr ""
+msgstr "Изтекъл – банерът е автоматично деактивиран"
 
 msgid "German Content"
-msgstr ""
+msgstr "Немско съдържание"
 
 msgid "Global Scrips"
-msgstr ""
+msgstr "Глобални скриптове"
 
 msgid "Global custom field configuration"
-msgstr ""
+msgstr "Глобална конфигурация на персонализирани полета"
 
 msgid "HTML allowed"
-msgstr ""
+msgstr "HTML разрешен"
 
 msgid "Headline"
-msgstr ""
+msgstr "Заглавие"
 
 msgid "If the custom field name or the search value have spaces, enclose them in quotes."
-msgstr ""
+msgstr "Ако името на персонализираното поле или стойността за търсене съдържат интервали, оградете ги с кавички."
 
 msgid "If the search value contains spaces, enclose it in quotes."
-msgstr ""
+msgstr "Ако стойността за търсене съдържа интервали, оградете я с кавички."
 
 msgid "In Use"
-msgstr ""
+msgstr "В употреба"
 
 msgid "Keyword, id:, subject:, queue:, owner: ..."
-msgstr ""
+msgstr "Ключова дума, id:, subject:, queue:, owner: ..."
 
 msgid "Login Banner"
-msgstr ""
+msgstr "Банер за вход"
 
 msgid "Mail Errors"
-msgstr ""
+msgstr "Грешки в пощата"
 
 msgid "My Open Tickets"
-msgstr ""
+msgstr "Моите отворени тикети"
 
 msgid "My Tools"
-msgstr ""
+msgstr "Моите инструменти"
 
 msgid "New Today"
-msgstr ""
+msgstr "Нови днес"
 
 msgid "No dashboards in your menu yet."
-msgstr ""
+msgstr "Все още няма табла за управление в менюто ви."
 
 msgid "Only tickets with these active statuses are searched:"
-msgstr ""
+msgstr "Търсят се само тикети с тези активни статуси:"
 
 msgid "Other Fields"
-msgstr ""
+msgstr "Други полета"
 
 msgid "Queue-specific"
-msgstr ""
+msgstr "Специфично за опашката"
 
 msgid "Reports and Dashboards"
-msgstr ""
+msgstr "Отчети и табла за управление"
 
 msgid "RT Administration"
-msgstr ""
+msgstr "Администрация на RT"
 
 msgid "RT Internals"
-msgstr ""
+msgstr "Вътрешни компоненти на RT"
 
 msgid "Scheduled Processes"
-msgstr ""
+msgstr "Планирани процеси"
 
 msgid "Scrips total"
-msgstr ""
+msgstr "Скриптове общо"
 
 msgid "Select custom fields for all queues"
-msgstr ""
+msgstr "Изберете персонализирани полета за всички опашки"
 
 msgid "Select custom fields for all user groups"
-msgstr ""
+msgstr "Изберете персонализирани полета за всички потребителски групи"
 
 msgid "Select custom fields for all users"
-msgstr ""
+msgstr "Изберете персонализирани полета за всички потребители"
 
 msgid "Select custom fields for articles in all classes"
-msgstr ""
+msgstr "Изберете персонализирани полета за статии във всички класове"
 
 msgid "Select custom fields for assets in all catalogs"
-msgstr ""
+msgstr "Изберете персонализирани полета за активи във всички каталози"
 
 msgid "Select custom fields for tickets in all queues"
-msgstr ""
+msgstr "Изберете персонализирани полета за тикети във всички опашки"
 
 msgid "Select custom fields for transactions on tickets in all queues"
-msgstr ""
+msgstr "Изберете персонализирани полета за транзакции на тикети във всички опашки"
 
 msgid "Show banner until (leave empty for no expiry)"
-msgstr ""
+msgstr "Показвай банера до (оставете празно за без изтичане)"
 
 msgid "System Open"
-msgstr ""
+msgstr "Системата е отворена"
 
 msgid "System Tools"
-msgstr ""
+msgstr "Системни инструменти"
 
 msgid "Ticket Fields"
-msgstr ""
+msgstr "Полета на тикети"
 
 msgid "Ticket Transactions"
-msgstr ""
+msgstr "Транзакции на тикети"
 
 msgid "Tickets total"
-msgstr ""
+msgstr "Тикети общо"
 
 msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
-msgstr ""
+msgstr "За да търсите тикети с наблюдатели, отговарящи на домейн, въведете домейна включително символа @."
 

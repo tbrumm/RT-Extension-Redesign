@@ -134,191 +134,191 @@ msgstr "Θέλετε να συνδεθείτε ξανά;"
 
 
 msgid "Admin/Global configuration"
-msgstr ""
+msgstr "Διαχειριστής/Γενική διαμόρφωση"
 
 msgid "Active Classes"
-msgstr ""
+msgstr "Ενεργές κλάσεις"
 
 msgid "Active Queues"
-msgstr ""
+msgstr "Ενεργές ουρές"
 
 msgid "Analysis & Reports"
-msgstr ""
+msgstr "Ανάλυση και αναφορές"
 
 msgid "Any word not matching a keyword is searched for in the ticket transaction history."
-msgstr ""
+msgstr "Κάθε λέξη που δεν αντιστοιχεί σε λέξη-κλειδί αναζητείται στο ιστορικό συναλλαγών του αιτήματος."
 
 msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
-msgstr ""
+msgstr "Κάθε λέξη που δεν αντιστοιχεί σε λέξη-κλειδί αναζητείται στα θέματα και τις περιγραφές αιτημάτων."
 
 msgid "Article Administration"
-msgstr ""
+msgstr "Διαχείριση άρθρων"
 
 msgid "Articles total"
-msgstr ""
+msgstr "Σύνολο άρθρων"
 
 msgid "Asset Administration"
-msgstr ""
+msgstr "Διαχείριση πάγιων"
 
 msgid "Asset Fields"
-msgstr ""
+msgstr "Πεδία πάγιων"
 
 msgid "Assets total"
-msgstr ""
+msgstr "Σύνολο πάγιων"
 
 msgid "Banner Settings"
-msgstr ""
+msgstr "Ρυθμίσεις banner"
 
 msgid "Banner active"
-msgstr ""
+msgstr "Banner ενεργό"
 
 msgid "Banner will be automatically deactivated on %1"
-msgstr ""
+msgstr "Το banner θα απενεργοποιηθεί αυτόματα στις %1"
 
 msgid "Catalogs total"
-msgstr ""
+msgstr "Σύνολο καταλόγων"
 
 msgid "Classes total"
-msgstr ""
+msgstr "Σύνολο κλάσεων"
 
 msgid "Configure Reports Menu"
-msgstr ""
+msgstr "Διαμόρφωση μενού αναφορών"
 
 msgid "Custom Fields"
-msgstr ""
+msgstr "Προσαρμοσμένα πεδία"
 
 msgid "Custom Fields by Object Type"
-msgstr ""
+msgstr "Προσαρμοσμένα πεδία ανά τύπο αντικειμένου"
 
 msgid "Custom Fields total"
-msgstr ""
+msgstr "Σύνολο προσαρμοσμένων πεδίων"
 
 msgid "Database Size (MB)"
-msgstr ""
+msgstr "Μέγεθος βάσης δεδομένων (MB)"
 
 msgid "Displayed in the banner header bar (HTML allowed)"
-msgstr ""
+msgstr "Εμφανίζεται στη γραμμή κεφαλίδας του banner (HTML επιτρέπεται)"
 
 msgid "Due Today"
-msgstr ""
+msgstr "Λήγει σήμερα"
 
 msgid "Enable or disable the maintenance banner on the login page"
-msgstr ""
+msgstr "Ενεργοποίηση ή απενεργοποίηση του banner συντήρησης στη σελίδα σύνδεσης"
 
 msgid "English Content"
-msgstr ""
+msgstr "Περιεχόμενο στα αγγλικά"
 
 msgid "Expired - banner was automatically deactivated"
-msgstr ""
+msgstr "Έληξε – το banner απενεργοποιήθηκε αυτόματα"
 
 msgid "German Content"
-msgstr ""
+msgstr "Περιεχόμενο στα γερμανικά"
 
 msgid "Global Scrips"
-msgstr ""
+msgstr "Καθολικά scripts"
 
 msgid "Global custom field configuration"
-msgstr ""
+msgstr "Καθολική διαμόρφωση προσαρμοσμένων πεδίων"
 
 msgid "HTML allowed"
-msgstr ""
+msgstr "HTML επιτρέπεται"
 
 msgid "Headline"
-msgstr ""
+msgstr "Τίτλος"
 
 msgid "If the custom field name or the search value have spaces, enclose them in quotes."
-msgstr ""
+msgstr "Εάν το όνομα του προσαρμοσμένου πεδίου ή η τιμή αναζήτησης περιέχει κενά, περικλείστε τα σε εισαγωγικά."
 
 msgid "If the search value contains spaces, enclose it in quotes."
-msgstr ""
+msgstr "Εάν η τιμή αναζήτησης περιέχει κενά, περικλείστε την σε εισαγωγικά."
 
 msgid "In Use"
-msgstr ""
+msgstr "Σε χρήση"
 
 msgid "Keyword, id:, subject:, queue:, owner: ..."
-msgstr ""
+msgstr "Λέξη-κλειδί, id:, subject:, queue:, owner: ..."
 
 msgid "Login Banner"
-msgstr ""
+msgstr "Banner σύνδεσης"
 
 msgid "Mail Errors"
-msgstr ""
+msgstr "Σφάλματα email"
 
 msgid "My Open Tickets"
-msgstr ""
+msgstr "Τα ανοιχτά μου αιτήματα"
 
 msgid "My Tools"
-msgstr ""
+msgstr "Τα εργαλεία μου"
 
 msgid "New Today"
-msgstr ""
+msgstr "Νέα σήμερα"
 
 msgid "No dashboards in your menu yet."
-msgstr ""
+msgstr "Δεν υπάρχουν ακόμα πίνακες ελέγχου στο μενού σας."
 
 msgid "Only tickets with these active statuses are searched:"
-msgstr ""
+msgstr "Αναζητούνται μόνο αιτήματα με αυτές τις ενεργές καταστάσεις:"
 
 msgid "Other Fields"
-msgstr ""
+msgstr "Άλλα πεδία"
 
 msgid "Queue-specific"
-msgstr ""
+msgstr "Ειδικό ουράς"
 
 msgid "Reports and Dashboards"
-msgstr ""
+msgstr "Αναφορές και πίνακες ελέγχου"
 
 msgid "RT Administration"
-msgstr ""
+msgstr "Διαχείριση RT"
 
 msgid "RT Internals"
-msgstr ""
+msgstr "Εσωτερικά RT"
 
 msgid "Scheduled Processes"
-msgstr ""
+msgstr "Προγραμματισμένες διαδικασίες"
 
 msgid "Scrips total"
-msgstr ""
+msgstr "Σύνολο scripts"
 
 msgid "Select custom fields for all queues"
-msgstr ""
+msgstr "Επιλογή προσαρμοσμένων πεδίων για όλες τις ουρές"
 
 msgid "Select custom fields for all user groups"
-msgstr ""
+msgstr "Επιλογή προσαρμοσμένων πεδίων για όλες τις ομάδες χρηστών"
 
 msgid "Select custom fields for all users"
-msgstr ""
+msgstr "Επιλογή προσαρμοσμένων πεδίων για όλους τους χρήστες"
 
 msgid "Select custom fields for articles in all classes"
-msgstr ""
+msgstr "Επιλογή προσαρμοσμένων πεδίων για άρθρα σε όλες τις κλάσεις"
 
 msgid "Select custom fields for assets in all catalogs"
-msgstr ""
+msgstr "Επιλογή προσαρμοσμένων πεδίων για πάγια σε όλους τους καταλόγους"
 
 msgid "Select custom fields for tickets in all queues"
-msgstr ""
+msgstr "Επιλογή προσαρμοσμένων πεδίων για αιτήματα σε όλες τις ουρές"
 
 msgid "Select custom fields for transactions on tickets in all queues"
-msgstr ""
+msgstr "Επιλογή προσαρμοσμένων πεδίων για συναλλαγές αιτημάτων σε όλες τις ουρές"
 
 msgid "Show banner until (leave empty for no expiry)"
-msgstr ""
+msgstr "Εμφάνιση banner έως (αφήστε κενό για χωρίς λήξη)"
 
 msgid "System Open"
-msgstr ""
+msgstr "Σύστημα ανοιχτό"
 
 msgid "System Tools"
-msgstr ""
+msgstr "Εργαλεία συστήματος"
 
 msgid "Ticket Fields"
-msgstr ""
+msgstr "Πεδία αιτήματος"
 
 msgid "Ticket Transactions"
-msgstr ""
+msgstr "Συναλλαγές αιτήματος"
 
 msgid "Tickets total"
-msgstr ""
+msgstr "Σύνολο αιτημάτων"
 
 msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
-msgstr ""
+msgstr "Για αναζήτηση αιτημάτων με παρατηρητές που αντιστοιχούν σε έναν τομέα, εισαγάγετε τον τομέα συμπεριλαμβανομένου του συμβόλου @."
 

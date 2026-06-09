@@ -134,191 +134,191 @@ msgstr "Ingin masuk lagi?"
 
 
 msgid "Admin/Global configuration"
-msgstr ""
+msgstr "Admin/Konfigurasi global"
 
 msgid "Active Classes"
-msgstr ""
+msgstr "Kelas aktif"
 
 msgid "Active Queues"
-msgstr ""
+msgstr "Antrean aktif"
 
 msgid "Analysis & Reports"
-msgstr ""
+msgstr "Analisis & Laporan"
 
 msgid "Any word not matching a keyword is searched for in the ticket transaction history."
-msgstr ""
+msgstr "Kata apa pun yang tidak cocok dengan kata kunci dicari di riwayat transaksi tiket."
 
 msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
-msgstr ""
+msgstr "Kata apa pun yang tidak cocok dengan kata kunci dicari di subjek dan deskripsi tiket."
 
 msgid "Article Administration"
-msgstr ""
+msgstr "Administrasi artikel"
 
 msgid "Articles total"
-msgstr ""
+msgstr "Total artikel"
 
 msgid "Asset Administration"
-msgstr ""
+msgstr "Administrasi aset"
 
 msgid "Asset Fields"
-msgstr ""
+msgstr "Bidang aset"
 
 msgid "Assets total"
-msgstr ""
+msgstr "Total aset"
 
 msgid "Banner Settings"
-msgstr ""
+msgstr "Pengaturan banner"
 
 msgid "Banner active"
-msgstr ""
+msgstr "Banner aktif"
 
 msgid "Banner will be automatically deactivated on %1"
-msgstr ""
+msgstr "Banner akan dinonaktifkan secara otomatis pada %1"
 
 msgid "Catalogs total"
-msgstr ""
+msgstr "Total katalog"
 
 msgid "Classes total"
-msgstr ""
+msgstr "Total kelas"
 
 msgid "Configure Reports Menu"
-msgstr ""
+msgstr "Konfigurasikan menu laporan"
 
 msgid "Custom Fields"
-msgstr ""
+msgstr "Bidang kustom"
 
 msgid "Custom Fields by Object Type"
-msgstr ""
+msgstr "Bidang kustom berdasarkan tipe objek"
 
 msgid "Custom Fields total"
-msgstr ""
+msgstr "Total bidang kustom"
 
 msgid "Database Size (MB)"
-msgstr ""
+msgstr "Ukuran database (MB)"
 
 msgid "Displayed in the banner header bar (HTML allowed)"
-msgstr ""
+msgstr "Ditampilkan di bilah header banner (HTML diizinkan)"
 
 msgid "Due Today"
-msgstr ""
+msgstr "Jatuh tempo hari ini"
 
 msgid "Enable or disable the maintenance banner on the login page"
-msgstr ""
+msgstr "Aktifkan atau nonaktifkan banner pemeliharaan di halaman login"
 
 msgid "English Content"
-msgstr ""
+msgstr "Konten bahasa Inggris"
 
 msgid "Expired - banner was automatically deactivated"
-msgstr ""
+msgstr "Kedaluwarsa – banner dinonaktifkan secara otomatis"
 
 msgid "German Content"
-msgstr ""
+msgstr "Konten bahasa Jerman"
 
 msgid "Global Scrips"
-msgstr ""
+msgstr "Skrip global"
 
 msgid "Global custom field configuration"
-msgstr ""
+msgstr "Konfigurasi global bidang kustom"
 
 msgid "HTML allowed"
-msgstr ""
+msgstr "HTML diizinkan"
 
 msgid "Headline"
-msgstr ""
+msgstr "Judul"
 
 msgid "If the custom field name or the search value have spaces, enclose them in quotes."
-msgstr ""
+msgstr "Jika nama bidang kustom atau nilai pencarian memiliki spasi, lampirkan dalam tanda kutip."
 
 msgid "If the search value contains spaces, enclose it in quotes."
-msgstr ""
+msgstr "Jika nilai pencarian mengandung spasi, lampirkan dalam tanda kutip."
 
 msgid "In Use"
-msgstr ""
+msgstr "Sedang digunakan"
 
 msgid "Keyword, id:, subject:, queue:, owner: ..."
-msgstr ""
+msgstr "Kata kunci, id:, subject:, queue:, owner: ..."
 
 msgid "Login Banner"
-msgstr ""
+msgstr "Banner login"
 
 msgid "Mail Errors"
-msgstr ""
+msgstr "Kesalahan email"
 
 msgid "My Open Tickets"
-msgstr ""
+msgstr "Tiket saya yang terbuka"
 
 msgid "My Tools"
-msgstr ""
+msgstr "Alat saya"
 
 msgid "New Today"
-msgstr ""
+msgstr "Baru hari ini"
 
 msgid "No dashboards in your menu yet."
-msgstr ""
+msgstr "Belum ada dasbor di menu Anda."
 
 msgid "Only tickets with these active statuses are searched:"
-msgstr ""
+msgstr "Hanya tiket dengan status aktif ini yang dicari:"
 
 msgid "Other Fields"
-msgstr ""
+msgstr "Bidang lainnya"
 
 msgid "Queue-specific"
-msgstr ""
+msgstr "Khusus antrean"
 
 msgid "Reports and Dashboards"
-msgstr ""
+msgstr "Laporan dan dasbor"
 
 msgid "RT Administration"
-msgstr ""
+msgstr "Administrasi RT"
 
 msgid "RT Internals"
-msgstr ""
+msgstr "Internal RT"
 
 msgid "Scheduled Processes"
-msgstr ""
+msgstr "Proses terjadwal"
 
 msgid "Scrips total"
-msgstr ""
+msgstr "Total skrip"
 
 msgid "Select custom fields for all queues"
-msgstr ""
+msgstr "Pilih bidang kustom untuk semua antrean"
 
 msgid "Select custom fields for all user groups"
-msgstr ""
+msgstr "Pilih bidang kustom untuk semua grup pengguna"
 
 msgid "Select custom fields for all users"
-msgstr ""
+msgstr "Pilih bidang kustom untuk semua pengguna"
 
 msgid "Select custom fields for articles in all classes"
-msgstr ""
+msgstr "Pilih bidang kustom untuk artikel di semua kelas"
 
 msgid "Select custom fields for assets in all catalogs"
-msgstr ""
+msgstr "Pilih bidang kustom untuk aset di semua katalog"
 
 msgid "Select custom fields for tickets in all queues"
-msgstr ""
+msgstr "Pilih bidang kustom untuk tiket di semua antrean"
 
 msgid "Select custom fields for transactions on tickets in all queues"
-msgstr ""
+msgstr "Pilih bidang kustom untuk transaksi tiket di semua antrean"
 
 msgid "Show banner until (leave empty for no expiry)"
-msgstr ""
+msgstr "Tampilkan banner hingga (biarkan kosong untuk tanpa kedaluwarsa)"
 
 msgid "System Open"
-msgstr ""
+msgstr "Sistem terbuka"
 
 msgid "System Tools"
-msgstr ""
+msgstr "Alat sistem"
 
 msgid "Ticket Fields"
-msgstr ""
+msgstr "Bidang tiket"
 
 msgid "Ticket Transactions"
-msgstr ""
+msgstr "Transaksi tiket"
 
 msgid "Tickets total"
-msgstr ""
+msgstr "Total tiket"
 
 msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
-msgstr ""
+msgstr "Untuk mencari tiket dengan pengamat yang cocok dengan domain, masukkan domain termasuk simbol @."
 

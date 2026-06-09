@@ -134,191 +134,191 @@ msgstr "Vēlaties pierakstīties vēlreiz?"
 
 
 msgid "Admin/Global configuration"
-msgstr ""
+msgstr "Administrators/Globālā konfigurācija"
 
 msgid "Active Classes"
-msgstr ""
+msgstr "Aktīvās klases"
 
 msgid "Active Queues"
-msgstr ""
+msgstr "Aktīvās rindas"
 
 msgid "Analysis & Reports"
-msgstr ""
+msgstr "Analīze un atskaites"
 
 msgid "Any word not matching a keyword is searched for in the ticket transaction history."
-msgstr ""
+msgstr "Jebkurš vārds, kas neatbilst atslēgvārdam, tiek meklēts biļetes darījumu vēsturē."
 
 msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
-msgstr ""
+msgstr "Jebkurš vārds, kas neatbilst atslēgvārdam, tiek meklēts biļešu tēmās un aprakstos."
 
 msgid "Article Administration"
-msgstr ""
+msgstr "Rakstu administrēšana"
 
 msgid "Articles total"
-msgstr ""
+msgstr "Raksti kopā"
 
 msgid "Asset Administration"
-msgstr ""
+msgstr "Aktīvu administrēšana"
 
 msgid "Asset Fields"
-msgstr ""
+msgstr "Aktīvu lauki"
 
 msgid "Assets total"
-msgstr ""
+msgstr "Aktīvi kopā"
 
 msgid "Banner Settings"
-msgstr ""
+msgstr "Reklāmkaroga iestatījumi"
 
 msgid "Banner active"
-msgstr ""
+msgstr "Reklāmkarogs aktīvs"
 
 msgid "Banner will be automatically deactivated on %1"
-msgstr ""
+msgstr "Reklāmkarogs tiks automātiski deaktivizēts %1"
 
 msgid "Catalogs total"
-msgstr ""
+msgstr "Katalogi kopā"
 
 msgid "Classes total"
-msgstr ""
+msgstr "Klases kopā"
 
 msgid "Configure Reports Menu"
-msgstr ""
+msgstr "Konfigurēt atskaišu izvēlni"
 
 msgid "Custom Fields"
-msgstr ""
+msgstr "Pielāgotie lauki"
 
 msgid "Custom Fields by Object Type"
-msgstr ""
+msgstr "Pielāgotie lauki pēc objekta tipa"
 
 msgid "Custom Fields total"
-msgstr ""
+msgstr "Pielāgotie lauki kopā"
 
 msgid "Database Size (MB)"
-msgstr ""
+msgstr "Datubāzes izmērs (MB)"
 
 msgid "Displayed in the banner header bar (HTML allowed)"
-msgstr ""
+msgstr "Rādīts reklāmkaroga virsraksta joslā (HTML atļauts)"
 
 msgid "Due Today"
-msgstr ""
+msgstr "Termiņš šodien"
 
 msgid "Enable or disable the maintenance banner on the login page"
-msgstr ""
+msgstr "Iespējot vai atspējot apkopes reklāmkarogu pieteikšanās lapā"
 
 msgid "English Content"
-msgstr ""
+msgstr "Saturs angļu valodā"
 
 msgid "Expired - banner was automatically deactivated"
-msgstr ""
+msgstr "Beidzies termiņš – reklāmkarogs tika automātiski deaktivizēts"
 
 msgid "German Content"
-msgstr ""
+msgstr "Saturs vācu valodā"
 
 msgid "Global Scrips"
-msgstr ""
+msgstr "Globālie skripti"
 
 msgid "Global custom field configuration"
-msgstr ""
+msgstr "Globālā pielāgoto lauku konfigurācija"
 
 msgid "HTML allowed"
-msgstr ""
+msgstr "HTML atļauts"
 
 msgid "Headline"
-msgstr ""
+msgstr "Virsraksts"
 
 msgid "If the custom field name or the search value have spaces, enclose them in quotes."
-msgstr ""
+msgstr "Ja pielāgotā lauka nosaukums vai meklēšanas vērtība satur atstarpes, ievietojiet tās pēdiņās."
 
 msgid "If the search value contains spaces, enclose it in quotes."
-msgstr ""
+msgstr "Ja meklēšanas vērtība satur atstarpes, ievietojiet to pēdiņās."
 
 msgid "In Use"
-msgstr ""
+msgstr "Tiek izmantots"
 
 msgid "Keyword, id:, subject:, queue:, owner: ..."
-msgstr ""
+msgstr "Atslēgvārds, id:, subject:, queue:, owner: ..."
 
 msgid "Login Banner"
-msgstr ""
+msgstr "Pieteikšanās reklāmkarogs"
 
 msgid "Mail Errors"
-msgstr ""
+msgstr "E-pasta kļūdas"
 
 msgid "My Open Tickets"
-msgstr ""
+msgstr "Manas atvērtās biļetes"
 
 msgid "My Tools"
-msgstr ""
+msgstr "Mani rīki"
 
 msgid "New Today"
-msgstr ""
+msgstr "Jauni šodien"
 
 msgid "No dashboards in your menu yet."
-msgstr ""
+msgstr "Jūsu izvēlnē vēl nav informācijas paneļu."
 
 msgid "Only tickets with these active statuses are searched:"
-msgstr ""
+msgstr "Tiek meklētas tikai biļetes ar šiem aktīvajiem statusiem:"
 
 msgid "Other Fields"
-msgstr ""
+msgstr "Citi lauki"
 
 msgid "Queue-specific"
-msgstr ""
+msgstr "Rindai specifiski"
 
 msgid "Reports and Dashboards"
-msgstr ""
+msgstr "Atskaites un informācijas paneļi"
 
 msgid "RT Administration"
-msgstr ""
+msgstr "RT administrēšana"
 
 msgid "RT Internals"
-msgstr ""
+msgstr "RT iekšējie komponenti"
 
 msgid "Scheduled Processes"
-msgstr ""
+msgstr "Ieplānotie procesi"
 
 msgid "Scrips total"
-msgstr ""
+msgstr "Skripti kopā"
 
 msgid "Select custom fields for all queues"
-msgstr ""
+msgstr "Atlasīt pielāgotos laukus visām rindām"
 
 msgid "Select custom fields for all user groups"
-msgstr ""
+msgstr "Atlasīt pielāgotos laukus visām lietotāju grupām"
 
 msgid "Select custom fields for all users"
-msgstr ""
+msgstr "Atlasīt pielāgotos laukus visiem lietotājiem"
 
 msgid "Select custom fields for articles in all classes"
-msgstr ""
+msgstr "Atlasīt pielāgotos laukus rakstiem visās klasēs"
 
 msgid "Select custom fields for assets in all catalogs"
-msgstr ""
+msgstr "Atlasīt pielāgotos laukus aktīviem visos katalogos"
 
 msgid "Select custom fields for tickets in all queues"
-msgstr ""
+msgstr "Atlasīt pielāgotos laukus biļetēm visās rindās"
 
 msgid "Select custom fields for transactions on tickets in all queues"
-msgstr ""
+msgstr "Atlasīt pielāgotos laukus biļešu darījumiem visās rindās"
 
 msgid "Show banner until (leave empty for no expiry)"
-msgstr ""
+msgstr "Rādīt reklāmkarogu līdz (atstājiet tukšu, ja nav termiņa)"
 
 msgid "System Open"
-msgstr ""
+msgstr "Sistēma atvērta"
 
 msgid "System Tools"
-msgstr ""
+msgstr "Sistēmas rīki"
 
 msgid "Ticket Fields"
-msgstr ""
+msgstr "Biļetes lauki"
 
 msgid "Ticket Transactions"
-msgstr ""
+msgstr "Biļetes darījumi"
 
 msgid "Tickets total"
-msgstr ""
+msgstr "Biļetes kopā"
 
 msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
-msgstr ""
+msgstr "Lai meklētu biļetes ar novērotājiem, kas atbilst domēnam, ievadiet domēnu, ieskaitot @ simbolu."
 

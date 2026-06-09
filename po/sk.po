@@ -134,191 +134,191 @@ msgstr "Chcete sa znovu prihlásiť?"
 
 
 msgid "Admin/Global configuration"
-msgstr ""
+msgstr "Admin/Globálna konfigurácia"
 
 msgid "Active Classes"
-msgstr ""
+msgstr "Aktívne triedy"
 
 msgid "Active Queues"
-msgstr ""
+msgstr "Aktívne fronty"
 
 msgid "Analysis & Reports"
-msgstr ""
+msgstr "Analýza a reporty"
 
 msgid "Any word not matching a keyword is searched for in the ticket transaction history."
-msgstr ""
+msgstr "Každé slovo, ktoré nezodpovedá kľúčovému slovu, sa hľadá v histórii transakcií tiketu."
 
 msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
-msgstr ""
+msgstr "Každé slovo, ktoré nezodpovedá kľúčovému slovu, sa hľadá v predmetoch a popisoch tiketov."
 
 msgid "Article Administration"
-msgstr ""
+msgstr "Správa článkov"
 
 msgid "Articles total"
-msgstr ""
+msgstr "Celkom článkov"
 
 msgid "Asset Administration"
-msgstr ""
+msgstr "Správa majetku"
 
 msgid "Asset Fields"
-msgstr ""
+msgstr "Polia majetku"
 
 msgid "Assets total"
-msgstr ""
+msgstr "Celkom majetku"
 
 msgid "Banner Settings"
-msgstr ""
+msgstr "Nastavenia bannera"
 
 msgid "Banner active"
-msgstr ""
+msgstr "Banner aktívny"
 
 msgid "Banner will be automatically deactivated on %1"
-msgstr ""
+msgstr "Banner bude automaticky deaktivovaný dňa %1"
 
 msgid "Catalogs total"
-msgstr ""
+msgstr "Celkom katalógov"
 
 msgid "Classes total"
-msgstr ""
+msgstr "Celkom tried"
 
 msgid "Configure Reports Menu"
-msgstr ""
+msgstr "Konfigurovať ponuku prehľadov"
 
 msgid "Custom Fields"
-msgstr ""
+msgstr "Vlastné polia"
 
 msgid "Custom Fields by Object Type"
-msgstr ""
+msgstr "Vlastné polia podľa typu objektu"
 
 msgid "Custom Fields total"
-msgstr ""
+msgstr "Celkom vlastných polí"
 
 msgid "Database Size (MB)"
-msgstr ""
+msgstr "Veľkosť databázy (MB)"
 
 msgid "Displayed in the banner header bar (HTML allowed)"
-msgstr ""
+msgstr "Zobrazené v záhlaví bannera (HTML povolené)"
 
 msgid "Due Today"
-msgstr ""
+msgstr "Splatné dnes"
 
 msgid "Enable or disable the maintenance banner on the login page"
-msgstr ""
+msgstr "Povoliť alebo zakázať banner údržby na prihlasovacej stránke"
 
 msgid "English Content"
-msgstr ""
+msgstr "Anglický obsah"
 
 msgid "Expired - banner was automatically deactivated"
-msgstr ""
+msgstr "Vypršalo – banner bol automaticky deaktivovaný"
 
 msgid "German Content"
-msgstr ""
+msgstr "Nemecký obsah"
 
 msgid "Global Scrips"
-msgstr ""
+msgstr "Globálne skripty"
 
 msgid "Global custom field configuration"
-msgstr ""
+msgstr "Globálna konfigurácia vlastných polí"
 
 msgid "HTML allowed"
-msgstr ""
+msgstr "HTML povolené"
 
 msgid "Headline"
-msgstr ""
+msgstr "Nadpis"
 
 msgid "If the custom field name or the search value have spaces, enclose them in quotes."
-msgstr ""
+msgstr "Ak názov vlastného poľa alebo vyhľadávaná hodnota obsahujú medzery, uzatvorte ich do úvodzoviek."
 
 msgid "If the search value contains spaces, enclose it in quotes."
-msgstr ""
+msgstr "Ak vyhľadávaná hodnota obsahuje medzery, uzatvorte ju do úvodzoviek."
 
 msgid "In Use"
-msgstr ""
+msgstr "Používané"
 
 msgid "Keyword, id:, subject:, queue:, owner: ..."
-msgstr ""
+msgstr "Kľúčové slovo, id:, subject:, queue:, owner: ..."
 
 msgid "Login Banner"
-msgstr ""
+msgstr "Prihlasovací banner"
 
 msgid "Mail Errors"
-msgstr ""
+msgstr "Chyby e-mailu"
 
 msgid "My Open Tickets"
-msgstr ""
+msgstr "Moje otvorené tikety"
 
 msgid "My Tools"
-msgstr ""
+msgstr "Moje nástroje"
 
 msgid "New Today"
-msgstr ""
+msgstr "Dnes nové"
 
 msgid "No dashboards in your menu yet."
-msgstr ""
+msgstr "Zatiaľ žiadne dashboardy v ponuke."
 
 msgid "Only tickets with these active statuses are searched:"
-msgstr ""
+msgstr "Hľadajú sa len tikety s týmito aktívnymi stavmi:"
 
 msgid "Other Fields"
-msgstr ""
+msgstr "Ostatné polia"
 
 msgid "Queue-specific"
-msgstr ""
+msgstr "Špecifické pre front"
 
 msgid "Reports and Dashboards"
-msgstr ""
+msgstr "Prehľady a dashboardy"
 
 msgid "RT Administration"
-msgstr ""
+msgstr "Správa RT"
 
 msgid "RT Internals"
-msgstr ""
+msgstr "Interné RT"
 
 msgid "Scheduled Processes"
-msgstr ""
+msgstr "Naplánované procesy"
 
 msgid "Scrips total"
-msgstr ""
+msgstr "Celkom skriptov"
 
 msgid "Select custom fields for all queues"
-msgstr ""
+msgstr "Vybrať vlastné polia pre všetky fronty"
 
 msgid "Select custom fields for all user groups"
-msgstr ""
+msgstr "Vybrať vlastné polia pre všetky skupiny používateľov"
 
 msgid "Select custom fields for all users"
-msgstr ""
+msgstr "Vybrať vlastné polia pre všetkých používateľov"
 
 msgid "Select custom fields for articles in all classes"
-msgstr ""
+msgstr "Vybrať vlastné polia pre články vo všetkých triedach"
 
 msgid "Select custom fields for assets in all catalogs"
-msgstr ""
+msgstr "Vybrať vlastné polia pre majetok vo všetkých katalógoch"
 
 msgid "Select custom fields for tickets in all queues"
-msgstr ""
+msgstr "Vybrať vlastné polia pre tikety vo všetkých frontoch"
 
 msgid "Select custom fields for transactions on tickets in all queues"
-msgstr ""
+msgstr "Vybrať vlastné polia pre transakcie na tiketoch vo všetkých frontoch"
 
 msgid "Show banner until (leave empty for no expiry)"
-msgstr ""
+msgstr "Zobraziť banner do (ponechajte prázdne pre žiadne vypršanie)"
 
 msgid "System Open"
-msgstr ""
+msgstr "Systém otvorený"
 
 msgid "System Tools"
-msgstr ""
+msgstr "Systémové nástroje"
 
 msgid "Ticket Fields"
-msgstr ""
+msgstr "Polia tiketu"
 
 msgid "Ticket Transactions"
-msgstr ""
+msgstr "Transakcie tiketu"
 
 msgid "Tickets total"
-msgstr ""
+msgstr "Celkom tiketov"
 
 msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
-msgstr ""
+msgstr "Ak chcete hľadať tikety s pozorovateľmi zodpovedajúcimi doméne, zadajte doménu vrátane symbolu @."
 
