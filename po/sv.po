@@ -132,3 +132,193 @@ msgstr "Dina öppna ärenden förblir sparade och fortsätter att hanteras."
 msgid "Want to sign in again?"
 msgstr "Vill du logga in igen?"
 
+
+msgid "Admin/Global configuration"
+msgstr "Admin/Global konfiguration"
+
+msgid "Active Classes"
+msgstr "Aktiva klasser"
+
+msgid "Active Queues"
+msgstr "Aktiva köer"
+
+msgid "Analysis & Reports"
+msgstr "Analys och rapporter"
+
+msgid "Any word not matching a keyword is searched for in the ticket transaction history."
+msgstr "Alla ord som inte matchar ett nyckelord söks i ärendets transaktionshistorik."
+
+msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
+msgstr "Alla ord som inte matchar ett nyckelord söks i ärendens ämnen och beskrivningar."
+
+msgid "Article Administration"
+msgstr "Artikeladministration"
+
+msgid "Articles total"
+msgstr "Artiklar totalt"
+
+msgid "Asset Administration"
+msgstr "Tillgångsadministration"
+
+msgid "Asset Fields"
+msgstr "Tillgångsfält"
+
+msgid "Assets total"
+msgstr "Tillgångar totalt"
+
+msgid "Banner Settings"
+msgstr "Bannerinställningar"
+
+msgid "Banner active"
+msgstr "Banner aktiv"
+
+msgid "Banner will be automatically deactivated on %1"
+msgstr "Bannern inaktiveras automatiskt den %1"
+
+msgid "Catalogs total"
+msgstr "Kataloger totalt"
+
+msgid "Classes total"
+msgstr "Klasser totalt"
+
+msgid "Configure Reports Menu"
+msgstr "Konfigurera rapportmeny"
+
+msgid "Custom Fields"
+msgstr "Anpassade fält"
+
+msgid "Custom Fields by Object Type"
+msgstr "Anpassade fält per objekttyp"
+
+msgid "Custom Fields total"
+msgstr "Anpassade fält totalt"
+
+msgid "Database Size (MB)"
+msgstr "Databasstorlek (MB)"
+
+msgid "Displayed in the banner header bar (HTML allowed)"
+msgstr "Visas i bannerns rubrikrad (HTML tillåtet)"
+
+msgid "Due Today"
+msgstr "Förfaller idag"
+
+msgid "Enable or disable the maintenance banner on the login page"
+msgstr "Aktivera eller inaktivera underhållsbannern på inloggningssidan"
+
+msgid "English Content"
+msgstr "Engelskt innehåll"
+
+msgid "Expired - banner was automatically deactivated"
+msgstr "Utgånget – bannern inaktiverades automatiskt"
+
+msgid "German Content"
+msgstr "Tyskt innehåll"
+
+msgid "Global Scrips"
+msgstr "Globala skript"
+
+msgid "Global custom field configuration"
+msgstr "Global konfiguration av anpassade fält"
+
+msgid "HTML allowed"
+msgstr "HTML tillåtet"
+
+msgid "Headline"
+msgstr "Rubrik"
+
+msgid "If the custom field name or the search value have spaces, enclose them in quotes."
+msgstr "Om det anpassade fältets namn eller sökvärdet innehåller mellanslag, omge dem med citattecken."
+
+msgid "If the search value contains spaces, enclose it in quotes."
+msgstr "Om sökvärdet innehåller mellanslag, omge det med citattecken."
+
+msgid "In Use"
+msgstr "I bruk"
+
+msgid "Keyword, id:, subject:, queue:, owner: ..."
+msgstr "Nyckelord, id:, subject:, queue:, owner: ..."
+
+msgid "Login Banner"
+msgstr "Inloggningsbanner"
+
+msgid "Mail Errors"
+msgstr "E-postfel"
+
+msgid "My Open Tickets"
+msgstr "Mina öppna ärenden"
+
+msgid "My Tools"
+msgstr "Mina verktyg"
+
+msgid "New Today"
+msgstr "Nya idag"
+
+msgid "No dashboards in your menu yet."
+msgstr "Inga instrumentpaneler i din meny ännu."
+
+msgid "Only tickets with these active statuses are searched:"
+msgstr "Endast ärenden med dessa aktiva statusar söks:"
+
+msgid "Other Fields"
+msgstr "Övriga fält"
+
+msgid "Queue-specific"
+msgstr "Köspecifikt"
+
+msgid "Reports and Dashboards"
+msgstr "Rapporter och instrumentpaneler"
+
+msgid "RT Administration"
+msgstr "RT-administration"
+
+msgid "RT Internals"
+msgstr "RT-internals"
+
+msgid "Scheduled Processes"
+msgstr "Schemalagda processer"
+
+msgid "Scrips total"
+msgstr "Skript totalt"
+
+msgid "Select custom fields for all queues"
+msgstr "Välj anpassade fält för alla köer"
+
+msgid "Select custom fields for all user groups"
+msgstr "Välj anpassade fält för alla användargrupper"
+
+msgid "Select custom fields for all users"
+msgstr "Välj anpassade fält för alla användare"
+
+msgid "Select custom fields for articles in all classes"
+msgstr "Välj anpassade fält för artiklar i alla klasser"
+
+msgid "Select custom fields for assets in all catalogs"
+msgstr "Välj anpassade fält för tillgångar i alla kataloger"
+
+msgid "Select custom fields for tickets in all queues"
+msgstr "Välj anpassade fält för ärenden i alla köer"
+
+msgid "Select custom fields for transactions on tickets in all queues"
+msgstr "Välj anpassade fält för transaktioner på ärenden i alla köer"
+
+msgid "Show banner until (leave empty for no expiry)"
+msgstr "Visa banner till (lämna tomt för inget utgångsdatum)"
+
+msgid "System Open"
+msgstr "System öppet"
+
+msgid "System Tools"
+msgstr "Systemverktyg"
+
+msgid "Ticket Fields"
+msgstr "Ärendefält"
+
+msgid "Ticket Transactions"
+msgstr "Ärendetransaktioner"
+
+msgid "Tickets total"
+msgstr "Ärenden totalt"
+
+msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
+msgstr "Ange domänen inklusive @-symbolen för att söka efter ärenden med bevakare som matchar en domän."
+

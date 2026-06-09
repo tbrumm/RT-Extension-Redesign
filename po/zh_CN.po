@@ -132,3 +132,193 @@ msgstr "您的未结工单已保存并将继续处理。"
 msgid "Want to sign in again?"
 msgstr "想要再次登录吗？"
 
+
+msgid "Admin/Global configuration"
+msgstr "管理员/全局配置"
+
+msgid "Active Classes"
+msgstr "活跃类别"
+
+msgid "Active Queues"
+msgstr "活跃队列"
+
+msgid "Analysis & Reports"
+msgstr "分析与报告"
+
+msgid "Any word not matching a keyword is searched for in the ticket transaction history."
+msgstr "任何与关键字不匹配的词都会在工单的事务历史记录中搜索。"
+
+msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
+msgstr "任何与关键字不匹配的词都会在工单的主题和描述中搜索。"
+
+msgid "Article Administration"
+msgstr "文章管理"
+
+msgid "Articles total"
+msgstr "文章总数"
+
+msgid "Asset Administration"
+msgstr "资产管理"
+
+msgid "Asset Fields"
+msgstr "资产字段"
+
+msgid "Assets total"
+msgstr "资产总数"
+
+msgid "Banner Settings"
+msgstr "横幅设置"
+
+msgid "Banner active"
+msgstr "横幅已启用"
+
+msgid "Banner will be automatically deactivated on %1"
+msgstr "横幅将在 %1 自动停用"
+
+msgid "Catalogs total"
+msgstr "目录总数"
+
+msgid "Classes total"
+msgstr "类别总数"
+
+msgid "Configure Reports Menu"
+msgstr "配置报告菜单"
+
+msgid "Custom Fields"
+msgstr "自定义字段"
+
+msgid "Custom Fields by Object Type"
+msgstr "按对象类型划分的自定义字段"
+
+msgid "Custom Fields total"
+msgstr "自定义字段总数"
+
+msgid "Database Size (MB)"
+msgstr "数据库大小 (MB)"
+
+msgid "Displayed in the banner header bar (HTML allowed)"
+msgstr "显示在横幅标题栏中（允许 HTML）"
+
+msgid "Due Today"
+msgstr "今日到期"
+
+msgid "Enable or disable the maintenance banner on the login page"
+msgstr "在登录页面启用或禁用维护横幅"
+
+msgid "English Content"
+msgstr "英语内容"
+
+msgid "Expired - banner was automatically deactivated"
+msgstr "已过期 – 横幅已自动停用"
+
+msgid "German Content"
+msgstr "德语内容"
+
+msgid "Global Scrips"
+msgstr "全局脚本"
+
+msgid "Global custom field configuration"
+msgstr "自定义字段全局配置"
+
+msgid "HTML allowed"
+msgstr "允许 HTML"
+
+msgid "Headline"
+msgstr "标题"
+
+msgid "If the custom field name or the search value have spaces, enclose them in quotes."
+msgstr "如果自定义字段名称或搜索值包含空格，请用引号括起来。"
+
+msgid "If the search value contains spaces, enclose it in quotes."
+msgstr "如果搜索值包含空格，请用引号括起来。"
+
+msgid "In Use"
+msgstr "使用中"
+
+msgid "Keyword, id:, subject:, queue:, owner: ..."
+msgstr "关键字, id:, subject:, queue:, owner: ..."
+
+msgid "Login Banner"
+msgstr "登录横幅"
+
+msgid "Mail Errors"
+msgstr "邮件错误"
+
+msgid "My Open Tickets"
+msgstr "我的待处理工单"
+
+msgid "My Tools"
+msgstr "我的工具"
+
+msgid "New Today"
+msgstr "今日新增"
+
+msgid "No dashboards in your menu yet."
+msgstr "菜单中尚无仪表板。"
+
+msgid "Only tickets with these active statuses are searched:"
+msgstr "仅搜索具有这些活跃状态的工单："
+
+msgid "Other Fields"
+msgstr "其他字段"
+
+msgid "Queue-specific"
+msgstr "队列专用"
+
+msgid "Reports and Dashboards"
+msgstr "报告与仪表板"
+
+msgid "RT Administration"
+msgstr "RT 管理"
+
+msgid "RT Internals"
+msgstr "RT 内部"
+
+msgid "Scheduled Processes"
+msgstr "计划进程"
+
+msgid "Scrips total"
+msgstr "脚本总数"
+
+msgid "Select custom fields for all queues"
+msgstr "为所有队列选择自定义字段"
+
+msgid "Select custom fields for all user groups"
+msgstr "为所有用户组选择自定义字段"
+
+msgid "Select custom fields for all users"
+msgstr "为所有用户选择自定义字段"
+
+msgid "Select custom fields for articles in all classes"
+msgstr "为所有类别的文章选择自定义字段"
+
+msgid "Select custom fields for assets in all catalogs"
+msgstr "为所有目录的资产选择自定义字段"
+
+msgid "Select custom fields for tickets in all queues"
+msgstr "为所有队列的工单选择自定义字段"
+
+msgid "Select custom fields for transactions on tickets in all queues"
+msgstr "为所有队列的工单事务选择自定义字段"
+
+msgid "Show banner until (leave empty for no expiry)"
+msgstr "显示横幅至（留空表示无过期日期）"
+
+msgid "System Open"
+msgstr "系统开放"
+
+msgid "System Tools"
+msgstr "系统工具"
+
+msgid "Ticket Fields"
+msgstr "工单字段"
+
+msgid "Ticket Transactions"
+msgstr "工单事务"
+
+msgid "Tickets total"
+msgstr "工单总数"
+
+msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
+msgstr "要搜索具有与域名匹配的关注者的工单，请输入域名（包含 @ 符号）。"
+

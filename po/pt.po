@@ -132,3 +132,193 @@ msgstr "Os seus tickets abertos permanecem guardados e continuam a ser processad
 msgid "Want to sign in again?"
 msgstr "Pretende iniciar sessão novamente?"
 
+
+msgid "Admin/Global configuration"
+msgstr "Admin/Configuração global"
+
+msgid "Active Classes"
+msgstr "Classes ativas"
+
+msgid "Active Queues"
+msgstr "Filas ativas"
+
+msgid "Analysis & Reports"
+msgstr "Análise e relatórios"
+
+msgid "Any word not matching a keyword is searched for in the ticket transaction history."
+msgstr "Qualquer palavra que não corresponda a uma palavra-chave é pesquisada no histórico de transações do ticket."
+
+msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
+msgstr "Qualquer palavra que não corresponda a uma palavra-chave é pesquisada nos assuntos e descrições dos tickets."
+
+msgid "Article Administration"
+msgstr "Administração de artigos"
+
+msgid "Articles total"
+msgstr "Total de artigos"
+
+msgid "Asset Administration"
+msgstr "Administração de ativos"
+
+msgid "Asset Fields"
+msgstr "Campos de ativos"
+
+msgid "Assets total"
+msgstr "Total de ativos"
+
+msgid "Banner Settings"
+msgstr "Definições do banner"
+
+msgid "Banner active"
+msgstr "Banner ativo"
+
+msgid "Banner will be automatically deactivated on %1"
+msgstr "O banner será desativado automaticamente em %1"
+
+msgid "Catalogs total"
+msgstr "Total de catálogos"
+
+msgid "Classes total"
+msgstr "Total de classes"
+
+msgid "Configure Reports Menu"
+msgstr "Configurar menu de relatórios"
+
+msgid "Custom Fields"
+msgstr "Campos personalizados"
+
+msgid "Custom Fields by Object Type"
+msgstr "Campos personalizados por tipo de objeto"
+
+msgid "Custom Fields total"
+msgstr "Total de campos personalizados"
+
+msgid "Database Size (MB)"
+msgstr "Tamanho da base de dados (MB)"
+
+msgid "Displayed in the banner header bar (HTML allowed)"
+msgstr "Exibido na barra de cabeçalho do banner (HTML permitido)"
+
+msgid "Due Today"
+msgstr "Vence hoje"
+
+msgid "Enable or disable the maintenance banner on the login page"
+msgstr "Ativar ou desativar o banner de manutenção na página de início de sessão"
+
+msgid "English Content"
+msgstr "Conteúdo em inglês"
+
+msgid "Expired - banner was automatically deactivated"
+msgstr "Expirado – o banner foi desativado automaticamente"
+
+msgid "German Content"
+msgstr "Conteúdo em alemão"
+
+msgid "Global Scrips"
+msgstr "Scripts globais"
+
+msgid "Global custom field configuration"
+msgstr "Configuração global de campos personalizados"
+
+msgid "HTML allowed"
+msgstr "HTML permitido"
+
+msgid "Headline"
+msgstr "Título"
+
+msgid "If the custom field name or the search value have spaces, enclose them in quotes."
+msgstr "Se o nome do campo personalizado ou o valor de pesquisa contiver espaços, coloque-os entre aspas."
+
+msgid "If the search value contains spaces, enclose it in quotes."
+msgstr "Se o valor de pesquisa contiver espaços, coloque-o entre aspas."
+
+msgid "In Use"
+msgstr "Em uso"
+
+msgid "Keyword, id:, subject:, queue:, owner: ..."
+msgstr "Palavra-chave, id:, subject:, queue:, owner: ..."
+
+msgid "Login Banner"
+msgstr "Banner de início de sessão"
+
+msgid "Mail Errors"
+msgstr "Erros de email"
+
+msgid "My Open Tickets"
+msgstr "Os meus tickets abertos"
+
+msgid "My Tools"
+msgstr "As minhas ferramentas"
+
+msgid "New Today"
+msgstr "Novos hoje"
+
+msgid "No dashboards in your menu yet."
+msgstr "Ainda sem dashboards no seu menu."
+
+msgid "Only tickets with these active statuses are searched:"
+msgstr "São pesquisados apenas tickets com estes estados ativos:"
+
+msgid "Other Fields"
+msgstr "Outros campos"
+
+msgid "Queue-specific"
+msgstr "Específico da fila"
+
+msgid "Reports and Dashboards"
+msgstr "Relatórios e dashboards"
+
+msgid "RT Administration"
+msgstr "Administração RT"
+
+msgid "RT Internals"
+msgstr "Internos do RT"
+
+msgid "Scheduled Processes"
+msgstr "Processos agendados"
+
+msgid "Scrips total"
+msgstr "Total de scripts"
+
+msgid "Select custom fields for all queues"
+msgstr "Selecionar campos personalizados para todas as filas"
+
+msgid "Select custom fields for all user groups"
+msgstr "Selecionar campos personalizados para todos os grupos de utilizadores"
+
+msgid "Select custom fields for all users"
+msgstr "Selecionar campos personalizados para todos os utilizadores"
+
+msgid "Select custom fields for articles in all classes"
+msgstr "Selecionar campos personalizados para artigos em todas as classes"
+
+msgid "Select custom fields for assets in all catalogs"
+msgstr "Selecionar campos personalizados para ativos em todos os catálogos"
+
+msgid "Select custom fields for tickets in all queues"
+msgstr "Selecionar campos personalizados para tickets em todas as filas"
+
+msgid "Select custom fields for transactions on tickets in all queues"
+msgstr "Selecionar campos personalizados para transações em tickets em todas as filas"
+
+msgid "Show banner until (leave empty for no expiry)"
+msgstr "Mostrar banner até (deixar em branco sem expiração)"
+
+msgid "System Open"
+msgstr "Sistema aberto"
+
+msgid "System Tools"
+msgstr "Ferramentas do sistema"
+
+msgid "Ticket Fields"
+msgstr "Campos de tickets"
+
+msgid "Ticket Transactions"
+msgstr "Transações de tickets"
+
+msgid "Tickets total"
+msgstr "Total de tickets"
+
+msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
+msgstr "Para pesquisar tickets com observadores que correspondam a um domínio, introduza o domínio incluindo o símbolo @."
+

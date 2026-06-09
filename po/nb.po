@@ -132,3 +132,193 @@ msgstr "Dine åpne saker forblir lagret og fortsetter å bli behandlet."
 msgid "Want to sign in again?"
 msgstr "Vil du logge inn igjen?"
 
+
+msgid "Admin/Global configuration"
+msgstr "Admin/Global konfigurasjon"
+
+msgid "Active Classes"
+msgstr "Aktive klasser"
+
+msgid "Active Queues"
+msgstr "Aktive køer"
+
+msgid "Analysis & Reports"
+msgstr "Analyse og rapporter"
+
+msgid "Any word not matching a keyword is searched for in the ticket transaction history."
+msgstr "Ethvert ord som ikke samsvarer med et nøkkelord, søkes i sakens transaksjonshistorikk."
+
+msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
+msgstr "Ethvert ord som ikke samsvarer med et nøkkelord, søkes i sakenes emner og beskrivelser."
+
+msgid "Article Administration"
+msgstr "Artikkeladministrasjon"
+
+msgid "Articles total"
+msgstr "Totalt artikler"
+
+msgid "Asset Administration"
+msgstr "Ressursadministrasjon"
+
+msgid "Asset Fields"
+msgstr "Ressursfelter"
+
+msgid "Assets total"
+msgstr "Totalt ressurser"
+
+msgid "Banner Settings"
+msgstr "Bannerinnstillinger"
+
+msgid "Banner active"
+msgstr "Banner aktiv"
+
+msgid "Banner will be automatically deactivated on %1"
+msgstr "Banneret deaktiveres automatisk den %1"
+
+msgid "Catalogs total"
+msgstr "Totalt kataloger"
+
+msgid "Classes total"
+msgstr "Totalt klasser"
+
+msgid "Configure Reports Menu"
+msgstr "Konfigurer rapportmeny"
+
+msgid "Custom Fields"
+msgstr "Egendefinerte felter"
+
+msgid "Custom Fields by Object Type"
+msgstr "Egendefinerte felter etter objekttype"
+
+msgid "Custom Fields total"
+msgstr "Totalt egendefinerte felter"
+
+msgid "Database Size (MB)"
+msgstr "Databasestørrelse (MB)"
+
+msgid "Displayed in the banner header bar (HTML allowed)"
+msgstr "Vises i bannerhovedlinjen (HTML tillatt)"
+
+msgid "Due Today"
+msgstr "Forfaller i dag"
+
+msgid "Enable or disable the maintenance banner on the login page"
+msgstr "Aktiver eller deaktiver vedlikeholdsbannerert på innloggingssiden"
+
+msgid "English Content"
+msgstr "Engelsk innhold"
+
+msgid "Expired - banner was automatically deactivated"
+msgstr "Utløpt – banneret ble automatisk deaktivert"
+
+msgid "German Content"
+msgstr "Tysk innhold"
+
+msgid "Global Scrips"
+msgstr "Globale skript"
+
+msgid "Global custom field configuration"
+msgstr "Global konfigurasjon av egendefinerte felter"
+
+msgid "HTML allowed"
+msgstr "HTML tillatt"
+
+msgid "Headline"
+msgstr "Overskrift"
+
+msgid "If the custom field name or the search value have spaces, enclose them in quotes."
+msgstr "Hvis det egendefinerte feltnavnet eller søkeverdien inneholder mellomrom, sett dem i anførselstegn."
+
+msgid "If the search value contains spaces, enclose it in quotes."
+msgstr "Hvis søkeverdien inneholder mellomrom, sett den i anførselstegn."
+
+msgid "In Use"
+msgstr "I bruk"
+
+msgid "Keyword, id:, subject:, queue:, owner: ..."
+msgstr "Nøkkelord, id:, subject:, queue:, owner: ..."
+
+msgid "Login Banner"
+msgstr "Innloggingsbanner"
+
+msgid "Mail Errors"
+msgstr "E-postfeil"
+
+msgid "My Open Tickets"
+msgstr "Mine åpne saker"
+
+msgid "My Tools"
+msgstr "Mine verktøy"
+
+msgid "New Today"
+msgstr "Nye i dag"
+
+msgid "No dashboards in your menu yet."
+msgstr "Ingen dashbord i menyen ennå."
+
+msgid "Only tickets with these active statuses are searched:"
+msgstr "Kun saker med disse aktive statusene søkes:"
+
+msgid "Other Fields"
+msgstr "Andre felter"
+
+msgid "Queue-specific"
+msgstr "Køspesifikt"
+
+msgid "Reports and Dashboards"
+msgstr "Rapporter og dashbord"
+
+msgid "RT Administration"
+msgstr "RT-administrasjon"
+
+msgid "RT Internals"
+msgstr "RT-internals"
+
+msgid "Scheduled Processes"
+msgstr "Planlagte prosesser"
+
+msgid "Scrips total"
+msgstr "Totalt skript"
+
+msgid "Select custom fields for all queues"
+msgstr "Velg egendefinerte felter for alle køer"
+
+msgid "Select custom fields for all user groups"
+msgstr "Velg egendefinerte felter for alle brukergrupper"
+
+msgid "Select custom fields for all users"
+msgstr "Velg egendefinerte felter for alle brukere"
+
+msgid "Select custom fields for articles in all classes"
+msgstr "Velg egendefinerte felter for artikler i alle klasser"
+
+msgid "Select custom fields for assets in all catalogs"
+msgstr "Velg egendefinerte felter for ressurser i alle kataloger"
+
+msgid "Select custom fields for tickets in all queues"
+msgstr "Velg egendefinerte felter for saker i alle køer"
+
+msgid "Select custom fields for transactions on tickets in all queues"
+msgstr "Velg egendefinerte felter for transaksjoner på saker i alle køer"
+
+msgid "Show banner until (leave empty for no expiry)"
+msgstr "Vis banner til (la stå tomt for ingen utløp)"
+
+msgid "System Open"
+msgstr "System åpent"
+
+msgid "System Tools"
+msgstr "Systemverktøy"
+
+msgid "Ticket Fields"
+msgstr "Sakefelter"
+
+msgid "Ticket Transactions"
+msgstr "Saketransaksjoner"
+
+msgid "Tickets total"
+msgstr "Totalt saker"
+
+msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
+msgstr "For å søke etter saker med observatører som samsvarer med et domene, skriv inn domenet inkludert @-symbolet."
+

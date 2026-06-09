@@ -132,3 +132,193 @@ msgstr "Avoimet tikettisi pysyvät tallennettuina ja niitä käsitellään edell
 msgid "Want to sign in again?"
 msgstr "Haluatko kirjautua uudelleen?"
 
+
+msgid "Admin/Global configuration"
+msgstr "Admin/Yleinen konfiguraatio"
+
+msgid "Active Classes"
+msgstr "Aktiiviset luokat"
+
+msgid "Active Queues"
+msgstr "Aktiiviset jonot"
+
+msgid "Analysis & Reports"
+msgstr "Analyysi ja raportit"
+
+msgid "Any word not matching a keyword is searched for in the ticket transaction history."
+msgstr "Jokainen sana, joka ei vastaa avainsanaa, haetaan tiketin tapahtumahistoriasta."
+
+msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
+msgstr "Jokainen sana, joka ei vastaa avainsanaa, haetaan tikettien aiheista ja kuvauksista."
+
+msgid "Article Administration"
+msgstr "Artikkelien hallinta"
+
+msgid "Articles total"
+msgstr "Artikkeleita yhteensä"
+
+msgid "Asset Administration"
+msgstr "Resurssien hallinta"
+
+msgid "Asset Fields"
+msgstr "Resurssikentät"
+
+msgid "Assets total"
+msgstr "Resursseja yhteensä"
+
+msgid "Banner Settings"
+msgstr "Bannerin asetukset"
+
+msgid "Banner active"
+msgstr "Banneri aktiivinen"
+
+msgid "Banner will be automatically deactivated on %1"
+msgstr "Banneri poistetaan automaattisesti käytöstä %1"
+
+msgid "Catalogs total"
+msgstr "Luetteloita yhteensä"
+
+msgid "Classes total"
+msgstr "Luokkia yhteensä"
+
+msgid "Configure Reports Menu"
+msgstr "Määritä raporttivarikko"
+
+msgid "Custom Fields"
+msgstr "Mukautetut kentät"
+
+msgid "Custom Fields by Object Type"
+msgstr "Mukautetut kentät objektityypin mukaan"
+
+msgid "Custom Fields total"
+msgstr "Mukautettuja kenttiä yhteensä"
+
+msgid "Database Size (MB)"
+msgstr "Tietokannan koko (MB)"
+
+msgid "Displayed in the banner header bar (HTML allowed)"
+msgstr "Näytetään bannerin otsikkorivillä (HTML sallittu)"
+
+msgid "Due Today"
+msgstr "Eräpäivä tänään"
+
+msgid "Enable or disable the maintenance banner on the login page"
+msgstr "Ota käyttöön tai poista käytöstä huoltobanneri kirjautumissivulla"
+
+msgid "English Content"
+msgstr "Englanninkielinen sisältö"
+
+msgid "Expired - banner was automatically deactivated"
+msgstr "Vanhentunut – banneri poistettiin automaattisesti käytöstä"
+
+msgid "German Content"
+msgstr "Saksankielinen sisältö"
+
+msgid "Global Scrips"
+msgstr "Globaalit skriptit"
+
+msgid "Global custom field configuration"
+msgstr "Mukautettujen kenttien yleinen konfiguraatio"
+
+msgid "HTML allowed"
+msgstr "HTML sallittu"
+
+msgid "Headline"
+msgstr "Otsikko"
+
+msgid "If the custom field name or the search value have spaces, enclose them in quotes."
+msgstr "Jos mukautetun kentän nimi tai hakuarvo sisältää välilyöntejä, liitä ne lainausmerkkeihin."
+
+msgid "If the search value contains spaces, enclose it in quotes."
+msgstr "Jos hakuarvo sisältää välilyöntejä, liitä se lainausmerkkeihin."
+
+msgid "In Use"
+msgstr "Käytössä"
+
+msgid "Keyword, id:, subject:, queue:, owner: ..."
+msgstr "Avainsana, id:, subject:, queue:, owner: ..."
+
+msgid "Login Banner"
+msgstr "Kirjautumisbanneri"
+
+msgid "Mail Errors"
+msgstr "Sähköpostivirheet"
+
+msgid "My Open Tickets"
+msgstr "Avoimet tikettini"
+
+msgid "My Tools"
+msgstr "Omat työkalut"
+
+msgid "New Today"
+msgstr "Uusia tänään"
+
+msgid "No dashboards in your menu yet."
+msgstr "Ei vielä koontinäyttöjä valikossasi."
+
+msgid "Only tickets with these active statuses are searched:"
+msgstr "Haetaan vain tikettejä, joilla on nämä aktiiviset tilat:"
+
+msgid "Other Fields"
+msgstr "Muut kentät"
+
+msgid "Queue-specific"
+msgstr "Jonokohtainen"
+
+msgid "Reports and Dashboards"
+msgstr "Raportit ja koontinäytöt"
+
+msgid "RT Administration"
+msgstr "RT-hallinta"
+
+msgid "RT Internals"
+msgstr "RT-sisäiset"
+
+msgid "Scheduled Processes"
+msgstr "Aikataulutetut prosessit"
+
+msgid "Scrips total"
+msgstr "Skriptejä yhteensä"
+
+msgid "Select custom fields for all queues"
+msgstr "Valitse mukautetut kentät kaikille jonoille"
+
+msgid "Select custom fields for all user groups"
+msgstr "Valitse mukautetut kentät kaikille käyttäjäryhmille"
+
+msgid "Select custom fields for all users"
+msgstr "Valitse mukautetut kentät kaikille käyttäjille"
+
+msgid "Select custom fields for articles in all classes"
+msgstr "Valitse mukautetut kentät kaikille luokkien artikkeleille"
+
+msgid "Select custom fields for assets in all catalogs"
+msgstr "Valitse mukautetut kentät kaikille luetteloiden resursseille"
+
+msgid "Select custom fields for tickets in all queues"
+msgstr "Valitse mukautetut kentät kaikille jonojen tiketeille"
+
+msgid "Select custom fields for transactions on tickets in all queues"
+msgstr "Valitse mukautetut kentät kaikille jonojen tikettitapahtumille"
+
+msgid "Show banner until (leave empty for no expiry)"
+msgstr "Näytä banneri asti (jätä tyhjäksi, jos ei vanhene)"
+
+msgid "System Open"
+msgstr "Järjestelmä auki"
+
+msgid "System Tools"
+msgstr "Järjestelmätyökalut"
+
+msgid "Ticket Fields"
+msgstr "Tikettikentät"
+
+msgid "Ticket Transactions"
+msgstr "Tikettitapahtumat"
+
+msgid "Tickets total"
+msgstr "Tikettejä yhteensä"
+
+msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
+msgstr "Hakeaksesi tikettejä, joiden tarkkailijat vastaavat verkkotunnusta, syötä verkkotunnus mukaan lukien @-merkki."
+

@@ -132,3 +132,193 @@ msgstr "Twoje otwarte zgłoszenia pozostają zapisane i są nadal przetwarzane."
 msgid "Want to sign in again?"
 msgstr "Chcesz zalogować się ponownie?"
 
+
+msgid "Admin/Global configuration"
+msgstr "Admin/Konfiguracja globalna"
+
+msgid "Active Classes"
+msgstr "Aktywne klasy"
+
+msgid "Active Queues"
+msgstr "Aktywne kolejki"
+
+msgid "Analysis & Reports"
+msgstr "Analiza i raporty"
+
+msgid "Any word not matching a keyword is searched for in the ticket transaction history."
+msgstr "Każde słowo, które nie pasuje do słowa kluczowego, jest wyszukiwane w historii transakcji zgłoszenia."
+
+msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
+msgstr "Każde słowo, które nie pasuje do słowa kluczowego, jest wyszukiwane w tematach i opisach zgłoszeń."
+
+msgid "Article Administration"
+msgstr "Administracja artykułami"
+
+msgid "Articles total"
+msgstr "Artykułów łącznie"
+
+msgid "Asset Administration"
+msgstr "Administracja zasobami"
+
+msgid "Asset Fields"
+msgstr "Pola zasobów"
+
+msgid "Assets total"
+msgstr "Zasobów łącznie"
+
+msgid "Banner Settings"
+msgstr "Ustawienia bannera"
+
+msgid "Banner active"
+msgstr "Banner aktywny"
+
+msgid "Banner will be automatically deactivated on %1"
+msgstr "Banner zostanie automatycznie dezaktywowany dnia %1"
+
+msgid "Catalogs total"
+msgstr "Katalogów łącznie"
+
+msgid "Classes total"
+msgstr "Klas łącznie"
+
+msgid "Configure Reports Menu"
+msgstr "Konfiguruj menu raportów"
+
+msgid "Custom Fields"
+msgstr "Pola niestandardowe"
+
+msgid "Custom Fields by Object Type"
+msgstr "Pola niestandardowe według typu obiektu"
+
+msgid "Custom Fields total"
+msgstr "Pól niestandardowych łącznie"
+
+msgid "Database Size (MB)"
+msgstr "Rozmiar bazy danych (MB)"
+
+msgid "Displayed in the banner header bar (HTML allowed)"
+msgstr "Wyświetlany na pasku nagłówka bannera (HTML dozwolony)"
+
+msgid "Due Today"
+msgstr "Termin dzisiaj"
+
+msgid "Enable or disable the maintenance banner on the login page"
+msgstr "Włącz lub wyłącz banner konserwacyjny na stronie logowania"
+
+msgid "English Content"
+msgstr "Treść angielska"
+
+msgid "Expired - banner was automatically deactivated"
+msgstr "Wygasł – banner został automatycznie dezaktywowany"
+
+msgid "German Content"
+msgstr "Treść niemiecka"
+
+msgid "Global Scrips"
+msgstr "Globalne skrypty"
+
+msgid "Global custom field configuration"
+msgstr "Globalna konfiguracja pól niestandardowych"
+
+msgid "HTML allowed"
+msgstr "HTML dozwolony"
+
+msgid "Headline"
+msgstr "Nagłówek"
+
+msgid "If the custom field name or the search value have spaces, enclose them in quotes."
+msgstr "Jeśli nazwa pola niestandardowego lub wartość wyszukiwania zawierają spacje, należy je ująć w cudzysłów."
+
+msgid "If the search value contains spaces, enclose it in quotes."
+msgstr "Jeśli wartość wyszukiwania zawiera spacje, należy ją ująć w cudzysłów."
+
+msgid "In Use"
+msgstr "W użyciu"
+
+msgid "Keyword, id:, subject:, queue:, owner: ..."
+msgstr "Słowo kluczowe, id:, subject:, queue:, owner: ..."
+
+msgid "Login Banner"
+msgstr "Banner logowania"
+
+msgid "Mail Errors"
+msgstr "Błędy poczty"
+
+msgid "My Open Tickets"
+msgstr "Moje otwarte zgłoszenia"
+
+msgid "My Tools"
+msgstr "Moje narzędzia"
+
+msgid "New Today"
+msgstr "Nowe dzisiaj"
+
+msgid "No dashboards in your menu yet."
+msgstr "Brak dashboardów w menu."
+
+msgid "Only tickets with these active statuses are searched:"
+msgstr "Wyszukiwane są tylko zgłoszenia z tymi aktywnymi statusami:"
+
+msgid "Other Fields"
+msgstr "Inne pola"
+
+msgid "Queue-specific"
+msgstr "Specyficzne dla kolejki"
+
+msgid "Reports and Dashboards"
+msgstr "Raporty i dashboardy"
+
+msgid "RT Administration"
+msgstr "Administracja RT"
+
+msgid "RT Internals"
+msgstr "Wewnętrzne RT"
+
+msgid "Scheduled Processes"
+msgstr "Zaplanowane procesy"
+
+msgid "Scrips total"
+msgstr "Skryptów łącznie"
+
+msgid "Select custom fields for all queues"
+msgstr "Wybierz pola niestandardowe dla wszystkich kolejek"
+
+msgid "Select custom fields for all user groups"
+msgstr "Wybierz pola niestandardowe dla wszystkich grup użytkowników"
+
+msgid "Select custom fields for all users"
+msgstr "Wybierz pola niestandardowe dla wszystkich użytkowników"
+
+msgid "Select custom fields for articles in all classes"
+msgstr "Wybierz pola niestandardowe dla artykułów we wszystkich klasach"
+
+msgid "Select custom fields for assets in all catalogs"
+msgstr "Wybierz pola niestandardowe dla zasobów we wszystkich katalogach"
+
+msgid "Select custom fields for tickets in all queues"
+msgstr "Wybierz pola niestandardowe dla zgłoszeń we wszystkich kolejkach"
+
+msgid "Select custom fields for transactions on tickets in all queues"
+msgstr "Wybierz pola niestandardowe dla transakcji na zgłoszeniach we wszystkich kolejkach"
+
+msgid "Show banner until (leave empty for no expiry)"
+msgstr "Pokaż banner do (pozostaw puste dla braku wygaśnięcia)"
+
+msgid "System Open"
+msgstr "System otwarty"
+
+msgid "System Tools"
+msgstr "Narzędzia systemowe"
+
+msgid "Ticket Fields"
+msgstr "Pola zgłoszenia"
+
+msgid "Ticket Transactions"
+msgstr "Transakcje zgłoszenia"
+
+msgid "Tickets total"
+msgstr "Zgłoszeń łącznie"
+
+msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
+msgstr "Aby wyszukać zgłoszenia z obserwatorami pasującymi do domeny, wprowadź domenę wraz z symbolem @."
+

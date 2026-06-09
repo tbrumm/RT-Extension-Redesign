@@ -132,3 +132,193 @@ msgstr "未解決のチケットは保存されており、引き続き処理さ
 msgid "Want to sign in again?"
 msgstr "再度ログインしますか？"
 
+
+msgid "Admin/Global configuration"
+msgstr "管理者/グローバル設定"
+
+msgid "Active Classes"
+msgstr "アクティブなクラス"
+
+msgid "Active Queues"
+msgstr "アクティブなキュー"
+
+msgid "Analysis & Reports"
+msgstr "分析とレポート"
+
+msgid "Any word not matching a keyword is searched for in the ticket transaction history."
+msgstr "キーワードに一致しない単語は、チケットのトランザクション履歴から検索されます。"
+
+msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
+msgstr "キーワードに一致しない単語は、チケットの件名と説明から検索されます。"
+
+msgid "Article Administration"
+msgstr "記事管理"
+
+msgid "Articles total"
+msgstr "記事の合計"
+
+msgid "Asset Administration"
+msgstr "資産管理"
+
+msgid "Asset Fields"
+msgstr "資産フィールド"
+
+msgid "Assets total"
+msgstr "資産の合計"
+
+msgid "Banner Settings"
+msgstr "バナー設定"
+
+msgid "Banner active"
+msgstr "バナー有効"
+
+msgid "Banner will be automatically deactivated on %1"
+msgstr "バナーは %1 に自動的に無効化されます"
+
+msgid "Catalogs total"
+msgstr "カタログの合計"
+
+msgid "Classes total"
+msgstr "クラスの合計"
+
+msgid "Configure Reports Menu"
+msgstr "レポートメニューの設定"
+
+msgid "Custom Fields"
+msgstr "カスタムフィールド"
+
+msgid "Custom Fields by Object Type"
+msgstr "オブジェクトタイプ別カスタムフィールド"
+
+msgid "Custom Fields total"
+msgstr "カスタムフィールドの合計"
+
+msgid "Database Size (MB)"
+msgstr "データベースサイズ (MB)"
+
+msgid "Displayed in the banner header bar (HTML allowed)"
+msgstr "バナーのヘッダーバーに表示されます (HTML使用可)"
+
+msgid "Due Today"
+msgstr "本日期限"
+
+msgid "Enable or disable the maintenance banner on the login page"
+msgstr "ログインページのメンテナンスバナーを有効または無効にする"
+
+msgid "English Content"
+msgstr "英語コンテンツ"
+
+msgid "Expired - banner was automatically deactivated"
+msgstr "期限切れ – バナーが自動的に無効化されました"
+
+msgid "German Content"
+msgstr "ドイツ語コンテンツ"
+
+msgid "Global Scrips"
+msgstr "グローバルスクリプト"
+
+msgid "Global custom field configuration"
+msgstr "カスタムフィールドのグローバル設定"
+
+msgid "HTML allowed"
+msgstr "HTML使用可"
+
+msgid "Headline"
+msgstr "見出し"
+
+msgid "If the custom field name or the search value have spaces, enclose them in quotes."
+msgstr "カスタムフィールド名または検索値にスペースが含まれる場合は引用符で囲んでください。"
+
+msgid "If the search value contains spaces, enclose it in quotes."
+msgstr "検索値にスペースが含まれる場合は引用符で囲んでください。"
+
+msgid "In Use"
+msgstr "使用中"
+
+msgid "Keyword, id:, subject:, queue:, owner: ..."
+msgstr "キーワード, id:, subject:, queue:, owner: ..."
+
+msgid "Login Banner"
+msgstr "ログインバナー"
+
+msgid "Mail Errors"
+msgstr "メールエラー"
+
+msgid "My Open Tickets"
+msgstr "未解決のチケット"
+
+msgid "My Tools"
+msgstr "マイツール"
+
+msgid "New Today"
+msgstr "本日の新着"
+
+msgid "No dashboards in your menu yet."
+msgstr "メニューにダッシュボードがありません。"
+
+msgid "Only tickets with these active statuses are searched:"
+msgstr "これらのアクティブなステータスのチケットのみが検索されます："
+
+msgid "Other Fields"
+msgstr "その他のフィールド"
+
+msgid "Queue-specific"
+msgstr "キュー固有"
+
+msgid "Reports and Dashboards"
+msgstr "レポートとダッシュボード"
+
+msgid "RT Administration"
+msgstr "RT管理"
+
+msgid "RT Internals"
+msgstr "RT内部"
+
+msgid "Scheduled Processes"
+msgstr "スケジュールされたプロセス"
+
+msgid "Scrips total"
+msgstr "スクリプトの合計"
+
+msgid "Select custom fields for all queues"
+msgstr "すべてのキューのカスタムフィールドを選択"
+
+msgid "Select custom fields for all user groups"
+msgstr "すべてのユーザーグループのカスタムフィールドを選択"
+
+msgid "Select custom fields for all users"
+msgstr "すべてのユーザーのカスタムフィールドを選択"
+
+msgid "Select custom fields for articles in all classes"
+msgstr "すべてのクラスの記事のカスタムフィールドを選択"
+
+msgid "Select custom fields for assets in all catalogs"
+msgstr "すべてのカタログの資産のカスタムフィールドを選択"
+
+msgid "Select custom fields for tickets in all queues"
+msgstr "すべてのキューのチケットのカスタムフィールドを選択"
+
+msgid "Select custom fields for transactions on tickets in all queues"
+msgstr "すべてのキューのチケットトランザクションのカスタムフィールドを選択"
+
+msgid "Show banner until (leave empty for no expiry)"
+msgstr "バナーを表示する期限 (有効期限なしの場合は空白)"
+
+msgid "System Open"
+msgstr "システム開放"
+
+msgid "System Tools"
+msgstr "システムツール"
+
+msgid "Ticket Fields"
+msgstr "チケットフィールド"
+
+msgid "Ticket Transactions"
+msgstr "チケットトランザクション"
+
+msgid "Tickets total"
+msgstr "チケットの合計"
+
+msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
+msgstr "ドメインに一致するウォッチャーがいるチケットを検索するには、@記号を含めてドメインを入力してください。"
+

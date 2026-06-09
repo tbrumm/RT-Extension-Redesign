@@ -132,3 +132,193 @@ msgstr "Ihre offenen Tickets bleiben gespeichert und werden weiter bearbeitet."
 msgid "Want to sign in again?"
 msgstr "Möchten Sie sich erneut anmelden?"
 
+
+msgid "Admin/Global configuration"
+msgstr "Admin/Globale Konfiguration"
+
+msgid "Active Classes"
+msgstr "Aktive Klassen"
+
+msgid "Active Queues"
+msgstr "Aktive Queues"
+
+msgid "Analysis & Reports"
+msgstr "Analyse & Berichte"
+
+msgid "Any word not matching a keyword is searched for in the ticket transaction history."
+msgstr "Jedes Wort, das keinem Schlüsselwort entspricht, wird in der Ticket-Transaktionshistorie gesucht."
+
+msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
+msgstr "Jedes Wort, das keinem Schlüsselwort entspricht, wird in Ticket-Betreffs und Beschreibungen gesucht."
+
+msgid "Article Administration"
+msgstr "Artikel-Administration"
+
+msgid "Articles total"
+msgstr "Artikel gesamt"
+
+msgid "Asset Administration"
+msgstr "Asset-Administration"
+
+msgid "Asset Fields"
+msgstr "Asset-Felder"
+
+msgid "Assets total"
+msgstr "Assets gesamt"
+
+msgid "Banner Settings"
+msgstr "Banner-Einstellungen"
+
+msgid "Banner active"
+msgstr "Banner aktiv"
+
+msgid "Banner will be automatically deactivated on %1"
+msgstr "Banner wird automatisch deaktiviert am %1"
+
+msgid "Catalogs total"
+msgstr "Kataloge gesamt"
+
+msgid "Classes total"
+msgstr "Klassen gesamt"
+
+msgid "Configure Reports Menu"
+msgstr "Berichte-Menü konfigurieren"
+
+msgid "Custom Fields"
+msgstr "Benutzerdefinierte Felder"
+
+msgid "Custom Fields by Object Type"
+msgstr "Benutzerdefinierte Felder nach Objekttyp"
+
+msgid "Custom Fields total"
+msgstr "Benutzerdefinierte Felder gesamt"
+
+msgid "Database Size (MB)"
+msgstr "Datenbankgröße (MB)"
+
+msgid "Displayed in the banner header bar (HTML allowed)"
+msgstr "Wird in der Banner-Kopfzeile angezeigt (HTML erlaubt)"
+
+msgid "Due Today"
+msgstr "Heute fällig"
+
+msgid "Enable or disable the maintenance banner on the login page"
+msgstr "Wartungs-Banner auf der Anmeldeseite aktivieren oder deaktivieren"
+
+msgid "English Content"
+msgstr "Englischer Inhalt"
+
+msgid "Expired - banner was automatically deactivated"
+msgstr "Abgelaufen – Banner wurde automatisch deaktiviert"
+
+msgid "German Content"
+msgstr "Deutscher Inhalt"
+
+msgid "Global Scrips"
+msgstr "Globale Scrips"
+
+msgid "Global custom field configuration"
+msgstr "Globale Konfiguration benutzerdefinierter Felder"
+
+msgid "HTML allowed"
+msgstr "HTML erlaubt"
+
+msgid "Headline"
+msgstr "Überschrift"
+
+msgid "If the custom field name or the search value have spaces, enclose them in quotes."
+msgstr "Wenn der Name des benutzerdefinierten Feldes oder der Suchwert Leerzeichen enthält, in Anführungszeichen einschließen."
+
+msgid "If the search value contains spaces, enclose it in quotes."
+msgstr "Wenn der Suchwert Leerzeichen enthält, in Anführungszeichen einschließen."
+
+msgid "In Use"
+msgstr "In Verwendung"
+
+msgid "Keyword, id:, subject:, queue:, owner: ..."
+msgstr "Stichwort, id:, subject:, queue:, owner: ..."
+
+msgid "Login Banner"
+msgstr "Anmelde-Banner"
+
+msgid "Mail Errors"
+msgstr "E-Mail-Fehler"
+
+msgid "My Open Tickets"
+msgstr "Meine offenen Tickets"
+
+msgid "My Tools"
+msgstr "Meine Tools"
+
+msgid "New Today"
+msgstr "Heute neu"
+
+msgid "No dashboards in your menu yet."
+msgstr "Noch keine Dashboards im Menü."
+
+msgid "Only tickets with these active statuses are searched:"
+msgstr "Es werden nur Tickets mit diesen aktiven Status gesucht:"
+
+msgid "Other Fields"
+msgstr "Andere Felder"
+
+msgid "Queue-specific"
+msgstr "Queue-spezifisch"
+
+msgid "Reports and Dashboards"
+msgstr "Berichte und Dashboards"
+
+msgid "RT Administration"
+msgstr "RT-Administration"
+
+msgid "RT Internals"
+msgstr "RT-Interna"
+
+msgid "Scheduled Processes"
+msgstr "Geplante Prozesse"
+
+msgid "Scrips total"
+msgstr "Scrips gesamt"
+
+msgid "Select custom fields for all queues"
+msgstr "Benutzerdefinierte Felder für alle Queues auswählen"
+
+msgid "Select custom fields for all user groups"
+msgstr "Benutzerdefinierte Felder für alle Benutzergruppen auswählen"
+
+msgid "Select custom fields for all users"
+msgstr "Benutzerdefinierte Felder für alle Benutzer auswählen"
+
+msgid "Select custom fields for articles in all classes"
+msgstr "Benutzerdefinierte Felder für Artikel in allen Klassen auswählen"
+
+msgid "Select custom fields for assets in all catalogs"
+msgstr "Benutzerdefinierte Felder für Assets in allen Katalogen auswählen"
+
+msgid "Select custom fields for tickets in all queues"
+msgstr "Benutzerdefinierte Felder für Tickets in allen Queues auswählen"
+
+msgid "Select custom fields for transactions on tickets in all queues"
+msgstr "Benutzerdefinierte Felder für Transaktionen auf Tickets in allen Queues auswählen"
+
+msgid "Show banner until (leave empty for no expiry)"
+msgstr "Banner anzeigen bis (leer lassen für kein Ablaufdatum)"
+
+msgid "System Open"
+msgstr "System offen"
+
+msgid "System Tools"
+msgstr "System-Tools"
+
+msgid "Ticket Fields"
+msgstr "Ticket-Felder"
+
+msgid "Ticket Transactions"
+msgstr "Ticket-Transaktionen"
+
+msgid "Tickets total"
+msgstr "Tickets gesamt"
+
+msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
+msgstr "Um nach Tickets mit Beobachtern zu suchen, die zu einer Domain gehören, die Domain inkl. @-Symbol eingeben."
+

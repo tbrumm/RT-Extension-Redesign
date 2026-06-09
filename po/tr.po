@@ -132,3 +132,193 @@ msgstr "Açık talepleriniz kaydedilmiş olarak kalır ve işlenmeye devam eder.
 msgid "Want to sign in again?"
 msgstr "Tekrar giriş yapmak ister misiniz?"
 
+
+msgid "Admin/Global configuration"
+msgstr ""
+
+msgid "Active Classes"
+msgstr ""
+
+msgid "Active Queues"
+msgstr ""
+
+msgid "Analysis & Reports"
+msgstr ""
+
+msgid "Any word not matching a keyword is searched for in the ticket transaction history."
+msgstr ""
+
+msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
+msgstr ""
+
+msgid "Article Administration"
+msgstr ""
+
+msgid "Articles total"
+msgstr ""
+
+msgid "Asset Administration"
+msgstr ""
+
+msgid "Asset Fields"
+msgstr ""
+
+msgid "Assets total"
+msgstr ""
+
+msgid "Banner Settings"
+msgstr ""
+
+msgid "Banner active"
+msgstr ""
+
+msgid "Banner will be automatically deactivated on %1"
+msgstr ""
+
+msgid "Catalogs total"
+msgstr ""
+
+msgid "Classes total"
+msgstr ""
+
+msgid "Configure Reports Menu"
+msgstr ""
+
+msgid "Custom Fields"
+msgstr ""
+
+msgid "Custom Fields by Object Type"
+msgstr ""
+
+msgid "Custom Fields total"
+msgstr ""
+
+msgid "Database Size (MB)"
+msgstr ""
+
+msgid "Displayed in the banner header bar (HTML allowed)"
+msgstr ""
+
+msgid "Due Today"
+msgstr ""
+
+msgid "Enable or disable the maintenance banner on the login page"
+msgstr ""
+
+msgid "English Content"
+msgstr ""
+
+msgid "Expired - banner was automatically deactivated"
+msgstr ""
+
+msgid "German Content"
+msgstr ""
+
+msgid "Global Scrips"
+msgstr ""
+
+msgid "Global custom field configuration"
+msgstr ""
+
+msgid "HTML allowed"
+msgstr ""
+
+msgid "Headline"
+msgstr ""
+
+msgid "If the custom field name or the search value have spaces, enclose them in quotes."
+msgstr ""
+
+msgid "If the search value contains spaces, enclose it in quotes."
+msgstr ""
+
+msgid "In Use"
+msgstr ""
+
+msgid "Keyword, id:, subject:, queue:, owner: ..."
+msgstr ""
+
+msgid "Login Banner"
+msgstr ""
+
+msgid "Mail Errors"
+msgstr ""
+
+msgid "My Open Tickets"
+msgstr ""
+
+msgid "My Tools"
+msgstr ""
+
+msgid "New Today"
+msgstr ""
+
+msgid "No dashboards in your menu yet."
+msgstr ""
+
+msgid "Only tickets with these active statuses are searched:"
+msgstr ""
+
+msgid "Other Fields"
+msgstr ""
+
+msgid "Queue-specific"
+msgstr ""
+
+msgid "Reports and Dashboards"
+msgstr ""
+
+msgid "RT Administration"
+msgstr ""
+
+msgid "RT Internals"
+msgstr ""
+
+msgid "Scheduled Processes"
+msgstr ""
+
+msgid "Scrips total"
+msgstr ""
+
+msgid "Select custom fields for all queues"
+msgstr ""
+
+msgid "Select custom fields for all user groups"
+msgstr ""
+
+msgid "Select custom fields for all users"
+msgstr ""
+
+msgid "Select custom fields for articles in all classes"
+msgstr ""
+
+msgid "Select custom fields for assets in all catalogs"
+msgstr ""
+
+msgid "Select custom fields for tickets in all queues"
+msgstr ""
+
+msgid "Select custom fields for transactions on tickets in all queues"
+msgstr ""
+
+msgid "Show banner until (leave empty for no expiry)"
+msgstr ""
+
+msgid "System Open"
+msgstr ""
+
+msgid "System Tools"
+msgstr ""
+
+msgid "Ticket Fields"
+msgstr ""
+
+msgid "Ticket Transactions"
+msgstr ""
+
+msgid "Tickets total"
+msgstr ""
+
+msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
+msgstr ""
+

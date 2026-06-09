@@ -132,3 +132,193 @@ msgstr "تذاكرك المفتوحة لا تزال محفوظة وتُعالج 
 msgid "Want to sign in again?"
 msgstr "هل تريد تسجيل الدخول مجدداً؟"
 
+
+msgid "Admin/Global configuration"
+msgstr "المشرف/التهيئة العامة"
+
+msgid "Active Classes"
+msgstr "الفئات النشطة"
+
+msgid "Active Queues"
+msgstr "قوائم الانتظار النشطة"
+
+msgid "Analysis & Reports"
+msgstr "التحليل والتقارير"
+
+msgid "Any word not matching a keyword is searched for in the ticket transaction history."
+msgstr "يتم البحث عن أي كلمة لا تطابق كلمة مفتاحية في سجل معاملات التذكرة."
+
+msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
+msgstr "يتم البحث عن أي كلمة لا تطابق كلمة مفتاحية في مواضيع ووصف التذاكر."
+
+msgid "Article Administration"
+msgstr "إدارة المقالات"
+
+msgid "Articles total"
+msgstr "إجمالي المقالات"
+
+msgid "Asset Administration"
+msgstr "إدارة الأصول"
+
+msgid "Asset Fields"
+msgstr "حقول الأصول"
+
+msgid "Assets total"
+msgstr "إجمالي الأصول"
+
+msgid "Banner Settings"
+msgstr "إعدادات البانر"
+
+msgid "Banner active"
+msgstr "البانر نشط"
+
+msgid "Banner will be automatically deactivated on %1"
+msgstr "سيتم إلغاء تفعيل البانر تلقائياً في %1"
+
+msgid "Catalogs total"
+msgstr "إجمالي الكتالوجات"
+
+msgid "Classes total"
+msgstr "إجمالي الفئات"
+
+msgid "Configure Reports Menu"
+msgstr "تهيئة قائمة التقارير"
+
+msgid "Custom Fields"
+msgstr "الحقول المخصصة"
+
+msgid "Custom Fields by Object Type"
+msgstr "الحقول المخصصة حسب نوع الكائن"
+
+msgid "Custom Fields total"
+msgstr "إجمالي الحقول المخصصة"
+
+msgid "Database Size (MB)"
+msgstr "حجم قاعدة البيانات (MB)"
+
+msgid "Displayed in the banner header bar (HTML allowed)"
+msgstr "يعرض في شريط رأس البانر (HTML مسموح)"
+
+msgid "Due Today"
+msgstr "يستحق اليوم"
+
+msgid "Enable or disable the maintenance banner on the login page"
+msgstr "تفعيل أو تعطيل بانر الصيانة في صفحة تسجيل الدخول"
+
+msgid "English Content"
+msgstr "المحتوى الإنجليزي"
+
+msgid "Expired - banner was automatically deactivated"
+msgstr "منتهي الصلاحية – تم تعطيل البانر تلقائياً"
+
+msgid "German Content"
+msgstr "المحتوى الألماني"
+
+msgid "Global Scrips"
+msgstr "السكريبتات العامة"
+
+msgid "Global custom field configuration"
+msgstr "التهيئة العامة للحقول المخصصة"
+
+msgid "HTML allowed"
+msgstr "HTML مسموح"
+
+msgid "Headline"
+msgstr "العنوان"
+
+msgid "If the custom field name or the search value have spaces, enclose them in quotes."
+msgstr "إذا كان اسم الحقل المخصص أو قيمة البحث يحتوي على مسافات، ضعها بين علامات اقتباس."
+
+msgid "If the search value contains spaces, enclose it in quotes."
+msgstr "إذا كانت قيمة البحث تحتوي على مسافات، ضعها بين علامات اقتباس."
+
+msgid "In Use"
+msgstr "قيد الاستخدام"
+
+msgid "Keyword, id:, subject:, queue:, owner: ..."
+msgstr "كلمة مفتاحية، id:, subject:, queue:, owner: ..."
+
+msgid "Login Banner"
+msgstr "بانر تسجيل الدخول"
+
+msgid "Mail Errors"
+msgstr "أخطاء البريد الإلكتروني"
+
+msgid "My Open Tickets"
+msgstr "تذاكري المفتوحة"
+
+msgid "My Tools"
+msgstr "أدواتي"
+
+msgid "New Today"
+msgstr "جديد اليوم"
+
+msgid "No dashboards in your menu yet."
+msgstr "لا توجد لوحات معلومات في قائمتك بعد."
+
+msgid "Only tickets with these active statuses are searched:"
+msgstr "يتم البحث فقط في التذاكر ذات هذه الحالات النشطة:"
+
+msgid "Other Fields"
+msgstr "حقول أخرى"
+
+msgid "Queue-specific"
+msgstr "خاص بقائمة الانتظار"
+
+msgid "Reports and Dashboards"
+msgstr "التقارير ولوحات المعلومات"
+
+msgid "RT Administration"
+msgstr "إدارة RT"
+
+msgid "RT Internals"
+msgstr "المكونات الداخلية لـ RT"
+
+msgid "Scheduled Processes"
+msgstr "العمليات المجدولة"
+
+msgid "Scrips total"
+msgstr "إجمالي السكريبتات"
+
+msgid "Select custom fields for all queues"
+msgstr "تحديد حقول مخصصة لجميع قوائم الانتظار"
+
+msgid "Select custom fields for all user groups"
+msgstr "تحديد حقول مخصصة لجميع مجموعات المستخدمين"
+
+msgid "Select custom fields for all users"
+msgstr "تحديد حقول مخصصة لجميع المستخدمين"
+
+msgid "Select custom fields for articles in all classes"
+msgstr "تحديد حقول مخصصة للمقالات في جميع الفئات"
+
+msgid "Select custom fields for assets in all catalogs"
+msgstr "تحديد حقول مخصصة للأصول في جميع الكتالوجات"
+
+msgid "Select custom fields for tickets in all queues"
+msgstr "تحديد حقول مخصصة للتذاكر في جميع قوائم الانتظار"
+
+msgid "Select custom fields for transactions on tickets in all queues"
+msgstr "تحديد حقول مخصصة لمعاملات التذاكر في جميع قوائم الانتظار"
+
+msgid "Show banner until (leave empty for no expiry)"
+msgstr "عرض البانر حتى (اتركه فارغاً لعدم انتهاء الصلاحية)"
+
+msgid "System Open"
+msgstr "النظام مفتوح"
+
+msgid "System Tools"
+msgstr "أدوات النظام"
+
+msgid "Ticket Fields"
+msgstr "حقول التذكرة"
+
+msgid "Ticket Transactions"
+msgstr "معاملات التذكرة"
+
+msgid "Tickets total"
+msgstr "إجمالي التذاكر"
+
+msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
+msgstr "للبحث عن تذاكر مع مراقبين يطابقون نطاقاً معيناً، أدخل النطاق بما في ذلك رمز @."
+

@@ -132,3 +132,193 @@ msgstr "Uw openstaande tickets blijven opgeslagen en worden verder verwerkt."
 msgid "Want to sign in again?"
 msgstr "Wilt u opnieuw inloggen?"
 
+
+msgid "Admin/Global configuration"
+msgstr "Admin/Globale configuratie"
+
+msgid "Active Classes"
+msgstr "Actieve klassen"
+
+msgid "Active Queues"
+msgstr "Actieve wachtrijen"
+
+msgid "Analysis & Reports"
+msgstr "Analyse & rapporten"
+
+msgid "Any word not matching a keyword is searched for in the ticket transaction history."
+msgstr "Elk woord dat niet overeenkomt met een trefwoord wordt gezocht in de transactiegeschiedenis van het ticket."
+
+msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
+msgstr "Elk woord dat niet overeenkomt met een trefwoord wordt gezocht in de onderwerpen en beschrijvingen van tickets."
+
+msgid "Article Administration"
+msgstr "Artikelbeheer"
+
+msgid "Articles total"
+msgstr "Totaal artikelen"
+
+msgid "Asset Administration"
+msgstr "Activabeheer"
+
+msgid "Asset Fields"
+msgstr "Activavelden"
+
+msgid "Assets total"
+msgstr "Totaal activa"
+
+msgid "Banner Settings"
+msgstr "Bannerinstellingen"
+
+msgid "Banner active"
+msgstr "Banner actief"
+
+msgid "Banner will be automatically deactivated on %1"
+msgstr "Banner wordt automatisch gedeactiveerd op %1"
+
+msgid "Catalogs total"
+msgstr "Totaal catalogi"
+
+msgid "Classes total"
+msgstr "Totaal klassen"
+
+msgid "Configure Reports Menu"
+msgstr "Rapportenmenu configureren"
+
+msgid "Custom Fields"
+msgstr "Aangepaste velden"
+
+msgid "Custom Fields by Object Type"
+msgstr "Aangepaste velden per objecttype"
+
+msgid "Custom Fields total"
+msgstr "Totaal aangepaste velden"
+
+msgid "Database Size (MB)"
+msgstr "Databasegrootte (MB)"
+
+msgid "Displayed in the banner header bar (HTML allowed)"
+msgstr "Weergegeven in de bannerkoptekstbalk (HTML toegestaan)"
+
+msgid "Due Today"
+msgstr "Vandaag verschuldigd"
+
+msgid "Enable or disable the maintenance banner on the login page"
+msgstr "Het onderhoudsbanner op de aanmeldingspagina in- of uitschakelen"
+
+msgid "English Content"
+msgstr "Engelse inhoud"
+
+msgid "Expired - banner was automatically deactivated"
+msgstr "Verlopen – banner is automatisch gedeactiveerd"
+
+msgid "German Content"
+msgstr "Duitse inhoud"
+
+msgid "Global Scrips"
+msgstr "Globale scripts"
+
+msgid "Global custom field configuration"
+msgstr "Globale configuratie van aangepaste velden"
+
+msgid "HTML allowed"
+msgstr "HTML toegestaan"
+
+msgid "Headline"
+msgstr "Koptekst"
+
+msgid "If the custom field name or the search value have spaces, enclose them in quotes."
+msgstr "Als de naam van het aangepaste veld of de zoekwaarde spaties bevat, sluit ze dan in aanhalingstekens."
+
+msgid "If the search value contains spaces, enclose it in quotes."
+msgstr "Als de zoekwaarde spaties bevat, sluit hem dan in aanhalingstekens."
+
+msgid "In Use"
+msgstr "In gebruik"
+
+msgid "Keyword, id:, subject:, queue:, owner: ..."
+msgstr "Trefwoord, id:, subject:, queue:, owner: ..."
+
+msgid "Login Banner"
+msgstr "Aanmeldingsbanner"
+
+msgid "Mail Errors"
+msgstr "E-mailfouten"
+
+msgid "My Open Tickets"
+msgstr "Mijn openstaande tickets"
+
+msgid "My Tools"
+msgstr "Mijn hulpmiddelen"
+
+msgid "New Today"
+msgstr "Vandaag nieuw"
+
+msgid "No dashboards in your menu yet."
+msgstr "Nog geen dashboards in uw menu."
+
+msgid "Only tickets with these active statuses are searched:"
+msgstr "Alleen tickets met deze actieve statussen worden doorzocht:"
+
+msgid "Other Fields"
+msgstr "Andere velden"
+
+msgid "Queue-specific"
+msgstr "Wachtrijspecifiek"
+
+msgid "Reports and Dashboards"
+msgstr "Rapporten en dashboards"
+
+msgid "RT Administration"
+msgstr "RT-beheer"
+
+msgid "RT Internals"
+msgstr "RT-internals"
+
+msgid "Scheduled Processes"
+msgstr "Geplande processen"
+
+msgid "Scrips total"
+msgstr "Totaal scripts"
+
+msgid "Select custom fields for all queues"
+msgstr "Aangepaste velden selecteren voor alle wachtrijen"
+
+msgid "Select custom fields for all user groups"
+msgstr "Aangepaste velden selecteren voor alle gebruikersgroepen"
+
+msgid "Select custom fields for all users"
+msgstr "Aangepaste velden selecteren voor alle gebruikers"
+
+msgid "Select custom fields for articles in all classes"
+msgstr "Aangepaste velden selecteren voor artikelen in alle klassen"
+
+msgid "Select custom fields for assets in all catalogs"
+msgstr "Aangepaste velden selecteren voor activa in alle catalogi"
+
+msgid "Select custom fields for tickets in all queues"
+msgstr "Aangepaste velden selecteren voor tickets in alle wachtrijen"
+
+msgid "Select custom fields for transactions on tickets in all queues"
+msgstr "Aangepaste velden selecteren voor transacties op tickets in alle wachtrijen"
+
+msgid "Show banner until (leave empty for no expiry)"
+msgstr "Banner weergeven tot (leeg laten voor geen vervaldatum)"
+
+msgid "System Open"
+msgstr "Systeem open"
+
+msgid "System Tools"
+msgstr "Systeemhulpmiddelen"
+
+msgid "Ticket Fields"
+msgstr "Ticketvelden"
+
+msgid "Ticket Transactions"
+msgstr "Tickettransacties"
+
+msgid "Tickets total"
+msgstr "Totaal tickets"
+
+msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
+msgstr "Om te zoeken naar tickets met watchers die overeenkomen met een domein, voer het domein in inclusief het @-symbool."
+

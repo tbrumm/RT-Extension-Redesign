@@ -132,3 +132,193 @@ msgstr "Your open tickets remain saved and continue to be processed."
 msgid "Want to sign in again?"
 msgstr "Want to sign in again?"
 
+
+msgid "Admin/Global configuration"
+msgstr "Admin/Global configuration"
+
+msgid "Active Classes"
+msgstr "Active Classes"
+
+msgid "Active Queues"
+msgstr "Active Queues"
+
+msgid "Analysis & Reports"
+msgstr "Analysis & Reports"
+
+msgid "Any word not matching a keyword is searched for in the ticket transaction history."
+msgstr "Any word not matching a keyword is searched for in the ticket transaction history."
+
+msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
+msgstr "Any word not matching a keyword is searched for in ticket subjects and descriptions."
+
+msgid "Article Administration"
+msgstr "Article Administration"
+
+msgid "Articles total"
+msgstr "Articles total"
+
+msgid "Asset Administration"
+msgstr "Asset Administration"
+
+msgid "Asset Fields"
+msgstr "Asset Fields"
+
+msgid "Assets total"
+msgstr "Assets total"
+
+msgid "Banner Settings"
+msgstr "Banner Settings"
+
+msgid "Banner active"
+msgstr "Banner active"
+
+msgid "Banner will be automatically deactivated on %1"
+msgstr "Banner will be automatically deactivated on %1"
+
+msgid "Catalogs total"
+msgstr "Catalogs total"
+
+msgid "Classes total"
+msgstr "Classes total"
+
+msgid "Configure Reports Menu"
+msgstr "Configure Reports Menu"
+
+msgid "Custom Fields"
+msgstr "Custom Fields"
+
+msgid "Custom Fields by Object Type"
+msgstr "Custom Fields by Object Type"
+
+msgid "Custom Fields total"
+msgstr "Custom Fields total"
+
+msgid "Database Size (MB)"
+msgstr "Database Size (MB)"
+
+msgid "Displayed in the banner header bar (HTML allowed)"
+msgstr "Displayed in the banner header bar (HTML allowed)"
+
+msgid "Due Today"
+msgstr "Due Today"
+
+msgid "Enable or disable the maintenance banner on the login page"
+msgstr "Enable or disable the maintenance banner on the login page"
+
+msgid "English Content"
+msgstr "English Content"
+
+msgid "Expired - banner was automatically deactivated"
+msgstr "Expired - banner was automatically deactivated"
+
+msgid "German Content"
+msgstr "German Content"
+
+msgid "Global Scrips"
+msgstr "Global Scrips"
+
+msgid "Global custom field configuration"
+msgstr "Global custom field configuration"
+
+msgid "HTML allowed"
+msgstr "HTML allowed"
+
+msgid "Headline"
+msgstr "Headline"
+
+msgid "If the custom field name or the search value have spaces, enclose them in quotes."
+msgstr "If the custom field name or the search value have spaces, enclose them in quotes."
+
+msgid "If the search value contains spaces, enclose it in quotes."
+msgstr "If the search value contains spaces, enclose it in quotes."
+
+msgid "In Use"
+msgstr "In Use"
+
+msgid "Keyword, id:, subject:, queue:, owner: ..."
+msgstr "Keyword, id:, subject:, queue:, owner: ..."
+
+msgid "Login Banner"
+msgstr "Login Banner"
+
+msgid "Mail Errors"
+msgstr "Mail Errors"
+
+msgid "My Open Tickets"
+msgstr "My Open Tickets"
+
+msgid "My Tools"
+msgstr "My Tools"
+
+msgid "New Today"
+msgstr "New Today"
+
+msgid "No dashboards in your menu yet."
+msgstr "No dashboards in your menu yet."
+
+msgid "Only tickets with these active statuses are searched:"
+msgstr "Only tickets with these active statuses are searched:"
+
+msgid "Other Fields"
+msgstr "Other Fields"
+
+msgid "Queue-specific"
+msgstr "Queue-specific"
+
+msgid "Reports and Dashboards"
+msgstr "Reports and Dashboards"
+
+msgid "RT Administration"
+msgstr "RT Administration"
+
+msgid "RT Internals"
+msgstr "RT Internals"
+
+msgid "Scheduled Processes"
+msgstr "Scheduled Processes"
+
+msgid "Scrips total"
+msgstr "Scrips total"
+
+msgid "Select custom fields for all queues"
+msgstr "Select custom fields for all queues"
+
+msgid "Select custom fields for all user groups"
+msgstr "Select custom fields for all user groups"
+
+msgid "Select custom fields for all users"
+msgstr "Select custom fields for all users"
+
+msgid "Select custom fields for articles in all classes"
+msgstr "Select custom fields for articles in all classes"
+
+msgid "Select custom fields for assets in all catalogs"
+msgstr "Select custom fields for assets in all catalogs"
+
+msgid "Select custom fields for tickets in all queues"
+msgstr "Select custom fields for tickets in all queues"
+
+msgid "Select custom fields for transactions on tickets in all queues"
+msgstr "Select custom fields for transactions on tickets in all queues"
+
+msgid "Show banner until (leave empty for no expiry)"
+msgstr "Show banner until (leave empty for no expiry)"
+
+msgid "System Open"
+msgstr "System Open"
+
+msgid "System Tools"
+msgstr "System Tools"
+
+msgid "Ticket Fields"
+msgstr "Ticket Fields"
+
+msgid "Ticket Transactions"
+msgstr "Ticket Transactions"
+
+msgid "Tickets total"
+msgstr "Tickets total"
+
+msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
+msgstr "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
+

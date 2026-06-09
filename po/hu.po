@@ -132,3 +132,193 @@ msgstr "Nyitott jegyei megmaradnak és tovább kerülnek feldolgozásra."
 msgid "Want to sign in again?"
 msgstr "Szeretne újra bejelentkezni?"
 
+
+msgid "Admin/Global configuration"
+msgstr "Admin/Globális konfiguráció"
+
+msgid "Active Classes"
+msgstr "Aktív osztályok"
+
+msgid "Active Queues"
+msgstr "Aktív sorok"
+
+msgid "Analysis & Reports"
+msgstr "Elemzés és jelentések"
+
+msgid "Any word not matching a keyword is searched for in the ticket transaction history."
+msgstr "Minden szó, amely nem egyezik kulcsszóval, a jegy tranzakcióelőzményeiben kerül keresésre."
+
+msgid "Any word not matching a keyword is searched for in ticket subjects and descriptions."
+msgstr "Minden szó, amely nem egyezik kulcsszóval, a jegyek tárgyaiban és leírásaiban kerül keresésre."
+
+msgid "Article Administration"
+msgstr "Cikk-adminisztráció"
+
+msgid "Articles total"
+msgstr "Cikkek összesen"
+
+msgid "Asset Administration"
+msgstr "Eszköz-adminisztráció"
+
+msgid "Asset Fields"
+msgstr "Eszközmezők"
+
+msgid "Assets total"
+msgstr "Eszközök összesen"
+
+msgid "Banner Settings"
+msgstr "Banner beállítások"
+
+msgid "Banner active"
+msgstr "Banner aktív"
+
+msgid "Banner will be automatically deactivated on %1"
+msgstr "A banner automatikusan deaktiválódik: %1"
+
+msgid "Catalogs total"
+msgstr "Katalógusok összesen"
+
+msgid "Classes total"
+msgstr "Osztályok összesen"
+
+msgid "Configure Reports Menu"
+msgstr "Jelentések menü konfigurálása"
+
+msgid "Custom Fields"
+msgstr "Egyéni mezők"
+
+msgid "Custom Fields by Object Type"
+msgstr "Egyéni mezők objektumtípus szerint"
+
+msgid "Custom Fields total"
+msgstr "Egyéni mezők összesen"
+
+msgid "Database Size (MB)"
+msgstr "Adatbázis mérete (MB)"
+
+msgid "Displayed in the banner header bar (HTML allowed)"
+msgstr "Megjelenik a banner fejlécsorában (HTML engedélyezett)"
+
+msgid "Due Today"
+msgstr "Ma esedékes"
+
+msgid "Enable or disable the maintenance banner on the login page"
+msgstr "A karbantartási banner engedélyezése vagy letiltása a bejelentkezési oldalon"
+
+msgid "English Content"
+msgstr "Angol tartalom"
+
+msgid "Expired - banner was automatically deactivated"
+msgstr "Lejárt – a banner automatikusan deaktiválódott"
+
+msgid "German Content"
+msgstr "Német tartalom"
+
+msgid "Global Scrips"
+msgstr "Globális szkriptek"
+
+msgid "Global custom field configuration"
+msgstr "Egyéni mezők globális konfigurációja"
+
+msgid "HTML allowed"
+msgstr "HTML engedélyezett"
+
+msgid "Headline"
+msgstr "Cím"
+
+msgid "If the custom field name or the search value have spaces, enclose them in quotes."
+msgstr "Ha az egyéni mező neve vagy a keresési érték szóközöket tartalmaz, tegye őket idézőjelek közé."
+
+msgid "If the search value contains spaces, enclose it in quotes."
+msgstr "Ha a keresési érték szóközöket tartalmaz, tegye idézőjelek közé."
+
+msgid "In Use"
+msgstr "Használatban"
+
+msgid "Keyword, id:, subject:, queue:, owner: ..."
+msgstr "Kulcsszó, id:, subject:, queue:, owner: ..."
+
+msgid "Login Banner"
+msgstr "Bejelentkezési banner"
+
+msgid "Mail Errors"
+msgstr "E-mail hibák"
+
+msgid "My Open Tickets"
+msgstr "Nyitott jegyeim"
+
+msgid "My Tools"
+msgstr "Eszközeim"
+
+msgid "New Today"
+msgstr "Ma új"
+
+msgid "No dashboards in your menu yet."
+msgstr "Még nincsenek irányítópultok a menüben."
+
+msgid "Only tickets with these active statuses are searched:"
+msgstr "Csak ezekkel az aktív állapotokkal rendelkező jegyek kereshetők:"
+
+msgid "Other Fields"
+msgstr "Egyéb mezők"
+
+msgid "Queue-specific"
+msgstr "Sorspecifikus"
+
+msgid "Reports and Dashboards"
+msgstr "Jelentések és irányítópultok"
+
+msgid "RT Administration"
+msgstr "RT-adminisztráció"
+
+msgid "RT Internals"
+msgstr "RT belső elemek"
+
+msgid "Scheduled Processes"
+msgstr "Ütemezett folyamatok"
+
+msgid "Scrips total"
+msgstr "Szkriptek összesen"
+
+msgid "Select custom fields for all queues"
+msgstr "Egyéni mezők kiválasztása az összes sorhoz"
+
+msgid "Select custom fields for all user groups"
+msgstr "Egyéni mezők kiválasztása az összes felhasználói csoporthoz"
+
+msgid "Select custom fields for all users"
+msgstr "Egyéni mezők kiválasztása az összes felhasználóhoz"
+
+msgid "Select custom fields for articles in all classes"
+msgstr "Egyéni mezők kiválasztása az összes osztály cikkeihez"
+
+msgid "Select custom fields for assets in all catalogs"
+msgstr "Egyéni mezők kiválasztása az összes katalógus eszközeihez"
+
+msgid "Select custom fields for tickets in all queues"
+msgstr "Egyéni mezők kiválasztása az összes sor jegyeihez"
+
+msgid "Select custom fields for transactions on tickets in all queues"
+msgstr "Egyéni mezők kiválasztása az összes sor jegy-tranzakcióihoz"
+
+msgid "Show banner until (leave empty for no expiry)"
+msgstr "Banner megjelenítése eddig (hagyja üresen, ha nincs lejárat)"
+
+msgid "System Open"
+msgstr "Rendszer nyitva"
+
+msgid "System Tools"
+msgstr "Rendszereszközök"
+
+msgid "Ticket Fields"
+msgstr "Jegymezők"
+
+msgid "Ticket Transactions"
+msgstr "Jegy-tranzakciók"
+
+msgid "Tickets total"
+msgstr "Jegyek összesen"
+
+msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
+msgstr "Egy tartományhoz tartozó megfigyelőkkel rendelkező jegyek kereséséhez adja meg a tartományt @ szimbólummal együtt."
+
