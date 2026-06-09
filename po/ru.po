@@ -98,3 +98,37 @@ msgstr "Статьи"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "Статистика обновляется дважды в день. Последнее обновление: %1"
+
+msgid "Successfully logged out"
+msgstr "Вы успешно вышли из системы"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "До свидания, %1. До следующего раза!"
+
+msgid "Your session has been securely closed."
+msgstr "Ваша сессия была безопасно завершена."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "Перенаправление на страницу входа через %1 секунд."
+
+msgid "Securely logged out"
+msgstr "Безопасный выход из системы"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "Все данные сессии были безопасно удалены с этого устройства."
+
+msgid "Email still active"
+msgstr "Электронная почта по-прежнему активна"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "Новые заявки можно подавать в любое время по электронной почте."
+
+msgid "Your tickets are safe"
+msgstr "Ваши заявки в безопасности"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "Ваши открытые заявки сохранены и продолжают обрабатываться."
+
+msgid "Want to sign in again?"
+msgstr "Хотите войти снова?"
+

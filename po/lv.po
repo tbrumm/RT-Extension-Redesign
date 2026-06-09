@@ -98,3 +98,37 @@ msgstr "Raksti"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "Statistika tiek atjaunināta divas reizes dienā. Pēdējā atjaunināšana: %1"
+
+msgid "Successfully logged out"
+msgstr "Veiksmīgi izrakstījies"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "Uz redzēšanos, %1. Tiekamies nākamreiz!"
+
+msgid "Your session has been securely closed."
+msgstr "Jūsu sesija ir drošā veidā slēgta."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "Pāradresācija uz pieteikšanos pēc %1 sekundēm."
+
+msgid "Securely logged out"
+msgstr "Drošā veidā izrakstījies"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "Visi sesijas dati ir drošā veidā dzēsti no šīs ierīces."
+
+msgid "Email still active"
+msgstr "E-pasts joprojām aktīvs"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "Jaunas biļetes var iesniegt jebkurā laikā pa e-pastu."
+
+msgid "Your tickets are safe"
+msgstr "Jūsu biļetes ir drošas"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "Jūsu atvērtās biļetes paliek saglabātas un turpina tikt apstrādātas."
+
+msgid "Want to sign in again?"
+msgstr "Vēlaties pierakstīties vēlreiz?"
+

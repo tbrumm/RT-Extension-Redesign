@@ -98,3 +98,37 @@ msgstr "Články"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "Štatistiky sa aktualizujú dvakrát denne. Posledná aktualizácia: %1"
+
+msgid "Successfully logged out"
+msgstr "Úspešne odhlásení"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "Zbohom, %1. Do nabudúce!"
+
+msgid "Your session has been securely closed."
+msgstr "Vaša relácia bola bezpečne ukončená."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "Presmerovanie na prihlásenie za %1 sekúnd."
+
+msgid "Securely logged out"
+msgstr "Bezpečne odhlásení"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "Všetky údaje relácie boli bezpečne odstránené z tohto zariadenia."
+
+msgid "Email still active"
+msgstr "E-mail je stále aktívny"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "Nové tikety je možné kedykoľvek odoslať e-mailom."
+
+msgid "Your tickets are safe"
+msgstr "Vaše tikety sú v bezpečí"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "Vaše otvorené tikety zostávajú uložené a naďalej sa spracúvajú."
+
+msgid "Want to sign in again?"
+msgstr "Chcete sa znovu prihlásiť?"
+

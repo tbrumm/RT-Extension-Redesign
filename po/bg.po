@@ -98,3 +98,37 @@ msgstr "Статии"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "Статистиките се актуализират два пъти дневно. Последна актуализация: %1"
+
+msgid "Successfully logged out"
+msgstr "Успешно излизане от системата"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "Довиждане, %1. До следващия път!"
+
+msgid "Your session has been securely closed."
+msgstr "Сесията ви беше затворена сигурно."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "Пренасочване към страницата за вход след %1 секунди."
+
+msgid "Securely logged out"
+msgstr "Сигурно излизане"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "Всички данни от сесията са изтрити сигурно от устройството."
+
+msgid "Email still active"
+msgstr "Имейлът е все още активен"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "Нови тикети могат да се изпращат по всяко време по имейл."
+
+msgid "Your tickets are safe"
+msgstr "Тикетите ви са в безопасност"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "Отворените ви тикети остават запазени и продължават да се обработват."
+
+msgid "Want to sign in again?"
+msgstr "Искате ли да влезете отново?"
+

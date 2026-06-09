@@ -98,3 +98,37 @@ msgstr "المقالات"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "تحديث الإحصائيات مرتين يومياً. آخر تحديث: %1"
+
+msgid "Successfully logged out"
+msgstr "تم تسجيل الخروج بنجاح"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "وداعاً، %1. إلى اللقاء!"
+
+msgid "Your session has been securely closed."
+msgstr "تم إغلاق جلستك بأمان."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "جارٍ إعادة التوجيه إلى صفحة تسجيل الدخول خلال %1 ثانية."
+
+msgid "Securely logged out"
+msgstr "تم تسجيل الخروج بأمان"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "تم حذف جميع بيانات الجلسة بأمان من هذا الجهاز."
+
+msgid "Email still active"
+msgstr "البريد الإلكتروني لا يزال نشطاً"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "يمكن إرسال تذاكر جديدة في أي وقت عبر البريد الإلكتروني."
+
+msgid "Your tickets are safe"
+msgstr "تذاكرك بأمان"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "تذاكرك المفتوحة لا تزال محفوظة وتُعالج باستمرار."
+
+msgid "Want to sign in again?"
+msgstr "هل تريد تسجيل الدخول مجدداً؟"
+

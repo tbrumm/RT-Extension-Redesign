@@ -98,3 +98,37 @@ msgstr "Artigos"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "Estatísticas atualizadas duas vezes ao dia. Última atualização: %1"
+
+msgid "Successfully logged out"
+msgstr "Logout realizado com sucesso"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "Até logo, %1. Até a próxima!"
+
+msgid "Your session has been securely closed."
+msgstr "Sua sessão foi encerrada com segurança."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "Redirecionando para o login em %1 segundos."
+
+msgid "Securely logged out"
+msgstr "Logout realizado com segurança"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "Todos os dados da sessão foram excluídos com segurança deste dispositivo."
+
+msgid "Email still active"
+msgstr "E-mail ainda ativo"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "Novos tickets podem ser enviados a qualquer momento por e-mail."
+
+msgid "Your tickets are safe"
+msgstr "Seus tickets estão seguros"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "Seus tickets abertos permanecem salvos e continuam a ser processados."
+
+msgid "Want to sign in again?"
+msgstr "Deseja fazer login novamente?"
+

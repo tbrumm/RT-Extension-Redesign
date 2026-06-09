@@ -98,3 +98,37 @@ msgstr "Artikkelit"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "Tilastot päivitetään kahdesti päivässä. Viimeisin päivitys: %1"
+
+msgid "Successfully logged out"
+msgstr "Uloskirjautuminen onnistui"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "Näkemiin, %1. Nähdään ensi kerralla!"
+
+msgid "Your session has been securely closed."
+msgstr "Istuntosi on suljettu turvallisesti."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "Ohjataan kirjautumissivulle %1 sekunnin kuluttua."
+
+msgid "Securely logged out"
+msgstr "Turvallisesti kirjauduttu ulos"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "Kaikki istuntotiedot on poistettu turvallisesti tältä laitteelta."
+
+msgid "Email still active"
+msgstr "Sähköposti toimii edelleen"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "Uusia tikettejä voidaan lähettää milloin tahansa sähköpostitse."
+
+msgid "Your tickets are safe"
+msgstr "Tikettisi ovat turvassa"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "Avoimet tikettisi pysyvät tallennettuina ja niitä käsitellään edelleen."
+
+msgid "Want to sign in again?"
+msgstr "Haluatko kirjautua uudelleen?"
+

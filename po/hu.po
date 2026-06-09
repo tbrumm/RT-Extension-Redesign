@@ -98,3 +98,37 @@ msgstr "Cikkek"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "A statisztikák naponta kétszer frissülnek. Utolsó frissítés: %1"
+
+msgid "Successfully logged out"
+msgstr "Sikeres kijelentkezés"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "Viszlát, %1. Legközelebb találkozunk!"
+
+msgid "Your session has been securely closed."
+msgstr "A munkamenete biztonságosan lezárult."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "Átirányítás a bejelentkezési oldalra %1 másodpercen belül."
+
+msgid "Securely logged out"
+msgstr "Biztonságos kijelentkezés"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "Az összes munkamenet-adat biztonságosan törölve lett erről az eszközről."
+
+msgid "Email still active"
+msgstr "Az e-mail még aktív"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "Új jegyek bármikor beküldhetők e-mailben."
+
+msgid "Your tickets are safe"
+msgstr "Jegyei biztonságban vannak"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "Nyitott jegyei megmaradnak és tovább kerülnek feldolgozásra."
+
+msgid "Want to sign in again?"
+msgstr "Szeretne újra bejelentkezni?"
+

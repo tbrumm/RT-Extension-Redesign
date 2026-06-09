@@ -98,3 +98,37 @@ msgstr "Straipsniai"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "Statistika atnaujinama du kartus per dieną. Paskutinis atnaujinimas: %1"
+
+msgid "Successfully logged out"
+msgstr "Sėkmingai atsijungta"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "Viso gero, %1. Iki kito karto!"
+
+msgid "Your session has been securely closed."
+msgstr "Jūsų sesija buvo saugiai uždaryta."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "Nukreipiama į prisijungimą po %1 sekundžių."
+
+msgid "Securely logged out"
+msgstr "Saugiai atsijungta"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "Visi sesijos duomenys buvo saugiai ištrinti iš šio įrenginio."
+
+msgid "Email still active"
+msgstr "El. paštas vis dar aktyvus"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "Nauji bilietai gali būti pateikti bet kuriuo metu el. paštu."
+
+msgid "Your tickets are safe"
+msgstr "Jūsų bilietai yra saugūs"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "Jūsų atviri bilietai išsaugomi ir toliau tvarkomi."
+
+msgid "Want to sign in again?"
+msgstr "Norite prisijungti iš naujo?"
+

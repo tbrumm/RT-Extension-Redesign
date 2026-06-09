@@ -98,3 +98,37 @@ msgstr "Artikuluak"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "Estatistikak egunean bi aldiz eguneratzen dira. Azken eguneratzea: %1"
+
+msgid "Successfully logged out"
+msgstr "Saioa ondo itxi da"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "Agur, %1. Hurrengo arte!"
+
+msgid "Your session has been securely closed."
+msgstr "Zure saioa modu seguruan itxi da."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "Saioa hasteko orrialdera bideratzen %1 segundo barru."
+
+msgid "Securely logged out"
+msgstr "Modu seguruan itxi da saioa"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "Saioaren datu guztiak modu seguruan ezabatu dira gailu honetatik."
+
+msgid "Email still active"
+msgstr "Posta elektronikoa aktibo jarraitzen du"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "Txartel berriak edozein unetan bidal daitezke posta elektronikoz."
+
+msgid "Your tickets are safe"
+msgstr "Zure txartelak seguru daude"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "Zure txartel irekiak gordeta jarraitzen dute eta prozesatzen jarraitzen dute."
+
+msgid "Want to sign in again?"
+msgstr "Berriro hasi nahi duzu saioa?"
+

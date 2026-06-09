@@ -98,3 +98,37 @@ msgstr "Artikel"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "Statistik diperbarui dua kali sehari. Pembaruan terakhir: %1"
+
+msgid "Successfully logged out"
+msgstr "Berhasil keluar"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "Selamat tinggal, %1. Sampai jumpa!"
+
+msgid "Your session has been securely closed."
+msgstr "Sesi Anda telah ditutup dengan aman."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "Mengalihkan ke halaman login dalam %1 detik."
+
+msgid "Securely logged out"
+msgstr "Berhasil keluar dengan aman"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "Semua data sesi telah dihapus dengan aman dari perangkat ini."
+
+msgid "Email still active"
+msgstr "Email masih aktif"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "Tiket baru dapat dikirimkan kapan saja melalui email."
+
+msgid "Your tickets are safe"
+msgstr "Tiket Anda aman"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "Tiket terbuka Anda tetap tersimpan dan terus diproses."
+
+msgid "Want to sign in again?"
+msgstr "Ingin masuk lagi?"
+

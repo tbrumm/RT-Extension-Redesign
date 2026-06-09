@@ -98,3 +98,37 @@ msgstr "記事"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "統計は1日2回更新されます。最終更新：%1"
+
+msgid "Successfully logged out"
+msgstr "ログアウトしました"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "さようなら、%1。またお会いしましょう！"
+
+msgid "Your session has been securely closed."
+msgstr "セッションが安全に終了しました。"
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "%1 秒後にログインページへリダイレクトします。"
+
+msgid "Securely logged out"
+msgstr "安全にログアウトしました"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "このデバイスからすべてのセッションデータが安全に削除されました。"
+
+msgid "Email still active"
+msgstr "メールは引き続き有効"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "新しいチケットはいつでもメールで送信できます。"
+
+msgid "Your tickets are safe"
+msgstr "チケットは安全です"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "未解決のチケットは保存されており、引き続き処理されます。"
+
+msgid "Want to sign in again?"
+msgstr "再度ログインしますか？"
+

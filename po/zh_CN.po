@@ -98,3 +98,37 @@ msgstr "文章"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "统计数据每日更新两次。最后更新：%1"
+
+msgid "Successfully logged out"
+msgstr "已成功退出"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "再见，%1。下次见！"
+
+msgid "Your session has been securely closed."
+msgstr "您的会话已安全关闭。"
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "将在 %1 秒后跳转到登录页面。"
+
+msgid "Securely logged out"
+msgstr "已安全退出"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "此设备上的所有会话数据已安全删除。"
+
+msgid "Email still active"
+msgstr "电子邮件仍然有效"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "新工单可以随时通过电子邮件提交。"
+
+msgid "Your tickets are safe"
+msgstr "您的工单是安全的"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "您的未结工单已保存并将继续处理。"
+
+msgid "Want to sign in again?"
+msgstr "想要再次登录吗？"
+

@@ -98,3 +98,37 @@ msgstr "Artikler"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "Statistikk oppdateres to ganger daglig. Siste oppdatering: %1"
+
+msgid "Successfully logged out"
+msgstr "Logget ut"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "Ha det, %1. Vi sees!"
+
+msgid "Your session has been securely closed."
+msgstr "Økten din er lukket på en sikker måte."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "Omdirigerer til innlogging om %1 sekunder."
+
+msgid "Securely logged out"
+msgstr "Sikkert utlogget"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "Alle sesjonsdata er sikkert slettet fra denne enheten."
+
+msgid "Email still active"
+msgstr "E-post er fortsatt aktiv"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "Nye saker kan sendes inn når som helst via e-post."
+
+msgid "Your tickets are safe"
+msgstr "Sakene dine er trygge"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "Dine åpne saker forblir lagret og fortsetter å bli behandlet."
+
+msgid "Want to sign in again?"
+msgstr "Vil du logge inn igjen?"
+

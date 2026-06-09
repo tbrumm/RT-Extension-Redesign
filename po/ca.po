@@ -98,3 +98,37 @@ msgstr "Articles"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "Estadístiques actualitzades dues vegades al dia. Última actualització: %1"
+
+msgid "Successfully logged out"
+msgstr "S'ha tancat la sessió correctament"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "Adéu, %1. Fins aviat!"
+
+msgid "Your session has been securely closed."
+msgstr "La vostra sessió s'ha tancat de manera segura."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "Redireccionant a l'inici de sessió en %1 segons."
+
+msgid "Securely logged out"
+msgstr "Sessió tancada de manera segura"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "Totes les dades de la sessió s'han eliminat de manera segura d'aquest dispositiu."
+
+msgid "Email still active"
+msgstr "El correu electrònic segueix actiu"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "Es poden enviar noves incidències en qualsevol moment per correu electrònic."
+
+msgid "Your tickets are safe"
+msgstr "Les vostres incidències estan segures"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "Les vostres incidències obertes es conserven i continuen tractant-se."
+
+msgid "Want to sign in again?"
+msgstr "Voleu tornar a iniciar la sessió?"
+

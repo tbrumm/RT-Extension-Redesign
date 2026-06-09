@@ -98,3 +98,37 @@ msgstr "مقالات"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "آمار دو بار در روز به‌روزرسانی می‌شود. آخرین به‌روزرسانی: %1"
+
+msgid "Successfully logged out"
+msgstr "با موفقیت خارج شدید"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "خداحافظ، %1. تا دفعه بعد!"
+
+msgid "Your session has been securely closed."
+msgstr "جلسه شما به‌صورت ایمن بسته شد."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "هدایت به صفحه ورود در %1 ثانیه."
+
+msgid "Securely logged out"
+msgstr "خروج ایمن"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "تمام اطلاعات جلسه به‌صورت ایمن از این دستگاه حذف شد."
+
+msgid "Email still active"
+msgstr "ایمیل هنوز فعال است"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "درخواست‌های جدید می‌توانند در هر زمان از طریق ایمیل ارسال شوند."
+
+msgid "Your tickets are safe"
+msgstr "درخواست‌های شما در امنیت هستند"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "درخواست‌های باز شما ذخیره می‌مانند و به پردازش ادامه می‌دهند."
+
+msgid "Want to sign in again?"
+msgstr "می‌خواهید دوباره وارد شوید؟"
+

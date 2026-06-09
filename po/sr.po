@@ -98,3 +98,37 @@ msgstr "Чланци"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "Статистике се ажурирају два пута дневно. Последње ажурирање: %1"
+
+msgid "Successfully logged out"
+msgstr "Успешно одјављени"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "Збогом, %1. Видимо се!"
+
+msgid "Your session has been securely closed."
+msgstr "Ваша сесија је безбедно затворена."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "Преусмерење на пријаву за %1 секунди."
+
+msgid "Securely logged out"
+msgstr "Безбедно одјављени"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "Сви подаци сесије су безбедно избрисани са овог уређаја."
+
+msgid "Email still active"
+msgstr "Е-пошта је и даље активна"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "Нови захтеви могу бити послати у било ком тренутку путем е-поште."
+
+msgid "Your tickets are safe"
+msgstr "Ваши захтеви су безбедни"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "Ваши отворени захтеви остају сачувани и настављају да се обрађују."
+
+msgid "Want to sign in again?"
+msgstr "Желите ли поново да се пријавите?"
+

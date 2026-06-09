@@ -98,3 +98,37 @@ msgstr ""
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "Statistics updated twice daily. Last update: %1"
+
+msgid "Successfully logged out"
+msgstr ""
+
+msgid "Goodbye, %1. See you next time!"
+msgstr ""
+
+msgid "Your session has been securely closed."
+msgstr ""
+
+msgid "Redirecting to login in %1 seconds."
+msgstr ""
+
+msgid "Securely logged out"
+msgstr ""
+
+msgid "All session data has been securely deleted from this device."
+msgstr ""
+
+msgid "Email still active"
+msgstr ""
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr ""
+
+msgid "Your tickets are safe"
+msgstr ""
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr ""
+
+msgid "Want to sign in again?"
+msgstr ""
+

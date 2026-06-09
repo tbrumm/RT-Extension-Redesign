@@ -98,3 +98,37 @@ msgstr "Artiklid"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "Statistika uuendatakse kaks korda päevas. Viimane uuendus: %1"
+
+msgid "Successfully logged out"
+msgstr "Edukalt välja logitud"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "Head aega, %1. Näeme!"
+
+msgid "Your session has been securely closed."
+msgstr "Teie seanss on turvaliselt suletud."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "Suunamine sisselogimisele %1 sekundi pärast."
+
+msgid "Securely logged out"
+msgstr "Turvaliselt välja logitud"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "Kõik seanssiandmed on sellest seadmest turvaliselt kustutatud."
+
+msgid "Email still active"
+msgstr "E-post on endiselt aktiivne"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "Uusi pileteid saab igal ajal e-posti teel esitada."
+
+msgid "Your tickets are safe"
+msgstr "Teie piletid on kaitstud"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "Teie avatud piletid jäävad alles ja neid töödeldakse edasi."
+
+msgid "Want to sign in again?"
+msgstr "Soovite uuesti sisse logida?"
+

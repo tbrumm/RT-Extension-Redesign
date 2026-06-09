@@ -98,3 +98,37 @@ msgstr "Makaleler"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "İstatistikler günde iki kez güncellenir. Son güncelleme: %1"
+
+msgid "Successfully logged out"
+msgstr "Başarıyla çıkış yapıldı"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "Güle güle, %1. Görüşürüz!"
+
+msgid "Your session has been securely closed."
+msgstr "Oturumunuz güvenli bir şekilde kapatıldı."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "%1 saniye içinde giriş sayfasına yönlendiriliyorsunuz."
+
+msgid "Securely logged out"
+msgstr "Güvenli çıkış yapıldı"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "Tüm oturum verileri bu cihazdan güvenli bir şekilde silindi."
+
+msgid "Email still active"
+msgstr "E-posta hâlâ aktif"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "Yeni talepler her zaman e-posta ile gönderilebilir."
+
+msgid "Your tickets are safe"
+msgstr "Talepleriniz güvende"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "Açık talepleriniz kaydedilmiş olarak kalır ve işlenmeye devam eder."
+
+msgid "Want to sign in again?"
+msgstr "Tekrar giriş yapmak ister misiniz?"
+

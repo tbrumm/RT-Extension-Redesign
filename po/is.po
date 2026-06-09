@@ -98,3 +98,37 @@ msgstr "Greinar"
 
 msgid "Statistics updated twice daily. Last update: %1"
 msgstr "Tölfræði uppfærð tvisvar á dag. Síðasta uppfærsla: %1"
+
+msgid "Successfully logged out"
+msgstr "Útskráning tókst"
+
+msgid "Goodbye, %1. See you next time!"
+msgstr "Bless, %1. Við sjáumst!"
+
+msgid "Your session has been securely closed."
+msgstr "Seta þín var lokað á öruggan hátt."
+
+msgid "Redirecting to login in %1 seconds."
+msgstr "Beint á innskráningarsíðu eftir %1 sekúndur."
+
+msgid "Securely logged out"
+msgstr "Örugglega útskráð"
+
+msgid "All session data has been securely deleted from this device."
+msgstr "Öll setugögn hafa verið eytt á öruggan hátt af þessum tæki."
+
+msgid "Email still active"
+msgstr "Tölvupóstur er enn virkur"
+
+msgid "New tickets can be submitted at any time by sending an email."
+msgstr "Hægt er að senda ný mál hvenær sem er með tölvupósti."
+
+msgid "Your tickets are safe"
+msgstr "Mál þín eru örugg"
+
+msgid "Your open tickets remain saved and continue to be processed."
+msgstr "Opin mál þín eru enn vistuð og eru áfram í vinnslu."
+
+msgid "Want to sign in again?"
+msgstr "Viltu skrá þig inn aftur?"
+
