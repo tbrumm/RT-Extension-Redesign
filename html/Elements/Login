@@ -589,10 +589,17 @@ html:has(#body.login-body) hr.clear { display: none; }
 </div>
 
 <%init>
-our ($login_stats_cache, $login_stats_cache_time);
-my $CACHE_TTL = 6 * 3600;
+my ($priv_count, $unpriv_count, $grp_count, $q_count,
+    $t_count, $txn_count, $asset_count, $article_count);
 
-if (!$login_stats_cache || (time() - ($login_stats_cache_time // 0)) > $CACHE_TTL) {
+my $attr = RT->System->FirstAttribute('AdminDashboardStats');
+my $s    = $attr ? $attr->Content->{login} : undef;
+
+if ($s) {
+    ($priv_count, $unpriv_count, $grp_count, $q_count,
+     $t_count, $txn_count, $asset_count, $article_count)
+        = @{$s}{qw(priv unpriv groups queues tickets txns assets articles)};
+} else {
     my $su = RT->SystemUser;
 
     my $pu = RT::Users->new($su); $pu->LimitToPrivileged;
@@ -602,26 +609,13 @@ if (!$login_stats_cache || (time() - ($login_stats_cache_time // 0)) > $CACHE_TT
     my $t   = RT::Tickets->new($su); $t->UnLimit;
     my $txn = RT::Transactions->new($su); $txn->UnLimit;
 
-    my ($ac, $artc) = (0, 0);
-    eval { my $a = RT::Assets->new($su); $a->UnLimit; $ac = $a->Count; };
-    eval { my $a = RT::Articles->new($su); $a->UnLimit; $artc = $a->Count; };
+    ($asset_count, $article_count) = (0, 0);
+    eval { my $a = RT::Assets->new($su);   $a->UnLimit; $asset_count   = $a->Count; };
+    eval { my $a = RT::Articles->new($su); $a->UnLimit; $article_count = $a->Count; };
 
-    $login_stats_cache = {
-        priv     => $pu->Count,
-        unpriv   => $uu->Count,
-        groups   => $grp->Count,
-        queues   => $q->Count,
-        tickets  => $t->Count,
-        txns     => $txn->Count,
-        assets   => $ac,
-        articles => $artc,
-    };
-    $login_stats_cache_time = time();
+    ($priv_count, $unpriv_count, $grp_count, $q_count, $t_count, $txn_count)
+        = ($pu->Count, $uu->Count, $grp->Count, $q->Count, $t->Count, $txn->Count);
 }
-
-my ($priv_count, $unpriv_count, $grp_count, $q_count,
-    $t_count, $txn_count, $asset_count, $article_count) =
-    @{$login_stats_cache}{qw(priv unpriv groups queues tickets txns assets articles)};
 
 my $fmt = sub {
     my $s = reverse sprintf('%d', int($_[0]));

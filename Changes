@@ -1,3 +1,7 @@
+0.05 2026-06-09
+  - Login page reads stats from AdminDashboard RT::Attribute instead of running
+    ORM queries on every page load; falls back to ORM if attribute not present
+
 0.02 2026-06-05
   - Modern page templates: Admin portal, Tools, Reports, Search Simple
   - Component CSS system: .sc, .ic, .mc, .rrt-*, .ss-* classes
