@@ -1,3 +1,7 @@
+0.06 2026-06-09
+  - Add cache freshness notice below login stats grid (clock icon + last update timestamp)
+  - Localized: German translation added to po/de.po
+
 0.05 2026-06-09
   - Login page reads stats from AdminDashboard RT::Attribute instead of running
     ORM queries on every page load; falls back to ORM if attribute not present

@@ -339,6 +339,16 @@ html:has(#body.login-body) hr.clear { display: none; }
     margin-top: 0.1rem;
 }
 
+.rd-stats-note {
+    font-size: 0.72rem;
+    color: var(--bs-secondary-color, #6c757d);
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    opacity: 0.8;
+}
+
 .rd-login-right-inner {
     width: 100%;
 }
@@ -511,6 +521,12 @@ html:has(#body.login-body) hr.clear { display: none; }
           <span class="rd-stat-lbl"><% loc('Articles') %></span>
         </div>
       </div>
+% if ($refreshed_fmt) {
+      <p class="rd-stats-note">
+        <i class="bi bi-clock"></i>
+        <% loc('Statistics updated twice daily. Last update: [_1]', $refreshed_fmt) %>
+      </p>
+% }
     </div>
 
   </div>
@@ -595,10 +611,17 @@ my ($priv_count, $unpriv_count, $grp_count, $q_count,
 my $attr = RT->System->FirstAttribute('AdminDashboardStats');
 my $s    = $attr ? $attr->Content->{login} : undef;
 
+my ($refreshed_at, $refreshed_fmt);
+
 if ($s) {
     ($priv_count, $unpriv_count, $grp_count, $q_count,
      $t_count, $txn_count, $asset_count, $article_count)
         = @{$s}{qw(priv unpriv groups queues tickets txns assets articles)};
+    $refreshed_at  = $attr->Content->{refreshed_at};
+    if ($refreshed_at) {
+        use POSIX qw(strftime);
+        $refreshed_fmt = strftime("%d.%m.%Y %H:%M", localtime($refreshed_at));
+    }
 } else {
     my $su = RT->SystemUser;
 
