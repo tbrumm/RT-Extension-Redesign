@@ -1,3 +1,13 @@
+0.07 2026-06-09
+  - Merged all functionality from RT-Extension-AdminDashboard (now archived)
+  - collect_stats() moved into Redesign.pm; AdminDashboard dependency removed
+  - Added bin/rt-redesign-stats-refresh (replaces rt-admin-dashboard-refresh)
+  - Admin/Elements/AdminDashboardCSS, AdminDashboardJS, Portal added
+  - Admin/Global/LoginBanner.html and PrivilegedMainNav callback added
+  - Callbacks/Redesign/Elements/Login/BeforeForm added (maintenance banner)
+  - Admin/index.html: user query fixed (GroupMembers, not CachedGroupMembers)
+  - Admin/index.html: added stat-card row for Priv/Unpriv Users, Queues, Groups
+
 0.06 2026-06-09
   - Add cache freshness notice below login stats grid (clock icon + last update timestamp)
   - Localized: German translation added to po/de.po

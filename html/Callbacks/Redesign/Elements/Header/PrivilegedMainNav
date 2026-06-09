@@ -1,0 +1,11 @@
+<%init>
+my $menu = Menu()                    or return;
+my $admin = $menu->child('admin')    or return;
+my $admin_global = $admin->child('global') or return;
+
+$admin_global->child( 'login-banner' =>
+    title       => loc('Login Banner'),
+    description => loc('Enable or disable the maintenance banner on the login page'),
+    path        => '/Admin/Global/LoginBanner.html',
+);
+</%init>

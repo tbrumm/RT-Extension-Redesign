@@ -1,0 +1,114 @@
+<%init>
+use POSIX qw(strftime);
+
+my $attr = RT->System->FirstAttribute('MaintenanceBannerData');
+my $data = $attr ? $attr->Content : {};
+
+# Fallback to old attribute if no new data yet
+unless (keys %$data) {
+    my $old = RT->System->FirstAttribute('MaintenanceBannerEnabled');
+    $data->{enabled} = $old ? $old->Content : 1;
+}
+
+my $enabled = exists $data->{enabled} ? $data->{enabled} : 1;
+return unless $enabled;
+
+# Auto-disable if expiry date has passed
+if ($data->{expiry}) {
+    my $today = strftime('%Y-%m-%d', localtime);
+    if ($data->{expiry} lt $today) {
+        $data->{enabled} = 0;
+        RT->System->SetAttribute(Name => 'MaintenanceBannerData', Content => $data);
+        RT->System->SetAttribute(Name => 'MaintenanceBannerEnabled', Content => 0);
+        return;
+    }
+}
+
+my $headline   = $data->{headline}   // 'Willkommen im neuen RT&nbsp;6 &nbsp;&bull;&nbsp; Welcome to the new RT&nbsp;6';
+my $content_de = $data->{content_de} // '<p>Willkommen auf der neuen RT&nbsp;6 Plattform. Damit Ihr Euch mit der aktualisierten Oberfl&auml;che, den neuen Funktionen und den verbesserten Workflows schnell zurechtfindet, bitten wir Euch, vorab einen Blick in die bereitgestellte Dokumentation zu werfen.</p>
+<p><strong>Bitte startet hier:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2066631064/RT6" target="_blank">https://wiki.int.kn/spaces/rt/pages/2066631064/RT6</a></p>
+<p><strong>Eine &Uuml;bersicht der wichtigsten neuen Funktionen:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2065901193/Introducing+RT+6" target="_blank">https://wiki.int.kn/spaces/rt/pages/2065901193/Introducing+RT+6</a></p>
+<p><strong>Den ausf&uuml;hrlichen User Guide f&uuml;r die t&auml;gliche Arbeit:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide" target="_blank">https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide</a></p>
+<p>Ein paar Minuten in diese Dokumentation zu investieren, hilft Euch dabei, RT&nbsp;6 schneller und effizienter zu nutzen.</p>';
+my $content_en = $data->{content_en} // '<p>Welcome to the new RT&nbsp;6 platform. To help you get familiar with the updated interface, new features, and improved workflows, we kindly ask you to review the available documentation before you start working with the system.</p>
+<p><strong>Please start here:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2066631064/RT6" target="_blank">https://wiki.int.kn/spaces/rt/pages/2066631064/RT6</a></p>
+<p><strong>For an overview of the most important new features:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2065901193/Introducing+RT+6" target="_blank">https://wiki.int.kn/spaces/rt/pages/2065901193/Introducing+RT+6</a></p>
+<p><strong>For the full User Guide for day-to-day usage:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide" target="_blank">https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide</a></p>
+<p>Taking a few minutes to review these pages will help you navigate RT&nbsp;6 more easily and make the best use of the new functionality.</p>';
+</%init>
+<style>
+.kn-welcome-banner {
+    margin: 0 auto 1.5rem auto;
+    width: 90%;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    border: 1px solid var(--bs-border-color);
+    font-size: 0.875rem;
+}
+.kn-welcome-header {
+    background: #2D4A8F;
+    color: #fff;
+    padding: 0.8rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.kn-welcome-header-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+.kn-welcome-header h2 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+    color: #fff !important;
+}
+.kn-welcome-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--bs-body-bg);
+}
+.kn-welcome-cell {
+    padding: 1rem 1.25rem;
+    color: var(--bs-body-color);
+    line-height: 1.6;
+}
+.kn-welcome-cell-de {
+    border-right: 1px solid var(--bs-border-color);
+}
+.kn-welcome-cell h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #2D4A8F;
+    opacity: 0.9;
+}
+[data-bs-theme=dark] .kn-welcome-cell h3 { color: #7ba3d4; }
+.kn-welcome-cell p { margin: 0 0 0.6rem 0; color: var(--bs-body-color); }
+.kn-welcome-cell p:last-child { margin-bottom: 0; }
+.kn-welcome-cell a { color: var(--bs-link-color); word-break: break-all; }
+.kn-welcome-cell a:hover { color: var(--bs-link-hover-color); }
+</style>
+
+<div class="kn-welcome-banner">
+  <div class="kn-welcome-header">
+    <span class="kn-welcome-header-icon">&#10003;</span>
+    <h2><% $headline |n %></h2>
+  </div>
+  <div class="kn-welcome-body">
+    <div class="kn-welcome-cell kn-welcome-cell-de">
+      <h3>&#127465;&#127466; Deutsch</h3>
+      <% $content_de |n %>
+    </div>
+    <div class="kn-welcome-cell">
+      <h3>&#127468;&#127463; English</h3>
+      <% $content_en |n %>
+    </div>
+  </div>
+</div>

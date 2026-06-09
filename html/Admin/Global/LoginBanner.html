@@ -1,0 +1,241 @@
+<%init>
+use JSON ();
+use POSIX qw(strftime);
+
+if ($ARGS{SaveBannerSettings}) {
+    $m->abort unless $session{CurrentUser}->HasRight(Right => 'SuperUser', Object => $RT::System);
+
+    my $expiry = $ARGS{BannerExpiry} || undef;
+    # SelectDate returns 'YYYY-MM-DD HH:MM' — keep only the date part
+    $expiry =~ s/\s.*// if $expiry;
+    $expiry = undef if $expiry && $expiry !~ /^\d{4}-\d{2}-\d{2}$/;
+
+    my $data = {
+        enabled    => $ARGS{MaintenanceBannerEnabled} ? 1 : 0,
+        expiry     => $expiry,
+        headline   => $ARGS{BannerHeadline},
+        content_de => $ARGS{BannerContentDE},
+        content_en => $ARGS{BannerContentEN},
+    };
+    RT->System->SetAttribute(Name => 'MaintenanceBannerData',    Content => $data);
+    RT->System->SetAttribute(Name => 'MaintenanceBannerEnabled', Content => $data->{enabled});
+}
+
+my $attr = RT->System->FirstAttribute('MaintenanceBannerData');
+my $data = $attr ? $attr->Content : {};
+
+unless (keys %$data) {
+    my $old = RT->System->FirstAttribute('MaintenanceBannerEnabled');
+    $data->{enabled} = $old ? $old->Content : 1;
+}
+
+my $banner_enabled = exists $data->{enabled} ? $data->{enabled} : 1;
+my $banner_expiry  = $data->{expiry} // '';
+
+# Check if currently expired
+my $is_expired = 0;
+if ($banner_expiry) {
+    my $today = strftime('%Y-%m-%d', localtime);
+    $is_expired = ($banner_expiry lt $today) ? 1 : 0;
+}
+
+my $banner_headline   = $data->{headline}   // 'Willkommen im neuen RT&nbsp;6 &nbsp;&bull;&nbsp; Welcome to the new RT&nbsp;6';
+my $banner_content_de = $data->{content_de} // '<p>Willkommen auf der neuen RT&nbsp;6 Plattform. Damit Ihr Euch mit der aktualisierten Oberfl&auml;che, den neuen Funktionen und den verbesserten Workflows schnell zurechtfindet, bitten wir Euch, vorab einen Blick in die bereitgestellte Dokumentation zu werfen.</p>
+<p><strong>Bitte startet hier:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2066631064/RT6" target="_blank">https://wiki.int.kn/spaces/rt/pages/2066631064/RT6</a></p>
+<p><strong>Eine &Uuml;bersicht der wichtigsten neuen Funktionen:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2065901193/Introducing+RT+6" target="_blank">https://wiki.int.kn/spaces/rt/pages/2065901193/Introducing+RT+6</a></p>
+<p><strong>Den ausf&uuml;hrlichen User Guide f&uuml;r die t&auml;gliche Arbeit:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide" target="_blank">https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide</a></p>
+<p>Ein paar Minuten in diese Dokumentation zu investieren, hilft Euch dabei, RT&nbsp;6 schneller und effizienter zu nutzen.</p>';
+my $banner_content_en = $data->{content_en} // '<p>Welcome to the new RT&nbsp;6 platform. To help you get familiar with the updated interface, new features, and improved workflows, we kindly ask you to review the available documentation before you start working with the system.</p>
+<p><strong>Please start here:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2066631064/RT6" target="_blank">https://wiki.int.kn/spaces/rt/pages/2066631064/RT6</a></p>
+<p><strong>For an overview of the most important new features:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2065901193/Introducing+RT+6" target="_blank">https://wiki.int.kn/spaces/rt/pages/2065901193/Introducing+RT+6</a></p>
+<p><strong>For the full User Guide for day-to-day usage:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide" target="_blank">https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide</a></p>
+<p>Taking a few minutes to review these pages will help you navigate RT&nbsp;6 more easily and make the best use of the new functionality.</p>';
+</%init>
+<& /Admin/Elements/Header, Title => loc('Login Banner') &>
+<& /Elements/Tabs &>
+
+<div class="rt-admin-db">
+<form method="POST" action="<% RT->Config->Get('WebPath') %>/Admin/Global/LoginBanner.html" hx-boost="false">
+  <input type="hidden" name="SaveBannerSettings" value="1">
+
+  <div class="row g-3">
+
+    <!-- Status + Expiry -->
+    <div class="col-12">
+      <div class="ic">
+        <div class="ic__hd"><i class="bi bi-toggles me-2"></i><% loc('Banner Settings') %></div>
+        <div class="ic__bd" style="padding:1.25rem">
+          <div class="row g-3 align-items-center">
+
+            <div class="col-md-4">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch"
+                       id="bannerEnabled" name="MaintenanceBannerEnabled" value="1"
+                       <% $banner_enabled ? 'checked' : '' %>>
+                <label class="form-check-label fw-semibold" for="bannerEnabled">
+                  <% loc('Banner active') %>
+                </label>
+              </div>
+% if ($is_expired) {
+              <div class="mt-1" style="font-size:0.82rem;color:var(--bs-danger)">
+                <i class="bi bi-exclamation-triangle-fill me-1"></i><% loc('Expired - banner was automatically deactivated') %>
+              </div>
+% }
+            </div>
+
+            <div class="col-md-8">
+              <label class="form-label fw-semibold mb-1" for="BannerExpiry_Date">
+                <i class="bi bi-calendar-event me-1"></i><% loc('Show banner until (leave empty for no expiry)') %>
+              </label>
+              <& /Elements/SelectDate,
+                  Name     => 'BannerExpiry',
+                  Default  => $banner_expiry,
+                  ShowTime => 0
+              &>
+% if ($banner_expiry && !$is_expired) {
+              <div class="mt-1" style="font-size:0.82rem;color:var(--bs-secondary-color)">
+                <i class="bi bi-clock me-1"></i><% loc('Banner will be automatically deactivated on [_1]', $banner_expiry) %>
+              </div>
+% }
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Headline -->
+    <div class="col-12">
+      <div class="ic">
+        <div class="ic__hd"><i class="bi bi-type-h1 me-2"></i><% loc('Headline') %></div>
+        <div class="ic__bd" style="padding:1.25rem">
+          <label class="form-label" for="BannerHeadline"><% loc('Displayed in the banner header bar (HTML allowed)') %></label>
+          <input type="text" class="form-control" id="BannerHeadline" name="BannerHeadline"
+                 value="<% $banner_headline |h %>">
+        </div>
+      </div>
+    </div>
+
+    <!-- German Content -->
+    <div class="col-md-6">
+      <div class="ic" style="height:100%">
+        <div class="ic__hd"><i class="bi bi-flag me-2"></i>&#127465;&#127466; <% loc('German Content') %></div>
+        <div class="ic__bd" style="padding:1.25rem">
+          <label class="form-label" for="BannerContentDE"><% loc('HTML allowed') %></label>
+          <textarea class="form-control font-monospace" id="BannerContentDE" name="BannerContentDE"
+                    rows="12" style="font-size:0.8rem"><% $banner_content_de |h %></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- English Content -->
+    <div class="col-md-6">
+      <div class="ic" style="height:100%">
+        <div class="ic__hd"><i class="bi bi-flag me-2"></i>&#127468;&#127463; <% loc('English Content') %></div>
+        <div class="ic__bd" style="padding:1.25rem">
+          <label class="form-label" for="BannerContentEN"><% loc('HTML allowed') %></label>
+          <textarea class="form-control font-monospace" id="BannerContentEN" name="BannerContentEN"
+                    rows="12" style="font-size:0.8rem"><% $banner_content_en |h %></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Save -->
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">
+        <i class="bi bi-floppy-fill me-2"></i><% loc('Save') %>
+      </button>
+    </div>
+
+    <!-- Preview -->
+    <div class="col-12">
+      <div class="ic">
+        <div class="ic__hd"><i class="bi bi-eye-fill me-2"></i><% loc('Preview') %></div>
+        <div class="ic__bd" style="padding:1.25rem">
+
+<style>
+.kn-preview-banner {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    border: 1px solid var(--bs-border-color);
+    font-size: 0.875rem;
+}
+.kn-preview-header {
+    background: #2D4A8F;
+    color: #fff;
+    padding: 0.8rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.kn-preview-header-icon { font-size: 1.5rem; line-height: 1; flex-shrink: 0; }
+.kn-preview-header h2 {
+    margin: 0; font-size: 1rem; font-weight: 700;
+    line-height: 1.3; letter-spacing: 0.01em; color: #fff !important;
+}
+.kn-preview-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--bs-body-bg);
+}
+.kn-preview-cell {
+    padding: 1rem 1.25rem;
+    color: var(--bs-body-color);
+    line-height: 1.6;
+}
+.kn-preview-cell-de { border-right: 1px solid var(--bs-border-color); }
+.kn-preview-cell h3 {
+    margin: 0 0 0.5rem 0; font-size: 0.75rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: #2D4A8F; opacity: 0.9;
+}
+[data-bs-theme=dark] .kn-preview-cell h3 { color: #7ba3d4; }
+.kn-preview-cell p { margin: 0 0 0.6rem 0; }
+.kn-preview-cell p:last-child { margin-bottom: 0; }
+.kn-preview-cell a { color: var(--bs-link-color); word-break: break-all; }
+</style>
+
+<div class="kn-preview-banner">
+  <div class="kn-preview-header">
+    <span class="kn-preview-header-icon">&#10003;</span>
+    <h2 id="preview-headline"></h2>
+  </div>
+  <div class="kn-preview-body">
+    <div class="kn-preview-cell kn-preview-cell-de">
+      <h3>&#127465;&#127466; Deutsch</h3>
+      <div id="preview-content-de"></div>
+    </div>
+    <div class="kn-preview-cell">
+      <h3>&#127468;&#127463; English</h3>
+      <div id="preview-content-en"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+    function updatePreview() {
+        document.getElementById('preview-headline').innerHTML =
+            document.getElementById('BannerHeadline').value;
+        document.getElementById('preview-content-de').innerHTML =
+            document.getElementById('BannerContentDE').value;
+        document.getElementById('preview-content-en').innerHTML =
+            document.getElementById('BannerContentEN').value;
+    }
+    ['BannerHeadline', 'BannerContentDE', 'BannerContentEN'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.addEventListener('input', updatePreview);
+    });
+    updatePreview();
+}());
+</script>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+</div>
+
+<& /Admin/Elements/AdminDashboardCSS &>

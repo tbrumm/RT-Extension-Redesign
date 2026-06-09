@@ -48,14 +48,15 @@ if ($_stats_expires && time() < $_stats_expires) {
         "SELECT COUNT(*) FROM Groups WHERE Domain = 'UserDefined'"
     );
 
-    # Users priv + unpriv in one JOIN query, split by group id
+    # Users priv + unpriv via GroupMembers directly (CachedGroupMembers is not
+    # updated when users are imported via direct SQL, so we bypass the cache)
     my $u_rows = $dbh->selectall_arrayref(
-        "SELECT cgm.ImmediateParentId, COUNT(DISTINCT u.id)
+        "SELECT gm.GroupId, COUNT(DISTINCT u.id)
          FROM Users u
-         JOIN CachedGroupMembers cgm ON cgm.MemberId = u.id
+         JOIN GroupMembers gm ON gm.MemberId = u.id
          JOIN Principals p ON p.id = u.id
-         WHERE cgm.ImmediateParentId IN (4, 5) AND p.Disabled = 0 AND u.id > 2
-         GROUP BY cgm.ImmediateParentId"
+         WHERE gm.GroupId IN (4, 5) AND p.Disabled = 0 AND u.id > 2
+         GROUP BY gm.GroupId"
     );
     my %ug; $ug{$_->[0]} = $_->[1] for @$u_rows;
     $users_privileged   = $ug{4} // 0;
@@ -177,6 +178,43 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
 
   </div>
 
+  <!-- User / Queue / Group stat cards -->
+  <div class="row g-2 mb-3">
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--priv">
+        <i class="bi bi-person-check-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $users_privileged %>">0</div>
+        <div class="sc__lbl"><% loc('Privileged Users') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--unpriv">
+        <i class="bi bi-people-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $users_unprivileged %>">0</div>
+        <div class="sc__lbl"><% loc('Unprivileged Users') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--queues">
+        <i class="bi bi-collection-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $queues_active %>">0</div>
+        <div class="sc__lbl"><% loc('Active Queues') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--groups">
+        <i class="bi bi-diagram-3-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $groups_count %>">0</div>
+        <div class="sc__lbl"><% loc('Groups') %></div>
+      </div>
+    </div>
+
+  </div>
+
   <!-- Info cards -->
   <div class="row g-2 mb-4">
 
@@ -259,8 +297,12 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
 .sc--active   { background: linear-gradient(135deg,#155e75,#22d3ee); }
 .sc--resolved { background: linear-gradient(135deg,#14532d,#22c55e); }
 .sc--deleted  { background: linear-gradient(135deg,#374151,#9ca3af); }
+.sc--priv     { background: linear-gradient(135deg,#1e3a5f,#2563eb); }
+.sc--unpriv   { background: linear-gradient(135deg,#3b0764,#9333ea); }
+.sc--queues   { background: linear-gradient(135deg,#164e63,#0891b2); }
+.sc--groups   { background: linear-gradient(135deg,#4a1d96,#7c3aed); }
 </style>
-
-<& /Redesign/JS &>
+<& /Admin/Elements/AdminDashboardCSS &>
+<& /Admin/Elements/AdminDashboardJS &>
 
 % $m->callback( CallbackName => 'AfterRTPortal', ARGSRef => \%ARGS );

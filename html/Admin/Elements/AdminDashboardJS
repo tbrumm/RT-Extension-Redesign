@@ -1,0 +1,26 @@
+<script>
+(function () {
+  var $ = jQuery;
+  function runCounters(root) {
+    (root || document).querySelectorAll('[data-counter]').forEach(function (el) {
+      var target = parseInt(el.dataset.counter, 10) || 0;
+      if (target === 0) { el.textContent = '0'; return; }
+      var steps = 28, step = 0;
+      var timer = setInterval(function () {
+        step++;
+        el.textContent = (step >= steps ? target : Math.round(target * step / steps))
+                           .toLocaleString('de-DE');
+        if (step >= steps) clearInterval(timer);
+      }, 600 / steps);
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () { runCounters(); });
+  } else {
+    runCounters();
+  }
+  document.addEventListener('htmx:afterSettle', function (e) {
+    if (e.detail && e.detail.elt) runCounters(e.detail.elt);
+  });
+}());
+</script>

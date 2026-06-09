@@ -6,5 +6,6 @@ author('Torsten Brumm');
 version_from('lib/RT/Extension/Redesign.pm');
 requires_rt('6.0.2');
 rt_too_new('7.0.0');
+install_script('bin/rt-redesign-stats-refresh');
 sign(0);
 WriteAll();
