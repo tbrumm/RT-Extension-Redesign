@@ -1,0 +1,438 @@
+<& /Elements/Header, Title => loc('Logout'), ShowBar => 0, ShowTitle => 0, RichText => 0, Refresh => RT->Config->Get('LogoutRefresh') &>
+
+<style>
+/* ── RT-Extension-Redesign: Logout ─────────────────────────── */
+
+html:has(#body.login-body),
+body:has(#body.login-body) { overflow: hidden; height: 100vh; margin: 0; padding: 0; background: var(--bs-body-bg); }
+
+html:has(#body.login-body) hr.clear { display: none; }
+
+#body.login-body {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.rd-login-outer { flex: 1; display: flex; overflow: hidden; }
+
+/* ── Left panel (farewell content) ─────────────────────────── */
+
+.rd-login-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--bs-body-bg);
+    padding: 2.5rem 3rem;
+    overflow-y: auto;
+}
+
+/* ── Right panel (brand + action) ───────────────────────────── */
+
+.rd-login-brand {
+    flex: 0 0 25%;
+    background: linear-gradient(150deg, #1E3875 0%, #2D4A8F 45%, #3254A0 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+}
+
+.rd-login-brand::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 380px; height: 380px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    pointer-events: none;
+}
+
+.rd-login-brand::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -100px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+}
+
+.rd-brand-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.rd-brand-monogram {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #fff;
+    background: rgba(255,255,255,0.12);
+    width: 80px; height: 80px;
+    border-radius: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.04em;
+    border: 1px solid rgba(255,255,255,0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.rd-brand-monogram img { filter: brightness(0) invert(1); }
+
+.rd-brand-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 1;
+}
+
+.rd-brand-instance {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+.rd-brand-sub {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.7) !important;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Logout action (right panel) ─────────────────────────────── */
+
+.rd-logout-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    width: 100%;
+    max-width: 220px;
+    position: relative;
+    z-index: 1;
+}
+
+.rd-logout-action-label {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    margin: 0;
+}
+
+.rd-btn-submit {
+    width: 100%;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    background: #fff;
+    border: 1px solid #fff;
+    color: #1E3875;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    transition: background 0.15s, box-shadow 0.15s;
+}
+
+.rd-btn-submit:hover {
+    background: rgba(255,255,255,0.88);
+    border-color: rgba(255,255,255,0.88);
+    color: #1E3875;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+}
+
+/* ── Farewell hero (left panel) ──────────────────────────────── */
+
+.rd-logout-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 640px;
+    width: 100%;
+}
+
+@keyframes rd-pop-in {
+    0%   { transform: scale(0.5); opacity: 0; }
+    70%  { transform: scale(1.1); }
+    100% { transform: scale(1);   opacity: 1; }
+}
+
+.rd-logout-icon-wrap {
+    animation: rd-pop-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    margin-bottom: 1.5rem;
+}
+
+.rd-logout-icon {
+    width: 92px; height: 92px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a7d4d 0%, #20c997 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 32px rgba(25, 135, 84, 0.3);
+    color: #fff;
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.rd-logout-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--bs-body-color);
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.03em;
+}
+
+.rd-logout-sub {
+    font-size: 1rem;
+    color: var(--bs-secondary-color, #6c757d);
+    margin: 0 0 1.5rem;
+    line-height: 1.6;
+}
+
+.rd-logout-sub strong { color: var(--bs-body-color); }
+
+.rd-logout-redirect {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.82rem;
+    color: var(--bs-secondary-color, #6c757d);
+    background: var(--bs-tertiary-bg, rgba(0,0,0,0.04));
+    border: 1px solid var(--bs-border-color);
+    border-radius: 2rem;
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 2rem;
+}
+
+.rd-logout-redirect strong { color: var(--bs-body-color); }
+
+/* ── Info cards ───────────────────────────────────────────────── */
+
+.rd-logout-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.rd-logout-card {
+    background: var(--bs-tertiary-bg, rgba(0,0,0,0.04));
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.65rem;
+    padding: 1.1rem 1rem;
+    text-align: left;
+}
+
+.rd-logout-card i {
+    font-size: 1.4rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.rd-logout-card h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--bs-body-color);
+    margin: 0 0 0.3rem;
+}
+
+.rd-logout-card p {
+    font-size: 0.76rem;
+    color: var(--bs-secondary-color, #6c757d);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ── Mobile ───────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .rd-login-outer  { flex-direction: column; height: auto; overflow: visible; min-height: 100vh; }
+    .rd-login-brand  { flex: none; overflow-y: visible; padding: 2rem 1.5rem; }
+    .rd-login-right  { padding: 1.5rem 1rem; justify-content: flex-start; padding-top: 2.5rem; }
+    .rd-logout-cards { grid-template-columns: 1fr; }
+    .rd-logout-title { font-size: 1.5rem; }
+}
+</style>
+
+<div id="body" class="login-body">
+<div class="rd-login-outer">
+
+  <!-- Left: farewell content -->
+  <div class="rd-login-right">
+  <div class="rd-logout-content">
+
+    <div class="rd-logout-icon-wrap">
+      <div class="rd-logout-icon">
+        <i class="bi bi-check-lg"></i>
+      </div>
+    </div>
+
+    <h1 class="rd-logout-title"><% loc('Successfully logged out') %></h1>
+% if ($username) {
+    <p class="rd-logout-sub"><% loc('Goodbye, [_1]. See you next time!', "<strong>$username</strong>") |n %></p>
+% } else {
+    <p class="rd-logout-sub"><% loc('Your session has been securely closed.') %></p>
+% }
+
+% if (RT->Config->Get('LogoutRefresh')) {
+    <p class="rd-logout-redirect">
+      <i class="bi bi-arrow-clockwise"></i>
+      <% loc('Redirecting to login in [_1] seconds.', '<strong id="rd-countdown">' . RT->Config->Get('LogoutRefresh') . '</strong>') |n %>
+    </p>
+% }
+
+    <div class="rd-logout-cards">
+      <div class="rd-logout-card">
+        <i class="bi bi-shield-check" style="color:#198754"></i>
+        <h4><% loc('Securely logged out') %></h4>
+        <p><% loc('All session data has been securely deleted from this device.') %></p>
+      </div>
+      <div class="rd-logout-card">
+        <i class="bi bi-envelope-at" style="color:#2D4A8F"></i>
+        <h4><% loc('Email still active') %></h4>
+        <p><% loc('New tickets can be submitted at any time by sending an email.') %></p>
+      </div>
+      <div class="rd-logout-card">
+        <i class="bi bi-ticket-perforated" style="color:#fd7e14"></i>
+        <h4><% loc('Your tickets are safe') %></h4>
+        <p><% loc('Your open tickets remain saved and continue to be processed.') %></p>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+% if (RT->Config->Get('LogoutRefresh')) {
+<script>
+(function() {
+    var el = document.getElementById('rd-countdown');
+    if (!el) return;
+    var count = parseInt(el.textContent, 10);
+    if (!count) return;
+    var timer = setInterval(function() {
+        count--;
+        el.textContent = count;
+        if (count <= 0) clearInterval(timer);
+    }, 1000);
+}());
+</script>
+% }
+
+  <!-- Right: brand + login again -->
+  <div class="rd-login-brand">
+
+    <div class="rd-brand-top">
+      <div class="rd-brand-monogram">
+        <img src="<% RT->Config->Get('WebPath') %>/static/images/request-tracker-small-logo.svg"
+             alt="RT" style="width:48px;height:48px;">
+      </div>
+      <h1 class="rd-brand-title">Request Tracker</h1>
+      <p class="rd-brand-instance"><% RT->Config->Get('rtname') %></p>
+      <p class="rd-brand-sub"><% loc('Support requests organized, managed and processed efficiently.') %></p>
+    </div>
+
+    <div class="rd-logout-action">
+      <p class="rd-logout-action-label"><% loc('Want to sign in again?') %></p>
+      <a href="<% RT->Config->Get('WebPath') %>/" class="rd-btn-submit">
+        <i class="bi bi-box-arrow-in-right"></i>
+        <% loc('Sign in') %>
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+% $m->callback( %ARGS );
+
+<& /Elements/Footer, Menu => 0 &>
+</div>
+
+% $m->abort();
+
+<%INIT>
+my $URL = RT->Config->Get('WebPath')."/";
+
+$m->callback( %ARGS, CallbackName => 'BeforeSessionDelete' );
+
+my $username;
+my $remote_addr
+    = RT::Interface::Web::RequestENV('HTTP_X_FORWARDED_FOR') || RT::Interface::Web::RequestENV('REMOTE_ADDR');
+if (keys %session) {
+    $username = $session{'CurrentUser'}->Name;
+    my $externally_authed = $session{'WebExternallyAuthed'};
+
+    my $LogoutURL = RT->Config->Get('LogoutURL');
+    if ( $externally_authed && $LogoutURL
+         && $LogoutURL ne '/NoAuth/Logout.html' ) {
+        $URL = $LogoutURL;
+    }
+
+    RT::Interface::Web::InstantiateNewSession();
+    RT::Interface::Web::Session::Set(
+        Key   => 'CurrentUser',
+        Value => RT::CurrentUser->new,
+    );
+
+    if ( defined $username ) {
+        if ( $externally_authed ) {
+            RT->Logger->info("Successful cleared session for $username from $remote_addr");
+        }
+        else {
+            RT->Logger->info("Successful logout for $username from $remote_addr");
+        }
+    }
+}
+
+$m->callback( %ARGS, CallbackName => 'AfterSessionDelete' );
+$m->callback( %ARGS, CallbackName => 'ModifyLoginRedirect', URL => \$URL );
+$m->notes->{RefreshURL} = $URL;
+
+RT->Logger->debug("Redirecting to $URL");
+</%INIT>
+
+<script>
+(function() {
+    var el = document.getElementById('rd-countdown');
+    if (!el) return;
+    var count = parseInt(el.textContent, 10);
+    if (!count) return;
+    var timer = setInterval(function() {
+        count--;
+        el.textContent = count;
+        if (count <= 0) clearInterval(timer);
+    }, 1000);
+}());
+</script>

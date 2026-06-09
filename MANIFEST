@@ -3,6 +3,7 @@ Makefile.PL
 MANIFEST
 html/Callbacks/Redesign/Elements/Header/Head
 html/Elements/Login
+html/NoAuth/Logout.html
 html/NoAuth/css/redesign.css
 html/Redesign/JS
 html/Admin/index.html

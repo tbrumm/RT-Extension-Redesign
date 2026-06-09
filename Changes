@@ -1,3 +1,10 @@
+0.08 2026-06-09
+  - Redesigned Logout page: split-panel layout matching Login page
+  - Green animated checkmark hero, farewell message with username
+  - Three info cards: security, email, tickets
+  - Right panel: RT branding + "Sign in again" button
+  - Countdown script when LogoutRefresh is configured
+
 0.07 2026-06-09
   - Merged all functionality from RT-Extension-AdminDashboard (now archived)
   - collect_stats() moved into Redesign.pm; AdminDashboard dependency removed
