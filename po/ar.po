@@ -95,3 +95,6 @@ msgstr "الأصول"
 
 msgid "Articles"
 msgstr "المقالات"
+
+msgid "Statistics updated twice daily. Last update: %1"
+msgstr "تحديث الإحصائيات مرتين يومياً. آخر تحديث: %1"

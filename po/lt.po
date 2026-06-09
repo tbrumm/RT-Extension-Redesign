@@ -95,3 +95,6 @@ msgstr "Turtas"
 
 msgid "Articles"
 msgstr "Straipsniai"
+
+msgid "Statistics updated twice daily. Last update: %1"
+msgstr "Statistika atnaujinama du kartus per dieną. Paskutinis atnaujinimas: %1"

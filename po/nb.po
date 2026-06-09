@@ -95,3 +95,6 @@ msgstr "Eiendeler"
 
 msgid "Articles"
 msgstr "Artikler"
+
+msgid "Statistics updated twice daily. Last update: %1"
+msgstr "Statistikk oppdateres to ganger daglig. Siste oppdatering: %1"

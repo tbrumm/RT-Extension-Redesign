@@ -95,3 +95,6 @@ msgstr "資產"
 
 msgid "Articles"
 msgstr "文章"
+
+msgid "Statistics updated twice daily. Last update: %1"
+msgstr "統計資料每日更新兩次。最後更新：%1"

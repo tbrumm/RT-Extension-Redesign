@@ -95,3 +95,6 @@ msgstr "Aset"
 
 msgid "Articles"
 msgstr "Artikel"
+
+msgid "Statistics updated twice daily. Last update: %1"
+msgstr "Statistik diperbarui dua kali sehari. Pembaruan terakhir: %1"

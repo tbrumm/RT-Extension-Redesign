@@ -95,3 +95,6 @@ msgstr "Zasoby"
 
 msgid "Articles"
 msgstr "Artykuły"
+
+msgid "Statistics updated twice daily. Last update: %1"
+msgstr "Statystyki są aktualizowane dwa razy dziennie. Ostatnia aktualizacja: %1"

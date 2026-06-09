@@ -95,3 +95,6 @@ msgstr "Περιουσιακά Στοιχεία"
 
 msgid "Articles"
 msgstr "Άρθρα"
+
+msgid "Statistics updated twice daily. Last update: %1"
+msgstr "Τα στατιστικά ενημερώνονται δύο φορές την ημέρα. Τελευταία ενημέρωση: %1"

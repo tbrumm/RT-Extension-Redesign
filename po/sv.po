@@ -95,3 +95,6 @@ msgstr "Tillgångar"
 
 msgid "Articles"
 msgstr "Artiklar"
+
+msgid "Statistics updated twice daily. Last update: %1"
+msgstr "Statistik uppdateras två gånger dagligen. Senaste uppdatering: %1"

@@ -95,3 +95,6 @@ msgstr "Активы"
 
 msgid "Articles"
 msgstr "Статьи"
+
+msgid "Statistics updated twice daily. Last update: %1"
+msgstr "Статистика обновляется дважды в день. Последнее обновление: %1"

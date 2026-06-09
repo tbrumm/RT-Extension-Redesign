@@ -95,3 +95,6 @@ msgstr "Vagyontárgyak"
 
 msgid "Articles"
 msgstr "Cikkek"
+
+msgid "Statistics updated twice daily. Last update: %1"
+msgstr "A statisztikák naponta kétszer frissülnek. Utolsó frissítés: %1"

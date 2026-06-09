@@ -95,3 +95,6 @@ msgstr "Aktiboak"
 
 msgid "Articles"
 msgstr "Artikuluak"
+
+msgid "Statistics updated twice daily. Last update: %1"
+msgstr "Estatistikak egunean bi aldiz eguneratzen dira. Azken eguneratzea: %1"

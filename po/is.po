@@ -95,3 +95,6 @@ msgstr "Eignir"
 
 msgid "Articles"
 msgstr "Greinar"
+
+msgid "Statistics updated twice daily. Last update: %1"
+msgstr "Tölfræði uppfærð tvisvar á dag. Síðasta uppfærsla: %1"

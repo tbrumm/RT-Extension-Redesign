@@ -95,3 +95,6 @@ msgstr "دارایی‌ها"
 
 msgid "Articles"
 msgstr "مقالات"
+
+msgid "Statistics updated twice daily. Last update: %1"
+msgstr "آمار دو بار در روز به‌روزرسانی می‌شود. آخرین به‌روزرسانی: %1"

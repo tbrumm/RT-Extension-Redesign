@@ -95,3 +95,6 @@ msgstr "Actius"
 
 msgid "Articles"
 msgstr "Articles"
+
+msgid "Statistics updated twice daily. Last update: %1"
+msgstr "Estadístiques actualitzades dues vegades al dia. Última actualització: %1"

@@ -95,3 +95,6 @@ msgstr "Средства"
 
 msgid "Articles"
 msgstr "Чланци"
+
+msgid "Statistics updated twice daily. Last update: %1"
+msgstr "Статистике се ажурирају два пута дневно. Последње ажурирање: %1"
