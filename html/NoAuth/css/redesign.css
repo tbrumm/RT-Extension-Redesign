@@ -201,25 +201,6 @@ table.ticket-list .value a:hover {
     text-decoration: underline;
 }
 
-/* ── Priority color coding ───────────────────────────────────── */
-
-.ticket-info-priority-low,
-.Priority.ticket-info-priority-low {
-    color: var(--bs-secondary-color);
-    font-size: 0.85rem;
-}
-
-.ticket-info-priority-medium,
-.Priority.ticket-info-priority-medium {
-    color: #FB8C00;
-    font-weight: 600;
-}
-
-.ticket-info-priority-high,
-.Priority.ticket-info-priority-high {
-    color: #E53935;
-    font-weight: 700;
-}
 
 /* ── Ticket detail: section header icons ─────────────────────── */
 
