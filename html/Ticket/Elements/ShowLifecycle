@@ -122,10 +122,10 @@ my $wid = 'lw-' . $TicketObj->id . '-' . $queue->id;
 
 <div id="<% $wid %>" data-lc="<% $lc_json |h %>">
   <div class="lw-legend small text-muted">
-    <span><span class="lw-dot lw-dot-i"></span>Initial</span>
-    <span><span class="lw-dot lw-dot-a"></span>Active</span>
-    <span><span class="lw-dot lw-dot-n"></span>Inactive</span>
-    <span><span class="lw-dot lw-dot-c"></span>Current</span>
+    <span><span class="lw-dot lw-dot-i"></span><% loc('Initial') %></span>
+    <span><span class="lw-dot lw-dot-a"></span><% loc('Active') %></span>
+    <span><span class="lw-dot lw-dot-n"></span><% loc('Inactive') %></span>
+    <span><span class="lw-dot lw-dot-c"></span><% loc('Current') %></span>
   </div>
   <div class="lw-svg-scroll">
     <svg id="<% $wid %>-svg" class="lw-svg"
@@ -143,13 +143,13 @@ my $wid = 'lw-' . $TicketObj->id . '-' . $queue->id;
           <polygon points="0 0,8 3,0 6" class="lw-mkarr-cur"/></marker>
       </defs>
 % if (@initial) {
-      <text x="<% $xIni+$NW/2 %>" y="<% $TPAD-8 %>" text-anchor="middle" font-size="10" class="lw-col-label">Initial</text>
+      <text x="<% $xIni+$NW/2 %>" y="<% $TPAD-8 %>" text-anchor="middle" font-size="10" class="lw-col-label"><% loc('Initial') %></text>
 % }
 % if (@active) {
-      <text x="<% $xAct+($ACT_COLS*$ACT_COL_W-16)/2 %>" y="<% $TPAD-8 %>" text-anchor="middle" font-size="10" class="lw-col-label">Active</text>
+      <text x="<% $xAct+($ACT_COLS*$ACT_COL_W-16)/2 %>" y="<% $TPAD-8 %>" text-anchor="middle" font-size="10" class="lw-col-label"><% loc('Active') %></text>
 % }
 % if (@inactive) {
-      <text x="<% $xIna+$NW/2 %>" y="<% $TPAD-8 %>" text-anchor="middle" font-size="10" class="lw-col-label">Inactive</text>
+      <text x="<% $xIna+$NW/2 %>" y="<% $TPAD-8 %>" text-anchor="middle" font-size="10" class="lw-col-label"><% loc('Inactive') %></text>
 % }
 % for my $a (@arrows) {
       <path d="<% $a->{d} %>" fill="none"
@@ -170,7 +170,7 @@ my $wid = 'lw-' . $TicketObj->id . '-' . $queue->id;
     </svg>
   </div>
   <div id="<% $wid %>-info" class="small text-muted mt-1"
-       style="display:<% $SIMPLE?'none':'block' %>"><% $SIMPLE?'':'Complex lifecycle ('.$total.' statuses) — showing transitions from/to current status only.' %></div>
+       style="display:<% $SIMPLE?'none':'block' %>"><% $SIMPLE?'':loc('Complex lifecycle (%1 statuses) — showing transitions from/to current status only.', $total) %></div>
 </div>
 
 </&>
@@ -179,6 +179,12 @@ my $wid = 'lw-' . $TicketObj->id . '-' . $queue->id;
 (function(){
   var NS  = 'http://www.w3.org/2000/svg';
   var WID = '<% $wid %>';
+  var LW_LABELS = {
+    initial:  '<% loc('Initial')  |j %>',
+    active:   '<% loc('Active')   |j %>',
+    inactive: '<% loc('Inactive') |j %>',
+    complex:  '<% loc('Complex lifecycle (%1 statuses) — showing transitions from/to current status only.', '%1') |j %>'
+  };
 
   function el(tag, attrs) {
     var e = document.createElementNS(NS, tag);
@@ -278,16 +284,16 @@ my $wid = 'lw-' . $TicketObj->id . '-' . $queue->id;
     if (!NARROW) {
       var colX={}, colW={};
       var ACT_COLS2=act.length>16?3:act.length>8?2:1, ACT_W2=NW+16;
-      if(ini.length){ var x=nodes[ini[0]].x; svg.appendChild(mkLbl(x+NW/2, TPAD-8, 'Initial', lsz)); }
-      if(act.length){ var x=nodes[act[0]].x; svg.appendChild(mkLbl(x+(ACT_COLS2*ACT_W2-16)/2, TPAD-8, 'Active', lsz)); }
-      if(ina.length){ var x=nodes[ina[0]].x; svg.appendChild(mkLbl(x+NW/2, TPAD-8, 'Inactive', lsz)); }
+      if(ini.length){ var x=nodes[ini[0]].x; svg.appendChild(mkLbl(x+NW/2, TPAD-8, LW_LABELS.initial, lsz)); }
+      if(act.length){ var x=nodes[act[0]].x; svg.appendChild(mkLbl(x+(ACT_COLS2*ACT_W2-16)/2, TPAD-8, LW_LABELS.active, lsz)); }
+      if(ina.length){ var x=nodes[ina[0]].x; svg.appendChild(mkLbl(x+NW/2, TPAD-8, LW_LABELS.inactive, lsz)); }
     } else {
       var seen={};
       ['initial','active','inactive'].forEach(function(t){
         var first = Object.keys(nodes).filter(function(s){return nodes[s].type===t&&!seen[s];})[0];
         if(!first) return;
         var n=nodes[first];
-        svg.appendChild(mkLbl(PAD, n.y-3, t.charAt(0).toUpperCase()+t.slice(1), lsz-1, 'lw-sec-lbl'));
+        svg.appendChild(mkLbl(PAD, n.y-3, LW_LABELS[t] || (t.charAt(0).toUpperCase()+t.slice(1)), lsz-1, 'lw-sec-lbl'));
         seen[first]=1;
       });
     }
@@ -303,7 +309,7 @@ my $wid = 'lw-' . $TicketObj->id . '-' . $queue->id;
       else {
         if(trans[cur]) transShow[cur]=trans[cur];
         Object.keys(trans).forEach(function(f){ if((trans[f]||[]).indexOf(cur)!==-1) transShow[f]=transShow[f]||trans[f]; });
-        if(info){ info.style.display=''; info.textContent='Complex lifecycle ('+total+' statuses) — showing transitions from/to current status only.'; }
+        if(info){ info.style.display=''; info.textContent=LW_LABELS.complex.replace('%1', total); }
       }
       var bc=0, al=el('g'); svg.appendChild(al);
       Object.keys(transShow).forEach(function(from){

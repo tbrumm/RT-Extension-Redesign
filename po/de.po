@@ -571,3 +571,22 @@ msgstr "Anzeigename (optional)"
 
 msgid "items per feed (1-50)"
 msgstr "Einträge pro Feed (1-50)"
+
+msgid "No items found."
+msgstr "Keine Einträge gefunden."
+
+# LifecycleWidget translations
+msgid "Initial"
+msgstr "Initial"
+
+msgid "Active"
+msgstr "Aktiv"
+
+msgid "Inactive"
+msgstr "Inaktiv"
+
+msgid "Current"
+msgstr "Aktuell"
+
+msgid "Complex lifecycle (%1 statuses) — showing transitions from/to current status only."
+msgstr "Komplexer Lifecycle (%1 Status) — zeigt nur Übergänge vom/zum aktuellen Status."

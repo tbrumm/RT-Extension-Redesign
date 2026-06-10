@@ -230,6 +230,7 @@ my $js_prefs_url = $_j->encode($prefs_url);
   var ID       = '<% $wid | n %>';
   var FEEDS    = <% $js_feeds    | n %>;
   var FETCH    = <% $js_fetch_url | n %>;
+  var FW_NO_ITEMS = '<% loc('No items found.') |j %>';
 
   var wrap    = document.getElementById(ID);
   var sLoad   = wrap.querySelector('.fw-loading');
@@ -297,7 +298,7 @@ my $js_prefs_url = $_j->encode($prefs_url);
         li.style.color = 'var(--bs-secondary-color)';
         li.style.fontSize = '0.8rem';
         li.style.padding = '1rem';
-        li.textContent = 'No items found.';
+        li.textContent = FW_NO_ITEMS;
         ul.appendChild(li);
       }
       items.forEach(function(item) {
