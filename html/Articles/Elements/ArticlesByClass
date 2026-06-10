@@ -1,0 +1,54 @@
+% while (my $Class = $Classes->Next) {
+%   my $articles = $ArticlesByClass{ $Class->id } or next;
+%   my $search_url = RT->Config->Get('WebPath') . '/Articles/Article/Search.html?Class=' . $Class->id . '&Parent=0&HideOptions=1';
+%   my $class_name = $Class->Name;
+<& /Widgets/TitleBoxStart,
+    title    => $class_name,
+    titlehref => $search_url,
+    class    => 'articles-by-class',
+    bodyclass => '' &>
+<div class="article-cards px-2 pt-1 pb-2">
+%   my $count = 0;
+%   while (my $article = $articles->Next) {
+%     $count++;
+%     my $url = RT->Config->Get('WebPath') . '/Articles/Article/Display.html?id=' . $article->id;
+  <div class="card mb-2 article-card article-card-compact">
+    <div class="card-body py-1 px-3">
+      <div class="d-flex justify-content-between align-items-start gap-2">
+        <a href="<% $url |h %>" class="fw-semibold text-body article-card-title small"><% $article->Name |h %></a>
+        <small class="text-body-secondary text-nowrap flex-shrink-0"><% $article->LastUpdatedObj->AgeAsString |h %></small>
+      </div>
+%     my $summary = $article->Summary;
+%     if (defined $summary && length $summary) {
+      <p class="small text-body-secondary mb-0 article-card-summary" style="-webkit-line-clamp:1"><% $summary |h %></p>
+%     }
+    </div>
+  </div>
+%   }
+%   if (!$count) {
+  <div class="article-empty-state text-center text-body-secondary py-2">
+    <div class="article-empty-icon mb-1" style="font-size:1.5rem">&#xF4A6;</div>
+    <div class="small"><&|/l&>No articles found.</&></div>
+  </div>
+%   }
+</div>
+<& /Widgets/TitleBoxEnd &>
+% }
+<%INIT>
+my $rows = 3;
+
+my $Classes = RT::Classes->new($session{'CurrentUser'});
+$Classes->LimitToEnabled;
+
+my %ArticlesByClass;
+while (my $Class = $Classes->Next) {
+    next unless $Class->CurrentUserHasRight('ShowArticle');
+    my $articles = RT::Articles->new($session{'CurrentUser'});
+    $articles->Limit(FIELD => 'Class', VALUE => $Class->id);
+    $articles->RowsPerPage($rows);
+    $articles->OrderBy(FIELD => 'LastUpdated', ORDER => 'DESC');
+    $ArticlesByClass{ $Class->id } = $articles;
+}
+
+$Classes->GotoFirstItem;
+</%INIT>

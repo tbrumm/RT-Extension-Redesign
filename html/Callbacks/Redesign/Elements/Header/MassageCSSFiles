@@ -1,0 +1,6 @@
+<%ARGS>
+$CSSFiles => []
+</%ARGS>
+<%INIT>
+push @$CSSFiles, 'ticket-icons.css';
+</%INIT>

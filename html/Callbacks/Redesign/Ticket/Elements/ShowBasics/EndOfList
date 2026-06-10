@@ -1,0 +1,35 @@
+<%ARGS>
+$TicketObj => undef
+</%ARGS>
+<%INIT>
+return unless $TicketObj && !$TicketObj->QueueObj->SLADisabled;
+my $level = $TicketObj->SLA;
+return unless defined $level && length $level;
+
+my $agreements = RT->Config->Get('ServiceAgreements');
+return unless $agreements && $agreements->{Levels};
+
+my %resolve_times;
+for my $lvl ( keys %{ $agreements->{Levels} } ) {
+    my $res = $agreements->{Levels}{$lvl}{Resolve};
+    $resolve_times{$lvl} = $res->{BusinessMinutes}
+        if $res && defined $res->{BusinessMinutes};
+}
+return unless %resolve_times;
+
+my @sorted = sort { $resolve_times{$a} <=> $resolve_times{$b} } keys %resolve_times;
+my $last   = $#sorted;
+my %color_map;
+for my $i ( 0 .. $last ) {
+    my $pct = $last > 0 ? $i / $last : 0;
+    $color_map{ $sorted[$i] }
+        = $pct < 0.25 ? 'sla-critical'
+        : $pct < 0.50 ? 'sla-warning'
+        :               'sla-ok';
+}
+my $class = $color_map{$level} // 'sla-ok';
+</%INIT>
+<script>(function(){
+  var el = document.querySelector('.sla .current_value');
+  if (el) { el.classList.add('<% $class |h %>'); }
+})();</script>

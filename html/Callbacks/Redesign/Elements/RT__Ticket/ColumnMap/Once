@@ -1,0 +1,201 @@
+<%ARGS>
+$COLUMN_MAP => {}
+$GenericMap => {}
+</%ARGS>
+<%INIT>
+
+my $_show_user_with_avatar = sub {
+    my ($m, $user) = @_;
+    return $m->scomp(
+        '/Elements/ShowUser',
+        User           => $user,
+        style          => 'concise',
+        ShowUserAvatar => 1,
+        Link           => 1,
+        ShowPopover    => 1,
+    );
+};
+
+my $_role_members_with_avatar = sub {
+    my ($m, $members) = @_;
+    my @output;
+    while ( my $user = $members->Next ) {
+        push @output, \( $_show_user_with_avatar->($m, $user) );
+        push @output, \'<br>';
+    }
+    return @output;
+};
+
+# Owner: Nobody=red, current user=green, others=default
+my $ownerInColor = sub {
+    my $Ticket = shift;
+    my $owner  = $Ticket->OwnerObj;
+
+    if ( !$owner || !$owner->id || $owner->id == RT->Nobody->id ) {
+        return \'<span style="color: var(--bs-danger); font-weight: bold;">Nobody</span>';
+    }
+
+    my $name       = $m->interp->apply_escapes( $owner->Name, 'h' );
+    my $curuser_id = $session{'CurrentUser'}->id;
+
+    if ( $owner->id == $curuser_id ) {
+        return \"<span style=\"color: var(--bs-success); font-weight: bold;\">$name</span>";
+    }
+
+    return \$name;
+};
+
+$COLUMN_MAP->{Owner}{'value'}        = $ownerInColor;
+$COLUMN_MAP->{OwnerName}{'value'}    = $ownerInColor;
+$COLUMN_MAP->{'Owner.Name'}{'value'} = $ownerInColor;
+
+# Status: StatusBadge + "New Reply" when last updater is requestor or CC
+my $statusWithNewReply = sub {
+    my $Ticket = shift;
+
+    my $statusBadge = $m->scomp('/Elements/StatusBadge', Object => $Ticket);
+
+    my $LastUpdater      = $Ticket->LastUpdatedByObj->EmailAddress;
+    my $TicketRequestors = $Ticket->Requestors->MemberEmailAddressesAsString;
+    my $TicketCC         = $Ticket->Cc->MemberEmailAddressesAsString;
+    my $CurrentUser      = $session{'CurrentUser'}->EmailAddress;
+
+    if ( defined $LastUpdater ) {
+        $CurrentUser      =~ s/\++//g;
+        $LastUpdater      =~ s/\++//g;
+        $TicketRequestors =~ s/\++//g;
+        $TicketCC         =~ s/\++//g;
+
+        if (   ( $CurrentUser ne $LastUpdater && $TicketRequestors =~ /\Q$LastUpdater\E/ )
+            || ( $TicketCC =~ /\Q$LastUpdater\E/ ) )
+        {
+            my $txn = $Ticket->SeenUpTo;
+            if ($txn) {
+                my $link = RT->Config->Get('WebPath')
+                    . '/Ticket/Display.html?id=' . $Ticket->id
+                    . '&MarkAsSeen=1&Anchor=txn-' . $txn->id;
+                return \( $statusBadge
+                    . ' <a href="' . $link . '" class="badge text-bg-warning ms-1">'
+                    . loc('New Reply')
+                    . '</a>' );
+            }
+        }
+    }
+
+    return \$statusBadge;
+};
+
+$COLUMN_MAP->{Status}{value}        = $statusWithNewReply;
+$COLUMN_MAP->{ExtendedStatus}{value} = sub {
+    my $Ticket = shift;
+
+    my $unresolved_dependencies = $Ticket->UnresolvedDependencies;
+    my $count = $unresolved_dependencies->Count;
+    if ( $count ) {
+        if (   $Ticket->HasUnresolvedDependencies( Type => 'approval' )
+            or $Ticket->HasUnresolvedDependencies( Type => 'code' ) )
+        {
+            return \'<span class="badge pending-ticket-badge">', loc('(pending approval)'), \'</span>';
+        }
+        else {
+            my $Query = "DependedOnBy = " . $Ticket->id . " AND Status = '__Active__'";
+            my $SearchURL = RT->Config->Get('WebPath') . '/Search/Results.html?'
+                . $m->comp('/Elements/QueryString', Query => $Query);
+
+            if ($count == 1) {
+                my $pending_ticket = $unresolved_dependencies->Next;
+                if ($pending_ticket) {
+                    my $pending_ticket_url = RT->Config->Get('WebPath')
+                        . '/Ticket/Display.html?id=' . $pending_ticket->id;
+                    return \'<a href="', $pending_ticket_url,
+                           \'" class="badge pending-ticket-badge">',
+                           loc('(pending ticket #[_1])', $pending_ticket->id),
+                           \'</a>';
+                }
+            }
+
+            return \'<a href="', $SearchURL,
+                   \'" class="badge pending-ticket-badge">',
+                   loc('(pending [quant,_1,other ticket,other tickets])', $count),
+                   \'</a>';
+        }
+    }
+    else {
+        return $statusWithNewReply->($Ticket);
+    }
+};
+
+# Due date: green (>24h), yellow (0–24h), red (overdue) – badge style in search
+my $_due_badge = sub {
+    my ($Ticket, $str) = @_;
+    my $date = $Ticket->DueObj;
+    return $str unless $date && $date->IsSet
+        && $Ticket->QueueObj->IsActiveStatus($Ticket->Status);
+    my $diff  = $date->Diff;
+    my $state = $diff <= 0     ? 'due-overdue'
+              : $diff <= 86400 ? 'due-soon'
+              :                  'due-ok';
+    my $escaped = $m->interp->apply_escapes($str, 'h');
+    return \"<span class=\"badge $state\">$escaped</span>";
+};
+
+$COLUMN_MAP->{Due}{value} = sub {
+    my $Ticket = shift;
+    return $_due_badge->($Ticket, $Ticket->DueObj->AsString);
+};
+
+$COLUMN_MAP->{DueRelative}{value} = sub {
+    my $Ticket = shift;
+    return $_due_badge->($Ticket, $Ticket->DueObj->AgeAsString);
+};
+
+# SLA: badge colored by relative urgency derived from %ServiceAgreements config
+# Shortest Resolve.BusinessMinutes = most urgent = red; longest = green
+my %_sla_color;
+{
+    my $agreements = RT->Config->Get('ServiceAgreements');
+    if ( $agreements && $agreements->{Levels} ) {
+        my %resolve_times;
+        for my $lvl ( keys %{ $agreements->{Levels} } ) {
+            my $res = $agreements->{Levels}{$lvl}{Resolve};
+            $resolve_times{$lvl} = $res->{BusinessMinutes}
+                if $res && defined $res->{BusinessMinutes};
+        }
+        if (%resolve_times) {
+            my @sorted = sort { $resolve_times{$a} <=> $resolve_times{$b} } keys %resolve_times;
+            my $last   = $#sorted;
+            for my $i ( 0 .. $last ) {
+                my $pct = $last > 0 ? $i / $last : 0;
+                $_sla_color{ $sorted[$i] }
+                    = $pct < 0.25 ? 'sla-critical'
+                    : $pct < 0.50 ? 'sla-warning'
+                    :               'sla-ok';
+            }
+        }
+    }
+}
+
+$COLUMN_MAP->{SLA}{value} = sub {
+    my $Ticket = shift;
+    my $level  = $Ticket->SLA;
+    return $level unless defined $level && length $level;
+    my $class   = $_sla_color{$level} // 'sla-ok';
+    my $escaped = $m->interp->apply_escapes( $level, 'h' );
+    return \"<span class=\"badge $class\">$escaped</span>";
+};
+
+$COLUMN_MAP->{'Requestor.RealName'}{value} = sub {
+    my $Ticket = shift;
+    return $_role_members_with_avatar->($m, $Ticket->Requestors->UserMembersObj);
+};
+
+$COLUMN_MAP->{'Cc.Name'}{value} = sub {
+    my $Ticket = shift;
+    return $_role_members_with_avatar->($m, $Ticket->Cc->UserMembersObj);
+};
+
+$COLUMN_MAP->{'AdminCc.Name'}{value} = sub {
+    my $Ticket = shift;
+    return $_role_members_with_avatar->($m, $Ticket->AdminCc->UserMembersObj);
+};
+</%INIT>

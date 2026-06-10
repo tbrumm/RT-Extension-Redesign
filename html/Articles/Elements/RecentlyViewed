@@ -1,0 +1,33 @@
+<& /Widgets/TitleBoxStart, title => loc('Recently viewed'), class => 'articles-recent', bodyclass => '' &>
+<div id="articles-recently-viewed" class="article-cards px-2 pt-1 pb-2">
+  <div class="article-empty-state text-center text-body-secondary py-3">
+    <div class="article-empty-icon mb-1">&#xF4A6;</div>
+    <div class="small"><% loc('No articles viewed yet.') %></div>
+  </div>
+</div>
+<& /Widgets/TitleBoxEnd &>
+<script>
+(function() {
+    var key  = 'rt_recent_articles';
+    var list = [];
+    try { list = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) {}
+    if (!list.length) return;
+
+    var container = document.getElementById('articles-recently-viewed');
+    var html = '';
+    list.forEach(function(a) {
+        html += '<div class="card mb-2 article-card">'
+              + '<div class="card-body py-2 px-3">'
+              + '<div class="d-flex justify-content-between align-items-start gap-2">'
+              + '<a href="' + a.url + '" class="fw-semibold text-body article-card-title">' + _esc(a.name) + '</a>'
+              + '<span class="badge text-bg-secondary text-nowrap flex-shrink-0">' + _esc(a.cls) + '</span>'
+              + '</div>'
+              + '</div></div>';
+    });
+    container.innerHTML = html;
+
+    function _esc(s) {
+        return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+})();
+</script>

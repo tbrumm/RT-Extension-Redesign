@@ -1,0 +1,56 @@
+<& /Widgets/TitleBoxStart, title => loc("[_1] most recently updated articles", $rows), class => 'articles-updated', bodyclass => '' &>
+
+<div class="article-cards px-2 pt-1 pb-2">
+% my $count = 0;
+% while (my $article = $MyArticles->Next) {
+%   $count++;
+%   my $url      = RT->Config->Get('WebPath') . '/Articles/Article/Display.html?id=' . $article->id;
+%   my $edit_url = RT->Config->Get('WebPath') . '/Articles/Article/Edit.html?id='    . $article->id;
+%   my $summary  = $article->Summary;
+%   my $can_edit = $article->CurrentUserHasRight('ModifyArticle');
+<div class="card mb-2 article-card">
+  <div class="card-body py-2 px-3">
+    <div class="d-flex justify-content-between align-items-start gap-2 mb-1">
+      <a href="<% $url |h %>" class="fw-semibold text-body article-card-title"><% $article->Name |h %></a>
+      <span class="badge text-bg-secondary text-nowrap flex-shrink-0"><% $article->ClassObj->Name |h %></span>
+    </div>
+%   if (defined $summary && length $summary) {
+    <p class="small text-body-secondary mb-1 article-card-summary"><% $summary |h %></p>
+%   }
+    <div class="d-flex justify-content-between align-items-center mt-1">
+      <small class="text-body-secondary">
+        <% $article->LastUpdatedByObj->Name |h %> &middot; <% $article->LastUpdatedObj->AgeAsString |h %>
+      </small>
+%   if ($can_edit) {
+      <a href="<% $edit_url |h %>" class="btn btn-sm btn-outline-secondary py-0 px-2"><&|/l&>Edit</&></a>
+%   }
+    </div>
+  </div>
+</div>
+% }
+% if (!$count) {
+<div class="article-empty-state text-center text-body-secondary py-3">
+  <div class="article-empty-icon mb-1">&#xF4A6;</div>
+  <div class="small"><&|/l&>No articles found.</&></div>
+</div>
+% }
+</div>
+
+<& /Widgets/TitleBoxEnd &>
+<%INIT>
+my $rows = 10;
+
+my $Classes = RT::Classes->new($session{'CurrentUser'});
+$Classes->LimitToEnabled;
+my @classes;
+while (my $Class = $Classes->Next) {
+    push @classes, $Class->id if $Class->CurrentUserHasRight('ShowArticle');
+}
+
+my $MyArticles = RT::Articles->new($session{'CurrentUser'});
+$MyArticles->Limit(FIELD => 'Class', OPERATOR => 'IN', VALUE => \@classes)
+    if @classes;
+$MyArticles->Limit(FIELD => 'Created', OPERATOR => '!=', VALUE => 'LastUpdated', QUOTEVALUE => 0);
+$MyArticles->RowsPerPage($rows);
+$MyArticles->OrderBy(FIELD => 'LastUpdated', ORDER => 'DESC');
+</%INIT>

@@ -1,0 +1,78 @@
+<& /Widgets/TitleBoxStart, title => loc('Statistics'), class => 'articles-stats', bodyclass => '' &>
+<div class="px-3 py-2">
+
+  <div class="d-flex justify-content-between mb-2">
+    <div class="text-center flex-fill">
+      <div class="fs-4 fw-bold text-body"><% $total_articles %></div>
+      <div class="small text-body-secondary"><% loc('Articles') %></div>
+    </div>
+    <div class="vr mx-2"></div>
+    <div class="text-center flex-fill">
+      <div class="fs-4 fw-bold text-body"><% $total_classes %></div>
+      <div class="small text-body-secondary"><% loc('Classes') %></div>
+    </div>
+    <div class="vr mx-2"></div>
+    <div class="text-center flex-fill">
+      <div class="fs-4 fw-bold text-body"><% $new_this_month %></div>
+      <div class="small text-body-secondary"><% loc('This month') %></div>
+    </div>
+  </div>
+
+% if (@top_authors) {
+  <hr class="my-2">
+  <div class="small text-body-secondary mb-1"><% loc('Top contributors') %></div>
+  <div class="d-flex flex-column gap-1">
+%   for my $author (@top_authors) {
+    <div class="d-flex justify-content-between align-items-center">
+      <span class="small text-truncate"><% $author->{name} |h %></span>
+      <span class="badge text-bg-secondary ms-2 flex-shrink-0"><% $author->{count} %></span>
+    </div>
+%   }
+  </div>
+% }
+
+</div>
+<& /Widgets/TitleBoxEnd &>
+<%INIT>
+use POSIX qw(mktime);
+
+my $current_user = $session{'CurrentUser'};
+
+# Collect accessible class IDs
+my $Classes = RT::Classes->new($current_user);
+$Classes->LimitToEnabled;
+my @class_ids;
+while (my $Class = $Classes->Next) {
+    push @class_ids, $Class->id if $Class->CurrentUserHasRight('ShowArticle');
+}
+my $total_classes = scalar @class_ids;
+
+# Total article count
+my $AllArticles = RT::Articles->new($current_user);
+$AllArticles->Limit(FIELD => 'Class', OPERATOR => 'IN', VALUE => \@class_ids) if @class_ids;
+my $total_articles = $AllArticles->Count;
+
+# Articles created this calendar month
+my @now = localtime(time);
+my $first_of_month_epoch = mktime(0, 0, 0, 1, $now[4], $now[5]);
+my $month_start = RT::Date->new($current_user);
+$month_start->Set(Format => 'unix', Value => $first_of_month_epoch);
+
+my $MonthArticles = RT::Articles->new($current_user);
+$MonthArticles->Limit(FIELD => 'Class', OPERATOR => 'IN', VALUE => \@class_ids) if @class_ids;
+$MonthArticles->Limit(FIELD => 'Created', OPERATOR => '>=', VALUE => $month_start->ISO);
+my $new_this_month = $MonthArticles->Count;
+
+# Top 3 contributors by article count
+my %author_counts;
+my $ForAuthors = RT::Articles->new($current_user);
+$ForAuthors->Limit(FIELD => 'Class', OPERATOR => 'IN', VALUE => \@class_ids) if @class_ids;
+while (my $art = $ForAuthors->Next) {
+    my $name = $art->CreatorObj->Name;
+    $author_counts{$name}++ if $name;
+}
+my @top_authors = map  { { name => $_, count => $author_counts{$_} } }
+                  sort { $author_counts{$b} <=> $author_counts{$a} }
+                  keys %author_counts;
+@top_authors = @top_authors[0..2] if @top_authors > 3;
+</%INIT>

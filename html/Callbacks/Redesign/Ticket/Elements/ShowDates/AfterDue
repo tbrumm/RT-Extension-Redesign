@@ -1,0 +1,17 @@
+<%ARGS>
+$TicketObj => undef
+</%ARGS>
+<%INIT>
+return unless $TicketObj;
+my $due = $TicketObj->DueObj;
+return unless $due && $due->IsSet
+    && $TicketObj->QueueObj->IsActiveStatus($TicketObj->Status);
+my $diff  = $due->Diff;
+my $class = $diff <= 0     ? 'due-overdue'
+          : $diff <= 86400 ? 'due-soon'
+          :                  'due-ok';
+</%INIT>
+<script>(function(){
+  var el = document.querySelector('.date.due .current-value');
+  if (el) { el.classList.remove('overdue'); el.classList.add('<% $class |h %>'); }
+})();</script>

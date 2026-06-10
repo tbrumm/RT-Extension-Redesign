@@ -1,0 +1,40 @@
+<%args>
+$requestor
+</%args>
+<%init>
+# Performance-Fix: CachedGroupMembers-Reverse-Lookup statt 6-JOIN Forward-Scan
+# ueber alle 141K Assets. Reverse-Query: ~12ms vs. ~800ms Forward.
+my $dbh = RT->DatabaseHandle->dbh;
+my $uid = $requestor->Id;
+
+my $ids = $dbh->selectcol_arrayref(q{
+    SELECT DISTINCT g.Instance
+    FROM CachedGroupMembers cgm
+    JOIN Groups g
+      ON g.id = cgm.GroupId
+     AND g.Domain = 'RT::Asset-Role'
+     AND g.Name IN ('HeldBy','Contact','Owner')
+    JOIN Assets a ON a.id = g.Instance AND a.Status != 'deleted'
+    WHERE cgm.MemberId = ? AND cgm.Disabled = 0
+    LIMIT 20
+}, undef, $uid);
+
+return unless $ids && @$ids;
+
+my $assets = RT::Assets->new($session{CurrentUser});
+$assets->Limit(
+    FIELD    => 'id',
+    OPERATOR => 'IN',
+    VALUE    => $ids,
+);
+$assets->OrderByCols({ FIELD => 'Name', ORDER => 'ASC' });
+</%init>
+<div class="more-about-requestor-assets">
+<&| /Widgets/TitleBox, title => loc('Assigned Assets') &>
+  <& /Elements/CollectionList,
+      Collection   => $assets,
+      Format       => q['<b><a href="__WebHomePath__/Asset/Display.html?id=__id__">__id__</a></b>/TITLE:#','<b><a href="__WebHomePath__/Asset/Display.html?id=__id__">__Name__</a></b>/TITLE:Name',Description],
+      AllowSorting => 0,
+  &>
+</&>
+</div>

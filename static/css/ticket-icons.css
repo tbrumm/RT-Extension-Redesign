@@ -1,0 +1,391 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+.ticket-info-basics .titlebox-title .left::before    { font-family: "bootstrap-icons" !important; content: "\F431"; margin-right: 0.4em; font-style: normal; font-weight: normal; vertical-align: -0.1em; opacity: 0.7; }
+.ticket-info-people .titlebox-title .left::before    { font-family: "bootstrap-icons" !important; content: "\F4CF"; margin-right: 0.4em; font-style: normal; font-weight: normal; vertical-align: -0.1em; opacity: 0.7; }
+.ticket-info-dates .titlebox-title .left::before     { font-family: "bootstrap-icons" !important; content: "\F1F3"; margin-right: 0.4em; font-style: normal; font-weight: normal; vertical-align: -0.1em; opacity: 0.7; }
+.ticket-info-links .titlebox-title .left::before     { font-family: "bootstrap-icons" !important; content: "\F470"; margin-right: 0.4em; font-style: normal; font-weight: normal; vertical-align: -0.1em; opacity: 0.7; }
+.ticket-info-attachments .titlebox-title .left::before { font-family: "bootstrap-icons" !important; content: "\F4CD"; margin-right: 0.4em; font-style: normal; font-weight: normal; vertical-align: -0.1em; opacity: 0.7; }
+.ticket-info-times .titlebox-title .left::before     { font-family: "bootstrap-icons" !important; content: "\F293"; margin-right: 0.4em; font-style: normal; font-weight: normal; vertical-align: -0.1em; opacity: 0.7; }
+.ticket-info-reminders .titlebox-title .left::before { font-family: "bootstrap-icons" !important; content: "\F18A"; margin-right: 0.4em; font-style: normal; font-weight: normal; vertical-align: -0.1em; opacity: 0.7; }
+.ticket-info-description .titlebox-title .left::before { font-family: "bootstrap-icons" !important; content: "\F37B"; margin-right: 0.4em; font-style: normal; font-weight: normal; vertical-align: -0.1em; opacity: 0.7; }
+.ticket-info-history .titlebox-title .left::before,
+.ticket-history .titlebox-title .left::before        { font-family: "bootstrap-icons" !important; content: "\F297"; margin-right: 0.4em; font-style: normal; font-weight: normal; vertical-align: -0.1em; opacity: 0.7; }
+.ticket-info-cfs .titlebox-title .left::before       { font-family: "bootstrap-icons" !important; content: "\F227"; margin-right: 0.4em; font-style: normal; font-weight: normal; vertical-align: -0.1em; opacity: 0.7; }
+.ticket-info-requestor .titlebox-title .left::before { font-family: "bootstrap-icons" !important; content: "\F4D8"; margin-right: 0.4em; font-style: normal; font-weight: normal; vertical-align: -0.1em; opacity: 0.7; }
+.ticket-assets .titlebox-title .left::before         { font-family: "bootstrap-icons" !important; content: "\F6E6"; margin-right: 0.4em; font-style: normal; font-weight: normal; vertical-align: -0.1em; opacity: 0.7; }
+
+/* ── Hauptmenü Icons ────────────────────────────────────── */
+
+#li-home > a::before,
+#li-search > a::before,
+#li-reports > a::before,
+#li-articles > a::before,
+#li-assets > a::before,
+#li-projects > a::before,
+#li-tools > a::before,
+#li-formtools > a::before,
+#li-admin > a::before {
+    font-family: "bootstrap-icons" !important;
+    font-style: normal;
+    font-weight: normal;
+    vertical-align: -0.1em;
+    margin-right: 0.3em;
+
+}
+
+#li-home     > a::before { content: "\F425"; } /* bi-house-fill */
+#li-search   > a::before { content: "\F52A"; } /* bi-search */
+#li-reports  > a::before { content: "\F17B"; } /* bi-bar-chart-fill */
+#li-articles > a::before { content: "\F4A3"; } /* bi-file-text */
+#li-assets   > a::before { content: "\F6E6"; } /* bi-pc-display */
+#li-projects > a::before { content: "\F44C"; } /* bi-kanban-fill */
+#li-tools    > a::before { content: "\F5DB"; } /* bi-tools */
+#li-formtools > a::before { content: "\F7F1"; } /* bi-ui-checks */
+#li-admin    > a::before { content: "\F3E3"; } /* bi-gear-fill */
+
+/* ── Hauptmenü Icons – Farben ───────────────────────────── */
+
+#li-home     > a::before { color: #2196F3; } /* Blau */
+#li-search   > a::before { color: #00ACC1; } /* Cyan */
+#li-reports  > a::before { color: #43A047; } /* Grün */
+#li-articles > a::before { color: #FB8C00; } /* Orange */
+#li-assets   > a::before { color: #6D4C41; } /* Braun */
+#li-projects > a::before { color: #8E24AA; } /* Violett */
+#li-tools    > a::before { color: #546E7A; } /* Blaugrau */
+#li-formtools > a::before { color: #26A69A; } /* Teal */
+#li-admin    > a::before { color: #E53935; } /* Rot */
+
+/* ── Pending Ticket Badge ────────────────────────────────── */
+
+.pending-ticket-badge {
+    background-color: #E65100 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-weight: 600;
+}
+
+.pending-ticket-badge:hover {
+    background-color: #BF360C !important;
+    color: #ffffff !important;
+}
+
+/* ── Dependency Status Banner (Ticket/Display) ───────────── */
+
+.dependency-status {
+    background-color: #FFF3E0 !important;
+    border-left: 5px solid #E65100 !important;
+    border-radius: 0 0.4em 0.4em 0 !important;
+    padding: 0.6em 1em !important;
+    margin-top: 0.5em !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 0.75em !important;
+    font-style: normal !important;
+}
+
+.dependency-status .summary::before {
+    font-family: "bootstrap-icons" !important;
+    content: "\F33A";
+    color: #E65100;
+    margin-right: 0.45em;
+    font-style: normal;
+    vertical-align: -0.1em;
+}
+
+.dependency-status .summary {
+    font-weight: 700 !important;
+    font-style: normal !important;
+    color: #BF360C !important;
+}
+
+.dependency-status .summary a,
+.dependency-status .summary a:visited {
+    color: #BF360C !important;
+    text-decoration-color: #E65100 !important;
+}
+
+/* ── Action Results Banner (nach Ticket-Update) ──────────── */
+
+div.results .titlebox.card {
+    background-color: #F1F8E9 !important;
+    border: none !important;
+    border-left: 5px solid #2E7D32 !important;
+    border-radius: 0 0.4em 0.4em 0 !important;
+}
+
+div.results .titlebox-content {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+div.results .action-results {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0.6em 1em !important;
+}
+
+div.results .action-results li {
+    color: #1B5E20 !important;
+    font-weight: 600 !important;
+    padding: 0.15em 0 !important;
+}
+
+div.results .action-results li::before {
+    font-family: "bootstrap-icons" !important;
+    content: "\F26B";
+    color: #2E7D32 !important;
+    margin-right: 0.45em;
+    font-style: normal;
+    vertical-align: -0.1em;
+}
+
+/* ── Ausrichtungs-Fix: row-Padding der col-12 entfernen ──── */
+
+.dependency-status .col-12 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+div.results {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 0.75em !important;
+}
+
+/* ── Asset Display Widget Icons ──────────────────────────── */
+
+.asset-basics .titlebox-title .left::before,
+.asset-people .titlebox-title .left::before,
+.asset-links .titlebox-title .left::before,
+.asset-dates .titlebox-title .left::before,
+.asset-info-cfs .titlebox-title .left::before {
+    font-family: "bootstrap-icons" !important;
+    font-style: normal;
+    font-weight: normal;
+    margin-right: 0.4em;
+    vertical-align: -0.1em;
+    opacity: 0.7;
+}
+
+.asset-basics    .titlebox-title .left::before { content: "\F431"; } /* bi-info-circle-fill  */
+.asset-people    .titlebox-title .left::before { content: "\F4CF"; } /* bi-people-fill       */
+.asset-links     .titlebox-title .left::before { content: "\F470"; } /* bi-link-45deg        */
+.asset-dates     .titlebox-title .left::before { content: "\F1F3"; } /* bi-calendar-fill     */
+.asset-info-cfs  .titlebox-title .left::before { content: "\F227"; } /* bi-card-checklist    */
+
+/* ── Article Display Widget Icons ────────────────────────── */
+
+.article-basics  .titlebox-title .left::before,
+.article-content .titlebox-title .left::before,
+.article-links   .titlebox-title .left::before,
+.article-topics  .titlebox-title .left::before {
+    font-family: "bootstrap-icons" !important;
+    font-style: normal;
+    font-weight: normal;
+    margin-right: 0.4em;
+    vertical-align: -0.1em;
+    opacity: 0.7;
+}
+
+.article-basics  .titlebox-title .left::before { content: "\F431"; } /* bi-info-circle-fill */
+.article-content .titlebox-title .left::before { content: "\F3B9"; } /* bi-file-text        */
+.article-links   .titlebox-title .left::before { content: "\F470"; } /* bi-link-45deg       */
+.article-topics  .titlebox-title .left::before { content: "\F5B1"; } /* bi-tags-fill        */
+
+/* ── Simple Search Page – Lupen-Icon in der Überschrift ──── */
+
+body:has(#SimpleSearchForm) #header h1::before {
+    font-family: "bootstrap-icons" !important;
+    content: "\F52A";
+    margin-right: 0.4em;
+    font-style: normal;
+    font-weight: normal;
+    vertical-align: -0.05em;
+    opacity: 0.8;
+}
+
+
+/* ── Priority Colors (badge-style wie StatusBadge) ───────── */
+.ticket-info-priority-low,
+.ticket-info-priority-medium,
+.ticket-info-priority-high,
+.ticket-info-priority-on_fire {
+    display: inline-block;
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.375rem;
+}
+
+.ticket-info-priority-low              { background-color: var(--bs-success); color: #fff; }
+.ticket-info-priority-medium           { background-color: var(--bs-warning); color: #000; }
+.ticket-info-priority-high             { background-color: var(--bs-danger);  color: #fff; }
+.ticket-info-priority-on_fire          { background-color: var(--bs-danger);  color: #fff; }
+
+/* ── Due Date Colors ─────────────────────────────────────── */
+/* Badge styling for search results (span.badge.due-*) */
+/* Plain color for ticket widget (.current-value.due-*) */
+.due-ok,
+span.badge.due-ok      { background-color: var(--bs-success); color: #fff; }
+.due-soon,
+span.badge.due-soon    { background-color: var(--bs-warning); color: #000; }
+.due-overdue,
+span.badge.due-overdue { background-color: var(--bs-danger);  color: #fff; }
+
+/* Base badge shape for due-* when used in search */
+span.badge.due-ok,
+span.badge.due-soon,
+span.badge.due-overdue {
+    display: inline-block;
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.375rem;
+}
+
+/* Widget: color the text, no badge shape */
+.current-value.due-ok      { color: var(--bs-success); font-weight: bold; background: none; }
+.current-value.due-soon    { color: var(--bs-warning); font-weight: bold; background: none; }
+.current-value.due-overdue { color: var(--bs-danger);  font-weight: bold; background: none; }
+
+/* ── SLA Level Colors (badge in search, colored text in widget) ── */
+span.badge.sla-critical { background-color: var(--bs-danger);  color: #fff; }
+span.badge.sla-warning  { background-color: var(--bs-warning); color: #000; }
+span.badge.sla-ok       { background-color: var(--bs-success); color: #fff; }
+
+/* Widget (.current_value = Note underscore, different from current-value) */
+/* Widget: badge-style (same shape as search badges) */
+.current_value.sla-critical,
+.current_value.sla-warning,
+.current_value.sla-ok {
+    display: inline-block;
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.375rem;
+}
+.current_value.sla-critical { background-color: var(--bs-danger);  color: #fff; }
+.current_value.sla-warning  { background-color: var(--bs-warning); color: #000; }
+.current_value.sla-ok       { background-color: var(--bs-success); color: #fff; }
+
+/* ── Articles Page Widget Icons ──────────────────────────── */
+.articles-quicksearch .titlebox-title .left::before,
+.articles-create      .titlebox-title .left::before {
+    font-family: "bootstrap-icons" !important;
+    font-style: normal;
+    font-weight: normal;
+    margin-right: 0.4em;
+    vertical-align: -0.1em;
+    opacity: 0.7;
+}
+.articles-quicksearch .titlebox-title .left::before { content: "\F52A"; } /* bi-search      */
+.articles-create      .titlebox-title .left::before { content: "\F4CA"; } /* bi-pencil-fill */
+
+/* ── Articles: Haupt-Widget Icons ────────────────────────── */
+.articles-newest  .titlebox-title .left::before,
+.articles-updated .titlebox-title .left::before {
+    font-family: "bootstrap-icons" !important;
+    font-style: normal;
+    font-weight: normal;
+    margin-right: 0.4em;
+    vertical-align: -0.1em;
+    opacity: 0.7;
+}
+.articles-newest  .titlebox-title .left::before { content: "\F4A3"; } /* bi-clock-history  */
+.articles-updated .titlebox-title .left::before { content: "\F66B"; } /* bi-arrow-repeat   */
+
+/* ── Article Cards ───────────────────────────────────────── */
+.article-cards .article-card {
+    border-left: 3px solid var(--bs-secondary-border-subtle);
+    transition: border-left-color 0.15s ease;
+}
+.article-cards .article-card:hover {
+    border-left-color: var(--bs-primary);
+}
+.articles-newest .article-cards .article-card {
+    border-left-color: var(--bs-info-border-subtle);
+}
+.articles-newest .article-cards .article-card:hover {
+    border-left-color: var(--bs-info);
+}
+.articles-updated .article-cards .article-card {
+    border-left-color: var(--bs-success-border-subtle);
+}
+.articles-updated .article-cards .article-card:hover {
+    border-left-color: var(--bs-success);
+}
+.article-card-title {
+    text-decoration: none;
+    line-height: 1.3;
+}
+.article-card-title:hover {
+    text-decoration: underline;
+}
+.article-card-summary {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
+}
+
+/* ── Article Cards: Empty State ──────────────────────────── */
+.article-empty-state {
+    padding: 1rem 0;
+}
+.article-empty-icon {
+    font-family: "bootstrap-icons";
+    font-size: 2rem;
+    opacity: 0.3;
+}
+
+/* ── Articles: Recently Viewed Icon ─────────────────────── */
+.articles-recent .titlebox-title .left::before {
+    font-family: "bootstrap-icons" !important;
+    font-style: normal;
+    font-weight: normal;
+    margin-right: 0.4em;
+    vertical-align: -0.1em;
+    opacity: 0.7;
+    content: "\F2D1"; /* bi-eye */
+}
+
+/* ── Articles by Class widgets ───────────────────────────── */
+.articles-by-class .titlebox-title .left::before {
+    font-family: "bootstrap-icons" !important;
+    font-style: normal;
+    font-weight: normal;
+    margin-right: 0.4em;
+    vertical-align: -0.1em;
+    opacity: 0.7;
+    content: "\F444"; /* bi-folder2 */
+}
+.article-card-compact .card-body {
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+}
+
+/* ── Articles Statistics widget ──────────────────────────── */
+.articles-stats .titlebox-title .left::before {
+    font-family: "bootstrap-icons" !important;
+    font-style: normal;
+    font-weight: normal;
+    margin-right: 0.4em;
+    vertical-align: -0.1em;
+    opacity: 0.7;
+    content: "\F28C"; /* bi-bar-chart-fill */
+}
