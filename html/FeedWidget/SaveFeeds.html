@@ -121,8 +121,8 @@ my $js_feeds = $_j->encode(\@feeds);
 
 <script>
 (function () {
-  var FW_LABEL_PLACEHOLDER = '<% loc('Label (optional)') |j %>';
-  var FW_LABEL_REMOVE      = '<% loc('Remove') |j %>';
+  var FW_LABEL_PLACEHOLDER = <% loc('Label (optional)') |j %>;
+  var FW_LABEL_REMOVE      = <% loc('Remove') |j %>;
   var card = document.getElementById('fw-prefs-card');
   if (!card) return;
 

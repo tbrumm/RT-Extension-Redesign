@@ -230,7 +230,7 @@ my $js_prefs_url = $_j->encode($prefs_url);
   var ID       = '<% $wid | n %>';
   var FEEDS    = <% $js_feeds    | n %>;
   var FETCH    = <% $js_fetch_url | n %>;
-  var FW_NO_ITEMS = '<% loc('No items found.') |j %>';
+  var FW_NO_ITEMS = <% loc('No items found.') |j %>;
 
   var wrap    = document.getElementById(ID);
   var sLoad   = wrap.querySelector('.fw-loading');

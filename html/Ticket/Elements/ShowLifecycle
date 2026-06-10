@@ -180,10 +180,10 @@ my $wid = 'lw-' . $TicketObj->id . '-' . $queue->id;
   var NS  = 'http://www.w3.org/2000/svg';
   var WID = '<% $wid %>';
   var LW_LABELS = {
-    initial:  '<% loc('Initial')  |j %>',
-    active:   '<% loc('Active')   |j %>',
-    inactive: '<% loc('Inactive') |j %>',
-    complex:  '<% loc('Complex lifecycle (%1 statuses) — showing transitions from/to current status only.', '%1') |j %>'
+    initial:  <% loc('Initial')  |j %>,
+    active:   <% loc('Active')   |j %>,
+    inactive: <% loc('Inactive') |j %>,
+    complex:  <% loc('Complex lifecycle (%1 statuses) — showing transitions from/to current status only.', '%1') |j %>
   };
 
   function el(tag, attrs) {
