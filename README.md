@@ -1,154 +1,154 @@
 # RT-Extension-Redesign
 
-Modernes UI-Redesign für Request Tracker 6 — globales CSS-Overhaul, modernisierte Templates und eine wachsende Sammlung integrierter Erweiterungen für Dashboard-Widgets, Ticket-Widgets und UI-Verbesserungen.
+Modern UI redesign for Request Tracker 6 — a complete CSS overhaul, modernised page templates, and a growing collection of integrated extensions for dashboard widgets, ticket-page widgets, and UI enhancements.
 
 ![Login Screen](docs/login-screen.png)
 
 ---
 
-## Inhalt
+## Contents
 
 - [Features](#features)
-  - [Globales Styling](#globales-styling)
-  - [Seiten-Templates](#seiten-templates)
-  - [Ticket-Seiten-Widgets](#ticket-seiten-widgets)
-  - [Dashboard-Widgets](#dashboard-widgets)
-  - [Syntax-Highlighting](#syntax-highlighting)
-- [Konfiguration](#konfiguration)
+  - [Global Styling](#global-styling)
+  - [Page Templates](#page-templates)
+  - [Ticket Page Widgets](#ticket-page-widgets)
+  - [Dashboard Widgets](#dashboard-widgets)
+  - [Syntax Highlighting](#syntax-highlighting)
+- [Configuration](#configuration)
 - [Installation](#installation)
-- [Integrierte Erweiterungen](#integrierte-erweiterungen)
-- [Anforderungen](#anforderungen)
-- [Autor / Lizenz](#autor--lizenz)
+- [Absorbed Extensions](#absorbed-extensions)
+- [Requirements](#requirements)
+- [Author / License](#author--license)
 
 ---
 
 ## Features
 
-### Globales Styling
+### Global Styling
 
-Das Extension überlagert RT6 mit einem modernen CSS-Overhaul auf Basis von Bootstrap 5.3 und Bootstrap Icons:
+Overlays RT6 with a modern CSS overhaul based on Bootstrap 5.3 and Bootstrap Icons:
 
-- **TitleBox:** abgerundete Ecken, dezente Schatten, farbige obere Randbalken je Widget-Typ
-- **Tabellen:** kompakte Header, Filter-Buttons, Priority-Badges (grün/gelb/rot), SLA-Badges
-- **Ticket-Liste:** Priority und SLA als farbige Badges, Due-Date-Badges, Status-Badges
-- **Ticket-Detail:** Section-Icons (Bootstrap Icons), Feldlabels uppercase, farbige Randbalken je History-Typ
-- **Dashboard:** Portlet-Icons, Ergebnis-Banner, kompakte Portlet-Header
-- **Reply/Comment:** blauer/oranger Randbalken zur visuellen Unterscheidung
-- **Dark Mode:** vollständig unterstützt via `var(--bs-*)` CSS-Variablen und `[data-bs-theme=dark]`-Selektoren
+- **TitleBox:** rounded corners, subtle shadows, coloured top border per widget type
+- **Tables:** compact headers, filter buttons, priority badges (green/yellow/red), SLA badges
+- **Ticket list:** priority and SLA as coloured badges, due-date badges, status badges
+- **Ticket detail:** section icons (Bootstrap Icons), uppercase field labels, coloured left border per history type
+- **Dashboard:** portlet icons, result banners, compact portlet headers
+- **Reply/Comment:** blue/orange left border for visual distinction
+- **Dark mode:** fully supported via `var(--bs-*)` CSS variables and `[data-bs-theme=dark]` selectors
 
-### Seiten-Templates
+### Page Templates
 
-Überschriebene RT-Seiten mit modernem Layout:
+Overridden RT pages with a modern layout:
 
-| Seite | Was sich ändert |
+| Page | What changes |
 |---|---|
-| **Login** (`/`) | Zweispaltiges Layout — links Plugin-Inhalte + Live-Systemstatistiken, rechts Login-Formular |
-| **Admin** (`/Admin/`) | Stat-Karten, Info-Karten, Navigations-Kacheln statt bestpractical.com-iframe |
-| **Admin → Global** | Scrips/Templates-Dashboard mit Zählern |
-| **Admin → Articles/Assets/Tools/CustomFields** | Übersichts-Dashboards mit Karten |
-| **Admin → Global → Login Banner** | Bearbeitungsseite für das Login-Banner |
-| **Reports** (`/Reports/`) | Card-Grid mit Report-Kacheln |
-| **Tools** (`/Tools/`) | Stat-Karten und Navigations-Kacheln |
-| **Simple Search** (`/Search/Simple.html`) | Hero-Suche mit Keyword-Karten |
+| **Login** (`/`) | Two-column layout — left: plugin content + live system stats; right: login form |
+| **Admin** (`/Admin/`) | Stat cards, info cards, nav tiles replacing the bestpractical.com iframe |
+| **Admin → Global** | Scrips/templates dashboard with counters |
+| **Admin → Articles/Assets/Tools/CustomFields** | Overview dashboards with cards |
+| **Admin → Global → Login Banner** | Edit page for the login banner |
+| **Reports** (`/Reports/`) | Card grid with report tiles |
+| **Tools** (`/Tools/`) | Stat cards and nav tiles |
+| **Simple Search** (`/Search/Simple.html`) | Hero search with keyword cards |
 
-Die **Systemstatistiken** auf der Login-Seite zeigen: privilegierte/unprivilegierte Benutzer, Gruppen, Queues, Tickets, Transaktionen, Assets und Artikel — mit 6-Stunden-Cache via `rt-redesign-stats-refresh`.
+The **system statistics** on the login page show: privileged/unprivileged users, groups, queues, tickets, transactions, assets, and articles — cached for 6 hours via `rt-redesign-stats-refresh`.
 
-### Ticket-Seiten-Widgets
+### Ticket Page Widgets
 
-Diese Widgets können über **Admin → Global → Page Layouts** zu Ticket-Spalten hinzugefügt werden:
+These widgets can be added to ticket page columns via **Admin → Global → Page Layouts**.
 
 #### DisplaySLA
 
-Zeigt SLA-Level und beide Fristen (Time to React + Time to Resolve) farbcodiert an:
+Shows the SLA level and both deadlines (Time to React + Time to Resolve) colour-coded by urgency:
 
-- **Grün** → ausreichend Zeit verbleibend
-- **Gelb** → weniger als 25 % der Gesamtzeit verbleibend
-- **Rot** → Frist überschritten
-- **Pause-Anzeige** → wenn das Ticket in einem ignorierten Status ist
+- **Green** → sufficient time remaining
+- **Yellow** → less than 25 % of total time remaining
+- **Red** → deadline exceeded
+- **Paused indicator** → when the ticket is in an ignored status
 
-Das Widget blendet sich automatisch aus, wenn für die Queue kein SLA konfiguriert ist.
+The widget hides itself automatically when no SLA is configured for the ticket's queue.
 
 #### LifecycleWidget
 
-Stellt den Lifecycle der Ticket-Queue als interaktives SVG-Diagramm dar:
+Renders the ticket queue's lifecycle as an interactive SVG diagram:
 
-- Status-Knoten farbcodiert nach Typ (Initial / Active / Inactive)
-- Aktueller Status des Tickets hervorgehoben
-- Übergangspfeile zwischen Statuses
-- Adaptives Layout: passt sich der Widget-Breite an (responsiv)
-- Bei komplexen Lifecycles (> 20 Statuses): zeigt nur Übergänge vom/zum aktuellen Status
+- Status nodes colour-coded by type (Initial / Active / Inactive)
+- Current ticket status highlighted
+- Transition arrows between statuses
+- Adaptive layout — resizes responsively with the widget column width
+- For complex lifecycles (> 20 statuses): shows only transitions from/to the current status
 
 #### LinkedArticles
 
-Zeigt alle mit dem Ticket verknüpften Artikel als kompakte Karten:
+Displays all articles linked to the current ticket as compact cards:
 
-- Artikel-Name als Link, Klasse als Badge
-- Zusammenfassung (falls vorhanden)
-- Aktualisiert sich automatisch via HTMX wenn Links geändert werden
-- Blendet sich aus wenn keine Artikel verknüpft sind
+- Article name as a link, class as a badge
+- Summary shown when available
+- Refreshes automatically via HTMX when links change
+- Hides itself when no articles are linked
 
-### Dashboard-Widgets
+### Dashboard Widgets
 
-Diese Widgets können als Portlets zum RT-Dashboard hinzugefügt werden. Portlet-Namen für `$HomepageComponents` sind in Klammern angegeben.
+These widgets can be added as portlets to the RT dashboard. The portlet name for `$HomepageComponents` is shown in parentheses.
 
 #### ClockWidget (`ClockWidget`)
 
-Animierte Flip-Clock im Apple-Stil — zeigt Uhrzeit (Stunden/Minuten) und Datum in der lokalen Zeitzone des Browsers.
+Animated Apple-style flip clock — shows hours and minutes plus the current date in the browser's local time zone.
 
 #### WeatherWidget (`WeatherWidget`)
 
-Live-Wetterdaten aus dem Nutzerprofil:
+Live weather data based on the user profile location:
 
-- Bezieht Standort aus **City**, **Zip** und **Country** des RT-Nutzerprofils
-- Geocoding via Open-Meteo + Nominatim (kein API-Key erforderlich)
-- Zeigt: Temperatur, Wetterbedingung, gefühlte Temperatur, Wind, Luftfeuchtigkeit
-- Session-Cache (30 Minuten), Retry-Button, Dark-Mode-Unterstützung
-- Konfigurierbare Temperatureinheit (`celsius` / `fahrenheit`)
+- Reads **City**, **Zip**, and **Country** from the RT user profile
+- Geocoding via Open-Meteo + Nominatim (no API key required)
+- Displays: temperature, condition, feels-like, wind speed, humidity
+- Session cache (30 minutes), retry button, dark-mode support
+- Configurable temperature unit (`celsius` / `fahrenheit`)
 
-Wenn kein Standort im Profil hinterlegt ist, wird ein Link zu den Einstellungen angezeigt.
+If no location is stored in the profile, a link to the preferences page is shown instead.
 
 #### FeedWidget (`FeedWidget`)
 
-RSS/ATOM-Feed-Reader mit Tabs — vollständig per Nutzer konfigurierbar:
+Tabbed RSS/ATOM feed reader — fully configurable per user:
 
-- Feeds werden in **Prefs → About Me** konfiguriert (URL, Bezeichnung, max. Einträge)
-- Für jeden Feed ein Tab mit Titel, Datum und Zusammenfassung der Einträge
-- Feed-Abruf serverseitig (kein CORS-Problem)
-- Session-Cache (15 Minuten), Refresh-Button
-- Erfordert CSRF-Whitelist (siehe [Konfiguration](#konfiguration))
+- Feeds are configured in **Prefs → About Me** (URL, label, max items)
+- One tab per feed showing title, date, and summary for each entry
+- Feed fetching is server-side (no browser CORS issues)
+- Session cache (15 minutes), refresh button
+- Requires a CSRF whitelist entry (see [Configuration](#configuration))
 
 #### UserProfileWidget (`UserProfileWidget`)
 
-Profilkarte des eingeloggten Nutzers:
+Profile card for the currently logged-in user:
 
-- Avatar (aus RT-Profil), Name, Organisation
-- E-Mail, Telefon (Arbeit + Mobil), Adresse
-- Link zu **Prefs → About Me** zum direkten Bearbeiten
+- Avatar (from RT profile), name, organisation
+- Email, work phone, mobile phone, postal address
+- Link to **Prefs → About Me** for quick editing
 
 #### ArticlesWidget (`ArticlesWidget`)
 
-Zeigt die 5 neuesten Artikel aller zugänglichen Klassen als kompakte Karten — mit Name, Klasse, Zusammenfassung, Autor und Alter.
+Shows the 5 newest articles across all accessible classes as compact cards — with name, class, summary, author, and age.
 
 #### AssetsWidget (`AssetsWidget`)
 
-Zeigt die 5 zuletzt aktualisierten Assets als kompakte Karten — mit ID, Name, Katalog, Status, Halter und letzter Aktualisierung.
+Shows the 5 most recently updated assets as compact cards — with ID, name, catalogue, status, held-by, and last-updated.
 
-### Syntax-Highlighting
+### Syntax Highlighting
 
-Fügt Syntax-Highlighting zu CKEditor-Code-Blöcken in Ticket-Beschreibungen und -Antworten hinzu:
+Adds syntax highlighting to CKEditor code blocks in ticket descriptions and replies:
 
-- Bibliothek: [highlight.js](https://highlightjs.org/) (Standard: v11.10.0 via CDN)
-- Synchronisiert sich mit dem RT Dark/Light-Mode
-- Unterstützte Sprachen: Perl, JavaScript, Python, Bash, SQL, YAML, JSON, XML/HTML, Plain Text
-- Sprachauswahl im CKEditor-Toolbar konfigurierbar (siehe [Konfiguration](#konfiguration))
+- Library: [highlight.js](https://highlightjs.org/) (default: v11.10.0 via CDN)
+- Syncs with RT's dark/light mode toggle
+- Supported languages: Perl, JavaScript, Python, Bash, SQL, YAML, JSON, XML/HTML, Plain Text
+- Language list in the CKEditor toolbar is configurable (see [Configuration](#configuration))
 
 ---
 
-## Konfiguration
+## Configuration
 
-### FeedWidget — CSRF-Whitelist
+### FeedWidget — CSRF whitelist
 
-FeedWidget nutzt interne Helfer-Endpunkte, die in `RT_SiteConfig.pm` freigeschaltet werden müssen:
+FeedWidget uses internal helper endpoints that must be whitelisted in `RT_SiteConfig.pm`:
 
 ```perl
 Set(%ReferrerComponents,
@@ -157,46 +157,46 @@ Set(%ReferrerComponents,
 );
 ```
 
-### WeatherWidget — Temperatureinheit
+### WeatherWidget — temperature unit
 
 ```perl
 Set(%WeatherWidgetOptions,
-    TemperatureUnit => 'celsius',   # oder 'fahrenheit'
+    TemperatureUnit => 'celsius',   # or 'fahrenheit'
 );
 ```
 
-### DisplaySLA — Level-Farben
+### DisplaySLA — level colours
 
-Optionale Farb-Überschreibung für SLA-Level-Badges (Standard-Farben sind eingebaut):
+Optional colour overrides for SLA level badges (sensible defaults are built in):
 
 ```perl
 Set(%DisplaySLAOptions,
     LevelColors => {
-        kritisch => '#dc3545',
-        hoch     => '#fd7e14',
+        critical => '#dc3545',
+        high     => '#fd7e14',
         normal   => '#0d6efd',
-        niedrig  => '#198754',
+        low      => '#198754',
     },
 );
 ```
 
-### Syntax-Highlighting — CDN-URLs
+### Syntax highlighting — CDN URLs
 
 ```perl
-# highlight.js CDN (leer lassen = deaktiviert)
+# highlight.js CDN (set to '' to disable)
 Set($SyntaxHighlightJS,
     'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js');
 
-# Light-Mode Theme
+# Light-mode theme
 Set($SyntaxHighlightCSS,
     'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/github.min.css');
 
-# Dark-Mode Theme
+# Dark-mode theme
 Set($SyntaxHighlightCSSdark,
     'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/github-dark.min.css');
 ```
 
-### CKEditor-Sprachauswahl für Code-Blöcke
+### CKEditor code block language list
 
 ```perl
 Set(%MessageBoxRichTextInitArguments,
@@ -216,9 +216,9 @@ Set(%MessageBoxRichTextInitArguments,
 );
 ```
 
-### Dashboard-Widgets — HomepageComponents
+### Dashboard widgets — HomepageComponents
 
-Damit die neuen Portlets im Dashboard-Editor erscheinen:
+Add the portlet names to `$HomepageComponents` to make them available in the dashboard editor:
 
 ```perl
 Set($HomepageComponents, [qw(
@@ -233,13 +233,13 @@ Set($HomepageComponents, [qw(
 )]);
 ```
 
-### Ticket-Seiten-Widgets — Page Layout
+### Ticket page widgets — Page Layout
 
-Die folgenden Widgets stehen im Admin unter **Admin → Global → Page Layouts** zur Verfügung und können per Drag-and-Drop zu Ticket-Spalten hinzugefügt werden:
+The following widgets appear in **Admin → Global → Page Layouts** and can be dragged into ticket columns:
 
-- `DisplaySLA` — SLA-Fristen-Widget
-- `LifecycleWidget` — Lifecycle-Diagramm
-- `LinkedArticles` — Verknüpfte Artikel
+- `DisplaySLA` — SLA deadlines widget
+- `LifecycleWidget` — lifecycle state diagram
+- `LinkedArticles` — linked articles list
 
 ---
 
@@ -251,13 +251,13 @@ make
 sudo make install
 ```
 
-Plugin in `RT_SiteConfig.pm` registrieren:
+Register the plugin in `RT_SiteConfig.pm`:
 
 ```perl
 Plugin('RT::Extension::Redesign');
 ```
 
-Mason-Cache leeren und Apache neu starten:
+Clear the Mason cache and restart Apache:
 
 ```bash
 sudo systemctl stop apache2
@@ -267,41 +267,41 @@ sudo systemctl start apache2
 
 ---
 
-## Integrierte Erweiterungen
+## Absorbed Extensions
 
-Ab v0.09 sind folgende vormals eigenständige Extensions vollständig in Redesign aufgegangen und müssen **nicht mehr** separat installiert oder in `RT_SiteConfig.pm` eingetragen werden:
+As of v0.09, the following formerly standalone extensions have been fully absorbed into Redesign and **no longer need** to be installed or listed in `RT_SiteConfig.pm` separately:
 
-| Extension | Integriert seit | Was sie bringt |
+| Extension | Since | What it provides |
 |---|---|---|
-| RT-Extension-AdminDashboard | v0.07 | Admin-Seiten-Dashboard, Systemstatistiken, Login-Banner |
-| RT-Extension-SyntaxHighlight | v0.09 | highlight.js für CKEditor-Code-Blöcke |
-| RT-Extension-DisplaySLA | v0.09 | SLA-Fristen-Widget auf Ticket-Seiten |
-| RT-Extension-LifecycleWidget | v0.09 | Lifecycle-SVG-Diagramm auf Ticket-Seiten |
-| RT-Extension-LinkedArticles | v0.09 | Verknüpfte-Artikel-Widget auf Ticket-Seiten |
-| RT-Extension-ClockWidget | v0.09 | Flip-Clock-Dashboard-Portlet |
-| RT-Extension-WeatherWidget | v0.09 | Live-Wetter-Dashboard-Portlet |
-| RT-Extension-FeedWidget | v0.09 | RSS/ATOM-Feed-Reader-Dashboard-Portlet |
-| RT-Extension-UserProfileWidget | v0.09 | Nutzerprofil-Dashboard-Portlet |
-| RT-Extension-ArticlesWidget | v0.09 | Neueste-Artikel-Dashboard-Portlet |
-| RT-Extension-AssetsWidget | v0.09 | Aktualisierte-Assets-Dashboard-Portlet |
+| RT-Extension-AdminDashboard | v0.07 | Admin page dashboard, system statistics, login banner |
+| RT-Extension-SyntaxHighlight | v0.09 | highlight.js for CKEditor code blocks |
+| RT-Extension-DisplaySLA | v0.09 | SLA deadlines widget on ticket pages |
+| RT-Extension-LifecycleWidget | v0.09 | Lifecycle SVG diagram on ticket pages |
+| RT-Extension-LinkedArticles | v0.09 | Linked articles widget on ticket pages |
+| RT-Extension-ClockWidget | v0.09 | Flip clock dashboard portlet |
+| RT-Extension-WeatherWidget | v0.09 | Live weather dashboard portlet |
+| RT-Extension-FeedWidget | v0.09 | RSS/ATOM feed reader dashboard portlet |
+| RT-Extension-UserProfileWidget | v0.09 | User profile dashboard portlet |
+| RT-Extension-ArticlesWidget | v0.09 | Newest articles dashboard portlet |
+| RT-Extension-AssetsWidget | v0.09 | Recently updated assets dashboard portlet |
 
-### Migration von eigenständigen Installationen
+### Migrating from standalone installations
 
-Falls eine oder mehrere dieser Extensions separat installiert sind:
+If one or more of these extensions are already installed:
 
-1. Diese Extension installieren (`perl Makefile.PL && make && sudo make install`)
-2. `Plugin('RT::Extension::XXX');` für jede der oben genannten Extensions aus `RT_SiteConfig.pm` entfernen
-3. Für `RT-Extension-AdminDashboard`: Cron-Eintrag von `rt-admin-dashboard-refresh` auf `rt-redesign-stats-refresh` umstellen (Attributname `AdminDashboardStats` und Verhalten bleiben identisch)
-4. Für `RT-Extension-FeedWidget`: CSRF-Whitelist hinzufügen (siehe [Konfiguration](#konfiguration))
-5. Mason-Cache leeren und Apache neu starten
+1. Install this extension (`perl Makefile.PL && make && sudo make install`).
+2. Remove `Plugin('RT::Extension::XXX');` for each of the above from `RT_SiteConfig.pm`.
+3. For `RT-Extension-AdminDashboard`: update any cron entry from `rt-admin-dashboard-refresh` to `rt-redesign-stats-refresh` — the attribute name (`AdminDashboardStats`) and all behaviour remain identical.
+4. For `RT-Extension-FeedWidget`: add the CSRF whitelist (see [Configuration](#configuration)).
+5. Clear the Mason cache and restart Apache.
 
 ---
 
-## Anforderungen
+## Requirements
 
-- Request Tracker 5.0 oder höher
-- RT 7.0 nicht unterstützt
+- Request Tracker 5.0 or later
+- RT 7.0 is not supported
 
-## Autor / Lizenz
+## Author / License
 
 Torsten Brumm — GNU General Public License v2
