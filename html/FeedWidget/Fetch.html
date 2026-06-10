@@ -1,0 +1,58 @@
+<%init>
+use RT::Extension::FeedWidget;
+use JSON::PP ();
+use Digest::MD5 qw(md5_hex);
+
+# Only logged-in users
+unless ( $session{CurrentUser} && $session{CurrentUser}->id ) {
+    $m->clear_buffer;
+    $r->content_type('application/json; charset=utf-8');
+    $m->print('{"error":"Not authenticated","items":[]}');
+    $m->abort;
+}
+
+my $url       = $ARGS{url}  // '';
+my $max_items = int( $ARGS{max} || 10 );
+$max_items    = 1  if $max_items < 1;
+$max_items    = 50 if $max_items > 50;
+
+unless ($url) {
+    $m->clear_buffer;
+    $r->content_type('application/json; charset=utf-8');
+    $m->print('{"error":"Missing url parameter","items":[]}');
+    $m->abort;
+}
+
+# Validate that the URL for this user is actually in their configured feeds
+# (prevents using this as an open proxy)
+my $user    = $session{CurrentUser}->UserObj;
+my $feeds   = RT::Extension::FeedWidget->GetUserFeeds($user);
+my $allowed = grep { $_->{url} eq $url } @$feeds;
+
+unless ($allowed) {
+    $m->clear_buffer;
+    $r->content_type('application/json; charset=utf-8');
+    $m->print('{"error":"Feed URL not in your configured feeds","items":[]}');
+    $m->abort;
+}
+
+# Cache in server-side session (per URL, 15 min TTL)
+my $cache_key = 'fw_feed_' . md5_hex($url);
+my $cached    = $session{$cache_key};
+my $_j        = JSON::PP->new->ascii(1);
+
+if ( $cached && (time - $cached->{ts}) < 900 ) {
+    $m->clear_buffer;
+    $r->content_type('application/json; charset=utf-8');
+    $m->print( $_j->encode( $cached->{data} ) );
+    $m->abort;
+}
+
+my $data = RT::Extension::FeedWidget->FetchFeed( $url, $max_items );
+$session{$cache_key} = { ts => time, data => $data };
+
+$m->clear_buffer;
+$r->content_type('application/json; charset=utf-8');
+$m->print( $_j->encode($data) );
+$m->abort;
+</%init>

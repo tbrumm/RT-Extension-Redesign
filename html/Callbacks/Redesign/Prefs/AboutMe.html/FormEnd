@@ -1,0 +1,140 @@
+<%init>
+use RT::Extension::FeedWidget;
+use JSON::PP ();
+
+my $user     = $session{CurrentUser}->UserObj;
+my $feeds    = RT::Extension::FeedWidget->GetUserFeeds($user);
+my $web_path = RT->Config->Get('WebPath');
+</%init>
+
+<hr class="my-4">
+
+<div class="card shadow-sm mb-4" id="fw-prefs-card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    <span class="fw-semibold">
+      &#x1F4F0; <% loc('RSS / ATOM Feed Reader') %> &mdash; <% loc('My Feeds') %>
+    </span>
+    <span class="badge bg-secondary" id="fw-feed-count"><% scalar @$feeds %></span>
+  </div>
+  <div class="card-body">
+
+    <p class="text-muted small mb-3">
+      <% loc('Add RSS or ATOM feed URLs below. They will appear as tabs in the Feed Reader dashboard widget.') %>
+    </p>
+
+      <div id="fw-feeds-list">
+% for my $i (0 .. $#$feeds) {
+%   my $f = $feeds->[$i];
+        <div class="fw-feed-row row g-2 align-items-center mb-2" id="fw-row-<% $i %>">
+          <div class="col-md-5">
+            <input type="url" name="fw_url"
+                   class="form-control form-control-sm"
+                   placeholder="https://example.com/feed.rss"
+                   value="<% $f->{url} | h %>"
+                   required>
+          </div>
+          <div class="col-md-4">
+            <input type="text" name="fw_title"
+                   class="form-control form-control-sm"
+                   placeholder="<% loc('Label (optional)') | h %>"
+                   value="<% $f->{title} | h %>">
+          </div>
+          <div class="col-md-2">
+            <input type="number" name="fw_max_items"
+                   class="form-control form-control-sm"
+                   min="1" max="50"
+                   title="<% loc('Max items') | h %>"
+                   value="<% $f->{max_items} || 10 %>">
+          </div>
+          <div class="col-md-1 text-end">
+            <button type="button" class="btn btn-sm btn-outline-danger fw-remove-row"
+                    title="<% loc('Remove') | h %>">
+              <i class="bi bi-x-lg"></i>
+            </button>
+          </div>
+        </div>
+% }
+      </div>
+
+      <div class="d-flex align-items-center gap-2 mt-3">
+        <button type="button" class="btn btn-sm btn-outline-secondary" id="fw-add-row">
+          <i class="bi bi-plus-circle"></i> <% loc('Add feed') %>
+        </button>
+
+        <button type="button" class="btn btn-sm btn-primary ms-auto"
+                hx-post="<% $web_path | h %>/FeedWidget/SaveFeeds.html"
+                hx-target="#fw-prefs-card"
+                hx-select="#fw-prefs-card"
+                hx-swap="outerHTML"
+                hx-include="#fw-prefs-card [name]"
+                hx-indicator="#fw-save-spinner">
+          <span id="fw-save-spinner" class="spinner-border spinner-border-sm me-1 htmx-indicator" role="status"></span>
+          <% loc('Save feeds') %>
+        </button>
+      </div>
+
+      <div class="mt-2">
+        <small class="text-muted">
+          <strong><% loc('URL') %></strong>: RSS/ATOM-Feed-URL &nbsp;|&nbsp;
+          <strong><% loc('Label') %></strong>: <% loc('display name (optional)') %> &nbsp;|&nbsp;
+          <strong><% loc('Max') %></strong>: <% loc('items per feed (1-50)') %>
+        </small>
+      </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  var card = document.getElementById('fw-prefs-card');
+  if (!card) return;
+
+  var list   = document.getElementById('fw-feeds-list');
+  var addBtn = document.getElementById('fw-add-row');
+  var cntEl  = document.getElementById('fw-feed-count');
+
+  function countRows() {
+    return list ? list.querySelectorAll('.fw-feed-row').length : 0;
+  }
+
+  function updateCount() {
+    if (cntEl) cntEl.textContent = countRows();
+  }
+
+  function addRow() {
+    var idx = Date.now();
+    var row = document.createElement('div');
+    row.className = 'fw-feed-row row g-2 align-items-center mb-2';
+    row.id = 'fw-row-' + idx;
+    row.innerHTML =
+      '<div class="col-md-5">' +
+        '<input type="url" name="fw_url" class="form-control form-control-sm"' +
+               ' placeholder="https://example.com/feed.rss" required>' +
+      '</div>' +
+      '<div class="col-md-4">' +
+        '<input type="text" name="fw_title" class="form-control form-control-sm"' +
+               ' placeholder="Label (optional)">' +
+      '</div>' +
+      '<div class="col-md-2">' +
+        '<input type="number" name="fw_max_items" class="form-control form-control-sm"' +
+               ' min="1" max="50" value="10">' +
+      '</div>' +
+      '<div class="col-md-1 text-end">' +
+        '<button type="button" class="btn btn-sm btn-outline-danger fw-remove-row"' +
+                ' title="Remove"><i class="bi bi-x-lg"></i></button>' +
+      '</div>';
+    list.appendChild(row);
+    row.querySelector('input[type="url"]').focus();
+    updateCount();
+  }
+
+  if (addBtn) addBtn.addEventListener('click', addRow);
+
+  list && list.addEventListener('click', function(e) {
+    var btn = e.target.closest('.fw-remove-row');
+    if (!btn) return;
+    var row = btn.closest('.fw-feed-row');
+    if (row) { row.remove(); updateCount(); }
+  });
+})();
+</script>

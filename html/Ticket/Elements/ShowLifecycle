@@ -1,0 +1,349 @@
+<%args>
+$TicketObj
+$HTMXLoad => 0
+</%args>
+<%init>
+return unless $TicketObj && $TicketObj->id;
+
+my $queue = $TicketObj->QueueObj;
+my $lc    = $queue->LifecycleObj;
+return unless $lc;
+
+# ── lifecycle data ───────────────────────────────────────────────────────────
+my @initial  = $lc->Initial;
+my @active   = $lc->Active;
+my @inactive = $lc->Inactive;
+my @all      = $lc->Valid;
+my $current  = $TicketObj->Status;
+
+my %trans;
+for my $from (@all) {
+    my @to = $lc->Transitions($from);
+    $trans{$from} = \@to if @to;
+}
+
+my $total = scalar @all;
+
+# ── JSON for the adaptive JS renderer ───────────────────────────────────────
+require JSON::PP;
+my $lc_json = JSON::PP->new->utf8->encode( {
+    initial     => \@initial,
+    active      => \@active,
+    inactive    => \@inactive,
+    transitions => \%trans,
+    current     => $current,
+    name        => $lc->Name,
+    queue       => $queue->Name,
+} );
+
+# ── static SVG layout (always-works fallback, NW=120) ───────────────────────
+my $NW   = 120;
+my $NH   = 30;
+my $RG   = 8;
+my $CG   = 72;
+my $PAD  = 16;
+my $TPAD = 38;
+
+my $ACT_COLS  = $total > 16 ? 3 : $total > 8 ? 2 : 1;
+my $ACT_COL_W = $NW + 16;
+
+my $xIni = $PAD;
+my $xAct = $xIni + $NW + $CG;
+my $xIna = $xAct + $ACT_COLS * $ACT_COL_W - 16 + $CG;
+
+my %nodes;
+for my $i ( 0 .. $#initial ) {
+    $nodes{ $initial[$i] } = { x => $xIni, y => $TPAD + $i * ($NH + $RG), type => 'initial' };
+}
+for my $i ( 0 .. $#active ) {
+    my $c = $i % $ACT_COLS;
+    my $r = int( $i / $ACT_COLS );
+    $nodes{ $active[$i] } = { x => $xAct + $c * $ACT_COL_W, y => $TPAD + $r * ($NH + $RG), type => 'active' };
+}
+for my $i ( 0 .. $#inactive ) {
+    $nodes{ $inactive[$i] } = { x => $xIna, y => $TPAD + $i * ($NH + $RG), type => 'inactive' };
+}
+
+my $svgW = $PAD; my $svgH = $PAD;
+for my $n ( values %nodes ) {
+    my $r = $n->{x} + $NW + $PAD; my $b = $n->{y} + $NH + $PAD;
+    $svgW = $r if $r > $svgW; $svgH = $b if $b > $svgH;
+}
+
+# Arrow helper — anonymous sub to properly close over $NW/$NH
+my $_ap = sub {
+    my ( $src, $dst, $bo ) = @_;
+    if ( abs( $src->{x} - $dst->{x} ) < 5 ) {
+        my ($sx,$sy,$dx,$dy) = ($src->{x}+$NW, $src->{y}+$NH/2, $dst->{x}+$NW, $dst->{y}+$NH/2);
+        my $mx = $sx + 30 + abs($sy-$dy)*0.25;
+        return sprintf 'M%.1f,%.1f C%.1f,%.1f %.1f,%.1f %.1f,%.1f',$sx,$sy,$mx,$sy,$mx,$dy,$dx,$dy;
+    }
+    if ( $src->{x} < $dst->{x} - 5 ) {
+        my ($sx,$sy,$dx,$dy) = ($src->{x}+$NW,$src->{y}+$NH/2,$dst->{x},$dst->{y}+$NH/2);
+        my $mx = ($sx+$dx)/2;
+        return sprintf 'M%.1f,%.1f C%.1f,%.1f %.1f,%.1f %.1f,%.1f',$sx,$sy,$mx,$sy,$mx,$dy,$dx,$dy;
+    }
+    my ($sx,$sy,$dx,$dy) = ($src->{x},$src->{y}+$NH/2,$dst->{x}+$NW,$dst->{y}+$NH/2);
+    my $ay = 6 + ($bo||0)*10;
+    return sprintf 'M%.1f,%.1f C%.1f,%.1f %.1f,%.1f %.1f,%.1f',$sx,$sy,$sx,$ay,$dx,$ay,$dx,$dy;
+};
+
+my $SIMPLE = ( $total <= 20 );
+my %trans_show = $SIMPLE ? %trans : ();
+unless ($SIMPLE) {
+    $trans_show{$current} = $trans{$current} if $trans{$current};
+    for my $f ( keys %trans ) {
+        if ( grep { $_ eq $current } @{ $trans{$f} } ) { $trans_show{$f} //= $trans{$f}; }
+    }
+}
+
+my @arrows; my $bc = 0;
+for my $from ( sort keys %trans_show ) {
+    next unless $nodes{$from};
+    for my $to ( @{ $trans_show{$from} } ) {
+        next unless $nodes{$to}; next if $from eq $to;
+        my $ic  = ($from eq $current || $to eq $current);
+        my $ib  = $nodes{$from}{x} >= $nodes{$to}{x} - 5 && abs($nodes{$from}{x} - $nodes{$to}{x}) >= 5;
+        my $bo  = $ib ? $bc++ : 0;
+        push @arrows, { d => $_ap->($nodes{$from},$nodes{$to},$bo), cur => $ic };
+    }
+}
+
+my $_tr = sub { my($s,$m)=@_; length($s)<=$m ? $s : substr($s,0,$m-3).'...' };
+
+my $wid = 'lw-' . $TicketObj->id . '-' . $queue->id;
+</%init>
+
+<&| /Widgets/TitleBox,
+    title              => loc('Lifecycle') . ': ' . $lc->Name,
+    class              => 'lw-titlebox',
+    content_body_class => 'p-2',
+&>
+
+<div id="<% $wid %>" data-lc="<% $lc_json |h %>">
+  <div class="lw-legend small text-muted">
+    <span><span class="lw-dot lw-dot-i"></span>Initial</span>
+    <span><span class="lw-dot lw-dot-a"></span>Active</span>
+    <span><span class="lw-dot lw-dot-n"></span>Inactive</span>
+    <span><span class="lw-dot lw-dot-c"></span>Current</span>
+  </div>
+  <div class="lw-svg-scroll">
+    <svg id="<% $wid %>-svg" class="lw-svg"
+         viewBox="0 0 <% $svgW %> <% $svgH %>"
+         style="width:100%;max-width:<% $svgW %>px"
+         xmlns="http://www.w3.org/2000/svg">
+
+      <!-- static fallback content – JS will replace this -->
+      <defs>
+        <marker id="<% $wid %>-mk" markerWidth="8" markerHeight="6"
+                refX="7" refY="3" orient="auto">
+          <polygon points="0 0,8 3,0 6" class="lw-mkarr"/></marker>
+        <marker id="<% $wid %>-mk-cur" markerWidth="8" markerHeight="6"
+                refX="7" refY="3" orient="auto">
+          <polygon points="0 0,8 3,0 6" class="lw-mkarr-cur"/></marker>
+      </defs>
+% if (@initial) {
+      <text x="<% $xIni+$NW/2 %>" y="<% $TPAD-8 %>" text-anchor="middle" font-size="10" class="lw-col-label">Initial</text>
+% }
+% if (@active) {
+      <text x="<% $xAct+($ACT_COLS*$ACT_COL_W-16)/2 %>" y="<% $TPAD-8 %>" text-anchor="middle" font-size="10" class="lw-col-label">Active</text>
+% }
+% if (@inactive) {
+      <text x="<% $xIna+$NW/2 %>" y="<% $TPAD-8 %>" text-anchor="middle" font-size="10" class="lw-col-label">Inactive</text>
+% }
+% for my $a (@arrows) {
+      <path d="<% $a->{d} %>" fill="none"
+            class="<% $a->{cur} ? 'lw-arr lw-arr-cur' : 'lw-arr' %>"
+            marker-end="url(#<% $wid %><% $a->{cur} ? '-mk-cur' : '-mk' %>)"/>
+% }
+% for my $s ( sort keys %nodes ) {
+%   my $n=$nodes{$s}; my $ic=($s eq $current);
+      <g class="lw-node lw-<% $n->{type} %><% $ic?' lw-current':'' %>">
+        <title><% $s|h %><% $ic?' (current)':'' %></title>
+        <rect x="<% $n->{x} %>" y="<% $n->{y} %>" width="<% $NW %>" height="<% $NH %>"
+              rx="4" ry="4" class="lw-rect"/>
+        <text x="<% $n->{x}+$NW/2 %>" y="<% $n->{y}+$NH/2 %>"
+              text-anchor="middle" dominant-baseline="central"
+              font-size="11" class="lw-lbl"><% $_tr->($s,14)|h %></text>
+      </g>
+% }
+    </svg>
+  </div>
+  <div id="<% $wid %>-info" class="small text-muted mt-1"
+       style="display:<% $SIMPLE?'none':'block' %>"><% $SIMPLE?'':'Complex lifecycle ('.$total.' statuses) — showing transitions from/to current status only.' %></div>
+</div>
+
+</&>
+
+<script>
+(function(){
+  var NS  = 'http://www.w3.org/2000/svg';
+  var WID = '<% $wid %>';
+
+  function el(tag, attrs) {
+    var e = document.createElementNS(NS, tag);
+    if (attrs) Object.keys(attrs).forEach(function(k){ e.setAttribute(k, attrs[k]); });
+    return e;
+  }
+  function trunc(s, max) { return s.length > max ? s.slice(0, max-1) + '…' : s; }
+
+  var wrap = document.getElementById(WID);
+  if (!wrap) return;
+  var data;
+  try { data = JSON.parse(wrap.getAttribute('data-lc') || '{}'); } catch(e) { return; }
+  var svg  = document.getElementById(WID + '-svg');
+  var info = document.getElementById(WID + '-info');
+  if (!svg) return;
+
+  var lastW = 0;
+  function update() {
+    var w = wrap.getBoundingClientRect().width || wrap.offsetWidth;
+    if (!w || Math.abs(w - lastW) < 4) return;
+    lastW = w;
+    render(w);
+  }
+
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(update).observe(wrap);
+  } else {
+    window.addEventListener('resize', update);
+  }
+  /* retry chain: fire once the element has real layout dimensions */
+  setTimeout(update, 0);
+  setTimeout(update, 80);
+  setTimeout(update, 400);
+
+  /* ══ render ═══════════════════════════════════════════════════════════════ */
+  function render(cW) {
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    if (info) info.style.display = 'none';
+
+    var ini = data.initial||[], act = data.active||[], ina = data.inactive||[];
+    var cur = data.current||'', trans = data.transitions||{};
+    var total = ini.length + act.length + ina.length;
+
+    /* adaptive geometry */
+    var NW, NH, RG, CG, maxLbl, fz;
+    if      (cW >= 500) { NW=120; NH=30; RG=8;  CG=72; maxLbl=14; fz=11; }
+    else if (cW >= 370) { NW=96;  NH=28; RG=7;  CG=50; maxLbl=11; fz=11; }
+    else if (cW >= 260) { NW=76;  NH=26; RG=6;  CG=30; maxLbl=9;  fz=10; }
+    else                { NW=Math.max(55,Math.floor((cW-24)/2));
+                          NH=24;  RG=5;  CG=0;  maxLbl=Math.floor(NW/8); fz=9; }
+
+    var NARROW = (cW < 260);
+    var PAD=16, TPAD = NARROW ? 20 : 38;
+
+    /* node positions */
+    var nodes = {}, typeOf = {};
+    ini.forEach(function(s){ typeOf[s]='initial'; });
+    act.forEach(function(s){ typeOf[s]='active'; });
+    ina.forEach(function(s){ typeOf[s]='inactive'; });
+
+    if (NARROW) {
+      var all = ini.concat(act, ina);
+      var stride = NW + 4;
+      all.forEach(function(s,i){
+        nodes[s]={ x:PAD+(i%2)*stride, y:TPAD+Math.floor(i/2)*(NH+RG), type:typeOf[s] };
+      });
+    } else {
+      var ACT_COLS = act.length>16?3: act.length>8?2:1;
+      var ACT_W    = NW+16;
+      var xIni=PAD, xAct=PAD+NW+CG, xIna=xAct+ACT_COLS*ACT_W-16+CG;
+      ini.forEach(function(s,i){ nodes[s]={x:xIni, y:TPAD+i*(NH+RG), type:'initial'}; });
+      act.forEach(function(s,i){ nodes[s]={x:xAct+(i%ACT_COLS)*ACT_W, y:TPAD+Math.floor(i/ACT_COLS)*(NH+RG), type:'active'}; });
+      ina.forEach(function(s,i){ nodes[s]={x:xIna, y:TPAD+i*(NH+RG), type:'inactive'}; });
+    }
+
+    /* canvas size */
+    var allN=Object.keys(nodes).map(function(k){return nodes[k];}), svgW=PAD, svgH=PAD;
+    allN.forEach(function(n){
+      if(n.x+NW+PAD>svgW) svgW=n.x+NW+PAD;
+      if(n.y+NH+PAD>svgH) svgH=n.y+NH+PAD;
+    });
+    svg.setAttribute('viewBox','0 0 '+svgW+' '+svgH);
+    svg.setAttribute('width',  Math.min(svgW, cW));
+    svg.setAttribute('height', svgH);
+
+    /* markers */
+    var defs=el('defs');
+    function mkMk(id,cls){
+      var m=el('marker',{id:WID+'-'+id,markerWidth:'8',markerHeight:'6',refX:'7',refY:'3',orient:'auto'});
+      m.appendChild(el('polygon',{points:'0 0,8 3,0 6',class:cls})); return m;
+    }
+    defs.appendChild(mkMk('mk','lw-mkarr')); defs.appendChild(mkMk('mk-cur','lw-mkarr-cur'));
+    svg.appendChild(defs);
+
+    /* labels */
+    var lsz = Math.max(8, fz-1);
+    if (!NARROW) {
+      var colX={}, colW={};
+      var ACT_COLS2=act.length>16?3:act.length>8?2:1, ACT_W2=NW+16;
+      if(ini.length){ var x=nodes[ini[0]].x; svg.appendChild(mkLbl(x+NW/2, TPAD-8, 'Initial', lsz)); }
+      if(act.length){ var x=nodes[act[0]].x; svg.appendChild(mkLbl(x+(ACT_COLS2*ACT_W2-16)/2, TPAD-8, 'Active', lsz)); }
+      if(ina.length){ var x=nodes[ina[0]].x; svg.appendChild(mkLbl(x+NW/2, TPAD-8, 'Inactive', lsz)); }
+    } else {
+      var seen={};
+      ['initial','active','inactive'].forEach(function(t){
+        var first = Object.keys(nodes).filter(function(s){return nodes[s].type===t&&!seen[s];})[0];
+        if(!first) return;
+        var n=nodes[first];
+        svg.appendChild(mkLbl(PAD, n.y-3, t.charAt(0).toUpperCase()+t.slice(1), lsz-1, 'lw-sec-lbl'));
+        seen[first]=1;
+      });
+    }
+    function mkLbl(x,y,txt,sz,cls){
+      var t=el('text',{x:x,y:y,'text-anchor':'middle','font-size':sz,class:cls||'lw-col-label'});
+      t.textContent=txt; return t;
+    }
+
+    /* arrows (wide mode only) */
+    if (!NARROW) {
+      var SIMPLE=(total<=20), transShow={};
+      if(SIMPLE){ transShow=trans; }
+      else {
+        if(trans[cur]) transShow[cur]=trans[cur];
+        Object.keys(trans).forEach(function(f){ if((trans[f]||[]).indexOf(cur)!==-1) transShow[f]=transShow[f]||trans[f]; });
+        if(info){ info.style.display=''; info.textContent='Complex lifecycle ('+total+' statuses) — showing transitions from/to current status only.'; }
+      }
+      var bc=0, al=el('g'); svg.appendChild(al);
+      Object.keys(transShow).forEach(function(from){
+        if(!nodes[from]) return;
+        (transShow[from]||[]).forEach(function(to){
+          if(!nodes[to]||from===to) return;
+          var ic=(from===cur||to===cur);
+          var ib=nodes[from].x>=nodes[to].x-5&&Math.abs(nodes[from].x-nodes[to].x)>=5;
+          var d=aPath(nodes[from],nodes[to],ib?bc++:0,NW,NH);
+          al.appendChild(el('path',{d:d,fill:'none',
+            class:ic?'lw-arr lw-arr-cur':'lw-arr',
+            'marker-end':'url(#'+WID+(ic?'-mk-cur':'-mk')+')'}));
+        });
+      });
+    }
+
+    /* nodes */
+    Object.keys(nodes).forEach(function(s){
+      var n=nodes[s], ic=(s===cur);
+      var g=el('g',{class:'lw-node lw-'+n.type+(ic?' lw-current':'')});
+      var tt=document.createElementNS(NS,'title'); tt.textContent=s+(ic?' (current)':''); g.appendChild(tt);
+      g.appendChild(el('rect',{x:n.x,y:n.y,width:NW,height:NH,rx:'4',ry:'4',class:'lw-rect'}));
+      var t=el('text',{x:n.x+NW/2,y:n.y+NH/2,'text-anchor':'middle','dominant-baseline':'central','font-size':fz,class:'lw-lbl'});
+      t.textContent=trunc(s,maxLbl); g.appendChild(t);
+      svg.appendChild(g);
+    });
+  }
+
+  function aPath(src,dst,bo,NW,NH){
+    if(Math.abs(src.x-dst.x)<5){
+      var sx=src.x+NW,sy=src.y+NH/2,dx=dst.x+NW,dy=dst.y+NH/2,mx=sx+30+Math.abs(sy-dy)*.25;
+      return 'M'+sx+','+sy+' C'+mx+','+sy+' '+mx+','+dy+' '+dx+','+dy;
+    }
+    if(src.x<dst.x-5){
+      var sx=src.x+NW,sy=src.y+NH/2,dx=dst.x,dy=dst.y+NH/2,mx=(sx+dx)/2;
+      return 'M'+sx+','+sy+' C'+mx+','+sy+' '+mx+','+dy+' '+dx+','+dy;
+    }
+    var sx=src.x,sy=src.y+NH/2,dx=dst.x+NW,dy=dst.y+NH/2,ay=6+bo*10;
+    return 'M'+sx+','+sy+' C'+sx+','+ay+' '+dx+','+ay+' '+dx+','+dy;
+  }
+
+})();
+</script>

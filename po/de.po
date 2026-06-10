@@ -322,3 +322,182 @@ msgstr "Tickets gesamt"
 msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
 msgstr "Um nach Tickets mit Beobachtern zu suchen, die zu einer Domain gehören, die Domain inkl. @-Symbol eingeben."
 
+
+# WeatherWidget translations
+msgid "Weather"
+msgstr "Wetter"
+
+msgid "No location stored in user profile."
+msgstr "Kein Standort im Benutzerprofil hinterlegt."
+
+msgid "Edit profile"
+msgstr "Profil bearbeiten"
+
+msgid "Loading weather data..."
+msgstr "Wetterdaten werden geladen..."
+
+msgid "Retry"
+msgstr "Erneut versuchen"
+
+msgid "Clear Sky"
+msgstr "Klarer Himmel"
+
+msgid "Mainly Clear"
+msgstr "Überwiegend klar"
+
+msgid "Partly Cloudy"
+msgstr "Teilweise bewölkt"
+
+msgid "Overcast"
+msgstr "Bedeckt"
+
+msgid "Fog"
+msgstr "Nebel"
+
+msgid "Rime Fog"
+msgstr "Nebel mit Reifbildung"
+
+msgid "Light Drizzle"
+msgstr "Leichter Nieselregen"
+
+msgid "Moderate Drizzle"
+msgstr "Mäßiger Nieselregen"
+
+msgid "Heavy Drizzle"
+msgstr "Starker Nieselregen"
+
+msgid "Light Freezing Drizzle"
+msgstr "Gefrierender Nieselregen (leicht)"
+
+msgid "Heavy Freezing Drizzle"
+msgstr "Gefrierender Nieselregen (stark)"
+
+msgid "Light Rain"
+msgstr "Leichter Regen"
+
+msgid "Moderate Rain"
+msgstr "Mäßiger Regen"
+
+msgid "Heavy Rain"
+msgstr "Starker Regen"
+
+msgid "Light Freezing Rain"
+msgstr "Gefrierender Regen (leicht)"
+
+msgid "Heavy Freezing Rain"
+msgstr "Gefrierender Regen (stark)"
+
+msgid "Light Snow"
+msgstr "Leichter Schneefall"
+
+msgid "Moderate Snow"
+msgstr "Mäßiger Schneefall"
+
+msgid "Heavy Snow"
+msgstr "Starker Schneefall"
+
+msgid "Snow Grains"
+msgstr "Schneekörner"
+
+msgid "Light Showers"
+msgstr "Leichte Regenschauer"
+
+msgid "Moderate Showers"
+msgstr "Mäßige Regenschauer"
+
+msgid "Heavy Showers"
+msgstr "Starke Regenschauer"
+
+msgid "Light Snow Showers"
+msgstr "Leichte Schneeschauer"
+
+msgid "Heavy Snow Showers"
+msgstr "Starke Schneeschauer"
+
+msgid "Thunderstorm"
+msgstr "Gewitter"
+
+msgid "Thunderstorm with Hail"
+msgstr "Gewitter mit Hagel"
+
+msgid "Thunderstorm with Heavy Hail"
+msgstr "Gewitter mit schwerem Hagel"
+
+msgid "Clear Night"
+msgstr "Klare Nacht"
+
+msgid "Unknown"
+msgstr "Unbekannt"
+
+msgid "Feels like"
+msgstr "Gefühlt"
+
+msgid "Updated"
+msgstr "Aktualisiert"
+
+msgid "Timeout - weather data could not be retrieved."
+msgstr "Zeitüberschreitung - Wetterdaten konnten nicht abgerufen werden."
+
+msgid "Location could not be found."
+msgstr "Standort konnte nicht gefunden werden."
+
+msgid "Geocoding failed."
+msgstr "Geocoding fehlgeschlagen."
+
+msgid "Weather data could not be loaded."
+msgstr "Wetterdaten konnten nicht geladen werden."
+
+msgid "Internal error."
+msgstr "Interner Fehler."
+
+# FeedWidget translations
+msgid "Feed Reader"
+msgstr "Feed-Leser"
+
+msgid "No feeds configured yet."
+msgstr "Noch keine Feeds konfiguriert."
+
+msgid "Add feeds in preferences"
+msgstr "Feeds in den Einstellungen hinzufügen"
+
+msgid "Loading feeds..."
+msgstr "Feeds werden geladen..."
+
+msgid "Manage feeds"
+msgstr "Feeds verwalten"
+
+msgid "RSS / ATOM Feed Reader"
+msgstr "RSS/ATOM-Feed-Leser"
+
+msgid "My Feeds"
+msgstr "Meine Feeds"
+
+msgid "Feeds saved successfully."
+msgstr "Feeds erfolgreich gespeichert."
+
+msgid "Add RSS or ATOM feed URLs below. They will appear as tabs in the Feed Reader dashboard widget."
+msgstr "RSS- oder ATOM-Feed-URLs unten hinzufügen. Sie werden als Tabs im Feed-Reader-Dashboard-Widget angezeigt."
+
+msgid "Label (optional)"
+msgstr "Bezeichnung (optional)"
+
+msgid "Remove"
+msgstr "Entfernen"
+
+msgid "Add feed"
+msgstr "Feed hinzufügen"
+
+msgid "Save feeds"
+msgstr "Feeds speichern"
+
+msgid "Max items"
+msgstr "Max. Einträge"
+
+msgid "how many feed items to show per feed (1-50)"
+msgstr "Anzahl der anzuzeigenden Feed-Einträge (1-50)"
+
+msgid "display name (optional)"
+msgstr "Anzeigename (optional)"
+
+msgid "items per feed (1-50)"
+msgstr "Einträge pro Feed (1-50)"

@@ -1,0 +1,26 @@
+% $m->callback( %ARGS, CallbackName => 'BeforeWidget' );
+<& /Ticket/Elements/ShowSLA, TicketObj => $TicketObj, HTMXLoad => $HTMXLoad &>
+% $m->callback( %ARGS, CallbackName => 'AfterWidget' );
+
+<%ARGS>
+$TicketObj
+$HTMXLoad => 0
+</%ARGS>
+
+<%attr>
+directly_accessible => 1
+</%attr>
+
+<%method PreCheck>
+<%args>
+$Object => undef
+</%args>
+<%init>
+return 0 unless $Object && ref($Object) && $Object->isa('RT::Ticket');
+my $sla = $Object->SLA;
+return 0 unless $sla && length($sla);
+my %sa = RT->Config->Get('ServiceAgreements');
+return 0 unless %sa && $sa{Levels} && $sa{Levels}{$sla};
+return 1;
+</%init>
+</%method>

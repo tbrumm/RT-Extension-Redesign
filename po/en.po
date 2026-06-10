@@ -322,3 +322,52 @@ msgstr ""
 msgid "To search for tickets with watchers who match a domain, enter the domain, including the @ symbol."
 msgstr ""
 
+
+# FeedWidget translations
+msgid "Feed Reader"
+msgstr "Feed Reader"
+
+msgid "No feeds configured yet."
+msgstr "No feeds configured yet."
+
+msgid "Add feeds in preferences"
+msgstr "Add feeds in preferences"
+
+msgid "Loading feeds..."
+msgstr "Loading feeds..."
+
+msgid "Manage feeds"
+msgstr "Manage feeds"
+
+msgid "RSS / ATOM Feed Reader"
+msgstr "RSS / ATOM Feed Reader"
+
+msgid "My Feeds"
+msgstr "My Feeds"
+
+msgid "Feeds saved successfully."
+msgstr "Feeds saved successfully."
+
+msgid "Add RSS or ATOM feed URLs below. They will appear as tabs in the Feed Reader dashboard widget."
+msgstr "Add RSS or ATOM feed URLs below. They will appear as tabs in the Feed Reader dashboard widget."
+
+msgid "Label (optional)"
+msgstr "Label (optional)"
+
+msgid "Add feed"
+msgstr "Add feed"
+
+msgid "Save feeds"
+msgstr "Save feeds"
+
+msgid "Max items"
+msgstr "Max items"
+
+msgid "how many feed items to show per feed (1-50)"
+msgstr "how many feed items to show per feed (1-50)"
+
+msgid "display name (optional)"
+msgstr "display name (optional)"
+
+msgid "items per feed (1-50)"
+msgstr "items per feed (1-50)"

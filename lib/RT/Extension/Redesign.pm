@@ -1,9 +1,19 @@
 package RT::Extension::Redesign;
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 use strict;
 use warnings;
+
+# Allow language-* CSS classes through RT's HTML scrubber so that
+# highlight.js code blocks are not stripped on ticket display.
+require RT::Interface::Web::Scrubber;
+{
+    no warnings 'once';
+    package RT::Interface::Web::Scrubber;
+    our %ALLOWED_ATTRIBUTES;
+    $ALLOWED_ATTRIBUTES{class} = qr/(text-|fw-|fst-|fs-|align-|\btable\b|language-)/;
+}
 
 sub collect_stats {
     my $dbh = $RT::Handle->dbh;

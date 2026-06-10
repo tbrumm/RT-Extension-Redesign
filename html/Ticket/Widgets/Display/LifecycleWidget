@@ -1,0 +1,12 @@
+% $m->callback( %ARGS, CallbackName => 'BeforeWidget' );
+<& /Ticket/Elements/ShowLifecycle, TicketObj => $TicketObj, HTMXLoad => $HTMXLoad &>
+% $m->callback( %ARGS, CallbackName => 'AfterWidget' );
+
+<%ARGS>
+$TicketObj
+$HTMXLoad => 0
+</%ARGS>
+
+<%attr>
+directly_accessible => 1
+</%attr>

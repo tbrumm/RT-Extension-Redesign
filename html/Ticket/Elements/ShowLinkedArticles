@@ -1,0 +1,67 @@
+<%args>
+$Ticket
+$HTMXLoad => 0
+</%args>
+<%init>
+my $prefix = 'fsck.com-article://' . RT->Config->Get('Organization');
+
+my @article_ids;
+
+my $target_arts = $Ticket->Links("Base")->Clone;
+$target_arts->Limit(
+    FIELD    => "Target",
+    OPERATOR => "STARTSWITH",
+    VALUE    => $prefix,
+);
+while (my $link = $target_arts->Next) {
+    push @article_ids, $1 if $link->Target =~ m{/article/(\d+)$};
+}
+
+my $base_arts = $Ticket->Links("Target")->Clone;
+$base_arts->Limit(
+    FIELD    => "Base",
+    OPERATOR => "STARTSWITH",
+    VALUE    => $prefix,
+);
+while (my $link = $base_arts->Next) {
+    push @article_ids, $1 if $link->Base =~ m{/article/(\d+)$};
+}
+
+return unless @article_ids;
+
+my $articles = RT::Articles->new( $session{CurrentUser} );
+$articles->Limit(FIELD => "id", OPERATOR => "IN", VALUE => \@article_ids);
+$articles->OrderBy(FIELD => "Name", ORDER => "ASC");
+</%init>
+
+<&| /Widgets/TitleBox,
+    title              => loc('Articles'),
+    class              => 'ticket-linked-articles',
+    title_class        => 'inverse',
+    htmx_load          => $HTMXLoad,
+    content_body_class => 'pt-0',
+&>
+
+<div class="px-2 pt-1 pb-2">
+% while (my $article = $articles->Next) {
+%   my $url     = RT->Config->Get('WebPath') . '/Articles/Article/Display.html?id=' . $article->id;
+%   my $summary = $article->Summary;
+  <div class="card mb-2">
+    <div class="card-body py-2 px-3">
+      <div class="d-flex justify-content-between align-items-start gap-2 mb-1">
+        <a href="<% $url |h %>" class="fw-semibold text-body"><% $article->Name |h %></a>
+        <span class="badge text-bg-secondary text-nowrap flex-shrink-0"><% $article->ClassObj->Name |h %></span>
+      </div>
+%   if (defined $summary && length $summary) {
+      <p class="small text-body-secondary mb-0"><% $summary |h %></p>
+%   }
+    </div>
+  </div>
+% }
+</div>
+
+</&>
+
+<%attr>
+directly_accessible => 1
+</%attr>

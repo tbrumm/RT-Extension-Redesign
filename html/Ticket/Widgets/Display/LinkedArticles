@@ -1,0 +1,36 @@
+% $m->callback( %ARGS, CallbackName => 'BeforeWidget' );
+<div hx-trigger="ticketLinksChanged from:body" hx-get="<% RT->Config->Get('WebPath') %>/Views/Ticket/ShowLinkedArticles?HTMXLoad=0&id=<% $TicketObj->id %>">
+  <& /Ticket/Elements/ShowLinkedArticles, Ticket => $TicketObj &>
+</div>
+% $m->callback( %ARGS, CallbackName => 'AfterWidget' );
+
+<%ARGS>
+$TicketObj
+</%ARGS>
+
+<%METHOD PreCheck>
+<%args>
+$Object
+</%args>
+<%init>
+my $prefix = 'fsck.com-article://' . RT->Config->Get('Organization');
+
+my $target_arts = $Object->Links("Base")->Clone;
+$target_arts->Limit(
+    FIELD    => "Target",
+    OPERATOR => "STARTSWITH",
+    VALUE    => $prefix,
+);
+return 1 if $target_arts->Count > 0;
+
+my $base_arts = $Object->Links("Target")->Clone;
+$base_arts->Limit(
+    FIELD    => "Base",
+    OPERATOR => "STARTSWITH",
+    VALUE    => $prefix,
+);
+return 1 if $base_arts->Count > 0;
+
+return 0;
+</%init>
+</%METHOD>

@@ -1,0 +1,204 @@
+<%init>
+use strict;
+use warnings;
+
+my $sla = $TicketObj->SLA;
+return unless $sla && length($sla);
+
+my %sa = RT->Config->Get('ServiceAgreements');
+return unless %sa && $sa{Levels} && $sa{Levels}{$sla};
+
+my $lcfg = $sa{Levels}{$sla};
+my $now  = time();
+
+# ── Ignored / paused statuses ────────────────────────────────────
+
+my @ign;
+for my $key (qw(Response Resolve)) {
+    my $sub = $lcfg->{$key} // {};
+    push @ign, @{ $sub->{IgnoreOnStatuses} }
+        if ref $sub->{IgnoreOnStatuses} eq 'ARRAY';
+}
+push @ign, @{ $lcfg->{IgnoreOnStatuses} }
+    if ref $lcfg->{IgnoreOnStatuses} eq 'ARRAY';
+my %ign_map = map { $_ => 1 } @ign;
+my $paused  = $ign_map{ $TicketObj->Status } ? 1 : 0;
+
+# ── Deadline calculation ─────────────────────────────────────────
+
+my $starts = 0;
+if ( $TicketObj->StartsObj && $TicketObj->StartsObj->Unix > 0 ) {
+    $starts = $TicketObj->StartsObj->Unix;
+} elsif ( $TicketObj->CreatedObj && $TicketObj->CreatedObj->Unix > 0 ) {
+    $starts = $TicketObj->CreatedObj->Unix;
+}
+
+my $_sla_due = sub {
+    my ($type) = @_;
+    my $due = eval {
+        require RT::SLA;
+        RT::SLA->Due(
+            Level  => $sla,
+            Type   => $type,
+            Ticket => $TicketObj,
+            Time   => $starts,
+        );
+    };
+    if ( !$@ && defined $due ) { return $due }
+    $due = eval {
+        RT::SLA->Due( Level => $sla, Type => $type, Time => $starts );
+    };
+    RT::Logger->debug("DisplaySLA: RT::SLA->Due($type) failed: $@") if $@;
+    return $due;
+};
+
+my $resp_mins    = ( $lcfg->{Response} // {} )->{BusinessMinutes} // 0;
+my $resolve_mins = ( $lcfg->{Resolve}  // {} )->{BusinessMinutes} // 0;
+
+my $resp_due    = $resp_mins && $starts ? $_sla_due->('Response') : undef;
+
+my $resolve_due;
+if ( $TicketObj->DueObj && $TicketObj->DueObj->Unix > 0 ) {
+    $resolve_due = $TicketObj->DueObj->Unix;
+} elsif ( $resolve_mins && $starts ) {
+    $resolve_due = $_sla_due->('Resolve');
+}
+
+my $_remaining = sub {
+    my ($epoch) = @_;
+    return '' unless $epoch;
+    my $diff = $epoch - $now;
+    my $abs  = abs($diff);
+    my $sign = $diff < 0 ? '-' : '';
+    if ( $abs < 60 ) {
+        return $diff < 0 ? '-1min' : '0min';
+    } elsif ( $abs < 3600 ) {
+        my $m = int( $abs / 60 );
+        return "${sign}${m}min";
+    } elsif ( $abs < 86400 ) {
+        my $h = int( $abs / 3600 );
+        my $m = int( ( $abs % 3600 ) / 60 );
+        return $m ? "${sign}${h}h ${m}min" : "${sign}${h}h";
+    } else {
+        my $d = int( $abs / 86400 );
+        my $h = int( ( $abs % 86400 ) / 3600 );
+        return $h ? "${sign}${d}d ${h}h" : "${sign}${d}d";
+    }
+};
+
+my $_fmt = sub {
+    my ($epoch) = @_;
+    return '' unless $epoch;
+    my $d = RT::Date->new( $session{CurrentUser} );
+    $d->Set( Value => $epoch );
+    my $dt = $d->Date( Timezone => 'user' );
+    my $tm = $d->Time( Timezone => 'user' );
+    my ( $y, $mo, $day ) = split /-/, $dt;
+    my $hm = substr( $tm, 0, 5 );
+    return "${day}.${mo}.${y} ${hm}";
+};
+
+my $_cls = sub {
+    my ( $due, $total_mins ) = @_;
+    return 'paused'   if $paused;
+    return 'unknown'  unless $due;
+    my $remaining = $due - $now;
+    return 'critical' if $remaining < 0;
+    return 'warning'
+        if $total_mins > 0 && $remaining < $total_mins * 60 * 0.25;
+    return 'ok';
+};
+
+my $resp_cls    = $_cls->( $resp_due,    $resp_mins );
+my $resolve_cls = $_cls->( $resolve_due, $resolve_mins );
+
+my %default_colors = (
+    kritisch => '#E55A3A',
+    hoch     => '#F0A832',
+    normal   => '#0d6efd',
+    niedrig  => '#198754',
+);
+my %opts_raw = ();
+eval { my @raw = RT->Config->Get('DisplaySLAOptions'); %opts_raw = @raw if @raw && @raw % 2 == 0 };
+my %lcol   = %{ ( $opts_raw{LevelColors} // {} ) };
+my $lcolor = $lcol{$sla} // $default_colors{$sla} // '#6c757d';
+
+my $level_badge = '<span class="ds-level-badge" style="background:'
+    . $m->interp->apply_escapes( $lcolor, 'h' ) . '">'
+    . $m->interp->apply_escapes( $sla,    'h' )
+    . '</span>';
+</%init>
+
+<&| /Widgets/TitleBox,
+    title              => loc('SLA'),
+    class              => 'ds-titlebox',
+    content_body_class => 'p-3',
+    titleright_raw     => $level_badge,
+&>
+
+<div class="ds-sla-widget">
+
+% if ($paused) {
+  <div class="ds-paused-banner mb-2">
+    <i class="bi bi-pause-circle"></i> <% loc('SLA paused') | h %>
+  </div>
+% }
+
+  <%perl>
+  my @rows = (
+      {
+          cls    => $resp_cls,
+          due    => $resp_due,
+          mins   => $resp_mins,
+          label  => loc('Time to React'),
+      },
+      {
+          cls    => $resolve_cls,
+          due    => $resolve_due,
+          mins   => $resolve_mins,
+          label  => loc('Time to Resolve'),
+      },
+  );
+  </%perl>
+
+% for my $row (@rows) {
+%   my $cls   = $row->{cls};
+%   my $due   = $row->{due};
+%   my $mins  = $row->{mins};
+%   my $label = $row->{label};
+  <div class="ds-sla-row">
+
+    <div class="ds-pill-cell">
+%   if ( $due && ( $cls eq 'critical' || $cls eq 'warning' || $cls eq 'ok' ) ) {
+      <div class="ds-pill ds-pill-<% $cls %>">
+        <span class="ds-pill-time"><% $_remaining->($due) %></span>
+        <span class="ds-pill-sep"></span>
+        <i class="bi bi-pause-fill ds-pill-icon"></i>
+      </div>
+%   } elsif ( $cls eq 'paused' && $due ) {
+      <div class="ds-plain-wrap">
+        <span class="ds-plain-time"><% $_remaining->($due) %></span>
+        <span class="ds-pause-badge"><i class="bi bi-pause-fill"></i></span>
+      </div>
+%   } else {
+      <span class="ds-plain-time text-secondary">—</span>
+%   }
+    </div>
+
+    <div class="ds-text-cell">
+      <div class="ds-row-label <% $cls eq 'critical' ? 'ds-label-critical' : $cls eq 'warning' ? 'ds-label-warning' : '' %>"><% $label | h %></div>
+%   if ( $due ) {
+      <div class="ds-row-target"><% $_fmt->($due) %></div>
+%   }
+    </div>
+
+  </div>
+% }
+
+</div>
+</&>
+
+<%ARGS>
+$TicketObj
+$HTMXLoad => 0
+</%ARGS>

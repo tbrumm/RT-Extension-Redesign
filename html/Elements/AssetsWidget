@@ -1,0 +1,57 @@
+<& /Widgets/TitleBoxStart, title => loc("Recently Updated Assets"), class => 'assets-widget', bodyclass => '' &>
+
+<div class="asset-cards px-2 pt-1 pb-2">
+% my $count = 0;
+% while (my $asset = $Assets->Next) {
+%   $count++;
+%   my $url      = RT->Config->Get('WebPath') . '/Asset/Display.html?id=' . $asset->id;
+%   my $edit_url = RT->Config->Get('WebPath') . '/Asset/Edit.html?id='    . $asset->id;
+%   my $desc     = $asset->Description;
+%   my $status   = $asset->Status;
+%   my $can_edit = $asset->CurrentUserHasRight('ModifyAsset');
+%   my @held_by  = map { $_->Name } @{ $asset->HeldBy->UserMembersObj->ItemsArrayRef };
+<div class="card mb-2 asset-card">
+  <div class="card-body py-2 px-3">
+    <div class="d-flex justify-content-between align-items-start gap-2 mb-1">
+      <a href="<% $url |h %>" class="fw-semibold text-body asset-card-title">
+        #<% $asset->id %>: <% $asset->Name |h %>
+      </a>
+      <span class="badge text-bg-secondary text-nowrap flex-shrink-0"><% $asset->CatalogObj->Name |h %></span>
+    </div>
+%   if (defined $desc && length $desc) {
+    <p class="small text-body-secondary mb-1"><% $desc |h %></p>
+%   }
+    <div class="d-flex justify-content-between align-items-center mt-1">
+      <div class="d-flex align-items-center gap-2 flex-wrap">
+        <span class="badge rounded-pill text-bg-info small"><% $status |h %></span>
+%   if (@held_by) {
+        <small class="text-body-secondary">
+          <span class="fw-semibold"><&|/l&>Held by</&>:</span> <% join(', ', @held_by) |h %>
+        </small>
+%   }
+        <small class="text-body-secondary">
+          <% $asset->LastUpdatedByObj->Name |h %> &middot; <% $asset->LastUpdatedObj->AgeAsString |h %>
+        </small>
+      </div>
+%   if ($can_edit) {
+      <a href="<% $edit_url |h %>" class="btn btn-sm btn-outline-secondary py-0 px-2"><&|/l&>Edit</&></a>
+%   }
+    </div>
+  </div>
+</div>
+% }
+% if (!$count) {
+<div class="text-center text-body-secondary py-3 small">
+  <&|/l&>No assets found.</&>
+</div>
+% }
+</div>
+
+<& /Widgets/TitleBoxEnd &>
+
+<%INIT>
+my $Assets = RT::Assets->new($session{'CurrentUser'});
+$Assets->LimitToActiveStatus;
+$Assets->RowsPerPage(5);
+$Assets->OrderBy(FIELD => 'LastUpdated', ORDER => 'DESC');
+</%INIT>

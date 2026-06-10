@@ -1,2 +1,49 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="<% RT->Config->Get('WebPath') %>/NoAuth/css/redesign.css?v=<% $RT::Extension::Redesign::VERSION %>">
+<%init>
+my $js  = RT->Config->Get('SyntaxHighlightJS')
+    // 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js';
+my $css = RT->Config->Get('SyntaxHighlightCSS')
+    // 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/github.min.css';
+my $css_dark = RT->Config->Get('SyntaxHighlightCSSdark')
+    // 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/github-dark.min.css';
+</%init>
+% if ($css) {
+<link id="hljs-theme-light" rel="stylesheet" href="<% $css %>">
+<link id="hljs-theme-dark"  rel="stylesheet" href="<% $css_dark %>" disabled>
+% }
+% if ($js) {
+<script src="<% $js %>"></script>
+% }
+<script>
+(function () {
+    'use strict';
+    if (typeof hljs === 'undefined') return;
+
+    var CODE_SEL = '.message-stanza pre code[class*="language-"]';
+
+    function highlightAll(root) {
+        (root || document).querySelectorAll(CODE_SEL).forEach(function (el) {
+            if (!el.classList.contains('hljs')) hljs.highlightElement(el);
+        });
+    }
+
+    function syncTheme() {
+        var dark = document.documentElement.getAttribute('data-bs-theme') === 'dark';
+        var l = document.getElementById('hljs-theme-light');
+        var d = document.getElementById('hljs-theme-dark');
+        if (l) l.disabled = dark;
+        if (d) d.disabled = !dark;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () { syncTheme(); highlightAll(); });
+    document.addEventListener('htmx:afterSwap',    function (e) { highlightAll(e.target); });
+    document.addEventListener('htmx:afterSettle',  function (e) { highlightAll(e.target); });
+
+    if (typeof MutationObserver !== 'undefined') {
+        new MutationObserver(syncTheme).observe(
+            document.documentElement, { attributes: true, attributeFilter: ['data-bs-theme'] }
+        );
+    }
+}());
+</script>
