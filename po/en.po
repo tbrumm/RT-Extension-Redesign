@@ -323,6 +323,77 @@ msgid "To search for tickets with watchers who match a domain, enter the domain,
 msgstr ""
 
 
+# ClockWidget translations
+msgid "Clock"
+msgstr "Clock"
+
+msgid "hrs"
+msgstr "hrs"
+
+msgid "min"
+msgstr "min"
+
+msgid "Sunday"
+msgstr "Sunday"
+
+msgid "Monday"
+msgstr "Monday"
+
+msgid "Tuesday"
+msgstr "Tuesday"
+
+msgid "Wednesday"
+msgstr "Wednesday"
+
+msgid "Thursday"
+msgstr "Thursday"
+
+msgid "Friday"
+msgstr "Friday"
+
+msgid "Saturday"
+msgstr "Saturday"
+
+msgid "January"
+msgstr "January"
+
+msgid "February"
+msgstr "February"
+
+msgid "March"
+msgstr "March"
+
+msgid "April"
+msgstr "April"
+
+msgid "May"
+msgstr "May"
+
+msgid "June"
+msgstr "June"
+
+msgid "July"
+msgstr "July"
+
+msgid "August"
+msgstr "August"
+
+msgid "September"
+msgstr "September"
+
+msgid "October"
+msgstr "October"
+
+msgid "November"
+msgstr "November"
+
+msgid "December"
+msgstr "December"
+
+# WeatherWidget translations
+msgid "Refresh"
+msgstr "Refresh"
+
 # FeedWidget translations
 msgid "Feed Reader"
 msgstr "Feed Reader"

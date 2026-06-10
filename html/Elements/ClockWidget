@@ -1,10 +1,15 @@
 <%args>
 $HasResults => undef
 </%args>
+<%once>
+use JSON ();
+</%once>
 <%init>
 my $wid = 'fc' . int(rand(999999));
+my $days_json   = JSON::encode_json([map { loc($_) } qw(Sunday Monday Tuesday Wednesday Thursday Friday Saturday)]);
+my $months_json = JSON::encode_json([map { loc($_) } qw(January February March April May June July August September October November December)]);
 </%init>
-<&|/Widgets/TitleBox, title => 'Uhr', bodyclass => 'p-0' &>
+<&|/Widgets/TitleBox, title => loc('Clock'), bodyclass => 'p-0' &>
 
 <div class="fc-wrap" id="<% $wid %>">
   <div class="fc-clock">
@@ -19,7 +24,7 @@ my $wid = 'fc' . int(rand(999999));
         </div>
 % }
       </div>
-      <div class="fc-lbl">Std</div>
+      <div class="fc-lbl"><% loc('hrs') %></div>
     </div>
 
     <div class="fc-dots"><i></i><i></i></div>
@@ -34,7 +39,7 @@ my $wid = 'fc' . int(rand(999999));
         </div>
 % }
       </div>
-      <div class="fc-lbl">Min</div>
+      <div class="fc-lbl"><% loc('min') %></div>
     </div>
 
 
@@ -238,9 +243,8 @@ my $wid = 'fc' . int(rand(999999));
     }, 400);
   }
 
-  var DAYS   = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
-  var MONTHS = ['Januar','Februar','März','April','Mai','Juni','Juli',
-                'August','September','Oktober','November','Dezember'];
+  var DAYS   = <% $days_json |n %>;
+  var MONTHS = <% $months_json |n %>;
 
   function tick() {
     var n = new Date();

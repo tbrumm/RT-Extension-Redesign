@@ -323,7 +323,77 @@ msgid "To search for tickets with watchers who match a domain, enter the domain,
 msgstr "Um nach Tickets mit Beobachtern zu suchen, die zu einer Domain gehören, die Domain inkl. @-Symbol eingeben."
 
 
+# ClockWidget translations
+msgid "Clock"
+msgstr "Uhr"
+
+msgid "hrs"
+msgstr "Std"
+
+msgid "min"
+msgstr "Min"
+
+msgid "Sunday"
+msgstr "Sonntag"
+
+msgid "Monday"
+msgstr "Montag"
+
+msgid "Tuesday"
+msgstr "Dienstag"
+
+msgid "Wednesday"
+msgstr "Mittwoch"
+
+msgid "Thursday"
+msgstr "Donnerstag"
+
+msgid "Friday"
+msgstr "Freitag"
+
+msgid "Saturday"
+msgstr "Samstag"
+
+msgid "January"
+msgstr "Januar"
+
+msgid "February"
+msgstr "Februar"
+
+msgid "March"
+msgstr "März"
+
+msgid "April"
+msgstr "April"
+
+msgid "May"
+msgstr "Mai"
+
+msgid "June"
+msgstr "Juni"
+
+msgid "July"
+msgstr "Juli"
+
+msgid "August"
+msgstr "August"
+
+msgid "September"
+msgstr "September"
+
+msgid "October"
+msgstr "Oktober"
+
+msgid "November"
+msgstr "November"
+
+msgid "December"
+msgstr "Dezember"
+
 # WeatherWidget translations
+msgid "Refresh"
+msgstr "Aktualisieren"
+
 msgid "Weather"
 msgstr "Wetter"
 

@@ -105,7 +105,7 @@ my $js_labels = $_j->encode({
     </div>
     <div class="ww-footer">
       <span class="ww-updated"></span>
-      <button class="ww-refresh-btn" title="Aktualisieren">&#x21BB;</button>
+      <button class="ww-refresh-btn" title="<% loc('Refresh') %>">&#x21BB;</button>
     </div>
   </div>
 
