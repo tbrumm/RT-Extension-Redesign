@@ -13,6 +13,37 @@
 
 /* 1. Navigation ─────────────────────────────────────────────── */
 
+/* Unified menu badges: the extension's nav icons and the user-summary avatar
+   share ONE filled, rounded badge box of identical size, for a consistent menu.
+   Fixed rem sizing guarantees the avatar and the icons render the same size. */
+#li-home     > a.nav-link::before,
+#li-search   > a.nav-link::before,
+#li-reports  > a.nav-link::before,
+#li-articles > a.nav-link::before,
+#li-assets   > a.nav-link::before,
+#li-projects > a.nav-link::before,
+#li-tools    > a.nav-link::before,
+#li-admin    > a.nav-link::before,
+#li-preferences .rt-user-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border-radius: 0.35rem;
+    font-size: 0.8rem;
+    line-height: 1;
+    color: #fff !important;
+    opacity: 1;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+/* The nav icons render a Bootstrap-icon glyph; their former text colour now
+   becomes the badge background. */
 #li-home     > a.nav-link::before,
 #li-search   > a.nav-link::before,
 #li-reports  > a.nav-link::before,
@@ -24,21 +55,17 @@
     font-family: "bootstrap-icons" !important;
     font-style: normal;
     font-weight: normal;
-    display: inline-block;
-    line-height: 1;
-    vertical-align: -0.12em;
-    margin-right: 0.3em;
-    opacity: 0.75;
+    margin-right: 0.45rem;
 }
 
-#li-home     > a.nav-link::before { content: "\F425"; color: #2196F3; } /* house-fill */
-#li-search   > a.nav-link::before { content: "\F52A"; color: #00ACC1; } /* search */
-#li-reports  > a.nav-link::before { content: "\F17B"; color: #43A047; } /* bar-chart-fill */
-#li-articles > a.nav-link::before { content: "\F4A3"; color: #FB8C00; } /* file-text */
-#li-assets   > a.nav-link::before { content: "\F6E6"; color: #6D4C41; } /* pc-display */
-#li-projects > a.nav-link::before { content: "\F44C"; color: #8E24AA; } /* kanban-fill */
-#li-tools    > a.nav-link::before { content: "\F5DB"; color: #546E7A; } /* tools */
-#li-admin    > a.nav-link::before { content: "\F3E3"; color: #E53935; } /* gear-fill */
+#li-home     > a.nav-link::before { content: "\F425"; background-color: #2196F3; } /* house-fill */
+#li-search   > a.nav-link::before { content: "\F52A"; background-color: #00ACC1; } /* search */
+#li-reports  > a.nav-link::before { content: "\F17B"; background-color: #43A047; } /* bar-chart-fill */
+#li-articles > a.nav-link::before { content: "\F4A3"; background-color: #FB8C00; } /* file-text */
+#li-assets   > a.nav-link::before { content: "\F6E6"; background-color: #6D4C41; } /* pc-display */
+#li-projects > a.nav-link::before { content: "\F44C"; background-color: #8E24AA; } /* kanban-fill */
+#li-tools    > a.nav-link::before { content: "\F5DB"; background-color: #546E7A; } /* tools */
+#li-admin    > a.nav-link::before { content: "\F3E3"; background-color: #E53935; } /* gear-fill */
 
 /* Active: primary color text only, RT already sets font-weight:bold */
 #main-navigation .navbar .nav-item > a.nav-link.active {
@@ -1158,8 +1185,36 @@ div#header h1 {
 .titlebox.card.lw-titlebox { border-top: 3px solid #EF6C00; }
 
 /* ---- Current username next to the top-nav user-summary avatar ---- */
+/* Inherit the nav-link's colour and weight so it matches the other menu
+   entries (works in both light and dark themes). */
 .rd-current-username {
     margin-left: 0.4rem;
-    font-weight: 500;
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: 1.2;
+}
+/* Mirror RT's exact nav-link text colour (share/.../elevator/nav.css) so the
+   name matches the other menu entries regardless of inheritance quirks. */
+[data-bs-theme=light] #li-preferences .rd-current-username { color: #000; }
+[data-bs-theme=dark]  #li-preferences .rd-current-username { color: #fff; }
+
+/* The user-summary avatar shares the badge box defined in the Navigation
+   section. A photo avatar is rendered as <img class="rt-user-image"> (core
+   sizes it 1.5em, which doesn't match the rem-based badges) rather than a
+   .rt-user-avatar span, so size it to the identical badge box here. */
+#li-preferences .rt-user-image {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.35rem;
+    object-fit: cover;
     vertical-align: middle;
+}
+
+/* The initial-letter avatar span ships with Bootstrap utility classes
+   (p-1, rounded) whose !important rules otherwise add padding and a different
+   radius than the icon badges, shifting/shrinking the initial. Override them. */
+#li-preferences .rt-user-avatar {
+    padding: 0 !important;
+    border-radius: 0.35rem !important;
 }
