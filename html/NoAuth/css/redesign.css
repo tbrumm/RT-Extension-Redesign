@@ -1217,4 +1217,16 @@ div#header h1 {
 #li-preferences .rt-user-avatar {
     padding: 0 !important;
     border-radius: 0.35rem !important;
+    font-size: 0 !important;            /* hide RT's generated initial letter */
+}
+/* No uploaded photo -> RT renders the initial-letter span.rt-user-avatar. Show a
+   person icon in the badge instead, so it matches the nav-bar icon glyphs exactly.
+   (A real photo renders as img.rt-user-image and is left untouched.) */
+#li-preferences .rt-user-avatar::before {
+    font-family: "bootstrap-icons" !important;
+    font-weight: normal;
+    font-style: normal;
+    content: "\F4DA";                   /* bi-person-fill */
+    font-size: 0.9rem;
+    line-height: 1;
 }
