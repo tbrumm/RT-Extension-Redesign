@@ -301,7 +301,7 @@ html:has(#body.login-body) hr.clear { display: none; }
 
     <h1 class="rd-logout-title"><% loc('Successfully logged out') %></h1>
 % if ($username) {
-    <p class="rd-logout-sub"><% loc('Goodbye, [_1]. See you next time!', "<strong>$username</strong>") |n %></p>
+    <p class="rd-logout-sub"><% loc('Goodbye, [_1]. See you next time!', '<strong>' . $m->interp->apply_escapes($username, 'h') . '</strong>') |n %></p>
 % } else {
     <p class="rd-logout-sub"><% loc('Your session has been securely closed.') %></p>
 % }

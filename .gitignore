@@ -37,7 +37,8 @@ Temporary Items
 
 !Build/
 .last_cover_stats
-/META.yml
+# META.yml is tracked so installs from a git checkout work: the RTx install
+# target reads it, and a frozen inc/ is already shipped in git.
 /META.json
 /MYMETA.*
 *.o

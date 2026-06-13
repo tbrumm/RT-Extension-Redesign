@@ -1,0 +1,21 @@
+# Version control
+^\.git/
+^\.gitignore$
+^\.claude/
+
+# Build artefacts
+^blib/
+^Makefile$
+^MYMETA\.(yml|json)$
+^pm_to_blib$
+^_build/
+^Build$
+^MANIFEST\.bak$
+
+# Distribution tarballs
+\.tar\.gz$
+
+# Editor temp files
+~$
+\.swp$
+\.orig$

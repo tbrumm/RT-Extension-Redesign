@@ -1156,3 +1156,10 @@ div#header h1 {
 .lw-dot-c { background: var(--bs-warning-bg-subtle, #fff3cd);   border: 2px solid var(--bs-warning, #ffc107); }
 
 .titlebox.card.lw-titlebox { border-top: 3px solid #EF6C00; }
+
+/* ---- Current username next to the top-nav user-summary avatar ---- */
+.rd-current-username {
+    margin-left: 0.4rem;
+    font-weight: 500;
+    vertical-align: middle;
+}

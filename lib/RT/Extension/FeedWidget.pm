@@ -90,7 +90,10 @@ sub _ua {
         timeout => 15,
         max_redirect => 5,
     );
-    $UA->ssl_opts( verify_hostname => 0 );
+    # Verify TLS certificates on HTTPS feeds (no MITM). If an internal feed uses
+    # a self-signed cert, add its CA to the system trust store rather than
+    # disabling verification here.
+    $UA->ssl_opts( verify_hostname => 1 );
     return $UA;
 }
 

@@ -1,11 +1,25 @@
 <%init>
-my $menu = Menu()                    or return;
-my $admin = $menu->child('admin')    or return;
-my $admin_global = $admin->child('global') or return;
+my $menu = Menu() or return;
 
-$admin_global->child( 'login-banner' =>
-    title       => loc('Login Banner'),
-    description => loc('Enable or disable the maintenance banner on the login page'),
-    path        => '/Admin/Global/LoginBanner.html',
-);
+# Show the logged-in username next to the user-summary (avatar) in the top menu.
+my $about_me = $menu->child('preferences');
+if ($about_me) {
+    my $name = $m->interp->apply_escapes( $session{CurrentUser}->Name, 'h' );
+    $about_me->escape_title(0);
+    $about_me->title( $about_me->title . qq{<span class="rd-current-username">$name</span>} );
+}
+
+# Login Banner admin entry — SuperUser only. LoginBanner.html enforces this
+# itself; gating the menu entry just hides a dead link from non-SuperUser admins.
+if ( $session{CurrentUser}->HasRight( Right => 'SuperUser', Object => $RT::System ) ) {
+    my $admin        = $menu->child('admin');
+    my $admin_global = $admin ? $admin->child('global') : undef;
+    if ($admin_global) {
+        $admin_global->child( 'login-banner' =>
+            title       => loc('Login Banner'),
+            description => loc('Enable or disable the maintenance banner on the login page'),
+            path        => '/Admin/Global/LoginBanner.html',
+        );
+    }
+}
 </%init>

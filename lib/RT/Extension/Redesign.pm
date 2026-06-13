@@ -2,6 +2,7 @@ package RT::Extension::Redesign;
 
 our $VERSION = '0.10';
 
+use 5.010;
 use strict;
 use warnings;
 
@@ -13,6 +14,55 @@ require RT::Interface::Web::Scrubber;
     package RT::Interface::Web::Scrubber;
     our %ALLOWED_ATTRIBUTES;
     $ALLOWED_ATTRIBUTES{class} = qr/(text-|fw-|fst-|fs-|align-|\btable\b|language-)/;
+}
+
+=head2 banner_is_active($data, $today)
+
+Decide whether the maintenance/login banner configured on
+F</Admin/Global/LoginBanner.html> should be shown. C<$data> is the
+C<MaintenanceBannerData> attribute content (a hashref); C<$today> is a
+C<YYYY-MM-DD> date string. Returns true when the banner is enabled and either
+has no expiry or its expiry date has not yet passed (the expiry day itself is
+inclusive). A missing C<enabled> key defaults to on, matching the admin page.
+
+=cut
+
+=head2 banner_defaults
+
+Default headline and German/English content for the login maintenance banner,
+used both by the F</Admin/Global/LoginBanner.html> editor (as the pre-filled
+values) and by the login-page display callback when no content has been saved
+yet. Returns a hashref with C<headline>, C<content_de> and C<content_en>.
+
+=cut
+
+sub banner_defaults {
+    return {
+        headline   => 'Willkommen im neuen RT&nbsp;6 &nbsp;&bull;&nbsp; Welcome to the new RT&nbsp;6',
+        content_de => '<p>Willkommen auf der neuen RT&nbsp;6 Plattform. Damit Ihr Euch mit der aktualisierten Oberfl&auml;che, den neuen Funktionen und den verbesserten Workflows schnell zurechtfindet, bitten wir Euch, vorab einen Blick in die bereitgestellte Dokumentation zu werfen.</p>
+<p><strong>Bitte startet hier:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2066631064/RT6" target="_blank">https://wiki.int.kn/spaces/rt/pages/2066631064/RT6</a></p>
+<p><strong>Eine &Uuml;bersicht der wichtigsten neuen Funktionen:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2065901193/Introducing+RT+6" target="_blank">https://wiki.int.kn/spaces/rt/pages/2065901193/Introducing+RT+6</a></p>
+<p><strong>Den ausf&uuml;hrlichen User Guide f&uuml;r die t&auml;gliche Arbeit:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide" target="_blank">https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide</a></p>
+<p>Ein paar Minuten in diese Dokumentation zu investieren, hilft Euch dabei, RT&nbsp;6 schneller und effizienter zu nutzen.</p>',
+        content_en => '<p>Welcome to the new RT&nbsp;6 platform. To help you get familiar with the updated interface, new features, and improved workflows, we kindly ask you to review the available documentation before you start working with the system.</p>
+<p><strong>Please start here:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2066631064/RT6" target="_blank">https://wiki.int.kn/spaces/rt/pages/2066631064/RT6</a></p>
+<p><strong>For an overview of the most important new features:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2065901193/Introducing+RT+6" target="_blank">https://wiki.int.kn/spaces/rt/pages/2065901193/Introducing+RT+6</a></p>
+<p><strong>For the full User Guide for day-to-day usage:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide" target="_blank">https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide</a></p>
+<p>Taking a few minutes to review these pages will help you navigate RT&nbsp;6 more easily and make the best use of the new functionality.</p>',
+    };
+}
+
+sub banner_is_active {
+    my ($data, $today) = @_;
+    return 0 unless ref $data eq 'HASH';
+
+    my $enabled = exists $data->{enabled} ? $data->{enabled} : 1;
+    return 0 unless $enabled;
+
+    my $expiry = $data->{expiry};
+    return 1 unless defined $expiry && length $expiry;
+
+    return $expiry ge $today ? 1 : 0;
 }
 
 sub collect_stats {
