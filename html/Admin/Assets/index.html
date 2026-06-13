@@ -1,46 +1,20 @@
-<%once>
-my (%_asset_stats, $_asset_expires);
-my $_ASSETCACHE_TTL = 600;
-</%once>
 <%init>
+unless ($session{CurrentUser}->HasRight(Right => 'SuperUser', Object => $RT::System)) {
+    Abort(loc('Permission denied'));
+}
+
+my $attr          = RT->System->FirstAttribute('AdminDashboardStats');
+my $s             = $attr ? $attr->Content->{assets} : undef;
+my $stats_missing = !$s;
+
 my ($assets_total, $assets_allocated, $assets_inuse, $assets_other,
-    $catalogs_total, $catalogs_active);
+    $catalogs_total, $catalogs_active) = (0) x 6;
 
-if ($_asset_expires && time() < $_asset_expires) {
+if ($s) {
     ($assets_total, $assets_allocated, $assets_inuse, $assets_other)
-        = @_asset_stats{qw(at aa ai ao)};
+        = @{$s}{qw(at aa ai ao)};
     ($catalogs_total, $catalogs_active)
-        = @_asset_stats{qw(ct ca)};
-} else {
-    my $dbh = $RT::Handle->dbh;
-
-    my $rows = $dbh->selectall_arrayref(
-        "SELECT Status, COUNT(*) FROM Assets GROUP BY Status"
-    );
-    my %by_status; $by_status{$_->[0]} = $_->[1] for @$rows;
-
-    $assets_allocated = $by_status{allocated} // 0;
-    $assets_inuse     = $by_status{'in-use'}  // 0;
-    $assets_other     = 0;
-    for my $s (keys %by_status) {
-        next if $s eq 'allocated' || $s eq 'in-use';
-        $assets_other += $by_status{$s};
-    }
-    $assets_total = $assets_allocated + $assets_inuse + $assets_other;
-
-    my $cat = $dbh->selectall_arrayref(
-        "SELECT Disabled, COUNT(*) FROM Catalogs GROUP BY Disabled"
-    );
-    my %catd; $catd{$_->[0]} = $_->[1] for @$cat;
-    $catalogs_active = $catd{0} // 0;
-    $catalogs_total  = ($catd{0} // 0) + ($catd{1} // 0);
-
-    %_asset_stats = (
-        at => $assets_total,     aa => $assets_allocated,
-        ai => $assets_inuse,     ao => $assets_other,
-        ct => $catalogs_total,   ca => $catalogs_active,
-    );
-    $_asset_expires = time() + $_ASSETCACHE_TTL;
+        = @{$s}{qw(ct ca)};
 }
 
 my $catalogs_disabled = $catalogs_total - $catalogs_active;
@@ -59,6 +33,17 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
                  Menu()->child('admin')->child('assets')->children;
 </%perl>
 <div class="rt-admin-db">
+
+% if ($stats_missing) {
+<div class="alert alert-warning d-flex align-items-start gap-3 mb-3" role="alert">
+  <i class="bi bi-exclamation-triangle-fill fs-5 flex-shrink-0 mt-1"></i>
+  <div>
+    <strong><% loc('Statistics not available') %></strong> &mdash;
+    <% loc('The stats refresh script has not been run yet. Please execute:') %>
+    <br><code>perl /opt/rt6/local/plugins/RT-Extension-Redesign/bin/rt-redesign-stats-refresh</code>
+  </div>
+</div>
+% }
 
   <!-- Stat cards -->
   <div class="row g-2 mb-3">

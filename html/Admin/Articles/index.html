@@ -1,35 +1,17 @@
-<%once>
-my (%_astats, $_astats_expires);
-my $_ACACHE_TTL = 600;
-</%once>
 <%init>
-my ($classes_total, $classes_active, $articles_total, $articles_active);
+unless ($session{CurrentUser}->HasRight(Right => 'SuperUser', Object => $RT::System)) {
+    Abort(loc('Permission denied'));
+}
 
-if ($_astats_expires && time() < $_astats_expires) {
-    ($classes_total, $classes_active)   = @_astats{qw(ct ca)};
-    ($articles_total, $articles_active) = @_astats{qw(at aa)};
-} else {
-    my $dbh = $RT::Handle->dbh;
+my $attr          = RT->System->FirstAttribute('AdminDashboardStats');
+my $s             = $attr ? $attr->Content->{articles} : undef;
+my $stats_missing = !$s;
 
-    my $cl = $dbh->selectall_arrayref(
-        "SELECT Disabled, COUNT(*) FROM Classes GROUP BY Disabled"
-    );
-    my %cld; $cld{$_->[0]} = $_->[1] for @$cl;
-    $classes_active = $cld{0} // 0;
-    $classes_total  = ($cld{0} // 0) + ($cld{1} // 0);
+my ($classes_total, $classes_active, $articles_total, $articles_active) = (0) x 4;
 
-    my $ar = $dbh->selectall_arrayref(
-        "SELECT Disabled, COUNT(*) FROM Articles GROUP BY Disabled"
-    );
-    my %ard; $ard{$_->[0]} = $_->[1] for @$ar;
-    $articles_active = $ard{0} // 0;
-    $articles_total  = ($ard{0} // 0) + ($ard{1} // 0);
-
-    %_astats = (
-        ct => $classes_total,  ca => $classes_active,
-        at => $articles_total, aa => $articles_active,
-    );
-    $_astats_expires = time() + $_ACACHE_TTL;
+if ($s) {
+    ($classes_total, $classes_active)   = @{$s}{qw(ct ca)};
+    ($articles_total, $articles_active) = @{$s}{qw(at aa)};
 }
 
 my $classes_disabled  = $classes_total  - $classes_active;
@@ -49,6 +31,17 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
                  Menu()->child('admin')->child('articles')->children;
 </%perl>
 <div class="rt-admin-db">
+
+% if ($stats_missing) {
+<div class="alert alert-warning d-flex align-items-start gap-3 mb-3" role="alert">
+  <i class="bi bi-exclamation-triangle-fill fs-5 flex-shrink-0 mt-1"></i>
+  <div>
+    <strong><% loc('Statistics not available') %></strong> &mdash;
+    <% loc('The stats refresh script has not been run yet. Please execute:') %>
+    <br><code>perl /opt/rt6/local/plugins/RT-Extension-Redesign/bin/rt-redesign-stats-refresh</code>
+  </div>
+</div>
+% }
 
   <!-- Stat cards -->
   <div class="row g-2 mb-3">

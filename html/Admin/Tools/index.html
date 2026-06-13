@@ -1,37 +1,17 @@
-<%once>
-my (%_tool_stats, $_tool_expires);
-my $_TOOLCACHE_TTL = 600;
-</%once>
 <%init>
-my ($db_size_mb, $custom_roles, $scheduled_procs, $sys_errors);
+unless ($session{CurrentUser}->HasRight(Right => 'SuperUser', Object => $RT::System)) {
+    Abort(loc('Permission denied'));
+}
 
-if ($_tool_expires && time() < $_tool_expires) {
+my $attr          = RT->System->FirstAttribute('AdminDashboardStats');
+my $s             = $attr ? $attr->Content->{tools} : undef;
+my $stats_missing = !$s;
+
+my ($db_size_mb, $custom_roles, $scheduled_procs, $sys_errors) = (0) x 4;
+
+if ($s) {
     ($db_size_mb, $custom_roles, $scheduled_procs, $sys_errors)
-        = @_tool_stats{qw(ds cr sp se)};
-} else {
-    my $dbh = $RT::Handle->dbh;
-
-    ($db_size_mb) = $dbh->selectrow_array(
-        "SELECT ROUND(SUM(data_length + index_length) / 1024 / 1024, 1)
-         FROM information_schema.tables WHERE table_schema = DATABASE()"
-    );
-    $db_size_mb //= 0;
-
-    ($custom_roles) = $dbh->selectrow_array("SELECT COUNT(*) FROM CustomRoles");
-
-    ($scheduled_procs) = $dbh->selectrow_array(
-        "SELECT COUNT(*) FROM Attributes WHERE Name = 'ScheduledProcess'"
-    );
-
-    ($sys_errors) = $dbh->selectrow_array(
-        "SELECT COUNT(*) FROM Transactions WHERE Type = 'SystemError'"
-    );
-
-    %_tool_stats = (
-        ds => $db_size_mb, cr => $custom_roles,
-        sp => $scheduled_procs, se => $sys_errors,
-    );
-    $_tool_expires = time() + $_TOOLCACHE_TTL;
+        = @{$s}{qw(ds cr sp se)};
 }
 
 my $icon_for = sub {
@@ -54,6 +34,17 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
                  Menu()->child('admin')->child('tools')->children;
 </%perl>
 <div class="rt-admin-db">
+
+% if ($stats_missing) {
+<div class="alert alert-warning d-flex align-items-start gap-3 mb-3" role="alert">
+  <i class="bi bi-exclamation-triangle-fill fs-5 flex-shrink-0 mt-1"></i>
+  <div>
+    <strong><% loc('Statistics not available') %></strong> &mdash;
+    <% loc('The stats refresh script has not been run yet. Please execute:') %>
+    <br><code>perl /opt/rt6/local/plugins/RT-Extension-Redesign/bin/rt-redesign-stats-refresh</code>
+  </div>
+</div>
+% }
 
   <!-- Stat cards -->
   <div class="row g-2 mb-4">

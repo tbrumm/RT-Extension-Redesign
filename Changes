@@ -1,3 +1,13 @@
+0.10 2026-06-12
+  - Redesign.pm: MySQL 8 fix — all queries against Groups table now use rt3.Groups prefix
+  - Redesign.pm: collect_stats() now wrapped in section-level eval blocks; errors
+    logged via RT::Logger, partial results returned instead of dying
+  - Redesign.pm: new admin section in collect_stats() for Admin/index.html stats
+    (queues, CFs, users, tickets by status)
+  - All Admin pages: removed per-process <%once> cache; pages now read stats from
+    the AdminDashboardStats RT::Attribute (populated by rt-redesign-stats-refresh)
+  - All Admin pages: DB queries retained as fallback when attribute not yet populated
+
 0.08 2026-06-09
   - Redesigned Logout page: split-panel layout matching Login page
   - Green animated checkmark hero, farewell message with username

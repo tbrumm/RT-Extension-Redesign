@@ -1,45 +1,23 @@
-<%once>
-my (%_gstats, $_gstats_expires);
-my $_GCACHE_TTL = 600;
-</%once>
 <%init>
-my (
-    $scrips_total, $scrips_global, $scrips_queue, $scrips_disabled,
+unless ($session{CurrentUser}->HasRight(Right => 'SuperUser', Object => $RT::System)) {
+    Abort(loc('Permission denied'));
+}
+
+my $attr          = RT->System->FirstAttribute('AdminDashboardStats');
+my $s             = $attr ? $attr->Content->{global} : undef;
+my $stats_missing = !$s;
+
+my ($scrips_total, $scrips_global, $scrips_queue, $scrips_disabled,
     $templates_total, $templates_global, $templates_queue,
-    $conditions_total, $actions_total,
-);
+    $conditions_total, $actions_total) = (0) x 9;
 
-if ($_gstats_expires && time() < $_gstats_expires) {
+if ($s) {
     ($scrips_total, $scrips_global, $scrips_queue, $scrips_disabled)
-        = @_gstats{qw(st sg sq sd)};
+        = @{$s}{qw(st sg sq sd)};
     ($templates_total, $templates_global, $templates_queue)
-        = @_gstats{qw(tt tg tq)};
+        = @{$s}{qw(tt tg tq)};
     ($conditions_total, $actions_total)
-        = @_gstats{qw(ct at)};
-} else {
-    my $dbh = $RT::Handle->dbh;
-
-    ($scrips_total)    = $dbh->selectrow_array("SELECT COUNT(*) FROM Scrips");
-    ($scrips_disabled) = $dbh->selectrow_array("SELECT COUNT(*) FROM Scrips WHERE Disabled = 1");
-    ($scrips_global)   = $dbh->selectrow_array(
-        "SELECT COUNT(DISTINCT Scrip) FROM ObjectScrips WHERE ObjectId = 0"
-    );
-    $scrips_queue = $scrips_total - $scrips_global;
-
-    ($templates_total)  = $dbh->selectrow_array("SELECT COUNT(*) FROM Templates");
-    ($templates_global) = $dbh->selectrow_array("SELECT COUNT(*) FROM Templates WHERE ObjectID = 0");
-    $templates_queue    = $templates_total - $templates_global;
-
-    ($conditions_total) = $dbh->selectrow_array("SELECT COUNT(*) FROM ScripConditions");
-    ($actions_total)    = $dbh->selectrow_array("SELECT COUNT(*) FROM ScripActions");
-
-    %_gstats = (
-        st => $scrips_total,    sg => $scrips_global,
-        sq => $scrips_queue,    sd => $scrips_disabled,
-        tt => $templates_total, tg => $templates_global, tq => $templates_queue,
-        ct => $conditions_total, at => $actions_total,
-    );
-    $_gstats_expires = time() + $_GCACHE_TTL;
+        = @{$s}{qw(ct at)};
 }
 
 my %icon_map = (
@@ -83,6 +61,17 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
                  Menu()->child('admin')->child('global')->children;
 </%perl>
 <div class="rt-admin-db">
+
+% if ($stats_missing) {
+<div class="alert alert-warning d-flex align-items-start gap-3 mb-3" role="alert">
+  <i class="bi bi-exclamation-triangle-fill fs-5 flex-shrink-0 mt-1"></i>
+  <div>
+    <strong><% loc('Statistics not available') %></strong> &mdash;
+    <% loc('The stats refresh script has not been run yet. Please execute:') %>
+    <br><code>perl /opt/rt6/local/plugins/RT-Extension-Redesign/bin/rt-redesign-stats-refresh</code>
+  </div>
+</div>
+% }
 
   <!-- Scrip + Template stat cards -->
   <div class="row g-2 mb-3">

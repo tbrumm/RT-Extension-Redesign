@@ -2,8 +2,11 @@
 use JSON ();
 use POSIX qw(strftime);
 
+unless ($session{CurrentUser}->HasRight(Right => 'SuperUser', Object => $RT::System)) {
+    Abort(loc('Permission denied'));
+}
+
 if ($ARGS{SaveBannerSettings}) {
-    $m->abort unless $session{CurrentUser}->HasRight(Right => 'SuperUser', Object => $RT::System);
 
     my $expiry = $ARGS{BannerExpiry} || undef;
     # SelectDate returns 'YYYY-MM-DD HH:MM' — keep only the date part

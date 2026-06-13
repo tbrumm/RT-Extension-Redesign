@@ -1,100 +1,25 @@
-<%once>
-# Per-process cache - survives across requests in the same fcgid worker.
-# Avoids running 6 queries on every admin page load; stale after 10 min.
-my (%_stats, $_stats_expires);
-my $_CACHE_TTL = 600;
-</%once>
 <%init>
-my (
-    $queues_total, $queues_active,
-    $cfs_total,    $cfs_active,
-    $groups_count,
+unless ($session{CurrentUser}->HasRight(Right => 'SuperUser', Object => $RT::System)) {
+    Abort(loc('Permission denied'));
+}
+
+my $attr          = RT->System->FirstAttribute('AdminDashboardStats');
+my $s             = $attr ? $attr->Content->{admin} : undef;
+my $stats_missing = !$s;
+
+my ($queues_total, $queues_active, $cfs_total, $cfs_active, $groups_count,
     $users_privileged, $users_unprivileged, $users_disabled,
     $tickets_new, $tickets_active, $tickets_resolved, $tickets_deleted,
-    $tickets_total, $users_total,
-);
+    $tickets_total, $users_total) = (0) x 14;
 
-if ($_stats_expires && time() < $_stats_expires) {
-    # Cache hit
-    ($queues_total, $queues_active)       = @_stats{qw(qt qa)};
-    ($cfs_total,    $cfs_active)          = @_stats{qw(ct ca)};
-    $groups_count                         =  $_stats{g};
+if ($s) {
+    ($queues_total, $queues_active)       = @{$s}{qw(qt qa)};
+    ($cfs_total,    $cfs_active)          = @{$s}{qw(ct ca)};
+    $groups_count                         =  $s->{g};
     ($users_privileged, $users_unprivileged, $users_disabled)
-                                          = @_stats{qw(up uu ud)};
+                                          = @{$s}{qw(up uu ud)};
     ($tickets_new, $tickets_active, $tickets_resolved, $tickets_deleted)
-                                          = @_stats{qw(tn ta tr td)};
-} else {
-    # Cache miss - run 6 consolidated queries
-    my $dbh = $RT::Handle->dbh;
-
-    # Queues: one pass, split by Disabled flag
-    my $q_rows = $dbh->selectall_arrayref(
-        "SELECT Disabled, COUNT(*) FROM Queues WHERE id > 0 GROUP BY Disabled"
-    );
-    my %qd; $qd{$_->[0]} = $_->[1] for @$q_rows;
-    $queues_active = $qd{0} // 0;
-    $queues_total  = ($qd{0} // 0) + ($qd{1} // 0);
-
-    # Custom Fields: one pass, split by Disabled flag
-    my $cf_rows = $dbh->selectall_arrayref(
-        "SELECT Disabled, COUNT(*) FROM CustomFields GROUP BY Disabled"
-    );
-    my %cfd; $cfd{$_->[0]} = $_->[1] for @$cf_rows;
-    $cfs_active = $cfd{0} // 0;
-    $cfs_total  = ($cfd{0} // 0) + ($cfd{1} // 0);
-
-    # Groups
-    ($groups_count) = $dbh->selectrow_array(
-        "SELECT COUNT(*) FROM Groups WHERE Domain = 'UserDefined'"
-    );
-
-    # Users priv + unpriv via GroupMembers directly (CachedGroupMembers is not
-    # updated when users are imported via direct SQL, so we bypass the cache)
-    my $u_rows = $dbh->selectall_arrayref(
-        "SELECT gm.GroupId, COUNT(DISTINCT u.id)
-         FROM Users u
-         JOIN GroupMembers gm ON gm.MemberId = u.id
-         JOIN Principals p ON p.id = u.id
-         WHERE gm.GroupId IN (4, 5) AND p.Disabled = 0 AND u.id > 2
-         GROUP BY gm.GroupId"
-    );
-    my %ug; $ug{$_->[0]} = $_->[1] for @$u_rows;
-    $users_privileged   = $ug{4} // 0;
-    $users_unprivileged = $ug{5} // 0;
-
-    # Disabled users
-    ($users_disabled) = $dbh->selectrow_array(
-        "SELECT COUNT(*) FROM Principals
-         WHERE Disabled = 1 AND PrincipalType = 'User' AND id > 2"
-    );
-
-    # Tickets by status
-    my $t_rows = $dbh->selectall_arrayref(
-        "SELECT Status, COUNT(*) FROM Tickets WHERE id > 0 GROUP BY Status"
-    );
-    my %by_status; $by_status{$_->[0]} = $_->[1] for @$t_rows;
-
-    my @done = qw(resolved rejected done ClosedByHousekeeping on_hold cancelled);
-    $tickets_new     = $by_status{new}     // 0;
-    $tickets_deleted = $by_status{deleted} // 0;
-    $tickets_resolved = 0;
-    $tickets_resolved += ($by_status{$_} // 0) for @done;
-    $tickets_active = 0;
-    for my $s (keys %by_status) {
-        next if $s eq 'new' || $s eq 'deleted' || grep { $_ eq $s } @done;
-        $tickets_active += $by_status{$s};
-    }
-
-    # Populate cache
-    %_stats = (
-        qt => $queues_total,      qa => $queues_active,
-        ct => $cfs_total,         ca => $cfs_active,
-        g  => $groups_count,
-        up => $users_privileged,  uu => $users_unprivileged, ud => $users_disabled,
-        tn => $tickets_new,       ta => $tickets_active,
-        tr => $tickets_resolved,  td => $tickets_deleted,
-    );
-    $_stats_expires = time() + $_CACHE_TTL;
+                                          = @{$s}{qw(tn ta tr td)};
 }
 
 $tickets_total = $tickets_new + $tickets_active + $tickets_resolved + $tickets_deleted;
@@ -132,6 +57,17 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
                  Menu()->child('admin')->children;
 </%perl>
 <div class="rt-admin-db">
+
+% if ($stats_missing) {
+<div class="alert alert-warning d-flex align-items-start gap-3 mb-3" role="alert">
+  <i class="bi bi-exclamation-triangle-fill fs-5 flex-shrink-0 mt-1"></i>
+  <div>
+    <strong><% loc('Statistics not available') %></strong> &mdash;
+    <% loc('The stats refresh script has not been run yet. Please execute:') %>
+    <br><code>perl /opt/rt6/local/plugins/RT-Extension-Redesign/bin/rt-redesign-stats-refresh</code>
+  </div>
+</div>
+% }
 
   <!-- Ticket stats -->
   <div class="row g-2 mb-3">

@@ -1,36 +1,18 @@
-<%once>
-my (%_cf_stats, $_cf_expires);
-my $_CFCACHE_TTL = 600;
-</%once>
 <%init>
-my ($cf_total, $cf_tickets, $cf_assets, $cf_users, $cf_articles, $cf_transactions);
+unless ($session{CurrentUser}->HasRight(Right => 'SuperUser', Object => $RT::System)) {
+    Abort(loc('Permission denied'));
+}
 
-if ($_cf_expires && time() < $_cf_expires) {
+my $attr          = RT->System->FirstAttribute('AdminDashboardStats');
+my $s             = $attr ? $attr->Content->{cf} : undef;
+my $stats_missing = !$s;
+
+my ($cf_total, $cf_tickets, $cf_assets, $cf_users, $cf_articles, $cf_transactions)
+    = (0) x 6;
+
+if ($s) {
     ($cf_total, $cf_tickets, $cf_assets, $cf_users, $cf_articles, $cf_transactions)
-        = @_cf_stats{qw(to ti as us ar tr)};
-} else {
-    my $dbh = $RT::Handle->dbh;
-
-    my $rows = $dbh->selectall_arrayref(
-        "SELECT LookupType, COUNT(*) FROM CustomFields WHERE Disabled = 0 GROUP BY LookupType"
-    );
-    my %by_type; $by_type{$_->[0]} = $_->[1] for @$rows;
-
-    $cf_tickets      = $by_type{'RT::Queue-RT::Ticket'}                      // 0;
-    $cf_assets       = $by_type{'RT::Catalog-RT::Asset'}                     // 0;
-    $cf_users        = $by_type{'RT::User'}                                  // 0;
-    $cf_articles     = $by_type{'RT::Class-RT::Article'}                     // 0;
-    $cf_transactions = $by_type{'RT::Queue-RT::Ticket-RT::Transaction'}      // 0;
-    my $cf_groups    = $by_type{'RT::Group'}                                 // 0;
-
-    $cf_total = 0;
-    $cf_total += $_ for values %by_type;
-
-    %_cf_stats = (
-        to => $cf_total,  ti => $cf_tickets,  as => $cf_assets,
-        us => $cf_users,  ar => $cf_articles, tr => $cf_transactions,
-    );
-    $_cf_expires = time() + $_CFCACHE_TTL;
+        = @{$s}{qw(to ti as us ar tr)};
 }
 
 my $cf_other = $cf_total - $cf_tickets - $cf_assets;
@@ -72,6 +54,17 @@ $m->callback( %ARGS, CallbackName => 'ModifyNavItems', nav_items => \@nav_items 
 <& /Elements/Tabs &>
 
 <div class="rt-admin-db">
+
+% if ($stats_missing) {
+<div class="alert alert-warning d-flex align-items-start gap-3 mb-3" role="alert">
+  <i class="bi bi-exclamation-triangle-fill fs-5 flex-shrink-0 mt-1"></i>
+  <div>
+    <strong><% loc('Statistics not available') %></strong> &mdash;
+    <% loc('The stats refresh script has not been run yet. Please execute:') %>
+    <br><code>perl /opt/rt6/local/plugins/RT-Extension-Redesign/bin/rt-redesign-stats-refresh</code>
+  </div>
+</div>
+% }
 
   <!-- Stat cards -->
   <div class="row g-2 mb-3">
