@@ -1,8 +1,8 @@
 package RT::Extension::Redesign;
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
-use 5.010;
+use 5.010001;
 use strict;
 use warnings;
 

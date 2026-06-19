@@ -1,8 +1,8 @@
 use lib '.';
 use inc::Module::Install;
 RTx('RT-Extension-Redesign');
+all_from('lib/RT/Extension/Redesign.pm');
 license('gpl_2');
-author('Torsten Brumm');
 requires_rt('6.0.2');
 rt_too_new('7.0.0');
 
@@ -13,6 +13,10 @@ requires('LWP::UserAgent');
 requires('XML::LibXML');
 requires('JSON');
 requires('JSON::PP');
-install_script('bin/rt-redesign-stats-refresh');
+
+# bin/ is shipped into local/plugins/RT-Extension-Redesign/bin by RTx itself
+# (it indexes bin/ as an install dir). Do NOT add install_script() — that routes
+# the script to the system INSTALLSCRIPT dir (/usr/local/bin) and breaks `make
+# install` on a non-root box.
 sign(0);
 WriteAll();

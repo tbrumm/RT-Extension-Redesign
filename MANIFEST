@@ -61,7 +61,6 @@ inc/Module/Install/Metadata.pm
 inc/Module/Install/ReadmeFromPod.pm
 inc/Module/Install/RTx.pm
 inc/Module/Install/RTx/Runtime.pm
-inc/Module/Install/Scripts.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 inc/YAML/Tiny.pm
