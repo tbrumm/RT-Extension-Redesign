@@ -131,6 +131,9 @@ Tabbed RSS/ATOM feed reader — fully configurable per user:
 - Feed fetching is server-side (no browser CORS issues)
 - Session cache (15 minutes), refresh button
 - Requires a CSRF whitelist entry (see [Configuration](#configuration))
+- SSRF guard: only `http`/`https` feeds are accepted, and feeds whose host
+  resolves into a private, loopback or link-local range are refused (the
+  server-side fetch cannot be used to probe the internal network)
 
 #### UserProfileWidget (`UserProfileWidget`)
 

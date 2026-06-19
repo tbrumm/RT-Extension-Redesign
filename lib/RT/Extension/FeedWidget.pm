@@ -1,12 +1,14 @@
 package RT::Extension::FeedWidget;
 
-our $VERSION = '1.0.0';
+our $VERSION = '1.0.1';
 
 use strict;
 use warnings;
 use LWP::UserAgent;
 use XML::LibXML;
 use JSON;
+use URI;
+use Socket qw(getaddrinfo getnameinfo SOCK_STREAM NI_NUMERICHOST NIx_NOSERV);
 use Encode qw(encode_utf8 decode);
 use POSIX qw(strftime);
 
@@ -97,9 +99,62 @@ sub _ua {
     return $UA;
 }
 
+# -----------------------------------------------------------------------
+# SSRF guard
+# -----------------------------------------------------------------------
+# Refuse to fetch a feed whose host resolves into a private, loopback or
+# link-local range. Without this, an authenticated user who saves an
+# internal URL as a feed could turn the server-side fetch into an internal
+# network probe. (Residual: DNS rebinding between this check and the actual
+# connect is not covered — proportionate for an internal tool.)
+
+sub _ip_is_blocked {
+    my ($ip) = @_;
+    return 1 unless defined $ip && length $ip;
+
+    if ( $ip =~ /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/ ) {
+        my @o = ( $1, $2, $3, $4 );
+        return 1 if $o[0] == 0;                                  # 0.0.0.0/8
+        return 1 if $o[0] == 10;                                 # 10/8
+        return 1 if $o[0] == 127;                                # loopback
+        return 1 if $o[0] == 169 && $o[1] == 254;               # link-local
+        return 1 if $o[0] == 172 && $o[1] >= 16 && $o[1] <= 31;  # 172.16/12
+        return 1 if $o[0] == 192 && $o[1] == 168;               # 192.168/16
+        return 0;
+    }
+
+    my $lc = lc $ip;
+    return _ip_is_blocked($1)
+        if $lc =~ /^::ffff:(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$/;  # IPv4-mapped
+    return 1 if $lc eq '::1' || $lc eq '::';                     # loopback / unspecified
+    return 1 if $lc =~ /^fe80:/;                                 # link-local
+    return 1 if $lc =~ /^f[cd][0-9a-f]{2}:/;                     # unique-local fc00::/7
+    return 0;
+}
+
+sub _host_is_safe {
+    my ($host) = @_;
+    return 0 unless defined $host && length $host;
+
+    my ( $err, @res ) = getaddrinfo( $host, '', { socktype => SOCK_STREAM } );
+    return 0 if $err || !@res;        # unresolvable -> fail closed
+
+    for my $ai (@res) {
+        my ( $e2, $ipstr ) = getnameinfo( $ai->{addr}, NI_NUMERICHOST, NIx_NOSERV );
+        return 0 if $e2;              # can't read address -> fail closed
+        return 0 if _ip_is_blocked($ipstr);
+    }
+    return 1;
+}
+
 sub FetchFeed {
     my ( $class, $url, $max_items ) = @_;
     $max_items //= 10;
+
+    my $host = eval { URI->new($url)->host };
+    unless ( defined $host && length $host && _host_is_safe($host) ) {
+        return { error => 'Feed host not allowed', items => [] };
+    }
 
     my $res = eval { _ua()->get($url) };
     if ( $@ || !$res || !$res->is_success ) {
@@ -115,6 +170,8 @@ sub _parse_feed {
     my ( $content, $max_items ) = @_;
 
     my $doc = eval {
+        # no_network blocks external entities/DTDs (XXE/SSRF-via-entity);
+        # libxml2's default entity-expansion limit handles "billion laughs".
         my $parser = XML::LibXML->new( recover => 2, no_network => 1 );
         $parser->parse_string($content);
     };

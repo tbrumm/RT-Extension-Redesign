@@ -1,3 +1,10 @@
+0.15 2026-06-19
+  - FeedWidget: SSRF guard — FetchFeed now refuses feed hosts that resolve into
+    private, loopback or link-local ranges (10/8, 127/8, 169.254/16, 172.16/12,
+    192.168/16, ::1, fe80::/10, fc00::/7, IPv4-mapped); an authenticated user can
+    no longer use the server-side fetch to probe the internal network
+  - FeedWidget: bumped to 1.0.1
+
 0.14 2026-06-19
   - Makefile.PL: perl floor now derived from `use 5.010001;` in the main module via
     all_from(); removed redundant author() (was duplicating the META author)
