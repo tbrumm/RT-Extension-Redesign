@@ -96,8 +96,8 @@ msgstr "Активы"
 msgid "Articles"
 msgstr "Статьи"
 
-msgid "Statistics updated twice daily. Last update: %1"
-msgstr "Статистика обновляется дважды в день. Последнее обновление: %1"
+msgid "Last update: %1"
+msgstr "Последнее обновление: %1"
 
 msgid "Successfully logged out"
 msgstr "Вы успешно вышли из системы"

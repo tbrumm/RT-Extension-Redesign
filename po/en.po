@@ -96,8 +96,8 @@ msgstr ""
 msgid "Articles"
 msgstr ""
 
-msgid "Statistics updated twice daily. Last update: %1"
-msgstr "Statistics updated twice daily. Last update: %1"
+msgid "Last update: %1"
+msgstr "Last update: %1"
 
 msgid "Successfully logged out"
 msgstr ""

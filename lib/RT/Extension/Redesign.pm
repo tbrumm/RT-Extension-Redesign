@@ -1,10 +1,11 @@
 package RT::Extension::Redesign;
 
-our $VERSION = '0.15';
+our $VERSION = '0.16';
 
 use 5.010001;
 use strict;
 use warnings;
+use POSIX ();
 
 # Allow language-* CSS classes through RT's HTML scrubber so that
 # highlight.js code blocks are not stripped on ticket display.
@@ -50,6 +51,35 @@ sub banner_defaults {
 <p><strong>For the full User Guide for day-to-day usage:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide" target="_blank">https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide</a></p>
 <p>Taking a few minutes to review these pages will help you navigate RT&nbsp;6 more easily and make the best use of the new functionality.</p>',
     };
+}
+
+=head2 format_refreshed_at($epoch, CurrentUser => $cu)
+
+Format the C<refreshed_at> epoch of the C<AdminDashboardStats> attribute for
+display as C<dd.mm.yyyy HH:MM>. The stored value is an absolute Unix epoch; the
+timezone is applied only here. With a C<CurrentUser> the value is rendered in
+that user's own timezone preference (the admin dashboards); without one it is
+rendered in the RT server timezone (C<$Timezone> config — normally UTC), used by
+the login page where there is no user context. Returns the empty string for a
+missing/zero epoch, so callers render the "last update" note only when stats
+have actually been collected. Shared by the login page and the admin
+F</Elements/StatsRefreshedNote> so the format stays consistent.
+
+=cut
+
+sub format_refreshed_at {
+    my ($epoch, %args) = @_;
+    return '' unless $epoch;
+
+    my $cu      = $args{CurrentUser};
+    my $context = $cu ? 'user' : 'server';
+
+    my $date = RT::Date->new( $cu || RT->SystemUser );
+    $date->Set( Format => 'unix', Value => $epoch );
+
+    my @lt = $date->Localtime($context);   # sec,min,hour,mday,mon(0-11),year(4)
+    return sprintf( '%02d.%02d.%04d %02d:%02d',
+                    $lt[3], $lt[4] + 1, $lt[5], $lt[2], $lt[1] );
 }
 
 sub banner_is_active {

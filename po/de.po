@@ -96,8 +96,8 @@ msgstr "Assets"
 msgid "Articles"
 msgstr "Artikel"
 
-msgid "Statistics updated twice daily. Last update: %1"
-msgstr "Statistiken werden zweimal täglich aktualisiert. Letzte Aktualisierung: %1"
+msgid "Last update: %1"
+msgstr "Letzte Aktualisierung: %1"
 
 msgid "Successfully logged out"
 msgstr "Erfolgreich abgemeldet"

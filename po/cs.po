@@ -96,8 +96,8 @@ msgstr "Majetek"
 msgid "Articles"
 msgstr "Články"
 
-msgid "Statistics updated twice daily. Last update: %1"
-msgstr "Statistiky se aktualizují dvakrát denně. Poslední aktualizace: %1"
+msgid "Last update: %1"
+msgstr "Poslední aktualizace: %1"
 
 msgid "Successfully logged out"
 msgstr "Úspěšně odhlášeni"

@@ -96,8 +96,8 @@ msgstr "Varad"
 msgid "Articles"
 msgstr "Artiklid"
 
-msgid "Statistics updated twice daily. Last update: %1"
-msgstr "Statistika uuendatakse kaks korda päevas. Viimane uuendus: %1"
+msgid "Last update: %1"
+msgstr "Viimane uuendus: %1"
 
 msgid "Successfully logged out"
 msgstr "Edukalt välja logitud"

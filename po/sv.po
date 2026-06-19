@@ -96,8 +96,8 @@ msgstr "Tillgångar"
 msgid "Articles"
 msgstr "Artiklar"
 
-msgid "Statistics updated twice daily. Last update: %1"
-msgstr "Statistik uppdateras två gånger dagligen. Senaste uppdatering: %1"
+msgid "Last update: %1"
+msgstr "Senaste uppdatering: %1"
 
 msgid "Successfully logged out"
 msgstr "Utloggning lyckades"

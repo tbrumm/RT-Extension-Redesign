@@ -96,8 +96,8 @@ msgstr "資産"
 msgid "Articles"
 msgstr "記事"
 
-msgid "Statistics updated twice daily. Last update: %1"
-msgstr "統計は1日2回更新されます。最終更新：%1"
+msgid "Last update: %1"
+msgstr "最終更新：%1"
 
 msgid "Successfully logged out"
 msgstr "ログアウトしました"

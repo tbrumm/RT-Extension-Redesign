@@ -96,8 +96,8 @@ msgstr "Varlıklar"
 msgid "Articles"
 msgstr "Makaleler"
 
-msgid "Statistics updated twice daily. Last update: %1"
-msgstr "İstatistikler günde iki kez güncellenir. Son güncelleme: %1"
+msgid "Last update: %1"
+msgstr "Son güncelleme: %1"
 
 msgid "Successfully logged out"
 msgstr "Başarıyla çıkış yapıldı"

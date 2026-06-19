@@ -96,8 +96,8 @@ msgstr "Aktiver"
 msgid "Articles"
 msgstr "Artikler"
 
-msgid "Statistics updated twice daily. Last update: %1"
-msgstr "Statistikker opdateres to gange dagligt. Seneste opdatering: %1"
+msgid "Last update: %1"
+msgstr "Seneste opdatering: %1"
 
 msgid "Successfully logged out"
 msgstr "Logget ud"

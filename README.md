@@ -51,7 +51,7 @@ Overridden RT pages with a modern layout:
 | **Tools** (`/Tools/`) | Stat cards and nav tiles |
 | **Simple Search** (`/Search/Simple.html`) | Hero search with keyword cards |
 
-The **system statistics** on the login page show: privileged/unprivileged users, groups, queues, tickets, transactions, assets, and articles — cached for 6 hours via `rt-redesign-stats-refresh`.
+The **system statistics** on the login page show: privileged/unprivileged users, groups, queues, tickets, transactions, assets, and articles — cached via `rt-redesign-stats-refresh`. The login page and every admin dashboard show a "last update" timestamp so it is clear how current the figures are. The login page renders it in the RT server timezone (`$Timezone`, normally UTC); the admin dashboards render it in the logged-in user's own timezone preference.
 
 ### Ticket Page Widgets
 

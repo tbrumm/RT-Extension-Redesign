@@ -96,8 +96,8 @@ msgstr "Aktīvi"
 msgid "Articles"
 msgstr "Raksti"
 
-msgid "Statistics updated twice daily. Last update: %1"
-msgstr "Statistika tiek atjaunināta divas reizes dienā. Pēdējā atjaunināšana: %1"
+msgid "Last update: %1"
+msgstr "Pēdējā atjaunināšana: %1"
 
 msgid "Successfully logged out"
 msgstr "Veiksmīgi izrakstījies"

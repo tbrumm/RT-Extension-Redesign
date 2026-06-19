@@ -96,8 +96,8 @@ msgstr "الأصول"
 msgid "Articles"
 msgstr "المقالات"
 
-msgid "Statistics updated twice daily. Last update: %1"
-msgstr "تحديث الإحصائيات مرتين يومياً. آخر تحديث: %1"
+msgid "Last update: %1"
+msgstr "آخر تحديث: %1"
 
 msgid "Successfully logged out"
 msgstr "تم تسجيل الخروج بنجاح"

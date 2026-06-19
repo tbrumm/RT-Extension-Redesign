@@ -83,6 +83,8 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
 
   </div>
 
+  <& /Elements/StatsRefreshedNote &>
+
   <!-- Navigation -->
   <div class="row g-2">
 % for my $item (@menu_items) {

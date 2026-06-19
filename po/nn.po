@@ -96,8 +96,8 @@ msgstr "Eigedelar"
 msgid "Articles"
 msgstr "Artiklar"
 
-msgid "Statistics updated twice daily. Last update: %1"
-msgstr "Statistikk vert oppdatert to gonger dagleg. Siste oppdatering: %1"
+msgid "Last update: %1"
+msgstr "Siste oppdatering: %1"
 
 msgid "Successfully logged out"
 msgstr "Logga ut"

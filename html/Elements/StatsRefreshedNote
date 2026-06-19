@@ -1,0 +1,22 @@
+<%init>
+# "Statistics as of ..." note for the admin dashboard pages. Reads the same
+# AdminDashboardStats attribute the pages render from and formats its
+# refreshed_at via the shared helper. Passing CurrentUser renders the timestamp
+# in the logged-in user's own timezone preference (the login page omits it and
+# gets the RT server timezone). Renders nothing until the refresh script has
+# populated the attribute.
+my $attr = RT->System->FirstAttribute('AdminDashboardStats');
+my $fmt  = '';
+if ($attr) {
+    my $content = $attr->Content;
+    $fmt = RT::Extension::Redesign::format_refreshed_at(
+        $content->{refreshed_at}, CurrentUser => $session{CurrentUser} )
+        if ref $content eq 'HASH';
+}
+</%init>
+% if ($fmt) {
+<p class="text-muted small mb-3 text-end">
+  <i class="bi bi-clock"></i>
+  <% loc('Last update: [_1]', $fmt) %>
+</p>
+% }

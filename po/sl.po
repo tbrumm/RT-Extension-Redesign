@@ -96,8 +96,8 @@ msgstr "Sredstva"
 msgid "Articles"
 msgstr "Članki"
 
-msgid "Statistics updated twice daily. Last update: %1"
-msgstr "Statistike se posodabljajo dvakrat na dan. Zadnja posodobitev: %1"
+msgid "Last update: %1"
+msgstr "Zadnja posodobitev: %1"
 
 msgid "Successfully logged out"
 msgstr "Uspešno odjavljeni"

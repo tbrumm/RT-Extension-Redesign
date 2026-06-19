@@ -96,8 +96,8 @@ msgstr "Omaisuuserät"
 msgid "Articles"
 msgstr "Artikkelit"
 
-msgid "Statistics updated twice daily. Last update: %1"
-msgstr "Tilastot päivitetään kahdesti päivässä. Viimeisin päivitys: %1"
+msgid "Last update: %1"
+msgstr "Viimeisin päivitys: %1"
 
 msgid "Successfully logged out"
 msgstr "Uloskirjautuminen onnistui"

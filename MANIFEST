@@ -33,6 +33,7 @@ html/Elements/ClockWidget
 html/Elements/FeedWidget
 html/Elements/Footer
 html/Elements/Login
+html/Elements/StatsRefreshedNote
 html/Elements/UserProfileWidget
 html/Elements/WeatherWidget
 html/FeedWidget/Fetch.html

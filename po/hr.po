@@ -96,8 +96,8 @@ msgstr "Imovina"
 msgid "Articles"
 msgstr "Članci"
 
-msgid "Statistics updated twice daily. Last update: %1"
-msgstr "Statistike se ažuriraju dva puta dnevno. Zadnje ažuriranje: %1"
+msgid "Last update: %1"
+msgstr "Zadnje ažuriranje: %1"
 
 msgid "Successfully logged out"
 msgstr "Uspješno odjavljeni"

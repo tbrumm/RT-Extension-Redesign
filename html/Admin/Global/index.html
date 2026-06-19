@@ -175,6 +175,8 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
 
   </div>
 
+  <& /Elements/StatsRefreshedNote &>
+
   <!-- Global admin menu -->
   <div class="row g-2">
 % for my $item (@menu_items) {

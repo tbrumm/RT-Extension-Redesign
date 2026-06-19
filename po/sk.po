@@ -96,8 +96,8 @@ msgstr "Aktíva"
 msgid "Articles"
 msgstr "Články"
 
-msgid "Statistics updated twice daily. Last update: %1"
-msgstr "Štatistiky sa aktualizujú dvakrát denne. Posledná aktualizácia: %1"
+msgid "Last update: %1"
+msgstr "Posledná aktualizácia: %1"
 
 msgid "Successfully logged out"
 msgstr "Úspešne odhlásení"
