@@ -17,6 +17,10 @@ no_index:
   directory:
     - t
     - inc
-requires: {}
-version: '0.12'
+requires:
+  JSON: '0'
+  JSON::PP: '0'
+  LWP::UserAgent: '0'
+  XML::LibXML: '0'
+version: '0.13'
 x_serialization_backend: 'CPAN::Meta::YAML version 0.018'

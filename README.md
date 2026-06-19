@@ -87,6 +87,21 @@ Displays all articles linked to the current ticket as compact cards:
 - Refreshes automatically via HTMX when links change
 - Hides itself when no articles are linked
 
+#### Requestor Assets
+
+Adds an **Assigned Assets** block to the "More about the requestors" box on the ticket
+display page (via a callback — no Page Layout needed). For each requestor it lists the
+assets they are linked to as **HeldBy**, **Contact**, or **Owner**:
+
+- Asset ID and name link to the asset display page, plus its description
+- Hides itself when the requestor has no assets
+
+**Note:** This block only appears for requestors that RT renders in the "More about the
+requestors" box. By default RT shows that box for **unprivileged** requestors only. Since
+asset holders are typically privileged users, set `$ShowMoreAboutPrivilegedUsers` to `1`
+in `RT_SiteConfig.pm` if you want the asset block to appear for privileged requestors (see
+[Configuration](#configuration)).
+
 ### Dashboard Widgets
 
 These widgets can be added as portlets to the RT dashboard. The portlet name for `$HomepageComponents` is shown in parentheses.
@@ -232,6 +247,19 @@ Set($HomepageComponents, [qw(
     FeedWidget
 )]);
 ```
+
+### Requestor Assets — show for privileged requestors
+
+The **Assigned Assets** block in the "More about the requestors" box only renders for
+requestors that RT lists there. RT hides privileged requestors from that box by default,
+so asset holders (usually privileged users) will not show up unless you enable:
+
+```perl
+Set($ShowMoreAboutPrivilegedUsers, 1);
+```
+
+This is a core RT option; it also affects the comments, ticket-list, and groups sections
+of the same box.
 
 ### Ticket page widgets — Page Layout
 

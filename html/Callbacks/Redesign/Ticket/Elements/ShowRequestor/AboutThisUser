@@ -7,17 +7,25 @@ $requestor
 my $dbh = RT->DatabaseHandle->dbh;
 my $uid = $requestor->Id;
 
-my $ids = $dbh->selectcol_arrayref(q{
-    SELECT DISTINCT g.Instance
-    FROM CachedGroupMembers cgm
-    JOIN Groups g
-      ON g.id = cgm.GroupId
-     AND g.Domain = 'RT::Asset-Role'
-     AND g.Name IN ('HeldBy','Contact','Owner')
-    JOIN Assets a ON a.id = g.Instance AND a.Status != 'deleted'
-    WHERE cgm.MemberId = ? AND cgm.Disabled = 0
-    LIMIT 20
-}, undef, $uid);
+# `Groups` is a reserved word in MySQL 8; quote_identifier emits the right
+# identifier quoting for whichever DB driver is active (backticks on MySQL,
+# double quotes on PostgreSQL/Oracle/SQLite).
+my $groups = $dbh->quote_identifier('Groups');
+
+my $ids = eval {
+    $dbh->selectcol_arrayref(qq{
+        SELECT DISTINCT g.Instance
+        FROM CachedGroupMembers cgm
+        JOIN $groups g
+          ON g.id = cgm.GroupId
+         AND g.Domain = 'RT::Asset-Role'
+         AND g.Name IN ('HeldBy','Contact','Owner')
+        JOIN Assets a ON a.id = g.Instance AND a.Status != 'deleted'
+        WHERE cgm.MemberId = ? AND cgm.Disabled = 0
+        LIMIT 20
+    }, undef, $uid);
+};
+RT::Logger->error("Redesign AboutThisUser asset lookup: $@") if $@;
 
 return unless $ids && @$ids;
 

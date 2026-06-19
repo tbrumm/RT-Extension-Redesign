@@ -1,6 +1,6 @@
 package RT::Extension::Redesign;
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 use 5.010;
 use strict;
@@ -68,6 +68,11 @@ sub banner_is_active {
 sub collect_stats {
     my $dbh = $RT::Handle->dbh;
     my %s;
+
+    # `Groups` is a reserved word in MySQL 8; quote_identifier emits the right
+    # identifier quoting for whichever DB driver is active (backticks on MySQL,
+    # double quotes on PostgreSQL/Oracle/SQLite).
+    my $groups = $dbh->quote_identifier('Groups');
 
     # --- Global (Scrips / Templates / Conditions / Actions) ---
     eval {
@@ -167,12 +172,13 @@ sub collect_stats {
     $s{cf}{$_} //= 0 for qw(ti as us ar tr to);
 
     # --- Login page ---
-    # `Groups` prefix required for MySQL 8 (GROUPS is a reserved keyword)
+    # Groups table is quoted via $groups (see quote_identifier above) because
+    # GROUPS is a reserved word in MySQL 8.
     eval {
         ($s{login}{priv}) = $dbh->selectrow_array(
             "SELECT COUNT(gm.MemberId)
              FROM GroupMembers gm
-             JOIN `Groups` g ON gm.GroupId = g.id
+             JOIN $groups g ON gm.GroupId = g.id
              JOIN Principals p ON gm.MemberId = p.id
              WHERE g.Domain = 'SystemInternal' AND g.Name = 'Privileged'
                AND p.PrincipalType = 'User' AND p.Disabled = 0"
@@ -180,13 +186,13 @@ sub collect_stats {
         ($s{login}{unpriv}) = $dbh->selectrow_array(
             "SELECT COUNT(gm.MemberId)
              FROM GroupMembers gm
-             JOIN `Groups` g ON gm.GroupId = g.id
+             JOIN $groups g ON gm.GroupId = g.id
              JOIN Principals p ON gm.MemberId = p.id
              WHERE g.Domain = 'SystemInternal' AND g.Name = 'Unprivileged'
                AND p.PrincipalType = 'User' AND p.Disabled = 0"
         );
         ($s{login}{groups})   = $dbh->selectrow_array(
-            "SELECT COUNT(*) FROM `Groups` WHERE Domain = 'UserDefined'"
+            "SELECT COUNT(*) FROM $groups WHERE Domain = 'UserDefined'"
         );
         ($s{login}{queues})   = $dbh->selectrow_array("SELECT COUNT(*) FROM Queues");
         ($s{login}{tickets})  = $dbh->selectrow_array("SELECT COUNT(*) FROM Tickets");
@@ -198,7 +204,8 @@ sub collect_stats {
     $s{login}{$_} //= 0 for qw(priv unpriv groups queues tickets txns assets articles);
 
     # --- Admin overview (for Admin/index.html) ---
-    # `Groups` prefix required for MySQL 8 (GROUPS is a reserved keyword)
+    # Groups table is quoted via $groups (see quote_identifier above) because
+    # GROUPS is a reserved word in MySQL 8.
     eval {
         my $q_rows = $dbh->selectall_arrayref(
             "SELECT Disabled, COUNT(*) FROM Queues WHERE id > 0 GROUP BY Disabled"
@@ -215,7 +222,7 @@ sub collect_stats {
         $s{admin}{ct} = ($cfd{0} // 0) + ($cfd{1} // 0);
 
         ($s{admin}{g}) = $dbh->selectrow_array(
-            "SELECT COUNT(*) FROM `Groups` WHERE Domain = 'UserDefined'"
+            "SELECT COUNT(*) FROM $groups WHERE Domain = 'UserDefined'"
         );
 
         my $u_rows = $dbh->selectall_arrayref(
