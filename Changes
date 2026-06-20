@@ -1,3 +1,10 @@
+0.17 2026-06-20
+  - Ticket history: the per-transaction action icons (toggle-contrast, reply,
+    comment) are now vertically centered on the metadata bar instead of sitting
+    ~8px below the date/subject line. Core history.css floats the (taller) icon
+    box out of the flow; the redesign now lays the metadata bar out as a flex row
+    so the icons align on the baseline. Applies to every message and comment row.
+
 0.16 2026-06-19
   - Admin dashboards (Admin, Global, CustomFields, Articles, Assets, Tools) now
     show a "last update" timestamp for the cached statistics, below the stat

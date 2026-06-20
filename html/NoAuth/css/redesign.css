@@ -445,10 +445,15 @@ div.history-container {
     border-top-color: var(--bs-border-color) !important;
 }
 
-/* Metadata bar base */
+/* Metadata bar base. Laid out as a flex row so span.actions (see below) lines up
+   on the date/subject baseline; the vertical padding is trimmed so pulling the
+   (taller) icon box into the flow doesn't grow the bar. */
 .history .transaction .metadata {
-    padding: 0.35rem 0.8rem;
+    padding: 0.2rem 0.8rem;
     background-color: var(--bs-tertiary-bg);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .history .transaction .metadata .date {
@@ -466,9 +471,35 @@ div.history-container {
     color: var(--bs-secondary-color);
 }
 
-/* Actions: icon area top-right */
+/* Actions: icon area, vertically centered at the right edge of the metadata bar.
+   Core history.css floats span.actions out of the flow; since the icon box is taller
+   than the text line it sat ~8px low, and core compensates with margin-top on the text
+   spans. With the metadata bar as a flex row we drop both the float and that margin so
+   the icons line up on the baseline of the date/subject. The div/span qualifiers match
+   core's selector specificity. */
 .history .transaction .metadata .actions {
     border-color: var(--bs-border-color) !important;
+}
+.history .transaction div.metadata span.type,
+.history .transaction div.metadata span.actions {
+    float: none;
+}
+.history .transaction div.metadata span.actions {
+    order: 99;            /* .actions comes first in source; flex it to the end */
+    margin-left: auto;    /* keep it flush right */
+    padding: 0;
+}
+/* Core history.css adds top/bottom margins to the metadata spans to clear the
+   floated icons. With the flex layout those margins only push the text below the
+   centered icons (~3px) and inflate the bar height, so drop them. Selector
+   specificity matches core's so this wins by source order. */
+.history .transaction div.metadata .date,
+.history .transaction div.metadata .description,
+.history .transaction div.metadata .time-taken,
+.history .transaction div.metadata .type,
+.history .transaction div.metadata .actions {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 /* ── Message transactions (correspondence, comments) ─────────── */

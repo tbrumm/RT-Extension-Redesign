@@ -273,6 +273,12 @@ test_providers.py
 analysis/
 analysis_progress.md
 
+# Local working/dev notes (not for the public fork)
+docs/devnotes/
+
+# Vendored / reference extensions kept locally only (own repos)
+ref*/
+
 # RT Extension: track source dirs despite Python-section ignores
 !lib/
 !lib/RT/
