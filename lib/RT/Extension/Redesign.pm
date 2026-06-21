@@ -1,11 +1,12 @@
 package RT::Extension::Redesign;
 
-our $VERSION = '0.17';
+our $VERSION = '0.18';
 
 use 5.010001;
 use strict;
 use warnings;
 use POSIX ();
+use JSON::PP ();
 
 # Allow language-* CSS classes through RT's HTML scrubber so that
 # highlight.js code blocks are not stripped on ticket display.
@@ -80,6 +81,24 @@ sub format_refreshed_at {
     my @lt = $date->Localtime($context);   # sec,min,hour,mday,mon(0-11),year(4)
     return sprintf( '%02d.%02d.%04d %02d:%02d',
                     $lt[3], $lt[4] + 1, $lt[5], $lt[2], $lt[1] );
+}
+
+=head2 encode_js_json($data)
+
+JSON-encode C<$data> for safe interpolation into an inline HTML C<< <script> >>
+block (emit with C<< <% ... |n %> >>). Two guards: C<ascii(1)> keeps the output
+pure ASCII so no utf8-flagged C<loc()> bytes reach the Mason buffer, and every
+C</> is escaped to C<\/> so a value containing C<< </script> >> cannot close the
+script element and break out — the same protection RT's own C<JSON()> helper
+applies (F<lib/RT/Interface/Web.pm>). C<$data> may be a scalar or a reference.
+
+=cut
+
+sub encode_js_json {
+    my $data = shift;
+    my $json = JSON::PP->new->ascii(1)->allow_nonref->encode($data);
+    $json =~ s{/}{\\/}g;
+    return $json;
 }
 
 sub banner_is_active {

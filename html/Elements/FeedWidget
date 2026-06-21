@@ -3,7 +3,6 @@ $HasResults => undef
 </%args>
 <%init>
 use RT::Extension::FeedWidget;
-use JSON::PP ();
 
 my $wid  = 'fw' . int(rand(999999));
 my $user = $session{CurrentUser}->UserObj;
@@ -14,10 +13,10 @@ my $web_path   = RT->Config->Get('WebPath');
 my $prefs_url  = $web_path . '/Prefs/AboutMe.html';
 my $fetch_url  = $web_path . '/FeedWidget/Fetch.html';
 
-my $_j = JSON::PP->new->ascii(1);
-my $js_feeds     = $_j->encode($feeds);
-my $js_fetch_url = $_j->encode($fetch_url);
-my $js_prefs_url = $_j->encode($prefs_url);
+# encode_js_json escapes / so a user-set feed title containing </script> cannot
+# break out of the inline <script> block below.
+my $js_feeds     = RT::Extension::Redesign::encode_js_json($feeds);
+my $js_fetch_url = RT::Extension::Redesign::encode_js_json($fetch_url);
 </%init>
 
 <&|/Widgets/TitleBox, title => loc('Feed Reader'), bodyclass => 'p-0' &>

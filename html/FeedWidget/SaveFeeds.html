@@ -1,6 +1,5 @@
 <%init>
 use RT::Extension::FeedWidget;
-use JSON::PP ();
 
 # CSRF: handled by RT's standard form submission / ReferrerComponents whitelist
 
@@ -36,8 +35,6 @@ for my $key ( grep { /^fw_feed_/ } keys %session ) {
 
 my $web_path = RT->Config->Get('WebPath');
 my $saved    = 1;
-my $_j       = JSON::PP->new->ascii(1);
-my $js_feeds = $_j->encode(\@feeds);
 </%init>
 
 <div class="card shadow-sm mb-4" id="fw-prefs-card">

@@ -1,6 +1,5 @@
 <%init>
 use RT::Extension::FeedWidget;
-use JSON::PP ();
 
 my $user     = $session{CurrentUser}->UserObj;
 my $feeds    = RT::Extension::FeedWidget->GetUserFeeds($user);

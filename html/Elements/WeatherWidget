@@ -20,24 +20,23 @@ $temp_unit = 'celsius' unless $temp_unit eq 'fahrenheit';
 
 my $prefs_url = RT->Config->Get('WebPath') . '/Prefs/AboutMe.html';
 
-# ascii(1): escapes all non-ASCII as \uXXXX — prevents Mason encoding issues
-# when loc() returns utf8-flagged strings mixed with byte-string output.
-use JSON::PP ();
-my $_j = JSON::PP->new->ascii(1);
+# encode_js_json: ascii-safe (\uXXXX for loc() utf8 strings) AND escapes / so a
+# user-set profile value containing </script> cannot break out of this block.
+my $enc = \&RT::Extension::Redesign::encode_js_json;
 
-my $js_city    = $_j->encode($city);
-my $js_zip     = $_j->encode($zip);
-my $js_country = $_j->encode($country);
-my $js_loc     = $_j->encode($display_loc);
-my $js_unit    = $_j->encode($temp_unit);
+my $js_city    = $enc->($city);
+my $js_zip     = $enc->($zip);
+my $js_country = $enc->($country);
+my $js_loc     = $enc->($display_loc);
+my $js_unit    = $enc->($temp_unit);
 
 my $lang_tag = lc( $session{CurrentUser}->LanguageHandle->language_tag // 'en' );
 $lang_tag =~ s/_/-/g;
-my $js_lang = $_j->encode($lang_tag);
+my $js_lang = $enc->($lang_tag);
 
 # All labels + icons for JS. \x{NNNN} codepoints let ascii(1) emit \uXXXX —
 # so zero non-ASCII bytes ever reach the Mason output buffer.
-my $js_labels = $_j->encode({
+my $js_labels = $enc->({
     wmo_labels => {
         0  => loc('Clear Sky'),           1  => loc('Mainly Clear'),
         2  => loc('Partly Cloudy'),       3  => loc('Overcast'),
