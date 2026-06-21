@@ -199,13 +199,16 @@ my $banner_content_en = $data->{content_en} // $defaults->{content_en};
       </div>
     </div>
 
-    <!-- Save (bottom-right, below the preview) -->
-    <div class="col-12 text-end">
-      <button type="submit" class="btn btn-primary">
-        <i class="bi bi-floppy-fill me-2"></i><% loc('Save') %>
-      </button>
-    </div>
+  </div>
 
+  <!-- Floating save bar: hidden until something changes, then flies in at the
+       bottom (same pattern as RT-Extension-QueueListCustom). -->
+  <div id="rd-banner-float-bar" class="d-none position-fixed bottom-0 start-0 end-0 d-flex align-items-center justify-content-center gap-3 px-4 py-2"
+       style="background:var(--bs-body-bg);border-top:1px solid var(--bs-border-color);box-shadow:0 -4px 12px rgba(0,0,0,.08);z-index:1050">
+    <span class="badge text-bg-warning"><% loc('Unsaved changes') %></span>
+    <button type="submit" class="btn btn-sm btn-primary">
+      <i class="bi bi-floppy-fill me-2"></i><% loc('Save Changes') %>
+    </button>
   </div>
 </form>
 
@@ -247,6 +250,8 @@ my $banner_content_en = $data->{content_en} // $defaults->{content_en};
         var wrap = document.getElementById('rd-preview-theme');
         if (wrap) wrap.setAttribute('data-bs-theme', (dark && dark.checked) ? 'dark' : 'light');
     }
+    var bar = document.getElementById('rd-banner-float-bar');
+    function markChanged() { if (bar) bar.classList.remove('d-none'); }
 
     // CKEditor initialises asynchronously; wait for the instances, then bind.
     var tries = 0;
@@ -258,9 +263,17 @@ my $banner_content_en = $data->{content_en} // $defaults->{content_en};
             clearInterval(iv);
             ['BannerHeadline', 'BannerContentDE', 'BannerContentEN'].forEach(function (n) {
                 var ed = inst && inst[n];
-                if (ed) ed.model.document.on('change:data', update);
+                if (ed) ed.model.document.on('change:data', function () { update(); markChanged(); });
             });
             update();
+            // Wire form-level change detection only after the initial state has
+            // settled, so editor init / setData doesn't trip the save bar.
+            var form = box.closest('form');
+            if (form) form.addEventListener('change', function (e) {
+                // The preview Light/Dark toggle is a view-only control, not a saved setting.
+                if (e.target && e.target.name === 'PreviewTheme') return;
+                markChanged();
+            });
         }
     }, 150);
 
