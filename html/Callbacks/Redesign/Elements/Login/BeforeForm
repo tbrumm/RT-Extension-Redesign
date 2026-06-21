@@ -20,6 +20,9 @@ my $show  = RT::Extension::Redesign::banner_is_active( $data, $today );
 
 my $defaults = RT::Extension::Redesign::banner_defaults();
 my $headline   = ( defined $data->{headline}   && length $data->{headline}   ) ? $data->{headline}   : $defaults->{headline};
+# The headline editor (CKEditor) wraps its value in <p>…</p>; unwrap it so the
+# headline stays inline inside the banner's <h2>.
+$headline = RT::Extension::Redesign::strip_outer_paragraph($headline);
 my $content_de = ( defined $data->{content_de} && length $data->{content_de} ) ? $data->{content_de} : $defaults->{content_de};
 my $content_en = ( defined $data->{content_en} && length $data->{content_en} ) ? $data->{content_en} : $defaults->{content_en};
 </%init>

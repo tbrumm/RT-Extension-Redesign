@@ -1,6 +1,6 @@
 package RT::Extension::Redesign;
 
-our $VERSION = '0.19';
+our $VERSION = '0.20';
 
 use 5.010001;
 use strict;
@@ -125,6 +125,26 @@ sub encode_js_json {
     my $json = JSON::PP->new->ascii(1)->allow_nonref->encode($data);
     $json =~ s{/}{\\/}g;
     return $json;
+}
+
+=head2 strip_outer_paragraph($html)
+
+Remove a single enclosing C<< <p>…</p> >> wrapper from C<$html>. CKEditor wraps
+even one-line content in a paragraph; the login banner renders the headline
+inside an C<< <h2> >>, where a nested C<< <p> >> would look wrong. Only unwraps
+when the whole value is exactly one paragraph (bails on sibling/nested
+paragraphs so multi-paragraph HTML is never corrupted). Returns the empty string
+for undef.
+
+=cut
+
+sub strip_outer_paragraph {
+    my $html = shift // '';
+    if ( $html =~ m{\A\s*<p\b[^>]*>(.*)</p>\s*\z}s ) {
+        my $inner = $1;
+        return $inner unless $inner =~ m{</?p\b}i;
+    }
+    return $html;
 }
 
 sub banner_is_active {

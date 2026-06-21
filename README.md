@@ -46,7 +46,7 @@ Overridden RT pages with a modern layout:
 | **Admin** (`/Admin/`) | Stat cards, info cards, nav tiles replacing the bestpractical.com iframe |
 | **Admin → Global** | Scrips/templates dashboard with counters |
 | **Admin → Articles/Assets/Tools/CustomFields** | Overview dashboards with cards |
-| **Admin → Global → Login Banner** | Edit page for the login banner |
+| **Admin → Global → Login Banner** | WYSIWYG editor (CKEditor) for the maintenance/welcome banner — headline + German/English content, with an optional expiry date |
 | **Reports** (`/Reports/`) | Card grid with report tiles |
 | **Tools** (`/Tools/`) | Stat cards and nav tiles |
 | **Simple Search** (`/Search/Simple.html`) | Hero search with keyword cards |
