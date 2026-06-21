@@ -157,21 +157,27 @@ my $banner_content_en = $data->{content_en} // $defaults->{content_en};
       </div>
     </div>
 
-    <!-- Save -->
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary">
-        <i class="bi bi-floppy-fill me-2"></i><% loc('Save') %>
-      </button>
-    </div>
-
-    <!-- Live preview: rendered with the real banner classes inside a forced-dark
-         wrapper, so it shows how the banner looks on the (auto/dark) login page
-         regardless of the admin theme. Filled live from the CKEditor instances. -->
+    <!-- Live preview: rendered with the real banner classes inside a themed
+         wrapper (Light/Dark toggle), so it shows how the banner looks on the
+         OS-driven login page regardless of the admin theme. Filled live from the
+         CKEditor instances. -->
     <div class="col-12">
       <div class="ic">
         <div class="ic__hd"><i class="bi bi-eye-fill me-2"></i><% loc('Preview (login page)') %></div>
         <div class="ic__bd" style="padding:1.25rem">
-          <div data-bs-theme="dark" class="p-3 rounded" style="background:var(--bs-body-bg)">
+          <div class="d-flex justify-content-end mb-2">
+            <div class="btn-group btn-group-sm" role="group" aria-label="<% loc('Preview theme') %>">
+              <input type="radio" class="btn-check" name="PreviewTheme" id="PreviewThemeLight" value="light" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="PreviewThemeLight">
+                <i class="bi bi-sun me-1"></i><% loc('Light') %>
+              </label>
+              <input type="radio" class="btn-check" name="PreviewTheme" id="PreviewThemeDark" value="dark" autocomplete="off" checked>
+              <label class="btn btn-outline-secondary" for="PreviewThemeDark">
+                <i class="bi bi-moon-stars me-1"></i><% loc('Dark') %>
+              </label>
+            </div>
+          </div>
+          <div id="rd-preview-theme" data-bs-theme="dark" class="p-3 rounded" style="background:var(--bs-body-bg)">
             <div id="rd-banner-preview" class="rd-login-banner<% $banner_type eq 'warning' ? ' rd-login-banner--warning' : '' %>">
               <div class="rd-login-banner-header">
                 <span class="rd-login-banner-header-icon" id="preview-icon"><% $banner_type eq 'warning' ? '&#9888;' : '&#10003;' |n %></span>
@@ -191,6 +197,13 @@ my $banner_content_en = $data->{content_en} // $defaults->{content_en};
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Save (bottom-right, below the preview) -->
+    <div class="col-12 text-end">
+      <button type="submit" class="btn btn-primary">
+        <i class="bi bi-floppy-fill me-2"></i><% loc('Save') %>
+      </button>
     </div>
 
   </div>
@@ -226,7 +239,13 @@ my $banner_content_en = $data->{content_en} // $defaults->{content_en};
         var warn = document.getElementById('BannerTypeWarning');
         var isWarn = !!(warn && warn.checked);
         box.classList.toggle('rd-login-banner--warning', isWarn);
-        if (icon) icon.innerHTML = isWarn ? '⚠' : '✓';
+        // \u-escapes (not literal glyphs) so the Mason output encoding can't mangle them.
+        if (icon) icon.innerHTML = isWarn ? '\u26A0' : '\u2713';
+    }
+    function applyPreviewTheme() {
+        var dark = document.getElementById('PreviewThemeDark');
+        var wrap = document.getElementById('rd-preview-theme');
+        if (wrap) wrap.setAttribute('data-bs-theme', (dark && dark.checked) ? 'dark' : 'light');
     }
 
     // CKEditor initialises asynchronously; wait for the instances, then bind.
@@ -250,6 +269,12 @@ my $banner_content_en = $data->{content_en} // $defaults->{content_en};
         if (el) el.addEventListener('change', applyType);
     });
     applyType();
+
+    ['PreviewThemeLight', 'PreviewThemeDark'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.addEventListener('change', applyPreviewTheme);
+    });
+    applyPreviewTheme();
 })();
 </script>
 </div>
