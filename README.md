@@ -51,7 +51,7 @@ Overridden RT pages with a modern layout:
 | **Tools** (`/Tools/`) | Stat cards and nav tiles |
 | **Simple Search** (`/Search/Simple.html`) | Hero search with keyword cards |
 
-The **system statistics** on the login page show: privileged/unprivileged users, groups, queues, tickets, transactions, assets, and articles — cached via `rt-redesign-stats-refresh`. The login page and every admin dashboard show a "last update" timestamp so it is clear how current the figures are. The login page renders it in the RT server timezone (`$Timezone`, normally UTC); the admin dashboards render it in the logged-in user's own timezone preference.
+The **system statistics** on the login page show: privileged/unprivileged users, groups, queues, tickets, transactions, assets, and articles — cached via `rt-redesign-stats-refresh`. The login page and every admin dashboard show a "last update" timestamp so it is clear how current the figures are. The login page renders it in the RT server timezone (`$Timezone`, normally UTC); the admin dashboards render it in the logged-in user's own timezone preference. The login page is public, so until the refresh script has run it shows a neutral "statistics currently unavailable" note rather than computing the figures live on every visitor request (the run-the-script hint stays on the SuperUser-only admin dashboards).
 
 ### Ticket Page Widgets
 
@@ -174,6 +174,18 @@ Set(%ReferrerComponents,
     "/FeedWidget/SaveFeeds.html" => 1,
 );
 ```
+
+### Login page — "Why Request Tracker?" promo grid
+
+When no maintenance banner is active, the login page can show a promotional grid
+of RT selling points. It is **off by default**. Enable it with:
+
+```perl
+Set($LoginShowPromo, 1);
+```
+
+This option is also listed (read-only) under **Admin → Tools → System Configuration**;
+change the value in `RT_SiteConfig.pm` as above.
 
 ### WeatherWidget — temperature unit
 

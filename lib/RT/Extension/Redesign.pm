@@ -1,6 +1,6 @@
 package RT::Extension::Redesign;
 
-our $VERSION = '0.18';
+our $VERSION = '0.19';
 
 use 5.010001;
 use strict;
@@ -16,6 +16,32 @@ require RT::Interface::Web::Scrubber;
     package RT::Interface::Web::Scrubber;
     our %ALLOWED_ATTRIBUTES;
     $ALLOWED_ATTRIBUTES{class} = qr/(text-|fw-|fst-|fs-|align-|\btable\b|language-)/;
+}
+
+# LoginShowPromo: when no maintenance banner is active, optionally show the
+# "Why Request Tracker?" promo grid on the login page. The Meta Default below is
+# the single source of truth — active from Plugin('RT::Extension::Redesign')
+# alone; an admin overrides it with Set($LoginShowPromo, 1) in RT_SiteConfig.pm.
+# Registered Immutable so RT renders it read-only in the admin "System
+# Configuration" UI (refuses a database override; the file override still works).
+# The eval guard keeps the module loadable standalone (unit tests) where RT is
+# not initialised.
+if ( eval { RT->can('Config') && RT->Config && RT->Config->can('RegisterPluginConfig') } ) {
+    RT->Config->RegisterPluginConfig(
+        Plugin  => 'Redesign',
+        Content => [ { Name => 'LoginShowPromo' } ],
+        Meta    => {
+            LoginShowPromo => {
+                Type            => 'SCALAR',
+                Default         => 0,
+                Immutable       => 1,
+                Widget          => '/Widgets/Form/Boolean',
+                WidgetArguments => {
+                    Description => 'Show the "Why Request Tracker?" promo grid on the login page when no maintenance banner is active',  # loc
+                },
+            },
+        },
+    );
 }
 
 =head2 banner_is_active($data, $today)

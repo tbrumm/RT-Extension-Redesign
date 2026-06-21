@@ -411,6 +411,7 @@ html:has(#body.login-body) hr.clear { display: none; }
       <div id="rd-bf-output">
 % $m->callback( %ARGS, CallbackName => 'BeforeForm' );
       </div>
+% if ($show_promo) {
       <div id="rd-promo-output" style="display:none;text-align:center">
         <h3 class="rd-stats-section-title" style="margin-bottom:0.75rem"><% loc('Why Request Tracker?') %></h3>
         <div class="rd-promo-grid">
@@ -456,6 +457,7 @@ html:has(#body.login-body) hr.clear { display: none; }
           </div>
         </div>
       </div>
+% }
       <script>
       (function() {
         var bf = document.getElementById('rd-bf-output');
@@ -470,6 +472,9 @@ html:has(#body.login-body) hr.clear { display: none; }
 
     <div class="rd-stats-section">
       <h3 class="rd-stats-section-title"><% loc('System Information') %></h3>
+% if ($stats_missing) {
+      <p class="rd-stats-headline"><% loc('System statistics are currently unavailable.') %></p>
+% } else {
       <p class="rd-stats-headline"><% loc('Since 1999, Request Tracker has been the market leader for open ticket and workflow systems. This installation has already processed [_1] tickets with [_2] transactions - and manages [_3] assets and [_4] articles for [_5] users in [_6] queues.',
           '<strong>'.$fmt->($t_count).'</strong>',
           '<strong>'.$fmt->($txn_count).'</strong>',
@@ -526,6 +531,7 @@ html:has(#body.login-body) hr.clear { display: none; }
         <i class="bi bi-clock"></i>
         <% loc('Last update: [_1]', $refreshed_fmt) %>
       </p>
+% }
 % }
     </div>
 
@@ -605,37 +611,28 @@ html:has(#body.login-body) hr.clear { display: none; }
 </div>
 
 <%init>
-my ($priv_count, $unpriv_count, $grp_count, $q_count,
-    $t_count, $txn_count, $asset_count, $article_count);
-
+# Stats come exclusively from the cached AdminDashboardStats attribute, populated
+# by bin/rt-redesign-stats-refresh. We deliberately do NOT compute them live on a
+# cache miss: the login page is public (NoAuth) and hit by every visitor, so a
+# live count per request would be a needless load. When the cache is empty we
+# show a neutral "unavailable" note instead (the admin dashboards carry the
+# run-the-script hint, which is SuperUser-only).
 my $attr = RT->System->FirstAttribute('AdminDashboardStats');
 my $s    = $attr ? $attr->Content->{login} : undef;
+my $stats_missing = !$s;
 
-my ($refreshed_at, $refreshed_fmt);
+my ($priv_count, $unpriv_count, $grp_count, $q_count,
+    $t_count, $txn_count, $asset_count, $article_count) = (0) x 8;
 
-if ($s) {
+my $refreshed_fmt = '';
+unless ($stats_missing) {
     ($priv_count, $unpriv_count, $grp_count, $q_count,
      $t_count, $txn_count, $asset_count, $article_count)
         = @{$s}{qw(priv unpriv groups queues tickets txns assets articles)};
-    $refreshed_at  = $attr->Content->{refreshed_at};
-    $refreshed_fmt = RT::Extension::Redesign::format_refreshed_at($refreshed_at);
-} else {
-    my $su = RT->SystemUser;
-
-    my $pu = RT::Users->new($su); $pu->LimitToPrivileged;
-    my $uu = RT::Users->new($su); $uu->LimitToUnprivileged;
-    my $grp = RT::Groups->new($su); $grp->LimitToUserDefinedGroups;
-    my $q   = RT::Queues->new($su); $q->UnLimit;
-    my $t   = RT::Tickets->new($su); $t->UnLimit;
-    my $txn = RT::Transactions->new($su); $txn->UnLimit;
-
-    ($asset_count, $article_count) = (0, 0);
-    eval { my $a = RT::Assets->new($su);   $a->UnLimit; $asset_count   = $a->Count; };
-    eval { my $a = RT::Articles->new($su); $a->UnLimit; $article_count = $a->Count; };
-
-    ($priv_count, $unpriv_count, $grp_count, $q_count, $t_count, $txn_count)
-        = ($pu->Count, $uu->Count, $grp->Count, $q->Count, $t->Count, $txn->Count);
+    $refreshed_fmt = RT::Extension::Redesign::format_refreshed_at($attr->Content->{refreshed_at});
 }
+
+my $show_promo = RT->Config->Get('LoginShowPromo') ? 1 : 0;
 
 my $fmt = sub {
     my $s = reverse sprintf('%d', int($_[0]));
