@@ -1,6 +1,6 @@
 package RT::Extension::Redesign;
 
-our $VERSION = '0.23';
+our $VERSION = '0.24';
 
 use 5.010001;
 use strict;
@@ -66,17 +66,11 @@ yet. Returns a hashref with C<headline>, C<content_de> and C<content_en>.
 
 sub banner_defaults {
     return {
-        headline   => 'Willkommen im neuen RT&nbsp;6 &nbsp;&bull;&nbsp; Welcome to the new RT&nbsp;6',
-        content_de => '<p>Willkommen auf der neuen RT&nbsp;6 Plattform. Damit Ihr Euch mit der aktualisierten Oberfl&auml;che, den neuen Funktionen und den verbesserten Workflows schnell zurechtfindet, bitten wir Euch, vorab einen Blick in die bereitgestellte Dokumentation zu werfen.</p>
-<p><strong>Bitte startet hier:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2066631064/RT6" target="_blank">https://wiki.int.kn/spaces/rt/pages/2066631064/RT6</a></p>
-<p><strong>Eine &Uuml;bersicht der wichtigsten neuen Funktionen:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2065901193/Introducing+RT+6" target="_blank">https://wiki.int.kn/spaces/rt/pages/2065901193/Introducing+RT+6</a></p>
-<p><strong>Den ausf&uuml;hrlichen User Guide f&uuml;r die t&auml;gliche Arbeit:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide" target="_blank">https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide</a></p>
-<p>Ein paar Minuten in diese Dokumentation zu investieren, hilft Euch dabei, RT&nbsp;6 schneller und effizienter zu nutzen.</p>',
-        content_en => '<p>Welcome to the new RT&nbsp;6 platform. To help you get familiar with the updated interface, new features, and improved workflows, we kindly ask you to review the available documentation before you start working with the system.</p>
-<p><strong>Please start here:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2066631064/RT6" target="_blank">https://wiki.int.kn/spaces/rt/pages/2066631064/RT6</a></p>
-<p><strong>For an overview of the most important new features:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2065901193/Introducing+RT+6" target="_blank">https://wiki.int.kn/spaces/rt/pages/2065901193/Introducing+RT+6</a></p>
-<p><strong>For the full User Guide for day-to-day usage:</strong><br><a href="https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide" target="_blank">https://wiki.int.kn/spaces/rt/pages/2065811796/The+User+Guide</a></p>
-<p>Taking a few minutes to review these pages will help you navigate RT&nbsp;6 more easily and make the best use of the new functionality.</p>',
+        headline   => 'Willkommen &nbsp;&bull;&nbsp; Welcome',
+        content_de => '<p>Willkommen bei Request Tracker.</p>
+<p>Dieser Hinweis ist ein Platzhalter. Administratoren k&ouml;nnen ihn unter <strong>Admin &rarr; Global &rarr; Login Banner</strong> bearbeiten, als Info- oder Warnhinweis gestalten oder ganz ausblenden.</p>',
+        content_en => '<p>Welcome to Request Tracker.</p>
+<p>This notice is a placeholder. Administrators can edit it under <strong>Admin &rarr; Global &rarr; Login Banner</strong>, style it as an info or warning message, or hide it entirely.</p>',
     };
 }
 
