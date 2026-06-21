@@ -29,7 +29,7 @@ requires:
   perl: 5.10.1
 resources:
   license: http://opensource.org/licenses/gpl-license.php
-version: '0.20'
+version: '0.21'
 x_module_install_rtx_version: '0.45'
 x_requires_rt: 6.0.2
 x_rt_too_new: 7.0.0

@@ -1,6 +1,6 @@
 package RT::Extension::Redesign;
 
-our $VERSION = '0.20';
+our $VERSION = '0.21';
 
 use 5.010001;
 use strict;

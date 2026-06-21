@@ -15,6 +15,7 @@ if ($ARGS{SaveBannerSettings}) {
     my $data = {
         enabled    => $ARGS{MaintenanceBannerEnabled} ? 1 : 0,
         expiry     => $expiry,
+        type       => ( ($ARGS{BannerType} // '') eq 'warning' ) ? 'warning' : 'info',
         headline   => $ARGS{BannerHeadline},
         content_de => $ARGS{BannerContentDE},
         content_en => $ARGS{BannerContentEN},
@@ -33,6 +34,7 @@ unless (keys %$data) {
 
 my $banner_enabled = exists $data->{enabled} ? $data->{enabled} : 1;
 my $banner_expiry  = $data->{expiry} // '';
+my $banner_type    = ( ($data->{type} // 'info') eq 'warning' ) ? 'warning' : 'info';
 
 # Check if currently expired
 my $is_expired = 0;
@@ -62,7 +64,7 @@ my $banner_content_en = $data->{content_en} // $defaults->{content_en};
         <div class="ic__bd" style="padding:1.25rem">
           <div class="row g-3 align-items-center">
 
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" role="switch"
                        id="bannerEnabled" name="MaintenanceBannerEnabled" value="1"
@@ -78,7 +80,25 @@ my $banner_content_en = $data->{content_en} // $defaults->{content_en};
 % }
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-3">
+              <label class="form-label fw-semibold mb-1 d-block">
+                <i class="bi bi-palette me-1"></i><% loc('Banner type') %>
+              </label>
+              <div class="btn-group" role="group" aria-label="<% loc('Banner type') %>">
+                <input type="radio" class="btn-check" name="BannerType" id="BannerTypeInfo"
+                       value="info" <% $banner_type eq 'info' ? 'checked' : '' %>>
+                <label class="btn btn-outline-primary btn-sm" for="BannerTypeInfo">
+                  <i class="bi bi-info-circle me-1"></i><% loc('Info') %>
+                </label>
+                <input type="radio" class="btn-check" name="BannerType" id="BannerTypeWarning"
+                       value="warning" <% $banner_type eq 'warning' ? 'checked' : '' %>>
+                <label class="btn btn-outline-danger btn-sm" for="BannerTypeWarning">
+                  <i class="bi bi-exclamation-triangle me-1"></i><% loc('Warning') %>
+                </label>
+              </div>
+            </div>
+
+            <div class="col-md-6">
               <label class="form-label fw-semibold mb-1" for="BannerExpiry_Date">
                 <i class="bi bi-calendar-event me-1"></i><% loc('Show banner until (leave empty for no expiry)') %>
               </label>
@@ -144,8 +164,94 @@ my $banner_content_en = $data->{content_en} // $defaults->{content_en};
       </button>
     </div>
 
+    <!-- Live preview: rendered with the real banner classes inside a forced-dark
+         wrapper, so it shows how the banner looks on the (auto/dark) login page
+         regardless of the admin theme. Filled live from the CKEditor instances. -->
+    <div class="col-12">
+      <div class="ic">
+        <div class="ic__hd"><i class="bi bi-eye-fill me-2"></i><% loc('Preview (login page)') %></div>
+        <div class="ic__bd" style="padding:1.25rem">
+          <div data-bs-theme="dark" class="p-3 rounded" style="background:var(--bs-body-bg)">
+            <div id="rd-banner-preview" class="rd-login-banner<% $banner_type eq 'warning' ? ' rd-login-banner--warning' : '' %>">
+              <div class="rd-login-banner-header">
+                <span class="rd-login-banner-header-icon" id="preview-icon"><% $banner_type eq 'warning' ? '&#9888;' : '&#10003;' |n %></span>
+                <h2 id="preview-headline"></h2>
+              </div>
+              <div class="rd-login-banner-body">
+                <div class="rd-login-banner-cell rd-login-banner-cell-de">
+                  <h3>&#127465;&#127466; Deutsch</h3>
+                  <div id="preview-content-de"></div>
+                </div>
+                <div class="rd-login-banner-cell">
+                  <h3>&#127468;&#127463; English</h3>
+                  <div id="preview-content-en"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </form>
+
+<script>
+(function () {
+    var box = document.getElementById('rd-banner-preview');
+    if (!box) return;
+    var hl   = document.getElementById('preview-headline');
+    var de   = document.getElementById('preview-content-de');
+    var en   = document.getElementById('preview-content-en');
+    var icon = document.getElementById('preview-icon');
+
+    // Mirror RT::Extension::Redesign::strip_outer_paragraph for the headline.
+    function stripP(html) {
+        var m = /^\s*<p\b[^>]*>([\s\S]*)<\/p>\s*$/.exec(html || '');
+        if (m && !/<\/?p\b/i.test(m[1])) return m[1];
+        return html || '';
+    }
+    function data(name) {
+        var inst = window.RT && RT.CKEditor && RT.CKEditor.instances && RT.CKEditor.instances[name];
+        if (inst) return inst.getData();
+        var ta = document.getElementById(name);
+        return ta ? ta.value : '';
+    }
+    function update() {
+        hl.innerHTML = stripP(data('BannerHeadline'));
+        de.innerHTML = data('BannerContentDE');
+        en.innerHTML = data('BannerContentEN');
+    }
+    function applyType() {
+        var warn = document.getElementById('BannerTypeWarning');
+        var isWarn = !!(warn && warn.checked);
+        box.classList.toggle('rd-login-banner--warning', isWarn);
+        if (icon) icon.innerHTML = isWarn ? '⚠' : '✓';
+    }
+
+    // CKEditor initialises asynchronously; wait for the instances, then bind.
+    var tries = 0;
+    var iv = setInterval(function () {
+        tries++;
+        var inst = window.RT && RT.CKEditor && RT.CKEditor.instances;
+        var ready = inst && inst.BannerHeadline && inst.BannerContentDE && inst.BannerContentEN;
+        if (ready || tries > 50) {
+            clearInterval(iv);
+            ['BannerHeadline', 'BannerContentDE', 'BannerContentEN'].forEach(function (n) {
+                var ed = inst && inst[n];
+                if (ed) ed.model.document.on('change:data', update);
+            });
+            update();
+        }
+    }, 150);
+
+    ['BannerTypeInfo', 'BannerTypeWarning'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.addEventListener('change', applyType);
+    });
+    applyType();
+})();
+</script>
 </div>
 
 <& /Admin/Elements/AdminDashboardCSS &>
