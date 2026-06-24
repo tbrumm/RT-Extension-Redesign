@@ -4,7 +4,6 @@ docs/login-screen.png
 html/Admin/Articles/index.html
 html/Admin/Assets/index.html
 html/Admin/Elements/AdminDashboardCSS
-html/Admin/Elements/AdminDashboardJS
 html/Admin/Global/CustomFields/index.html
 html/Admin/Global/index.html
 html/Admin/Global/LoginBanner.html
@@ -41,7 +40,6 @@ html/FeedWidget/SaveFeeds.html
 html/NoAuth/css/redesign.css
 html/NoAuth/css/ticket-icons.css
 html/NoAuth/Logout.html
-html/Redesign/JS
 html/Reports/index.html
 html/Search/Simple.html
 html/Ticket/Elements/ShowLifecycle

@@ -37,10 +37,30 @@
         );
     }
 
+    // ---- animated count-up for dashboard stat tiles -------------------------
+    // Each [data-counter] animates once; the guard stops htmx.onLoad re-running
+    // it on a later body swap if the element survived the swap.
+    function runCounters(root) {
+        (root || document).querySelectorAll('[data-counter]').forEach(function (el) {
+            if (el.dataset.counted) return;
+            el.dataset.counted = '1';
+            var target = parseInt(el.dataset.counter, 10) || 0;
+            if (target === 0) { el.textContent = '0'; return; }
+            var steps = 28, step = 0;
+            var timer = setInterval(function () {
+                step++;
+                el.textContent = (step >= steps ? target : Math.round(target * step / steps))
+                                   .toLocaleString('de-DE');
+                if (step >= steps) clearInterval(timer);
+            }, 600 / steps);
+        });
+    }
+
     function init(root) {
         installThemeObserver();
         syncTheme();
         highlightAll(root);
+        runCounters(root);
     }
 
     if (typeof htmx !== 'undefined') {

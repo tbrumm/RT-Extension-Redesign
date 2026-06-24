@@ -241,6 +241,5 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
 .sc--groups   { background: linear-gradient(135deg,#4a1d96,#7c3aed); }
 </style>
 <& /Admin/Elements/AdminDashboardCSS &>
-<& /Admin/Elements/AdminDashboardJS &>
 
 % $m->callback( CallbackName => 'AfterRTPortal', ARGSRef => \%ARGS );
