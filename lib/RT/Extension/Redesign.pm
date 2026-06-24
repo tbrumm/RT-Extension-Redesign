@@ -44,6 +44,15 @@ if ( eval { RT->can('Config') && RT->Config && RT->Config->can('RegisterPluginCo
     );
 }
 
+# Front-end assets ship as external files under static/ and are registered here,
+# never as inline <script>/<style> in Mason: RT6's <body hx-boost="true"> swaps
+# the body on every navigation, so inline scripts and DOMContentLoaded listeners
+# do not reliably re-run. The eval guard keeps the module loadable standalone
+# (unit tests) where RT is not initialised.
+if ( eval { RT->can('AddJavaScript') } ) {
+    RT->AddJavaScript('redesign/redesign-global.js');
+}
+
 =head2 banner_is_active($data, $today)
 
 Decide whether the maintenance/login banner configured on

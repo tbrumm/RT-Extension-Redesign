@@ -16,35 +16,5 @@ my $css_dark = RT->Config->Get('SyntaxHighlightCSSdark')
 % if ($js) {
 <script src="<% $js %>"></script>
 % }
-<script>
-(function () {
-    'use strict';
-    if (typeof hljs === 'undefined') return;
-
-    var CODE_SEL = '.message-stanza pre code[class*="language-"]';
-
-    function highlightAll(root) {
-        (root || document).querySelectorAll(CODE_SEL).forEach(function (el) {
-            if (!el.classList.contains('hljs')) hljs.highlightElement(el);
-        });
-    }
-
-    function syncTheme() {
-        var dark = document.documentElement.getAttribute('data-bs-theme') === 'dark';
-        var l = document.getElementById('hljs-theme-light');
-        var d = document.getElementById('hljs-theme-dark');
-        if (l) l.disabled = dark;
-        if (d) d.disabled = !dark;
-    }
-
-    document.addEventListener('DOMContentLoaded', function () { syncTheme(); highlightAll(); });
-    document.addEventListener('htmx:afterSwap',    function (e) { highlightAll(e.target); });
-    document.addEventListener('htmx:afterSettle',  function (e) { highlightAll(e.target); });
-
-    if (typeof MutationObserver !== 'undefined') {
-        new MutationObserver(syncTheme).observe(
-            document.documentElement, { attributes: true, attributeFilter: ['data-bs-theme'] }
-        );
-    }
-}());
-</script>
+%# The highlight.js init + theme sync lives in static/js/redesign/redesign-global.js
+%# (registered via RT->AddJavaScript), initialised inside htmx.onLoad.
