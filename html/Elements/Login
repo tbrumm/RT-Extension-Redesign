@@ -458,16 +458,7 @@ html:has(#body.login-body) hr.clear { display: none; }
         </div>
       </div>
 % }
-      <script>
-      (function() {
-        var bf = document.getElementById('rd-bf-output');
-        var promo = document.getElementById('rd-promo-output');
-        if (bf && bf.innerHTML.trim() === '') {
-          bf.style.display = 'none';
-          if (promo) promo.style.display = '';
-        }
-      }());
-      </script>
+%# Promo/banner fallback handled in redesign-noauth.js (keyed on #rd-bf-output).
     </div>
 
     <div class="rd-stats-section">
@@ -578,14 +569,7 @@ html:has(#body.login-body) hr.clear { display: none; }
 
   <input type="hidden" name="next" value="<% $next %>" />
 
-  <script type="text/javascript">
-  jQuery(function(){
-      if (window.location.hash) {
-          var form = jQuery("form[name=login]");
-          form.attr('action', form.attr('action') + '#' + window.location.hash.replace(/^#/, ''));
-      }
-  });
-  </script>
+%# URL-fragment forwarding handled in redesign-noauth.js (keyed on form[name=login]).
 
   <div class="row mt-3">
     <div class="col-12">

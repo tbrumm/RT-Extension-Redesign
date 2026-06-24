@@ -334,21 +334,7 @@ html:has(#body.login-body) hr.clear { display: none; }
   </div>
   </div>
 
-% if (RT->Config->Get('LogoutRefresh')) {
-<script>
-(function() {
-    var el = document.getElementById('rd-countdown');
-    if (!el) return;
-    var count = parseInt(el.textContent, 10);
-    if (!count) return;
-    var timer = setInterval(function() {
-        count--;
-        el.textContent = count;
-        if (count <= 0) clearInterval(timer);
-    }, 1000);
-}());
-</script>
-% }
+%# Countdown handled in redesign-noauth.js (keyed on #rd-countdown).
 
   <!-- Right: brand + login again -->
   <div class="rd-login-brand">
@@ -422,17 +408,3 @@ $m->notes->{RefreshURL} = $URL;
 
 RT->Logger->debug("Redirecting to $URL");
 </%INIT>
-
-<script>
-(function() {
-    var el = document.getElementById('rd-countdown');
-    if (!el) return;
-    var count = parseInt(el.textContent, 10);
-    if (!count) return;
-    var timer = setInterval(function() {
-        count--;
-        el.textContent = count;
-        if (count <= 0) clearInterval(timer);
-    }, 1000);
-}());
-</script>
