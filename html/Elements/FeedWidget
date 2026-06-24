@@ -13,15 +13,21 @@ my $web_path   = RT->Config->Get('WebPath');
 my $prefs_url  = $web_path . '/Prefs/AboutMe.html';
 my $fetch_url  = $web_path . '/FeedWidget/Fetch.html';
 
-# encode_js_json escapes / so a user-set feed title containing </script> cannot
-# break out of the inline <script> block below.
-my $js_feeds     = RT::Extension::Redesign::encode_js_json($feeds);
-my $js_fetch_url = RT::Extension::Redesign::encode_js_json($fetch_url);
+# Feed config handed to redesign-widgets.js via data-* attributes on the widget
+# root -- no inline <script>. encode_js_json keeps the feed list ascii-safe;
+# apply_escapes('h') makes each value a safe HTML attribute, decoded by dataset.
+my $fw_attrs = '';
+if (@$feeds) {
+    my $h = sub { $m->interp->apply_escapes( $_[0], 'h' ) };
+    $fw_attrs = ' data-fw-feeds="'    . $h->( RT::Extension::Redesign::encode_js_json($feeds) ) . '"'
+              . ' data-fw-fetch="'    . $h->($fetch_url) . '"'
+              . ' data-fw-no-items="' . $h->( loc('No items found.') ) . '"';
+}
 </%init>
 
 <&|/Widgets/TitleBox, title => loc('Feed Reader'), bodyclass => 'p-0' &>
 
-<div class="fw-wrap" id="<% $wid %>">
+<div class="fw-wrap" id="<% $wid %>"<% $fw_attrs | n %>>
 
 % if (!@$feeds) {
   <div class="fw-empty">
@@ -223,171 +229,5 @@ my $js_fetch_url = RT::Extension::Redesign::encode_js_json($fetch_url);
 .fw-refresh-btn:hover { color: var(--bs-primary); }
 </style>
 
-% if (@$feeds) {
-<script>
-(function () {
-  var ID       = '<% $wid | n %>';
-  var FEEDS    = <% $js_feeds    | n %>;
-  var FETCH    = <% $js_fetch_url | n %>;
-  var FW_NO_ITEMS = <% loc('No items found.') |j %>;
-
-  var wrap    = document.getElementById(ID);
-  var sLoad   = wrap.querySelector('.fw-loading');
-  var sErr    = wrap.querySelector('.fw-error');
-  var sCont   = wrap.querySelector('.fw-content');
-  var tabBar  = document.getElementById(ID + '-tabs');
-  var panels  = document.getElementById(ID + '-panels');
-
-  function showState(el) {
-    [sLoad, sErr, sCont].forEach(function(e) { e.hidden = true; });
-    el.hidden = false;
-  }
-
-  function escHtml(s) {
-    return String(s)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
-
-  function activateTab(idx) {
-    var tabs = tabBar.querySelectorAll('.fw-tab');
-    var panes = panels.querySelectorAll('.fw-panel');
-    tabs.forEach(function(t, i) {
-      t.classList.toggle('active', i === idx);
-    });
-    panes.forEach(function(p, i) {
-      p.classList.toggle('active', i === idx);
-    });
-  }
-
-  function buildTab(label, idx, hasError) {
-    var btn = document.createElement('button');
-    btn.className = 'fw-tab';
-    btn.setAttribute('role', 'tab');
-    btn.title = label;
-    btn.textContent = label;
-    if (hasError) {
-      var dot = document.createElement('span');
-      dot.className = 'fw-tab-err';
-      btn.appendChild(dot);
-    }
-    btn.addEventListener('click', function() { activateTab(idx); });
-    tabBar.appendChild(btn);
-  }
-
-  function buildPanel(feedData, feedCfg) {
-    var panel = document.createElement('div');
-    panel.className = 'fw-panel';
-
-    if (feedData.error) {
-      var errDiv = document.createElement('div');
-      errDiv.className = 'fw-panel-error';
-      errDiv.textContent = feedData.error;
-      panel.appendChild(errDiv);
-    } else {
-      var ul = document.createElement('ul');
-      ul.className = 'fw-items';
-      var items = feedData.items || [];
-      if (!items.length) {
-        var li = document.createElement('li');
-        li.className = 'fw-item';
-        li.style.textAlign = 'center';
-        li.style.color = 'var(--bs-secondary-color)';
-        li.style.fontSize = '0.8rem';
-        li.style.padding = '1rem';
-        li.textContent = FW_NO_ITEMS;
-        ul.appendChild(li);
-      }
-      items.forEach(function(item) {
-        var li   = document.createElement('li');
-        li.className = 'fw-item';
-
-        var a = document.createElement('a');
-        a.className = 'fw-item-title';
-        a.href = item.link || '#';
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-        a.textContent = item.title || '(no title)';
-        li.appendChild(a);
-
-        if (item.pubdate) {
-          var meta = document.createElement('div');
-          meta.className = 'fw-item-meta';
-          meta.textContent = item.pubdate;
-          li.appendChild(meta);
-        }
-
-        if (item.summary) {
-          var sum = document.createElement('div');
-          sum.className = 'fw-item-summary';
-          sum.textContent = item.summary;
-          li.appendChild(sum);
-        }
-
-        ul.appendChild(li);
-      });
-      panel.appendChild(ul);
-    }
-
-    panels.appendChild(panel);
-    return panel;
-  }
-
-  function load() {
-    showState(sLoad);
-    tabBar.innerHTML = '';
-    panels.innerHTML = '';
-
-    var pending = FEEDS.length;
-    var results = new Array(FEEDS.length);
-
-    function done(idx, data) {
-      results[idx] = data;
-      pending--;
-      if (pending === 0) { render(results); }
-    }
-
-    FEEDS.forEach(function(feed, idx) {
-      var url = FETCH + '?url=' + encodeURIComponent(feed.url)
-                      + '&max=' + encodeURIComponent(feed.max_items || 10);
-      fetch(url, { credentials: 'same-origin' })
-        .then(function(r) {
-          if (!r.ok) throw new Error('HTTP ' + r.status);
-          return r.json();
-        })
-        .then(function(data) { done(idx, data); })
-        .catch(function(e) { done(idx, { error: e.message, items: [] }); });
-    });
-  }
-
-  function render(results) {
-    if (!results.length) { showState(sErr); return; }
-
-    results.forEach(function(data, idx) {
-      var cfg    = FEEDS[idx];
-      var label  = data.feed_title || cfg.title || cfg.url;
-      if (label.length > 20) label = label.substring(0, 18) + '\u2026';
-      buildTab(label, idx, !!data.error);
-      buildPanel(data, cfg);
-    });
-
-    activateTab(0);
-    showState(sCont);
-  }
-
-  wrap.querySelector('.fw-retry-btn').addEventListener('click', load);
-  wrap.querySelector('.fw-refresh-btn').addEventListener('click', load);
-
-  /* auto-detect HTMX navigation and avoid re-running if already removed */
-  document.addEventListener('htmx:afterSettle', function() {
-    if (!document.body.contains(wrap)) return;
-  });
-
-  load();
-})();
-</script>
-% }
 
 </&>

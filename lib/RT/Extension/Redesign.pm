@@ -51,6 +51,7 @@ if ( eval { RT->can('Config') && RT->Config && RT->Config->can('RegisterPluginCo
 # (unit tests) where RT is not initialised.
 if ( eval { RT->can('AddJavaScript') } ) {
     RT->AddJavaScript('redesign/redesign-global.js');
+    RT->AddJavaScript('redesign/redesign-widgets.js');
 }
 
 =head2 banner_is_active($data, $today)

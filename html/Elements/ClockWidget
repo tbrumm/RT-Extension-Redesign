@@ -4,12 +4,16 @@ $HasResults => undef
 <%init>
 my $wid = 'fc' . int(rand(999999));
 my $enc = \&RT::Extension::Redesign::encode_js_json;
-my $days_json   = $enc->([map { loc($_) } qw(Sunday Monday Tuesday Wednesday Thursday Friday Saturday)]);
-my $months_json = $enc->([map { loc($_) } qw(January February March April May June July August September October November December)]);
+# Localised day/month names handed to redesign-widgets.js via a data-* attribute
+# (no inline <script>); h-escaped for the attribute, decoded back by dataset.
+my $fc_config = $enc->({
+    days   => [map { loc($_) } qw(Sunday Monday Tuesday Wednesday Thursday Friday Saturday)],
+    months => [map { loc($_) } qw(January February March April May June July August September October November December)],
+});
 </%init>
 <&|/Widgets/TitleBox, title => loc('Clock'), bodyclass => 'p-0' &>
 
-<div class="fc-wrap" id="<% $wid %>">
+<div class="fc-wrap" id="<% $wid %>" data-fc-config="<% $fc_config %>">
   <div class="fc-clock">
 
     <div class="fc-grp">
@@ -191,83 +195,5 @@ my $months_json = $enc->([map { loc($_) } qw(January February March April May Ju
   letter-spacing: 0.02em;
 }
 </style>
-
-<script>
-(function () {
-  var ID = '<% $wid | n %>';
-
-  function byId(s) { return document.getElementById(ID + '-' + s); }
-
-  function Digit(key) {
-    var d = byId(key);
-    if (!d) return null;
-    return {
-      el: d,
-      hi: d.querySelector('.fc-hi .fc-n'),
-      lo: d.querySelector('.fc-lo .fc-n'),
-      fl: d.querySelector('.fc-fl .fc-n'),
-      v:  null
-    };
-  }
-
-  var D = {
-    h0: Digit('h0'), h1: Digit('h1'),
-    m0: Digit('m0'), m1: Digit('m1')
-  };
-
-  function set(d, val) {
-    if (!d) return;
-    var v = String(val);
-    if (d.v === null) {
-      /* initial render — no animation */
-      d.hi.textContent = d.lo.textContent = d.fl.textContent = v;
-      d.v = v;
-      return;
-    }
-    if (d.v === v) return;
-
-    d.fl.textContent = d.v;   /* flap shows OLD value and folds away  */
-    d.hi.textContent = v;      /* top already set to NEW (behind flap) */
-    d.lo.textContent = v;      /* bottom switches to NEW immediately   */
-
-    d.el.classList.remove('flipping');
-    void d.el.offsetWidth;     /* force reflow so animation restarts   */
-    d.el.classList.add('flipping');
-
-    d.v = v;
-    setTimeout(function () {
-      d.el.classList.remove('flipping');
-      d.fl.textContent = v;
-    }, 400);
-  }
-
-  var DAYS   = <% $days_json |n %>;
-  var MONTHS = <% $months_json |n %>;
-
-  function tick() {
-    var n = new Date();
-    var h = n.getHours(), m = n.getMinutes(), s = n.getSeconds();
-
-    set(D.h0, Math.floor(h / 10)); set(D.h1, h % 10);
-    set(D.m0, Math.floor(m / 10)); set(D.m1, m % 10);
-    var de = byId('date');
-    if (de) {
-      de.textContent =
-        DAYS[n.getDay()] + ', ' + n.getDate() + '. ' +
-        MONTHS[n.getMonth()] + ' ' + n.getFullYear();
-    }
-  }
-
-  var _wrap = document.getElementById(ID);
-  tick();
-  var _t = setInterval(function () {
-    if (!_wrap || !document.body.contains(_wrap)) {
-      clearInterval(_t);
-      return;
-    }
-    tick();
-  }, 1000);
-})();
-</script>
 
 </&>
