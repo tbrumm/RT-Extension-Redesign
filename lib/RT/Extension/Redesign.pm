@@ -55,6 +55,7 @@ if ( eval { RT->can('AddJavaScript') } ) {
     RT->AddJavaScript('redesign/redesign-ticket.js');
     RT->AddJavaScript('redesign/redesign-admin.js');
     RT->AddJavaScript('redesign/redesign-noauth.js');
+    RT->AddJavaScript('redesign/redesign-prefs.js');
 }
 
 =head2 banner_is_active($data, $today)
