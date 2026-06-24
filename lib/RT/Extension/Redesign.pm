@@ -52,6 +52,7 @@ if ( eval { RT->can('Config') && RT->Config && RT->Config->can('RegisterPluginCo
 if ( eval { RT->can('AddJavaScript') } ) {
     RT->AddJavaScript('redesign/redesign-global.js');
     RT->AddJavaScript('redesign/redesign-widgets.js');
+    RT->AddJavaScript('redesign/redesign-ticket.js');
 }
 
 =head2 banner_is_active($data, $today)

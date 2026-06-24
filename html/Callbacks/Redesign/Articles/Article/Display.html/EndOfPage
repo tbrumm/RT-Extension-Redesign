@@ -2,20 +2,9 @@
 $ArticleObj => undef
 </%ARGS>
 % return unless $ArticleObj && $ArticleObj->id;
-% my $id      = $ArticleObj->id;
-% my $name    = $m->interp->apply_escapes($ArticleObj->Name,         'j');
-% my $class   = $m->interp->apply_escapes($ArticleObj->ClassObj->Name, 'j');
-% my $url     = $m->interp->apply_escapes(RT->Config->Get('WebPath') . '/Articles/Article/Display.html?id=' . $id, 'j');
-<script>
-(function() {
-    var key   = 'rt_recent_articles';
-    var max   = 5;
-    var entry = { id: <% $id %>, name: <% $name |n %>, cls: <% $class |n %>, url: <% $url |n %>, ts: Date.now() };
-    var list  = [];
-    try { list = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) {}
-    list = list.filter(function(a) { return a.id !== entry.id; });
-    list.unshift(entry);
-    if (list.length > max) list = list.slice(0, max);
-    try { localStorage.setItem(key, JSON.stringify(list)); } catch(e) {}
-})();
-</script>
+% my $id  = $ArticleObj->id;
+% my $url = RT->Config->Get('WebPath') . '/Articles/Article/Display.html?id=' . $id;
+%# redesign-ticket.js reads this hidden marker and records the article into the
+%# rt_recent_articles localStorage list -- no inline <script>. Values are
+%# h-escaped (Mason default) for the attributes and decoded back via dataset.
+<span class="rt-article-recorder d-none" data-ra-id="<% $id %>" data-ra-name="<% $ArticleObj->Name %>" data-ra-class="<% $ArticleObj->ClassObj->Name %>" data-ra-url="<% $url %>"></span>

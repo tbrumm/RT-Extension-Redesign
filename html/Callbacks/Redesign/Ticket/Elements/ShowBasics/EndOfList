@@ -29,7 +29,6 @@ for my $i ( 0 .. $last ) {
 }
 my $class = $color_map{$level} // 'sla-ok';
 </%INIT>
-<script>(function(){
-  var el = document.querySelector('.sla .current_value');
-  if (el) { el.classList.add('<% $class |h %>'); }
-})();</script>
+%# redesign-ticket.js reads this hidden marker, applies the class to the core
+%# SLA value and drops the marker -- no inline <script>.
+<span class="rt-sla-flag d-none" data-sla-class="<% $class %>"></span>

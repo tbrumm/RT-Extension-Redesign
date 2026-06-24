@@ -11,7 +11,6 @@ my $class = $diff <= 0     ? 'due-overdue'
           : $diff <= 86400 ? 'due-soon'
           :                  'due-ok';
 </%INIT>
-<script>(function(){
-  var el = document.querySelector('.date.due .current-value');
-  if (el) { el.classList.remove('overdue'); el.classList.add('<% $class |h %>'); }
-})();</script>
+%# redesign-ticket.js reads this hidden marker, applies the class to the core
+%# due-date value and drops the marker -- no inline <script>.
+<span class="rt-due-flag d-none" data-due-class="<% $class %>"></span>

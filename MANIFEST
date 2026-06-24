@@ -109,3 +109,4 @@ po/zh_TW.po
 README.md
 static/js/redesign/redesign-global.js
 static/js/redesign/redesign-widgets.js
+static/js/redesign/redesign-ticket.js
