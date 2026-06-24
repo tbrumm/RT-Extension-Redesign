@@ -3,7 +3,6 @@ Changes
 docs/login-screen.png
 html/Admin/Articles/index.html
 html/Admin/Assets/index.html
-html/Admin/Elements/AdminDashboardCSS
 html/Admin/Global/CustomFields/index.html
 html/Admin/Global/index.html
 html/Admin/Global/LoginBanner.html
@@ -37,8 +36,6 @@ html/Elements/UserProfileWidget
 html/Elements/WeatherWidget
 html/FeedWidget/Fetch.html
 html/FeedWidget/SaveFeeds.html
-html/NoAuth/css/redesign.css
-html/NoAuth/css/ticket-icons.css
 html/NoAuth/Logout.html
 html/Reports/index.html
 html/Search/Simple.html
@@ -113,3 +110,8 @@ static/js/redesign/redesign-ticket.js
 static/js/redesign/redesign-admin.js
 static/js/redesign/redesign-noauth.js
 static/js/redesign/redesign-prefs.js
+static/css/redesign/redesign.css
+static/css/redesign/ticket-icons.css
+static/css/redesign/redesign-widgets.css
+static/css/redesign/redesign-admin.css
+static/css/redesign/redesign-noauth.css

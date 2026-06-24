@@ -199,13 +199,7 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
 
 </div>
 
-<style>
-.sc--scrips     { background: linear-gradient(135deg,#92400e,#f59e0b); }
-.sc--global     { background: linear-gradient(135deg,#1e40af,#3b82f6); }
-.sc--templates  { background: linear-gradient(135deg,#4c1d95,#a78bfa); }
-.sc--conditions { background: linear-gradient(135deg,#155e75,#22d3ee); }
-.sc--actions    { background: linear-gradient(135deg,#14532d,#22c55e); }
-</style>
+%# Styles moved to static/css/redesign/redesign-admin.css (AddStyleSheets).
 
 
 % $m->callback( CallbackName => 'AfterGlobalPortal', ARGSRef => \%ARGS );

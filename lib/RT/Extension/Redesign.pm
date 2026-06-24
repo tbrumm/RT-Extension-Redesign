@@ -58,6 +58,17 @@ if ( eval { RT->can('AddJavaScript') } ) {
     RT->AddJavaScript('redesign/redesign-prefs.js');
 }
 
+# Stylesheets ship as static assets too. redesign.css is the base; the per-area
+# files carry the styles consolidated out of the former inline <style> blocks and
+# are registered AFTER the base so they keep their original cascade precedence.
+if ( eval { RT->can('AddStyleSheets') } ) {
+    RT->AddStyleSheets('redesign/redesign.css');
+    RT->AddStyleSheets('redesign/ticket-icons.css');
+    RT->AddStyleSheets('redesign/redesign-widgets.css');
+    RT->AddStyleSheets('redesign/redesign-admin.css');
+    RT->AddStyleSheets('redesign/redesign-noauth.css');
+}
+
 =head2 banner_is_active($data, $today)
 
 Decide whether the maintenance/login banner configured on

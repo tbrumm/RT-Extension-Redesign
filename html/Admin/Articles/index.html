@@ -148,11 +148,6 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
   </div>
 
 </div>
-<style>
-.sc--articles       { background: linear-gradient(135deg,#1e3a8a,#3b82f6); }
-.sc--active         { background: linear-gradient(135deg,#14532d,#22c55e); }
-.sc--classes        { background: linear-gradient(135deg,#155e75,#22d3ee); }
-.sc--classes-active { background: linear-gradient(135deg,#0e4429,#4ade80); }
-</style>
+%# Styles moved to static/css/redesign/redesign-admin.css (AddStyleSheets).
 
 % $m->callback( CallbackName => 'AfterArticlesPortal', ARGSRef => \%ARGS );

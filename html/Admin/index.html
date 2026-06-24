@@ -229,17 +229,6 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
 
 </div>
 
-<style>
-.sc--total    { background: linear-gradient(135deg,#1e40af,#3b82f6); }
-.sc--new      { background: linear-gradient(135deg,#92400e,#f59e0b); }
-.sc--active   { background: linear-gradient(135deg,#155e75,#22d3ee); }
-.sc--resolved { background: linear-gradient(135deg,#14532d,#22c55e); }
-.sc--deleted  { background: linear-gradient(135deg,#374151,#9ca3af); }
-.sc--priv     { background: linear-gradient(135deg,#1e3a5f,#2563eb); }
-.sc--unpriv   { background: linear-gradient(135deg,#3b0764,#9333ea); }
-.sc--queues   { background: linear-gradient(135deg,#164e63,#0891b2); }
-.sc--groups   { background: linear-gradient(135deg,#4a1d96,#7c3aed); }
-</style>
-<& /Admin/Elements/AdminDashboardCSS &>
+%# Styles moved to static/css/redesign/redesign-admin.css (AddStyleSheets).
 
 % $m->callback( CallbackName => 'AfterRTPortal', ARGSRef => \%ARGS );
