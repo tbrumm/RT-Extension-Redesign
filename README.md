@@ -129,6 +129,10 @@ Tabbed RSS/ATOM feed reader — fully configurable per user:
 - Feeds are configured in **Prefs → About Me** (URL, label, max items)
 - One tab per feed showing title, date, and summary for each entry
 - Feed fetching is server-side (no browser CORS issues)
+- Honours the `HTTP_PROXY`/`HTTPS_PROXY`/`NO_PROXY` environment of the RT
+  process — servers whose outbound traffic must go through a proxy reach
+  feeds instead of timing out (the variables must be set for the web-server
+  process, not just a login shell)
 - Session cache (15 minutes), refresh button
 - Requires a CSRF whitelist entry (see [Configuration](#configuration))
 - SSRF guard: only `http`/`https` feeds are accepted, and feeds whose host

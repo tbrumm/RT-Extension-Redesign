@@ -1,6 +1,6 @@
 package RT::Extension::FeedWidget;
 
-our $VERSION = '1.0.1';
+our $VERSION = '1.0.2';
 
 use strict;
 use warnings;
@@ -96,6 +96,10 @@ sub _ua {
     # a self-signed cert, add its CA to the system trust store rather than
     # disabling verification here.
     $UA->ssl_opts( verify_hostname => 1 );
+    # Honour HTTP_PROXY/HTTPS_PROXY/NO_PROXY from the environment. LWP does NOT
+    # read these on its own; servers whose outbound traffic must go through a
+    # proxy would otherwise time out trying to connect to feeds directly.
+    $UA->env_proxy;
     return $UA;
 }
 
