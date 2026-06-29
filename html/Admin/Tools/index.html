@@ -7,11 +7,11 @@ my $attr          = RT->System->FirstAttribute('AdminDashboardStats');
 my $s             = $attr ? $attr->Content->{tools} : undef;
 my $stats_missing = !$s;
 
-my ($db_size_mb, $custom_roles, $scheduled_procs, $sys_errors) = (0) x 4;
+my ($db_size_mb, $custom_roles, $scheduled_procs) = (0) x 3;
 
 if ($s) {
-    ($db_size_mb, $custom_roles, $scheduled_procs, $sys_errors)
-        = @{$s}{qw(ds cr sp se)};
+    ($db_size_mb, $custom_roles, $scheduled_procs)
+        = @{$s}{qw(ds cr sp)};
 }
 
 my $icon_for = sub {
@@ -70,14 +70,6 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
         <i class="bi bi-clock-history sc__bg-icon"></i>
         <div class="sc__val" data-counter="<% $scheduled_procs %>">0</div>
         <div class="sc__lbl"><% loc('Scheduled Processes') %></div>
-      </div>
-    </div>
-
-    <div class="col-6 col-sm col-lg">
-      <div class="sc sc--errors">
-        <i class="bi bi-exclamation-triangle-fill sc__bg-icon"></i>
-        <div class="sc__val" data-counter="<% $sys_errors %>">0</div>
-        <div class="sc__lbl"><% loc('Mail Errors') %></div>
       </div>
     </div>
 

@@ -1,6 +1,6 @@
 package RT::Extension::Redesign;
 
-our $VERSION = '0.26';
+our $VERSION = '0.27';
 
 use 5.010001;
 use strict;
@@ -179,6 +179,25 @@ sub banner_is_active {
     return $expiry ge $today ? 1 : 0;
 }
 
+# Run one stats query in isolation. A statement killed mid-flight (e.g. by a
+# pt-kill watchdog) or any DB error yields a neutral value for just that stat
+# instead of aborting the whole refresh. No reconnect is attempted: on a dead
+# connection the remaining stats simply stay 0 rather than reconnecting in a
+# tight loop.
+sub _stat_scalar {
+    my ( $dbh, $sql, @bind ) = @_;
+    my @r = eval { $dbh->selectrow_array( $sql, undef, @bind ) };
+    RT::Logger->error("Redesign stats query failed: $@") if $@;
+    return $r[0];
+}
+
+sub _stat_rows {
+    my ( $dbh, $sql, @bind ) = @_;
+    my $r = eval { $dbh->selectall_arrayref( $sql, undef, @bind ) };
+    RT::Logger->error("Redesign stats query failed: $@") if $@;
+    return $r || [];
+}
+
 sub collect_stats {
     my $dbh = $RT::Handle->dbh;
     my %s;
@@ -189,221 +208,181 @@ sub collect_stats {
     my $groups = $dbh->quote_identifier('Groups');
 
     # --- Global (Scrips / Templates / Conditions / Actions) ---
-    eval {
-        ($s{global}{st}) = $dbh->selectrow_array("SELECT COUNT(*) FROM Scrips");
-        ($s{global}{sd}) = $dbh->selectrow_array("SELECT COUNT(*) FROM Scrips WHERE Disabled = 1");
-        ($s{global}{sg}) = $dbh->selectrow_array(
-            "SELECT COUNT(DISTINCT Scrip) FROM ObjectScrips WHERE ObjectId = 0"
-        );
-        $s{global}{sq} = ($s{global}{st} // 0) - ($s{global}{sg} // 0);
+    $s{global}{st} = _stat_scalar($dbh, "SELECT COUNT(*) FROM Scrips");
+    $s{global}{sd} = _stat_scalar($dbh, "SELECT COUNT(*) FROM Scrips WHERE Disabled = 1");
+    $s{global}{sg} = _stat_scalar($dbh,
+        "SELECT COUNT(DISTINCT Scrip) FROM ObjectScrips WHERE ObjectId = 0");
+    $s{global}{sq} = ($s{global}{st} // 0) - ($s{global}{sg} // 0);
 
-        ($s{global}{tt}) = $dbh->selectrow_array("SELECT COUNT(*) FROM Templates");
-        ($s{global}{tg}) = $dbh->selectrow_array("SELECT COUNT(*) FROM Templates WHERE ObjectId = 0");
-        $s{global}{tq} = ($s{global}{tt} // 0) - ($s{global}{tg} // 0);
+    $s{global}{tt} = _stat_scalar($dbh, "SELECT COUNT(*) FROM Templates");
+    $s{global}{tg} = _stat_scalar($dbh, "SELECT COUNT(*) FROM Templates WHERE ObjectId = 0");
+    $s{global}{tq} = ($s{global}{tt} // 0) - ($s{global}{tg} // 0);
 
-        ($s{global}{ct}) = $dbh->selectrow_array("SELECT COUNT(*) FROM ScripConditions");
-        ($s{global}{at}) = $dbh->selectrow_array("SELECT COUNT(*) FROM ScripActions");
-    };
-    RT::Logger->error("Redesign collect_stats [global]: $@") if $@;
+    $s{global}{ct} = _stat_scalar($dbh, "SELECT COUNT(*) FROM ScripConditions");
+    $s{global}{at} = _stat_scalar($dbh, "SELECT COUNT(*) FROM ScripActions");
     $s{global}{$_} //= 0 for qw(st sd sg sq tt tg tq ct at);
 
     # --- Tools ---
-    eval {
-        ($s{tools}{ds}) = $dbh->selectrow_array(
-            "SELECT ROUND(SUM(data_length + index_length) / 1024 / 1024, 1)
-             FROM information_schema.tables WHERE table_schema = DATABASE()"
-        );
-        ($s{tools}{cr}) = $dbh->selectrow_array("SELECT COUNT(*) FROM CustomRoles");
-        ($s{tools}{sp}) = $dbh->selectrow_array(
-            "SELECT COUNT(*) FROM Attributes WHERE Name = 'Crontool'"
-        );
-        ($s{tools}{se}) = $dbh->selectrow_array(
-            "SELECT COUNT(*) FROM Transactions WHERE Type = 'SystemError'"
-        );
-    };
-    RT::Logger->error("Redesign collect_stats [tools]: $@") if $@;
-    $s{tools}{$_} //= 0 for qw(ds cr sp se);
+    $s{tools}{ds} = _stat_scalar($dbh,
+        "SELECT ROUND(SUM(data_length + index_length) / 1024 / 1024, 1)
+         FROM information_schema.tables WHERE table_schema = DATABASE()");
+    $s{tools}{cr} = _stat_scalar($dbh, "SELECT COUNT(*) FROM CustomRoles");
+    $s{tools}{sp} = _stat_scalar($dbh,
+        "SELECT COUNT(*) FROM Attributes WHERE Name = 'Crontool'");
+    $s{tools}{$_} //= 0 for qw(ds cr sp);
 
     # --- Articles ---
-    eval {
-        my $cl = $dbh->selectall_arrayref(
-            "SELECT Disabled, COUNT(*) FROM Classes GROUP BY Disabled"
-        );
-        my %cld; $cld{$_->[0]} = $_->[1] for @$cl;
-        $s{articles}{ca} = $cld{0} // 0;
-        $s{articles}{ct} = ($cld{0} // 0) + ($cld{1} // 0);
+    my $cl = _stat_rows($dbh, "SELECT Disabled, COUNT(*) FROM Classes GROUP BY Disabled");
+    my %cld; $cld{$_->[0]} = $_->[1] for @$cl;
+    $s{articles}{ca} = $cld{0} // 0;
+    $s{articles}{ct} = ($cld{0} // 0) + ($cld{1} // 0);
 
-        ($s{articles}{at}) = $dbh->selectrow_array("SELECT COUNT(*) FROM Articles");
-        # "Active" = article itself enabled AND its Class enabled (an article in a
-        # disabled class is effectively unavailable, so it is not counted active).
-        ($s{articles}{aa}) = $dbh->selectrow_array(
-            "SELECT COUNT(*) FROM Articles a
-             JOIN Classes c ON a.Class = c.id
-             WHERE a.Disabled = 0 AND c.Disabled = 0"
-        );
-    };
-    RT::Logger->error("Redesign collect_stats [articles]: $@") if $@;
+    $s{articles}{at} = _stat_scalar($dbh, "SELECT COUNT(*) FROM Articles");
+    # "Active" = article itself enabled AND its Class enabled (an article in a
+    # disabled class is effectively unavailable, so it is not counted active).
+    $s{articles}{aa} = _stat_scalar($dbh,
+        "SELECT COUNT(*) FROM Articles a
+         JOIN Classes c ON a.Class = c.id
+         WHERE a.Disabled = 0 AND c.Disabled = 0");
     $s{articles}{$_} //= 0 for qw(ca ct aa at);
 
     # --- Assets ---
-    eval {
-        my $rows = $dbh->selectall_arrayref(
-            "SELECT Status, COUNT(*) FROM Assets GROUP BY Status"
-        );
-        my %by_status; $by_status{$_->[0]} = $_->[1] for @$rows;
-        $s{assets}{aa} = $by_status{allocated} // 0;
-        $s{assets}{ai} = $by_status{'in-use'}  // 0;
-        $s{assets}{ad} = $by_status{deleted}   // 0;
-        $s{assets}{ao} = 0;
-        for my $st (keys %by_status) {
-            next if $st eq 'allocated' || $st eq 'in-use' || $st eq 'deleted';
-            $s{assets}{ao} += $by_status{$st};
-        }
-        $s{assets}{at} = $s{assets}{aa} + $s{assets}{ai}
-                       + $s{assets}{ao} + $s{assets}{ad};
+    my $rows = _stat_rows($dbh, "SELECT Status, COUNT(*) FROM Assets GROUP BY Status");
+    my %by_status; $by_status{$_->[0]} = $_->[1] for @$rows;
+    $s{assets}{aa} = $by_status{allocated} // 0;
+    $s{assets}{ai} = $by_status{'in-use'}  // 0;
+    $s{assets}{ad} = $by_status{deleted}   // 0;
+    $s{assets}{ao} = 0;
+    for my $st (keys %by_status) {
+        next if $st eq 'allocated' || $st eq 'in-use' || $st eq 'deleted';
+        $s{assets}{ao} += $by_status{$st};
+    }
+    $s{assets}{at} = $s{assets}{aa} + $s{assets}{ai}
+                   + $s{assets}{ao} + $s{assets}{ad};
 
-        my $cat = $dbh->selectall_arrayref(
-            "SELECT Disabled, COUNT(*) FROM Catalogs GROUP BY Disabled"
-        );
-        my %catd; $catd{$_->[0]} = $_->[1] for @$cat;
-        $s{assets}{ca} = $catd{0} // 0;
-        $s{assets}{ct} = ($catd{0} // 0) + ($catd{1} // 0);
-    };
-    RT::Logger->error("Redesign collect_stats [assets]: $@") if $@;
+    my $cat = _stat_rows($dbh, "SELECT Disabled, COUNT(*) FROM Catalogs GROUP BY Disabled");
+    my %catd; $catd{$_->[0]} = $_->[1] for @$cat;
+    $s{assets}{ca} = $catd{0} // 0;
+    $s{assets}{ct} = ($catd{0} // 0) + ($catd{1} // 0);
     $s{assets}{$_} //= 0 for qw(aa ai ad ao at ca ct);
 
     # --- Custom Fields ---
-    eval {
-        my $cfrows = $dbh->selectall_arrayref(
-            "SELECT LookupType, COUNT(*) FROM CustomFields GROUP BY LookupType"
-        );
-        my %by_type; $by_type{$_->[0]} = $_->[1] for @$cfrows;
-        $s{cf}{ti} = $by_type{'RT::Queue-RT::Ticket'}                 // 0;
-        $s{cf}{as} = $by_type{'RT::Catalog-RT::Asset'}                // 0;
-        $s{cf}{us} = $by_type{'RT::User'}                             // 0;
-        $s{cf}{ar} = $by_type{'RT::Class-RT::Article'}                // 0;
-        $s{cf}{tr} = $by_type{'RT::Queue-RT::Ticket-RT::Transaction'} // 0;
-        $s{cf}{to} = 0;
-        $s{cf}{to} += $_ for values %by_type;
-        # Any LookupType not broken out above (e.g. RT::Queue CFs on queues
-        # themselves) so the per-type rows still add up to the total.
-        $s{cf}{ot} = $s{cf}{to} - ($s{cf}{ti} + $s{cf}{as} + $s{cf}{us}
-                                 + $s{cf}{ar} + $s{cf}{tr});
-    };
-    RT::Logger->error("Redesign collect_stats [cf]: $@") if $@;
+    my $cfrows = _stat_rows($dbh,
+        "SELECT LookupType, COUNT(*) FROM CustomFields GROUP BY LookupType");
+    my %by_type; $by_type{$_->[0]} = $_->[1] for @$cfrows;
+    $s{cf}{ti} = $by_type{'RT::Queue-RT::Ticket'}                 // 0;
+    $s{cf}{as} = $by_type{'RT::Catalog-RT::Asset'}                // 0;
+    $s{cf}{us} = $by_type{'RT::User'}                             // 0;
+    $s{cf}{ar} = $by_type{'RT::Class-RT::Article'}                // 0;
+    $s{cf}{tr} = $by_type{'RT::Queue-RT::Ticket-RT::Transaction'} // 0;
+    $s{cf}{to} = 0;
+    $s{cf}{to} += $_ for values %by_type;
+    # Any LookupType not broken out above (e.g. RT::Queue CFs on queues
+    # themselves) so the per-type rows still add up to the total.
+    $s{cf}{ot} = $s{cf}{to} - ($s{cf}{ti} + $s{cf}{as} + $s{cf}{us}
+                             + $s{cf}{ar} + $s{cf}{tr});
     $s{cf}{$_} //= 0 for qw(ti as us ar tr to ot);
 
     # --- Login page ---
     # Groups table is quoted via $groups (see quote_identifier above) because
     # GROUPS is a reserved word in MySQL 8.
-    eval {
-        ($s{login}{priv}) = $dbh->selectrow_array(
-            "SELECT COUNT(gm.MemberId)
-             FROM GroupMembers gm
-             JOIN $groups g ON gm.GroupId = g.id
-             JOIN Principals p ON gm.MemberId = p.id
-             WHERE g.Domain = 'SystemInternal' AND g.Name = 'Privileged'
-               AND p.PrincipalType = 'User' AND p.Disabled = 0"
-        );
-        ($s{login}{unpriv}) = $dbh->selectrow_array(
-            "SELECT COUNT(gm.MemberId)
-             FROM GroupMembers gm
-             JOIN $groups g ON gm.GroupId = g.id
-             JOIN Principals p ON gm.MemberId = p.id
-             WHERE g.Domain = 'SystemInternal' AND g.Name = 'Unprivileged'
-               AND p.PrincipalType = 'User' AND p.Disabled = 0"
-        );
-        ($s{login}{groups})   = $dbh->selectrow_array(
-            "SELECT COUNT(*) FROM $groups WHERE Domain = 'UserDefined'"
-        );
-        ($s{login}{queues})   = $dbh->selectrow_array(
-            "SELECT COUNT(*) FROM Queues WHERE id > 0 AND Disabled = 0"
-        );
-        ($s{login}{tickets})  = $dbh->selectrow_array(
-            "SELECT COUNT(*) FROM Tickets WHERE id > 0 AND Status != 'deleted'"
-        );
-        ($s{login}{txns})     = $dbh->selectrow_array("SELECT COUNT(*) FROM Transactions");
-        ($s{login}{assets})   = $dbh->selectrow_array("SELECT COUNT(*) FROM Assets");
-        ($s{login}{articles}) = $dbh->selectrow_array("SELECT COUNT(*) FROM Articles");
-    };
-    RT::Logger->error("Redesign collect_stats [login]: $@") if $@;
+    $s{login}{priv} = _stat_scalar($dbh,
+        "SELECT COUNT(gm.MemberId)
+         FROM GroupMembers gm
+         JOIN $groups g ON gm.GroupId = g.id
+         JOIN Principals p ON gm.MemberId = p.id
+         WHERE g.Domain = 'SystemInternal' AND g.Name = 'Privileged'
+           AND p.PrincipalType = 'User' AND p.Disabled = 0");
+    $s{login}{unpriv} = _stat_scalar($dbh,
+        "SELECT COUNT(gm.MemberId)
+         FROM GroupMembers gm
+         JOIN $groups g ON gm.GroupId = g.id
+         JOIN Principals p ON gm.MemberId = p.id
+         WHERE g.Domain = 'SystemInternal' AND g.Name = 'Unprivileged'
+           AND p.PrincipalType = 'User' AND p.Disabled = 0");
+    $s{login}{groups}  = _stat_scalar($dbh,
+        "SELECT COUNT(*) FROM $groups WHERE Domain = 'UserDefined'");
+    $s{login}{queues}  = _stat_scalar($dbh,
+        "SELECT COUNT(*) FROM Queues WHERE id > 0 AND Disabled = 0");
+    $s{login}{tickets} = _stat_scalar($dbh,
+        "SELECT COUNT(*) FROM Tickets WHERE id > 0 AND Status != 'deleted'");
+    # Transactions is huge; an exact COUNT(*) is a full scan that a query
+    # watchdog (pt-kill) may abort. Use the optimizer's row estimate from
+    # information_schema instead -- instant, no scan, and accurate enough for a
+    # data-volume figure on the public login page.
+    $s{login}{txns} = _stat_scalar($dbh,
+        "SELECT TABLE_ROWS FROM information_schema.TABLES
+         WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'Transactions'");
+    $s{login}{assets}   = _stat_scalar($dbh, "SELECT COUNT(*) FROM Assets");
+    $s{login}{articles} = _stat_scalar($dbh, "SELECT COUNT(*) FROM Articles");
     $s{login}{$_} //= 0 for qw(priv unpriv groups queues tickets txns assets articles);
 
     # --- Admin overview (for Admin/index.html) ---
     # Groups table is quoted via $groups (see quote_identifier above) because
     # GROUPS is a reserved word in MySQL 8.
-    eval {
-        my $q_rows = $dbh->selectall_arrayref(
-            "SELECT Disabled, COUNT(*) FROM Queues WHERE id > 0 GROUP BY Disabled"
-        );
-        my %qd; $qd{$_->[0]} = $_->[1] for @$q_rows;
-        $s{admin}{qa} = $qd{0} // 0;
-        $s{admin}{qt} = ($qd{0} // 0) + ($qd{1} // 0);
+    my $q_rows = _stat_rows($dbh,
+        "SELECT Disabled, COUNT(*) FROM Queues WHERE id > 0 GROUP BY Disabled");
+    my %qd; $qd{$_->[0]} = $_->[1] for @$q_rows;
+    $s{admin}{qa} = $qd{0} // 0;
+    $s{admin}{qt} = ($qd{0} // 0) + ($qd{1} // 0);
 
-        my $cf_rows = $dbh->selectall_arrayref(
-            "SELECT Disabled, COUNT(*) FROM CustomFields GROUP BY Disabled"
-        );
-        my %cfd; $cfd{$_->[0]} = $_->[1] for @$cf_rows;
-        $s{admin}{ca} = $cfd{0} // 0;
-        $s{admin}{ct} = ($cfd{0} // 0) + ($cfd{1} // 0);
+    my $cf_rows = _stat_rows($dbh,
+        "SELECT Disabled, COUNT(*) FROM CustomFields GROUP BY Disabled");
+    my %cfd; $cfd{$_->[0]} = $_->[1] for @$cf_rows;
+    $s{admin}{ca} = $cfd{0} // 0;
+    $s{admin}{ct} = ($cfd{0} // 0) + ($cfd{1} // 0);
 
-        ($s{admin}{g}) = $dbh->selectrow_array(
-            "SELECT COUNT(*) FROM $groups WHERE Domain = 'UserDefined'"
-        );
+    $s{admin}{g} = _stat_scalar($dbh,
+        "SELECT COUNT(*) FROM $groups WHERE Domain = 'UserDefined'");
 
-        # Identify the Privileged/Unprivileged system groups by Domain+Name
-        # (like the login section) rather than hard-coded group ids 4/5.
-        my $u_rows = $dbh->selectall_arrayref(
-            "SELECT g.Name, COUNT(DISTINCT u.id)
-             FROM Users u
-             JOIN GroupMembers gm ON gm.MemberId = u.id
-             JOIN $groups g ON gm.GroupId = g.id
-             JOIN Principals p ON p.id = u.id
-             WHERE g.Domain = 'SystemInternal'
-               AND g.Name IN ('Privileged', 'Unprivileged')
-               AND p.Disabled = 0 AND u.id > 2
-             GROUP BY g.Name"
-        );
-        my %ug; $ug{$_->[0]} = $_->[1] for @$u_rows;
-        $s{admin}{up} = $ug{Privileged}   // 0;
-        $s{admin}{uu} = $ug{Unprivileged} // 0;
+    # Identify the Privileged/Unprivileged system groups by Domain+Name
+    # (like the login section) rather than hard-coded group ids 4/5.
+    my $u_rows = _stat_rows($dbh,
+        "SELECT g.Name, COUNT(DISTINCT u.id)
+         FROM Users u
+         JOIN GroupMembers gm ON gm.MemberId = u.id
+         JOIN $groups g ON gm.GroupId = g.id
+         JOIN Principals p ON p.id = u.id
+         WHERE g.Domain = 'SystemInternal'
+           AND g.Name IN ('Privileged', 'Unprivileged')
+           AND p.Disabled = 0 AND u.id > 2
+         GROUP BY g.Name");
+    my %ug; $ug{$_->[0]} = $_->[1] for @$u_rows;
+    $s{admin}{up} = $ug{Privileged}   // 0;
+    $s{admin}{uu} = $ug{Unprivileged} // 0;
 
-        ($s{admin}{ud}) = $dbh->selectrow_array(
-            "SELECT COUNT(*) FROM Principals
-             WHERE Disabled = 1 AND PrincipalType = 'User' AND id > 2"
-        );
+    $s{admin}{ud} = _stat_scalar($dbh,
+        "SELECT COUNT(*) FROM Principals
+         WHERE Disabled = 1 AND PrincipalType = 'User' AND id > 2");
 
-        # Classify each ticket by its queue's lifecycle, not a hard-coded status
-        # list: a status can be active in one lifecycle and inactive in another,
-        # custom lifecycles define their own statuses, and the initial status is
-        # not always literally "new". Only count tickets in enabled queues.
-        my $lc         = RT->Config->Get('Lifecycles')      || {};
-        my $default_lc = RT->Config->Get('DefaultLifecycle') || 'default';
+    # Classify each ticket by its queue's lifecycle, not a hard-coded status
+    # list: a status can be active in one lifecycle and inactive in another,
+    # custom lifecycles define their own statuses, and the initial status is
+    # not always literally "new". Only count tickets in enabled queues.
+    my $lc         = RT->Config->Get('Lifecycles')      || {};
+    my $default_lc = RT->Config->Get('DefaultLifecycle') || 'default';
 
-        my $t_rows = $dbh->selectall_arrayref(
-            "SELECT q.Lifecycle, t.Status, COUNT(*)
-               FROM Tickets t JOIN Queues q ON t.Queue = q.id
-              WHERE t.id > 0 AND q.Disabled = 0
-              GROUP BY q.Lifecycle, t.Status"
-        );
-        $s{admin}{tn} = $s{admin}{ta} = $s{admin}{tr} = $s{admin}{td} = 0;
-        for my $row (@$t_rows) {
-            my ($lcname, $status, $count) = @$row;
-            $count ||= 0;
-            if ($status eq 'deleted') { $s{admin}{td} += $count; next; }
-            my $def = $lc->{ ($lcname && length $lcname) ? $lcname : $default_lc }
-                   // $lc->{$default_lc} // {};
-            my %in;
-            for my $set (qw(initial active inactive)) {
-                $in{$_} = $set for @{ $def->{$set} || [] };
-            }
-            my $cls = $in{$status} // 'active';   # unknown status -> active
-            if    ($cls eq 'initial')  { $s{admin}{tn} += $count; }
-            elsif ($cls eq 'inactive') { $s{admin}{tr} += $count; }
-            else                       { $s{admin}{ta} += $count; }
+    my $t_rows = _stat_rows($dbh,
+        "SELECT q.Lifecycle, t.Status, COUNT(*)
+           FROM Tickets t JOIN Queues q ON t.Queue = q.id
+          WHERE t.id > 0 AND q.Disabled = 0
+          GROUP BY q.Lifecycle, t.Status");
+    $s{admin}{tn} = $s{admin}{ta} = $s{admin}{tr} = $s{admin}{td} = 0;
+    for my $row (@$t_rows) {
+        my ($lcname, $status, $count) = @$row;
+        $count ||= 0;
+        if ($status eq 'deleted') { $s{admin}{td} += $count; next; }
+        my $def = $lc->{ ($lcname && length $lcname) ? $lcname : $default_lc }
+               // $lc->{$default_lc} // {};
+        my %in;
+        for my $set (qw(initial active inactive)) {
+            $in{$_} = $set for @{ $def->{$set} || [] };
         }
-    };
-    RT::Logger->error("Redesign collect_stats [admin]: $@") if $@;
+        my $cls = $in{$status} // 'active';   # unknown status -> active
+        if    ($cls eq 'initial')  { $s{admin}{tn} += $count; }
+        elsif ($cls eq 'inactive') { $s{admin}{tr} += $count; }
+        else                       { $s{admin}{ta} += $count; }
+    }
     $s{admin}{$_} //= 0 for qw(qa qt ca ct g up uu ud tn ta tr td);
 
     $s{refreshed_at} = time();
