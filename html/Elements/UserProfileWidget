@@ -34,7 +34,7 @@
     <i class="bi bi-telephone-fill text-success"></i>
     <div>
       <a href="tel:<% $user->WorkPhone |h %>"><% $user->WorkPhone |h %></a>
-      <span class="text-body-secondary ms-1 small"><&|/l&>Work</&></span>
+      <span class="text-body-secondary small"><&|/l&>Work</&></span>
     </div>
   </div>
 %  }
@@ -44,7 +44,7 @@
     <i class="bi bi-phone-fill text-info"></i>
     <div>
       <a href="tel:<% $user->MobilePhone |h %>"><% $user->MobilePhone |h %></a>
-      <span class="text-body-secondary ms-1 small"><&|/l&>Mobile</&></span>
+      <span class="text-body-secondary small"><&|/l&>Mobile</&></span>
     </div>
   </div>
 %  }

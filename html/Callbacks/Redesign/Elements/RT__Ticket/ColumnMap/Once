@@ -75,7 +75,7 @@ my $statusWithNewReply = sub {
                     . '/Ticket/Display.html?id=' . $Ticket->id
                     . '&MarkAsSeen=1&Anchor=txn-' . $txn->id;
                 return \( $statusBadge
-                    . ' <a href="' . $link . '" class="badge text-bg-warning ms-1">'
+                    . ' <a href="' . $link . '" class="badge text-bg-warning">'
                     . loc('New Reply')
                     . '</a>' );
             }
