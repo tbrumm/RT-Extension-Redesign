@@ -141,6 +141,7 @@
 .sc--templates  { background: linear-gradient(135deg,#4c1d95,#a78bfa); }
 .sc--conditions { background: linear-gradient(135deg,#155e75,#22d3ee); }
 .sc--actions    { background: linear-gradient(135deg,#14532d,#22c55e); }
+.sc--scrips-disabled { background: linear-gradient(135deg,#374151,#9ca3af); }
 
 /* ===== from html/Admin/Global/CustomFields/index.html ===== */
 .sc--cf-total   { background: linear-gradient(135deg,#ea580c,#fb923c); }

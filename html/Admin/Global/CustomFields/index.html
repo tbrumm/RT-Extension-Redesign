@@ -7,15 +7,13 @@ my $attr          = RT->System->FirstAttribute('AdminDashboardStats');
 my $s             = $attr ? $attr->Content->{cf} : undef;
 my $stats_missing = !$s;
 
-my ($cf_total, $cf_tickets, $cf_assets, $cf_users, $cf_articles, $cf_transactions)
-    = (0) x 6;
+my ($cf_total, $cf_tickets, $cf_assets, $cf_users, $cf_articles, $cf_transactions,
+    $cf_other) = (0) x 7;
 
 if ($s) {
-    ($cf_total, $cf_tickets, $cf_assets, $cf_users, $cf_articles, $cf_transactions)
-        = @{$s}{qw(to ti as us ar tr)};
+    ($cf_total, $cf_tickets, $cf_assets, $cf_users, $cf_articles, $cf_transactions,
+     $cf_other) = @{$s}{qw(to ti as us ar tr ot)};
 }
-
-my $cf_other = $cf_total - $cf_tickets - $cf_assets;
 
 my @nav_items = (
     { path => 'Users.html',
@@ -143,6 +141,14 @@ $m->callback( %ARGS, CallbackName => 'ModifyNavItems', nav_items => \@nav_items 
                 <span class="ir__val" data-counter="<% $cf_articles %>">0</span>
                 <span class="ir__tot">/ <% $cf_total %></span>
               </div>
+% if ($cf_other > 0) {
+              <div class="ir">
+                <span class="ir__lbl ir__lbl--dim"><% loc('Other') %></span>
+                <span class="ir__bar"><span class="ir__fill ir__fill--c" style="width:<% $cf_total > 0 ? int(100*$cf_other/$cf_total) : 0 %>%"></span></span>
+                <span class="ir__val ir__val--dim" data-counter="<% $cf_other %>">0</span>
+                <span class="ir__tot">/ <% $cf_total %></span>
+              </div>
+% }
             </div>
           </div>
         </div>

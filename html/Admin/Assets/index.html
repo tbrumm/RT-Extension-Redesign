@@ -7,12 +7,12 @@ my $attr          = RT->System->FirstAttribute('AdminDashboardStats');
 my $s             = $attr ? $attr->Content->{assets} : undef;
 my $stats_missing = !$s;
 
-my ($assets_total, $assets_allocated, $assets_inuse, $assets_other,
-    $catalogs_total, $catalogs_active) = (0) x 6;
+my ($assets_total, $assets_allocated, $assets_inuse, $assets_deleted, $assets_other,
+    $catalogs_total, $catalogs_active) = (0) x 7;
 
 if ($s) {
-    ($assets_total, $assets_allocated, $assets_inuse, $assets_other)
-        = @{$s}{qw(at aa ai ao)};
+    ($assets_total, $assets_allocated, $assets_inuse, $assets_deleted, $assets_other)
+        = @{$s}{qw(at aa ai ad ao)};
     ($catalogs_total, $catalogs_active)
         = @{$s}{qw(ct ca)};
 }
@@ -73,6 +73,14 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
     </div>
 
     <div class="col-6 col-sm col-lg">
+      <div class="sc sc--deleted">
+        <i class="bi bi-trash3-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $assets_deleted %>">0</div>
+        <div class="sc__lbl"><% loc('Deleted') %></div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm col-lg">
       <div class="sc sc--catalogs">
         <i class="bi bi-archive-fill sc__bg-icon"></i>
         <div class="sc__val" data-counter="<% $catalogs_total %>">0</div>
@@ -106,6 +114,14 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
             <span class="ir__lbl ir__lbl--dim"><% loc('Other') %></span>
             <span class="ir__bar"><span class="ir__fill ir__fill--c" style="width:<% $assets_total > 0 ? int(100*$assets_other/$assets_total) : 0 %>%"></span></span>
             <span class="ir__val ir__val--dim" data-counter="<% $assets_other %>">0</span>
+            <span class="ir__tot">&nbsp;</span>
+          </div>
+% }
+% if ($assets_deleted > 0) {
+          <div class="ir">
+            <span class="ir__lbl ir__lbl--dim"><% loc('Deleted') %></span>
+            <span class="ir__bar"><span class="ir__fill ir__fill--c" style="width:<% $assets_total > 0 ? int(100*$assets_deleted/$assets_total) : 0 %>%"></span></span>
+            <span class="ir__val ir__val--dim" data-counter="<% $assets_deleted %>">0</span>
             <span class="ir__tot">&nbsp;</span>
           </div>
 % }

@@ -116,6 +116,14 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
       </div>
     </div>
 
+    <div class="col-6 col-sm col-lg">
+      <div class="sc sc--scrips-disabled">
+        <i class="bi bi-slash-circle-fill sc__bg-icon"></i>
+        <div class="sc__val" data-counter="<% $scrips_disabled %>">0</div>
+        <div class="sc__lbl"><% loc('Disabled Scrips') %></div>
+      </div>
+    </div>
+
   </div>
 
   <!-- Info cards -->
@@ -137,12 +145,6 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
             <span class="ir__val" data-counter="<% $scrips_queue %>">0</span>
             <span class="ir__tot">/ <% $scrips_total %></span>
           </div>
-          <div class="ir">
-            <span class="ir__lbl ir__lbl--dim"><% loc('Disabled') %></span>
-            <span class="ir__bar"><span class="ir__fill ir__fill--c" style="width:<% $scrips_total > 0 ? int(100*$scrips_disabled/$scrips_total) : 0 %>%"></span></span>
-            <span class="ir__val ir__val--dim" data-counter="<% $scrips_disabled %>">0</span>
-            <span class="ir__tot">&nbsp;</span>
-          </div>
         </div>
       </div>
     </div>
@@ -162,12 +164,6 @@ my @menu_items = grep { defined $_->path && $_->path ne '' }
             <span class="ir__bar"><span class="ir__fill ir__fill--b" style="width:<% $templates_total > 0 ? int(100*$templates_queue/$templates_total) : 0 %>%"></span></span>
             <span class="ir__val" data-counter="<% $templates_queue %>">0</span>
             <span class="ir__tot">/ <% $templates_total %></span>
-          </div>
-          <div class="ir">
-            <span class="ir__lbl"><% loc('Conditions') %></span>
-            <span class="ir__bar"></span>
-            <span class="ir__val ir__val--a" data-counter="<% $conditions_total %>">0</span>
-            <span class="ir__tot">&nbsp;</span>
           </div>
         </div>
       </div>
