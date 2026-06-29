@@ -1,3 +1,8 @@
+0.29 2026-06-29
+  - Priority badges: added a distinct "Critical" colour (dark red) as the top
+    level and lightened "High" to a softer red so the two are clearly
+    distinguishable. Removed the unused "On Fire" badge colour.
+
 0.17 2026-06-20
   - Ticket history: the per-transaction action icons (toggle-contrast, reply,
     comment) are now vertically centered on the metadata bar instead of sitting

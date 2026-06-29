@@ -209,7 +209,7 @@ body:has(#SimpleSearchForm) #header h1::before {
 .ticket-info-priority-low,
 .ticket-info-priority-medium,
 .ticket-info-priority-high,
-.ticket-info-priority-on_fire {
+.ticket-info-priority-critical {
     display: inline-block;
     padding: 0.35em 0.65em;
     font-size: 0.75em;
@@ -223,8 +223,8 @@ body:has(#SimpleSearchForm) #header h1::before {
 
 .ticket-info-priority-low              { background-color: var(--bs-success); color: #fff; }
 .ticket-info-priority-medium           { background-color: var(--bs-warning); color: #000; }
-.ticket-info-priority-high             { background-color: var(--bs-danger);  color: #fff; }
-.ticket-info-priority-on_fire          { background-color: var(--bs-danger);  color: #fff; }
+.ticket-info-priority-high             { background-color: #e35d6a;            color: #fff; }
+.ticket-info-priority-critical         { background-color: #8b0000;            color: #fff; }
 
 /* ── Due Date Colors ─────────────────────────────────────── */
 /* Badge styling for search results (span.badge.due-*) */

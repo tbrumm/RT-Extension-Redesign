@@ -29,7 +29,7 @@ Modern UI redesign for Request Tracker 6 — a complete CSS overhaul, modernised
 Overlays RT6 with a modern CSS overhaul based on Bootstrap 5.3 and Bootstrap Icons:
 
 - **TitleBox:** rounded corners, subtle shadows, coloured top border per widget type
-- **Tables:** compact headers, filter buttons, priority badges (green/yellow/red), SLA badges
+- **Tables:** compact headers, filter buttons, priority badges (green/yellow/red/dark-red), SLA badges
 - **Ticket list:** priority and SLA as coloured badges, due-date badges, status badges
 - **Ticket detail:** section icons (Bootstrap Icons), uppercase field labels, coloured left border per history type
 - **Dashboard:** portlet icons, result banners, compact portlet headers
