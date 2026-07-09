@@ -96,11 +96,25 @@ sub _ua {
     # a self-signed cert, add its CA to the system trust store rather than
     # disabling verification here.
     $UA->ssl_opts( verify_hostname => 1 );
-    # Honour HTTP_PROXY/HTTPS_PROXY/NO_PROXY from the environment. LWP does NOT
-    # read these on its own; servers whose outbound traffic must go through a
-    # proxy would otherwise time out trying to connect to feeds directly.
-    $UA->env_proxy;
+    _apply_proxy($UA);
     return $UA;
+}
+
+# Route feed fetches through the $FeedWidgetProxy config value when set,
+# otherwise honour the process HTTP(S)_PROXY/NO_PROXY environment (the
+# historical behaviour). Scoped to this widget's own UA, so the rest of RT's
+# outbound traffic is unaffected. NO_PROXY is intentionally not applied to an
+# explicit proxy: internal feed hosts are already refused by the SSRF guard
+# below, so there is no "bypass proxy for internal feed" case to support.
+sub _apply_proxy {
+    my $ua = shift;
+    my $proxy = RT->Config->Get('FeedWidgetProxy');
+    if ( defined $proxy && length $proxy ) {
+        $ua->proxy( [qw(http https)], $proxy );
+    }
+    else {
+        $ua->env_proxy;
+    }
 }
 
 # -----------------------------------------------------------------------

@@ -29,7 +29,7 @@ require RT::Interface::Web::Scrubber;
 if ( eval { RT->can('Config') && RT->Config && RT->Config->can('RegisterPluginConfig') } ) {
     RT->Config->RegisterPluginConfig(
         Plugin  => 'Redesign',
-        Content => [ { Name => 'LoginShowPromo' } ],
+        Content => [ { Name => 'LoginShowPromo' }, { Name => 'FeedWidgetProxy' } ],
         Meta    => {
             LoginShowPromo => {
                 Type            => 'SCALAR',
@@ -38,6 +38,15 @@ if ( eval { RT->can('Config') && RT->Config && RT->Config->can('RegisterPluginCo
                 Widget          => '/Widgets/Form/Boolean',
                 WidgetArguments => {
                     Description => 'Show the "Why Request Tracker?" promo grid on the login page when no maintenance banner is active',  # loc
+                },
+            },
+            FeedWidgetProxy => {
+                Type            => 'SCALAR',
+                Default         => '',
+                Immutable       => 1,
+                Widget          => '/Widgets/Form/String',
+                WidgetArguments => {
+                    Description => 'Outbound HTTP/HTTPS proxy URL used only for FeedWidget feed fetches, e.g. http://proxy:3128. Leave empty to honour the HTTP(S)_PROXY/NO_PROXY environment variables (default).',  # loc
                 },
             },
         },
