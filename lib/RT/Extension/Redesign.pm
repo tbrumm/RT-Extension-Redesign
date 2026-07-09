@@ -44,6 +44,35 @@ if ( eval { RT->can('Config') && RT->Config && RT->Config->can('RegisterPluginCo
     );
 }
 
+# RedesignNewReplyBadge: per-user control of the "New Reply" badge in ticket
+# lists (rendered by the RT__Ticket/ColumnMap/Once callback). A genuine per-user
+# preference, so it uses an Overridable Widget shown on Prefs/Other.html under
+# its own "Redesign" section (the SideBySideView TicketViewLayout pattern) rather
+# than the Immutable RegisterPluginConfig path used for global options above.
+#   all     - show on replies and on new tickets (Create) = current behaviour
+#   replies - show only for an unseen Correspond/Comment, never for Create alone
+#   off     - never show the badge
+# The Default here is the single source of truth: active from Plugin('...') alone,
+# overridable per user via Preferences. A bare hash assignment is safe even when
+# RT is not initialised (standalone unit tests), so no eval guard is needed.
+$RT::Config::META{'RedesignNewReplyBadge'} = {
+    Type            => 'SCALAR',
+    Section         => 'Redesign',   # loc
+    Overridable     => 1,
+    SortOrder       => 1,
+    Widget          => '/Widgets/Form/Select',
+    WidgetArguments => {
+        Description => 'New Reply badge in ticket lists',   # loc
+        Values      => [ 'all', 'replies', 'off' ],
+        ValuesLabel => {
+            all     => 'On replies and new tickets',        # loc
+            replies => 'On replies only (not new tickets)', # loc
+            off     => 'Never show',                        # loc
+        },
+    },
+    Default => 'all',
+};
+
 # Front-end assets ship as external files under static/ and are registered here,
 # never as inline <script>/<style> in Mason: RT6's <body hx-boost="true"> swaps
 # the body on every navigation, so inline scripts and DOMContentLoaded listeners
