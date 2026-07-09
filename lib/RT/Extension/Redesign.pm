@@ -418,6 +418,64 @@ sub collect_stats {
     return \%s;
 }
 
+=head2 NewReplyBadgeTxn($ticket, $mode)
+
+Decide whether the "New Reply" badge should be shown for C<$ticket> in a ticket
+list, for the identity C<< $ticket->CurrentUser >>. C<$mode> is the per-user
+C<RedesignNewReplyBadge> preference (C<all>/C<replies>/C<off>; anything else is
+treated as C<all>). Returns the C<RT::Transaction> the badge should link to
+(with C<&MarkAsSeen=1>), or C<undef> when no badge belongs there.
+
+Two gates: (1) the ticket's last updater is a Requestor (and not the current
+user) or a Cc; (2) there is an unseen transaction. In C<all> mode gate 2 is
+core C<SeenUpTo> (a new ticket's C<Create> counts). In C<replies> mode gate 2 is
+an unseen C<Correspond>/C<Comment> only, so a brand-new ticket does not trigger
+it. C<+>-subaddresses are stripped before the address match, matching mail
+routing.
+
+=cut
+
+sub NewReplyBadgeTxn {
+    my ( $class, $ticket, $mode ) = @_;
+    $mode = 'all' unless defined $mode && ( $mode eq 'off' || $mode eq 'replies' );
+    return undef if $mode eq 'off';
+
+    my $last = $ticket->LastUpdatedByObj->EmailAddress;
+    return undef unless defined $last;
+
+    my $me  = $ticket->CurrentUser->EmailAddress;
+    $me = '' unless defined $me;
+    my $req = $ticket->Requestors->MemberEmailAddressesAsString;
+    my $cc  = $ticket->Cc->MemberEmailAddressesAsString;
+    s/\++//g for ( $me, $last, $req, $cc );
+
+    my $last_is_watcher =
+        ( $me ne $last && $req =~ /\Q$last\E/ ) || ( $cc =~ /\Q$last\E/ );
+    return undef unless $last_is_watcher;
+
+    return $mode eq 'replies'
+        ? $class->_first_unseen_message($ticket)
+        : ( $ticket->SeenUpTo || undef );
+}
+
+# First unseen Comment/Correspond by another user, honouring the
+# User-<uid>-SeenUpTo cutoff. Mirrors core RT::Ticket::SeenUpTo but excludes the
+# Create transaction, so "replies only" mode never fires on a brand-new ticket.
+sub _first_unseen_message {
+    my ( $class, $ticket ) = @_;
+    my $uid  = $ticket->CurrentUser->id;
+    my $attr = $ticket->FirstAttribute( "User-${uid}-SeenUpTo" );
+    return undef if $attr && $attr->Content gt $ticket->LastUpdated;
+
+    my $txns = $ticket->Transactions;
+    $txns->Limit( FIELD => 'Type', OPERATOR => 'IN',
+                  VALUE => [ 'Comment', 'Correspond' ] );
+    $txns->Limit( FIELD => 'Creator', OPERATOR => '!=', VALUE => $uid );
+    $txns->Limit( FIELD => 'Created', OPERATOR => '>', VALUE => $attr->Content )
+        if $attr;
+    return $txns->First;
+}
+
 1;
 
 =head1 NAME
