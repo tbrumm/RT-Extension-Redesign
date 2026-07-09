@@ -179,6 +179,22 @@ Set(%ReferrerComponents,
 );
 ```
 
+### FeedWidget — outbound proxy
+
+Feed contents are fetched **server-side** (to avoid browser CORS limits). If the
+RT server can only reach the internet through a proxy, route the feed fetches —
+and only those — through it, without touching Apache:
+
+```perl
+Set($FeedWidgetProxy, 'http://proxy.example:3128');
+```
+
+Applies to FeedWidget's HTTP/HTTPS feed requests only; the rest of RT is
+unaffected. Leave it empty (the default) to honour the standard
+`HTTP_PROXY`/`HTTPS_PROXY`/`NO_PROXY` environment variables instead. An explicit
+value ignores `NO_PROXY` — internal feed hosts are already blocked by the
+widget's SSRF guard, so there is no internal-bypass case.
+
 ### Login page — "Why Request Tracker?" promo grid
 
 When no maintenance banner is active, the login page can show a promotional grid
