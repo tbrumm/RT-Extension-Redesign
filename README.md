@@ -280,6 +280,20 @@ Set($ShowMoreAboutPrivilegedUsers, 1);
 This is a core RT option; it also affects the comments, ticket-list, and groups sections
 of the same box.
 
+### "New Reply" badge — display mode (per-user preference)
+
+Unlike the options above, this is not a site config `Set(...)` — it is a genuine
+per-user preference. Each user picks their own mode under
+**Preferences → Settings (Other)**, in the *Redesign* section:
+
+- **On replies and new tickets** — badge on any unseen customer message,
+  including brand-new tickets. *(default — the previous behaviour)*
+- **On replies only (not new tickets)** — badge only for a reply on an existing
+  ticket; a newly created ticket does not get one.
+- **Never show** — hide the badge entirely.
+
+Clicking the badge jumps to the unseen message and marks it as seen.
+
 ### Ticket page widgets — Page Layout
 
 The following widgets appear in **Admin → Global → Page Layouts** and can be dragged into ticket columns:
