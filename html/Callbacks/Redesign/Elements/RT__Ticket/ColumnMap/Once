@@ -4,6 +4,8 @@ $GenericMap => {}
 </%ARGS>
 <%INIT>
 
+use RT::Extension::Redesign;
+
 my $_show_user_with_avatar = sub {
     my ($m, $user) = @_;
     return $m->scomp(
@@ -49,40 +51,32 @@ $COLUMN_MAP->{Owner}{'value'}        = $ownerInColor;
 $COLUMN_MAP->{OwnerName}{'value'}    = $ownerInColor;
 $COLUMN_MAP->{'Owner.Name'}{'value'} = $ownerInColor;
 
-# Status: StatusBadge + "New Reply" when last updater is requestor or CC
+# Status: StatusBadge + "New Reply" per the user's RedesignNewReplyBadge pref.
+# The preference is read INSIDE the closure (via the always-current %session),
+# never hoisted to <%INIT>: this callback runs with CallbackOnce, so its
+# closures are built once per Apache worker and reused across requests/users —
+# a value captured at init time would freeze to whoever rendered first. Reading
+# per invocation mirrors $ownerInColor above; the cost is dwarfed by the
+# per-row watcher/SeenUpTo queries the badge logic already runs.
 my $statusWithNewReply = sub {
     my $Ticket = shift;
 
     my $statusBadge = $m->scomp('/Elements/StatusBadge', Object => $Ticket);
 
-    my $LastUpdater      = $Ticket->LastUpdatedByObj->EmailAddress;
-    my $TicketRequestors = $Ticket->Requestors->MemberEmailAddressesAsString;
-    my $TicketCC         = $Ticket->Cc->MemberEmailAddressesAsString;
-    my $CurrentUser      = $session{'CurrentUser'}->EmailAddress;
+    my $badge_mode = RT->Config->Get(
+        'RedesignNewReplyBadge', $session{'CurrentUser'}->UserObj
+    ) || 'all';
 
-    if ( defined $LastUpdater ) {
-        $CurrentUser      =~ s/\++//g;
-        $LastUpdater      =~ s/\++//g;
-        $TicketRequestors =~ s/\++//g;
-        $TicketCC         =~ s/\++//g;
+    my $txn = RT::Extension::Redesign->NewReplyBadgeTxn( $Ticket, $badge_mode );
+    return \$statusBadge unless $txn;
 
-        if (   ( $CurrentUser ne $LastUpdater && $TicketRequestors =~ /\Q$LastUpdater\E/ )
-            || ( $TicketCC =~ /\Q$LastUpdater\E/ ) )
-        {
-            my $txn = $Ticket->SeenUpTo;
-            if ($txn) {
-                my $link = RT->Config->Get('WebPath')
-                    . '/Ticket/Display.html?id=' . $Ticket->id
-                    . '&MarkAsSeen=1&Anchor=txn-' . $txn->id;
-                return \( $statusBadge
-                    . ' <a href="' . $link . '" class="badge text-bg-warning">'
-                    . loc('New Reply')
-                    . '</a>' );
-            }
-        }
-    }
-
-    return \$statusBadge;
+    my $link = RT->Config->Get('WebPath')
+        . '/Ticket/Display.html?id=' . $Ticket->id
+        . '&MarkAsSeen=1&Anchor=txn-' . $txn->id;
+    return \( $statusBadge
+        . ' <a href="' . $link . '" class="badge text-bg-warning">'
+        . loc('New Reply')
+        . '</a>' );
 };
 
 $COLUMN_MAP->{Status}{value}        = $statusWithNewReply;
