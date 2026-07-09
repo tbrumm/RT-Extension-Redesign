@@ -287,3 +287,6 @@ ref*/
 !static/
 !po/
 !MANIFEST
+
+# Superpowers working docs (brainstorm specs + implementation plans) — local only
+docs/superpowers/
