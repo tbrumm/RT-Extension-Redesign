@@ -104,8 +104,12 @@ sub _ua {
 # otherwise honour the process HTTP(S)_PROXY/NO_PROXY environment (the
 # historical behaviour). Scoped to this widget's own UA, so the rest of RT's
 # outbound traffic is unaffected. NO_PROXY is intentionally not applied to an
-# explicit proxy: internal feed hosts are already refused by the SSRF guard
-# below, so there is no "bypass proxy for internal feed" case to support.
+# explicit proxy: a feed URL that resolves to a private/internal address is
+# already refused by the SSRF guard below. Note that guard resolves the host
+# from the RT server's vantage point; a configured proxy is a trusted network
+# hop whose own reachability the guard does not (and cannot) constrain, so an
+# admin who sets a proxy is trusting it not to relay to networks the guard
+# would otherwise block.
 sub _apply_proxy {
     my $ua = shift;
     my $proxy = RT->Config->Get('FeedWidgetProxy');

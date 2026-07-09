@@ -192,8 +192,11 @@ Set($FeedWidgetProxy, 'http://proxy.example:3128');
 Applies to FeedWidget's HTTP/HTTPS feed requests only; the rest of RT is
 unaffected. Leave it empty (the default) to honour the standard
 `HTTP_PROXY`/`HTTPS_PROXY`/`NO_PROXY` environment variables instead. An explicit
-value ignores `NO_PROXY` — internal feed hosts are already blocked by the
-widget's SSRF guard, so there is no internal-bypass case.
+value ignores `NO_PROXY`: a feed URL that resolves to a private/internal address
+is already refused by the widget's SSRF guard. Note that guard checks the host
+as resolved from the RT server; a configured proxy is a trusted network hop
+whose own reachability it cannot constrain, so point `$FeedWidgetProxy` only at a
+proxy you trust not to relay to internal networks.
 
 ### Login page — "Why Request Tracker?" promo grid
 
