@@ -426,12 +426,12 @@ C<RedesignNewReplyBadge> preference (C<all>/C<replies>/C<off>; anything else is
 treated as C<all>). Returns the C<RT::Transaction> the badge should link to
 (with C<&MarkAsSeen=1>), or C<undef> when no badge belongs there.
 
-Two gates: (1) the ticket's last updater is a Requestor (and not the current
-user) or a Cc; (2) there is an unseen transaction. In C<all> mode gate 2 is
-core C<SeenUpTo> (a new ticket's C<Create> counts). In C<replies> mode gate 2 is
-an unseen C<Correspond>/C<Comment> only, so a brand-new ticket does not trigger
-it. C<+>-subaddresses are stripped before the address match, matching mail
-routing.
+Two gates: (1) the ticket's last updater is a Requestor or Cc watcher and is
+not the current viewer; (2) there is an unseen transaction. In C<all> mode
+gate 2 is core C<SeenUpTo> (a new ticket's C<Create> counts). In C<replies>
+mode gate 2 is an unseen C<Correspond>/C<Comment> only, so a brand-new ticket
+does not trigger it. Watcher membership is tested by principal identity
+(C<< $ticket->IsWatcher >>), never by email-string matching.
 
 =cut
 
@@ -440,17 +440,19 @@ sub NewReplyBadgeTxn {
     $mode = 'all' unless defined $mode && ( $mode eq 'off' || $mode eq 'replies' );
     return undef if $mode eq 'off';
 
-    my $last = $ticket->LastUpdatedByObj->EmailAddress;
-    return undef unless defined $last;
+    my $last = $ticket->LastUpdatedByObj;
+    return undef unless $last && $last->id;
 
-    my $me  = $ticket->CurrentUser->EmailAddress;
-    $me = '' unless defined $me;
-    my $req = $ticket->Requestors->MemberEmailAddressesAsString;
-    my $cc  = $ticket->Cc->MemberEmailAddressesAsString;
-    s/\++//g for ( $me, $last, $req, $cc );
+    # No badge for the viewer's own last update (uniform for Requestor and Cc).
+    return undef if $last->id == $ticket->CurrentUser->id;
 
+    # Gate 1: the last updater is a Requestor or Cc watcher — tested by principal
+    # identity, so a subaddress or an address that is a substring of another
+    # watcher's address can never cause a false match.
+    my $pid = $last->PrincipalId;
     my $last_is_watcher =
-        ( $me ne $last && $req =~ /\Q$last\E/ ) || ( $cc =~ /\Q$last\E/ );
+           $ticket->IsWatcher( Type => 'Requestor', PrincipalId => $pid )
+        || $ticket->IsWatcher( Type => 'Cc',        PrincipalId => $pid );
     return undef unless $last_is_watcher;
 
     return $mode eq 'replies'
