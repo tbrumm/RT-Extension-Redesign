@@ -320,23 +320,38 @@ of the same box.
 
 ### "New Reply" badge — unread customer replies (per-user preference)
 
-A genuine per-user preference (not a site `Set(...)`). The badge flags tickets in
-lists that have an **unread customer reply nobody responsible has answered yet**.
-Each user picks their mode under **Preferences → Settings (Other)**, in the
-*Redesign* section:
+In your ticket lists, a small **New Reply** badge appears next to a ticket's
+status to flag tickets that need your attention: a customer has replied and
+nobody has answered yet.
+
+#### When you see the badge — a quick guide
+
+The badge appears on a ticket when **all** of these are true:
+
+- a **customer** (the requestor, or someone on Cc) has added a **reply or comment**;
+- **you have not opened / marked that message as seen** yet;
+- **neither you nor the ticket's owner has answered since** that message.
+
+It goes away when:
+
+- **you open the message** — clicking the badge jumps straight to it and marks it seen; or
+- **you reply** to the ticket yourself; or
+- **the ticket's owner replies** — if the owner is handling it, the badge clears for
+  **everyone**, so two agents don't both jump on the same reply.
+
+What does **not** clear it: a bare status change (that is not an answer), or another
+agent merely opening the ticket. The badge is personal — it tracks **your own**
+"seen" state, so a colleague viewing or clearing the ticket never removes yours.
+
+#### Choosing how eager the badge is
+
+This is a genuine per-user preference (not a site `Set(...)`). Each user picks their
+mode under **Preferences → Settings (Other)**, in the *Redesign* section:
 
 - **Never show**
-- **On customer replies & comments** — a Correspond/Comment by a Requestor or Cc
-  that you have not seen and that has not been answered *(default)*
-- **On customer replies, comments & new tickets** — as above, plus a newly created
-  customer ticket
-
-The badge stays until it is handled, not merely until someone glances at the
-ticket. It clears when **you** mark it seen (clicking the badge jumps to the reply
-and marks it seen) or reply yourself, or when the ticket **owner** replies (so
-other agents can assume it is being handled). A bare status change does not clear
-it, and the seen state is per-user — another agent viewing the ticket never
-affects your badge.
+- **On customer replies & comments** — the behaviour described above *(default)*
+- **On customer replies, comments & new tickets** — as above, and also flags a
+  brand-new customer ticket you have not looked at yet
 
 ### Priority display — label / number / both (per-user preference)
 
