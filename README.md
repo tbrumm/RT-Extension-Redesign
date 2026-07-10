@@ -233,6 +233,25 @@ Set(%DisplaySLAOptions,
 );
 ```
 
+### Priority badges — level colours
+
+Priority in ticket lists is shown as a coloured badge. By default the colour is
+derived automatically from the level's position in your `%PriorityAsString`
+mapping (green for the lowest level through red for the highest), so it adapts if
+you rename levels or add a new one. Override individual colours by label:
+
+    Set(%RedesignPriorityColors,
+        Low      => '#198754',   # green
+        Medium   => '#ffc107',   # yellow
+        High     => '#e35d6a',
+        Critical => '#8b0000',
+    );
+
+Text colour (black/white) is chosen automatically for legibility. Override values
+are static colours and, unlike the theme-adaptive default, do not shift with
+light/dark mode (the same as `%DisplaySLAOptions`). The example above reproduces
+the extension's previous fixed colouring for a `Low/Medium/High/Critical` mapping.
+
 ### Syntax highlighting — CDN URLs
 
 ```perl
@@ -312,6 +331,20 @@ per-user preference. Each user picks their own mode under
 - **Never show** — hide the badge entirely.
 
 Clicking the badge jumps to the unseen message and marks it as seen.
+
+### Priority display — label / number / both (per-user preference)
+
+Also a genuine per-user preference (not a site `Set(...)`). Each user chooses under
+**Preferences → Settings (Other)**, in the *Redesign* section, how the **Priority**
+column renders in ticket lists and search results:
+
+- **Label only** — e.g. `Medium` *(default — unchanged behaviour)*
+- **Number only** — the raw numeric priority, e.g. `80`
+- **Label and number** — e.g. `Medium (80)`
+
+This applies to ticket **lists/overviews** only (search results, saved searches,
+dashboard ticket portlets). The ticket detail page, history, and reports keep RT's
+global `$EnablePriorityAsString` behaviour.
 
 ### Ticket page widgets — Page Layout
 

@@ -1,6 +1,6 @@
 package RT::Extension::Redesign;
 
-our $VERSION = '0.31';
+our $VERSION = '0.32';
 
 use 5.010001;
 use strict;
@@ -83,7 +83,7 @@ $RT::Config::META{'RedesignNewReplyBadge'} = {
 };
 
 # RedesignPriorityDisplay: per-user choice of how the Priority column renders in
-# ticket lists (rendered by the RT__Ticket/ColumnMap/Once callback). Overridable,
+# ticket lists (rendered by the CollectionAsTable/Row/EachField callback). Overridable,
 # so it appears on Prefs/Other.html under the "Redesign" section next to
 # RedesignNewReplyBadge. Default 'text' = the current label-only display, so no
 # user sees a change without opting in. The per-list rendering is independent of
