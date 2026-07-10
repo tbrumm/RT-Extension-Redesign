@@ -82,6 +82,34 @@ $RT::Config::META{'RedesignNewReplyBadge'} = {
     Default => 'all',
 };
 
+# RedesignPriorityDisplay: per-user choice of how the Priority column renders in
+# ticket lists (rendered by the RT__Ticket/ColumnMap/Once callback). Overridable,
+# so it appears on Prefs/Other.html under the "Redesign" section next to
+# RedesignNewReplyBadge. Default 'text' = the current label-only display, so no
+# user sees a change without opting in. The per-list rendering is independent of
+# the global $EnablePriorityAsString (which the core reads without a user
+# context, hence cannot honour per user).
+#   text   - label only ("Medium")
+#   number - numeric priority only ("80")
+#   both   - label and number ("Medium (80)")
+$RT::Config::META{'RedesignPriorityDisplay'} = {
+    Type            => 'SCALAR',
+    Section         => 'Redesign',   # loc
+    Overridable     => 1,
+    SortOrder       => 2,
+    Widget          => '/Widgets/Form/Select',
+    WidgetArguments => {
+        Description => 'Priority display in ticket lists',   # loc
+        Values      => [ 'text', 'number', 'both' ],
+        ValuesLabel => {
+            text   => 'Label only (Medium)',                # loc
+            number => 'Number only (80)',                   # loc
+            both   => 'Label and number (Medium (80))',     # loc
+        },
+    },
+    Default => 'text',
+};
+
 # Front-end assets ship as external files under static/ and are registered here,
 # never as inline <script>/<style> in Mason: RT6's <body hx-boost="true"> swaps
 # the body on every navigation, so inline scripts and DOMContentLoaded listeners
