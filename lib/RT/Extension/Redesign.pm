@@ -53,33 +53,32 @@ if ( eval { RT->can('Config') && RT->Config && RT->Config->can('RegisterPluginCo
     );
 }
 
-# RedesignNewReplyBadge: per-user control of the "New Reply" badge in ticket
-# lists (rendered by the RT__Ticket/ColumnMap/Once callback). A genuine per-user
-# preference, so it uses an Overridable Widget shown on Prefs/Other.html under
-# its own "Redesign" section (the SideBySideView TicketViewLayout pattern) rather
-# than the Immutable RegisterPluginConfig path used for global options above.
-#   all     - show on replies and on new tickets (Create) = current behaviour
-#   replies - show only for an unseen Correspond/Comment, never for Create alone
+# RedesignUnreadReplyBadge: per-user control of the "New Reply" badge in ticket
+# lists (rendered by the RT__Ticket/ColumnMap/Once Status callback via
+# UnreadReplyTxn). Overridable Widget shown on Prefs/Other.html under the
+# "Redesign" section.
 #   off     - never show the badge
-# The Default here is the single source of truth: active from Plugin('...') alone,
+#   replies - show for an unseen customer Correspond/Comment (Requestor/Cc)
+#   all     - as 'replies' plus a new customer ticket (Create)
+# The Default is the single source of truth: active from Plugin('...') alone,
 # overridable per user via Preferences. A bare hash assignment is safe even when
 # RT is not initialised (standalone unit tests), so no eval guard is needed.
-$RT::Config::META{'RedesignNewReplyBadge'} = {
+$RT::Config::META{'RedesignUnreadReplyBadge'} = {
     Type            => 'SCALAR',
     Section         => 'Redesign',   # loc
     Overridable     => 1,
     SortOrder       => 1,
     Widget          => '/Widgets/Form/Select',
     WidgetArguments => {
-        Description => 'New Reply badge in ticket lists',   # loc
-        Values      => [ 'all', 'replies', 'off' ],
+        Description => 'New Reply badge for unread customer replies in ticket lists',  # loc
+        Values      => [ 'off', 'replies', 'all' ],
         ValuesLabel => {
-            all     => 'On replies and new tickets',        # loc
-            replies => 'On replies only (not new tickets)', # loc
-            off     => 'Never show',                        # loc
+            off     => 'Never show',                             # loc
+            replies => 'On customer replies & comments',         # loc
+            all     => 'On customer replies, comments & new tickets',  # loc
         },
     },
-    Default => 'all',
+    Default => 'replies',
 };
 
 # RedesignPriorityDisplay: per-user choice of how the Priority column renders in
