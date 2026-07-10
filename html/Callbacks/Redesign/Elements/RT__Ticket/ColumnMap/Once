@@ -51,7 +51,7 @@ $COLUMN_MAP->{Owner}{'value'}        = $ownerInColor;
 $COLUMN_MAP->{OwnerName}{'value'}    = $ownerInColor;
 $COLUMN_MAP->{'Owner.Name'}{'value'} = $ownerInColor;
 
-# Status: StatusBadge + "New Reply" per the user's RedesignNewReplyBadge pref.
+# Status: StatusBadge + "New Reply" per the user's RedesignUnreadReplyBadge pref.
 # The preference is read INSIDE the closure (via the always-current %session),
 # never hoisted to <%INIT>: this callback runs with CallbackOnce, so its
 # closures are built once per Apache worker and reused across requests/users —
@@ -64,10 +64,10 @@ my $statusWithNewReply = sub {
     my $statusBadge = $m->scomp('/Elements/StatusBadge', Object => $Ticket);
 
     my $badge_mode = RT->Config->Get(
-        'RedesignNewReplyBadge', $session{'CurrentUser'}->UserObj
-    ) || 'all';
+        'RedesignUnreadReplyBadge', $session{'CurrentUser'}->UserObj
+    ) || 'replies';
 
-    my $txn = RT::Extension::Redesign->NewReplyBadgeTxn( $Ticket, $badge_mode );
+    my $txn = RT::Extension::Redesign->UnreadReplyTxn( $Ticket, $badge_mode );
     return \$statusBadge unless $txn;
 
     my $link = RT->Config->Get('WebPath')
