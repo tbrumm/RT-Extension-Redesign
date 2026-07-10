@@ -455,64 +455,77 @@ sub collect_stats {
     return \%s;
 }
 
-=head2 NewReplyBadgeTxn($ticket, $mode)
+=head2 UnreadReplyTxn($ticket, $mode)
 
-Decide whether the "New Reply" badge should be shown for C<$ticket> in a ticket
-list, for the identity C<< $ticket->CurrentUser >>. C<$mode> is the per-user
-C<RedesignNewReplyBadge> preference (C<all>/C<replies>/C<off>; anything else is
-treated as C<all>). Returns the C<RT::Transaction> the badge should link to
-(with C<&MarkAsSeen=1>), or C<undef> when no badge belongs there.
+Decide whether the "New Reply" badge -- an B<unread customer reply that nobody
+responsible has answered yet> -- should show for C<$ticket>, for the viewer
+C<< $ticket->CurrentUser >>. C<$mode> is the per-user C<RedesignUnreadReplyBadge>
+preference: C<off> (never), C<replies> (Correspond/Comment) or C<all>
+(Correspond/Comment/Create); anything else is treated as C<replies>. Returns the
+earliest qualifying C<RT::Transaction> to link to (with C<&MarkAsSeen=1>), or
+C<undef>.
 
-Two gates: (1) the ticket's last updater is a Requestor or Cc watcher and is
-not the current viewer; (2) there is an unseen transaction. In C<all> mode
-gate 2 is core C<SeenUpTo> (a new ticket's C<Create> counts). In C<replies>
-mode gate 2 is an unseen C<Correspond>/C<Comment> only, so a brand-new ticket
-does not trigger it. Watcher membership is tested by principal identity
-(C<< $ticket->IsWatcher >>), never by email-string matching.
+The badge shows iff a transaction exists whose creator is a Requestor or Cc
+watcher (by principal identity, never email string) other than the viewer, of a
+type allowed by C<$mode>, created B<after> the effective cutoff
+
+    max( viewer's SeenUpTo,
+         viewer's last Correspond/Comment,
+         the ticket owner's last Correspond/Comment )
+
+so an owner reply clears the badge for everyone, the viewer's own reply clears it
+for the viewer, and a bare status change never clears it. The owner term applies
+only when the ticket has a real owner (not Nobody). Cheap early-out: if core
+C<< $ticket->SeenUpTo >> reports nothing unseen, no badge is possible.
 
 =cut
 
-sub NewReplyBadgeTxn {
+sub UnreadReplyTxn {
     my ( $class, $ticket, $mode ) = @_;
-    $mode = 'all' unless defined $mode && ( $mode eq 'off' || $mode eq 'replies' );
+    $mode = 'replies' unless defined $mode && ( $mode eq 'off' || $mode eq 'all' );
     return undef if $mode eq 'off';
 
-    my $last = $ticket->LastUpdatedByObj;
-    return undef unless $last && $last->id;
+    # Early-out: any qualifying customer txn must be newer than the viewer's
+    # SeenUpTo, so nothing unseen -> no badge (the common already-seen row). This
+    # avoids the transactions load for most rows in an agent's list.
+    return undef unless $ticket->SeenUpTo;
 
-    # No badge for the viewer's own last update (uniform for Requestor and Cc).
-    return undef if $last->id == $ticket->CurrentUser->id;
+    my $uid = $ticket->CurrentUser->id;
 
-    # Gate 1: the last updater is a Requestor or Cc watcher — tested by principal
-    # identity, so a subaddress or an address that is a substring of another
-    # watcher's address can never cause a false match.
-    my $pid = $last->PrincipalId;
-    my $last_is_watcher =
-           $ticket->IsWatcher( Type => 'Requestor', PrincipalId => $pid )
-        || $ticket->IsWatcher( Type => 'Cc',        PrincipalId => $pid );
-    return undef unless $last_is_watcher;
+    my $owner    = $ticket->OwnerObj;
+    my $owner_id = ( $owner && $owner->id && $owner->id != RT->Nobody->id )
+                 ? $owner->id : 0;
 
-    return $mode eq 'replies'
-        ? $class->_first_unseen_message($ticket)
-        : ( $ticket->SeenUpTo || undef );
-}
-
-# First unseen Comment/Correspond by another user, honouring the
-# User-<uid>-SeenUpTo cutoff. Mirrors core RT::Ticket::SeenUpTo but excludes the
-# Create transaction, so "replies only" mode never fires on a brand-new ticket.
-sub _first_unseen_message {
-    my ( $class, $ticket ) = @_;
-    my $uid  = $ticket->CurrentUser->id;
-    my $attr = $ticket->FirstAttribute( "User-${uid}-SeenUpTo" );
-    return undef if $attr && $attr->Content gt $ticket->LastUpdated;
-
+    # One transactions load; everything else is derived in Perl.
+    my $types = $mode eq 'all'
+        ? [ 'Create', 'Correspond', 'Comment' ]
+        : [ 'Correspond', 'Comment' ];
     my $txns = $ticket->Transactions;
-    $txns->Limit( FIELD => 'Type', OPERATOR => 'IN',
-                  VALUE => [ 'Comment', 'Correspond' ] );
-    $txns->Limit( FIELD => 'Creator', OPERATOR => '!=', VALUE => $uid );
-    $txns->Limit( FIELD => 'Created', OPERATOR => '>', VALUE => $attr->Content )
-        if $attr;
-    return $txns->First;
+    $txns->Limit( FIELD => 'Type', OPERATOR => 'IN', VALUE => $types );
+    my @all = @{ $txns->ItemsArrayRef };
+
+    # Effective "handled" cutoff: the viewer's SeenUpTo plus the latest
+    # Correspond/Comment by the viewer or the owner (status changes are excluded
+    # because they are not in @all's Correspond/Comment set).
+    my $seen   = $ticket->FirstAttribute("User-${uid}-SeenUpTo");
+    my $cutoff = ( $seen && $seen->Content ) || '';
+    for my $t (@all) {
+        next unless $t->Type eq 'Correspond' || $t->Type eq 'Comment';
+        my $c = $t->Creator;
+        next unless $c == $uid || ( $owner_id && $c == $owner_id );
+        $cutoff = $t->Created if $t->Created gt $cutoff;
+    }
+
+    # Earliest customer (Requestor/Cc, not the viewer) transaction after the cutoff.
+    for my $t ( sort { $a->Created cmp $b->Created or $a->id <=> $b->id } @all ) {
+        next unless $t->Created gt $cutoff;
+        next if $t->Creator == $uid;
+        my $pid = $t->CreatorObj->PrincipalId;
+        next unless $ticket->IsWatcher( Type => 'Requestor', PrincipalId => $pid )
+                 || $ticket->IsWatcher( Type => 'Cc',        PrincipalId => $pid );
+        return $t;
+    }
+    return undef;
 }
 
 =head2 PriorityInfo(\%map, $num)
