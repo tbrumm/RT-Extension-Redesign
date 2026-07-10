@@ -487,6 +487,33 @@ sub _first_unseen_message {
     return $txns->First;
 }
 
+=head2 PriorityInfo(\%map, $num)
+
+Given a C<%PriorityAsString> label-to-threshold map and a numeric priority,
+return C<< { label, index, count } >>: the highest label whose threshold is
+C<< <= $num >>, its 0-based position in the map sorted ascending by threshold,
+and the number of levels. Returns C<undef> for an empty/undef map or a value
+below the lowest threshold.
+
+=cut
+
+sub PriorityInfo {
+    my ( $map, $num ) = @_;
+    return undef unless ref $map eq 'HASH' && keys %$map;
+    return undef unless defined $num && length $num;
+
+    my @labels = sort { $map->{$a} <=> $map->{$b} } keys %$map;
+
+    my $label;
+    for my $l ( reverse @labels ) {
+        if ( $num >= $map->{$l} ) { $label = $l; last }
+    }
+    return undef unless defined $label;
+
+    my %index_of = map { $labels[$_] => $_ } 0 .. $#labels;
+    return { label => $label, index => $index_of{$label}, count => scalar @labels };
+}
+
 1;
 
 =head1 NAME
