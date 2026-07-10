@@ -1,0 +1,68 @@
+<%ARGS>
+$Record => undef
+$Column => undef
+$Out    => undef
+</%ARGS>
+<%INIT>
+# Render a ticket's Priority cell as a severity-coloured badge showing label /
+# number / both per the user's RedesignPriorityDisplay preference. Hooked here
+# (per-cell, per-request) rather than in RT__Ticket/ColumnMap/Once because core
+# re-sets $COLUMN_MAP->{Priority}{value} on every request while that Once
+# callback fires only once per worker. Colour comes from the ticket's position
+# in its queue's %PriorityAsString mapping (not label spelling), so it adapts to
+# renamed/added levels and is independent of the global $EnablePriorityAsString.
+return unless $Record && ref $Record && $Record->isa('RT::Ticket');
+return unless $Out && ref $Out eq 'ARRAY';
+# Only the plain single-field Priority column. RT's ParseFormat regex-splits the
+# format string and always appends a trailing tail segment to 'output' (see
+# share/html/Elements/CollectionAsTable/ParseFormat ~line 89), so a plain
+# 'Priority' column's output is ['__Priority__', ''], not a single element --
+# filter out empty/undef entries before checking for exactly one real token.
+return unless $Column && ref $Column->{output} eq 'ARRAY';
+my @tokens = grep { defined $_ && length $_ } @{ $Column->{output} };
+return unless @tokens == 1 && $tokens[0] eq '__Priority__';
+
+use RT::Extension::Redesign;
+
+my $num = $Record->Priority;
+return unless defined $num && length $num;
+
+my $mode = RT->Config->Get(
+    'RedesignPriorityDisplay', $session{'CurrentUser'}->UserObj ) || 'text';
+$mode = 'text' unless $mode eq 'number' || $mode eq 'both';
+
+my %colors;
+{
+    my @raw = RT->Config->Get('RedesignPriorityColors');
+    %colors = @raw if @raw && @raw % 2 == 0;
+}
+
+my $map  = $Record->GetPriorityAsStringMapping;
+my $info = $map ? RT::Extension::Redesign::PriorityInfo( $map, $num ) : undef;
+
+my $badge;
+# No mapping (queue set to 0 in %PriorityAsString, or unconfigured) or a value
+# below the lowest threshold: show the number in a neutral badge.
+unless ($info) {
+    my $n = $m->interp->apply_escapes( $num, 'h' );
+    $badge = qq{<span class="badge" style="background-color:#6c757d;color:#fff">$n</span>};
+}
+else {
+    my $label = $info->{label};
+    my $lbl   = loc($label);
+    my $text  = $mode eq 'number' ? $num
+              : $mode eq 'both'   ? "$lbl ($num)"
+              :                     $lbl;
+
+    my $bg = $colors{$label}
+          // RT::Extension::Redesign::PriorityAutoColor( $info->{index}, $info->{count} );
+    my $fg = RT::Extension::Redesign::ContrastText($bg);
+
+    my $etext = $m->interp->apply_escapes( $text, 'h' );
+    my $ebg   = $m->interp->apply_escapes( $bg,   'h' );
+    my $efg   = $m->interp->apply_escapes( $fg,   'h' );
+    $badge = qq{<span class="badge" style="background-color:$ebg;color:$efg">$etext</span>};
+}
+
+@$Out = ($badge);
+</%INIT>
