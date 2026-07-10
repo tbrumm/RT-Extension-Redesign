@@ -13,14 +13,17 @@ $Out    => undef
 # renamed/added levels and is independent of the global $EnablePriorityAsString.
 return unless $Record && ref $Record && $Record->isa('RT::Ticket');
 return unless $Out && ref $Out eq 'ARRAY';
-# Only the plain single-field Priority column. RT's ParseFormat regex-splits the
-# format string and always appends a trailing tail segment to 'output' (see
-# share/html/Elements/CollectionAsTable/ParseFormat ~line 89), so a plain
-# 'Priority' column's output is ['__Priority__', ''], not a single element --
-# filter out empty/undef entries before checking for exactly one real token.
+# Locate the __Priority__ token(s) in this column's format. We replace only that
+# one cell piece with our badge, keeping any surrounding literal markup -- a
+# saved search may wrap it (e.g. <small>__Priority__</small>) or combine it with
+# other fields, in which case 'output' holds several tokens, not just one.
+# InitialPriority/FinalPriority are left untouched (exact token match). Core
+# builds @$Out with one element per output token in order, so the indices align.
 return unless $Column && ref $Column->{output} eq 'ARRAY';
-my @tokens = grep { defined $_ && length $_ } @{ $Column->{output} };
-return unless @tokens == 1 && $tokens[0] eq '__Priority__';
+my @out_tokens = @{ $Column->{output} };
+my @prio_idx = grep { defined $out_tokens[$_] && $out_tokens[$_] eq '__Priority__' }
+                    0 .. $#out_tokens;
+return unless @prio_idx;
 
 use RT::Extension::Redesign;
 
@@ -64,5 +67,5 @@ else {
     $badge = qq{<span class="badge" style="background-color:$ebg;color:$efg">$etext</span>};
 }
 
-@$Out = ($badge);
+$Out->[$_] = $badge for grep { $_ <= $#$Out } @prio_idx;
 </%INIT>
