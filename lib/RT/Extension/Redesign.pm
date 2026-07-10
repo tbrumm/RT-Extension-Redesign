@@ -514,6 +514,54 @@ sub PriorityInfo {
     return { label => $label, index => $index_of{$label}, count => scalar @labels };
 }
 
+=head2 PriorityAutoColor($index, $count) / ContrastText($color)
+
+C<PriorityAutoColor> maps a 0-based position within C<$count> priority levels
+to a colour on a green(low)->red(high) HSL gradient, so colouring follows
+severity rather than label spelling and adapts to any number of levels.
+C<ContrastText> picks black or white for legible text on a C<#rrggbb>
+background (relative luminance); a non-hex value defaults to white.
+
+=cut
+
+sub PriorityAutoColor {
+    my ( $index, $count ) = @_;
+    $count = 1 if !$count || $count < 1;
+    $index = 0 unless defined $index && $index > 0;
+    $index = $count - 1 if $index > $count - 1;
+
+    my $frac = $count > 1 ? $index / ( $count - 1 ) : 0;
+    my $hue  = 120 * ( 1 - $frac );          # 120 = green .. 0 = red
+    return _hsl_to_hex( $hue, 0.65, 0.45 );
+}
+
+sub _hsl_to_hex {
+    my ( $h, $s, $l ) = @_;
+    my $c  = ( 1 - abs( 2 * $l - 1 ) ) * $s;
+    my $hp = $h / 60;
+    my $x  = $c * ( 1 - abs( ( $hp - 2 * int( $hp / 2 ) ) - 1 ) );
+    my ( $r, $g, $b ) =
+          $hp < 1 ? ( $c, $x, 0 )
+        : $hp < 2 ? ( $x, $c, 0 )
+        : $hp < 3 ? ( 0, $c, $x )
+        : $hp < 4 ? ( 0, $x, $c )
+        : $hp < 5 ? ( $x, 0, $c )
+        :           ( $c, 0, $x );
+    my $mm = $l - $c / 2;
+    return sprintf '#%02x%02x%02x',
+        int( ( $r + $mm ) * 255 + 0.5 ),
+        int( ( $g + $mm ) * 255 + 0.5 ),
+        int( ( $b + $mm ) * 255 + 0.5 );
+}
+
+sub ContrastText {
+    my ($color) = @_;
+    return '#ffffff' unless defined $color && $color =~ /\A#([0-9a-fA-F]{6})\z/;
+    my ( $r, $g, $b ) = map { hex } unpack 'A2A2A2', $1;
+    my $lum = ( 0.299 * $r + 0.587 * $g + 0.114 * $b ) / 255;
+    return $lum > 0.6 ? '#000000' : '#ffffff';
+}
+
 1;
 
 =head1 NAME
