@@ -318,19 +318,25 @@ Set($ShowMoreAboutPrivilegedUsers, 1);
 This is a core RT option; it also affects the comments, ticket-list, and groups sections
 of the same box.
 
-### "New Reply" badge — display mode (per-user preference)
+### "New Reply" badge — unread customer replies (per-user preference)
 
-Unlike the options above, this is not a site config `Set(...)` — it is a genuine
-per-user preference. Each user picks their own mode under
-**Preferences → Settings (Other)**, in the *Redesign* section:
+A genuine per-user preference (not a site `Set(...)`). The badge flags tickets in
+lists that have an **unread customer reply nobody responsible has answered yet**.
+Each user picks their mode under **Preferences → Settings (Other)**, in the
+*Redesign* section:
 
-- **On replies and new tickets** — badge on any unseen customer message,
-  including brand-new tickets. *(default — the previous behaviour)*
-- **On replies only (not new tickets)** — badge only for a reply on an existing
-  ticket; a newly created ticket does not get one.
-- **Never show** — hide the badge entirely.
+- **Never show**
+- **On customer replies & comments** — a Correspond/Comment by a Requestor or Cc
+  that you have not seen and that has not been answered *(default)*
+- **On customer replies, comments & new tickets** — as above, plus a newly created
+  customer ticket
 
-Clicking the badge jumps to the unseen message and marks it as seen.
+The badge stays until it is handled, not merely until someone glances at the
+ticket. It clears when **you** mark it seen (clicking the badge jumps to the reply
+and marks it seen) or reply yourself, or when the ticket **owner** replies (so
+other agents can assume it is being handled). A bare status change does not clear
+it, and the seen state is per-user — another agent viewing the ticket never
+affects your badge.
 
 ### Priority display — label / number / both (per-user preference)
 

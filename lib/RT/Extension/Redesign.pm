@@ -1,6 +1,6 @@
 package RT::Extension::Redesign;
 
-our $VERSION = '0.33';
+our $VERSION = '0.34';
 
 use 5.010001;
 use strict;
@@ -84,7 +84,7 @@ $RT::Config::META{'RedesignUnreadReplyBadge'} = {
 # RedesignPriorityDisplay: per-user choice of how the Priority column renders in
 # ticket lists (rendered by the CollectionAsTable/Row/EachField callback). Overridable,
 # so it appears on Prefs/Other.html under the "Redesign" section next to
-# RedesignNewReplyBadge. Default 'text' = the current label-only display, so no
+# RedesignUnreadReplyBadge. Default 'text' = the current label-only display, so no
 # user sees a change without opting in. The per-list rendering is independent of
 # the global $EnablePriorityAsString (which the core reads without a user
 # context, hence cannot honour per user).
